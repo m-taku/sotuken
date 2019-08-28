@@ -16,6 +16,7 @@ Player::~Player()
 void Player::Update()
 {
 	static CVector3 pos = CVector3::Zero();
+	pos.x += 10.0f;
 	//ワールド行列の更新。
 	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());
 }
