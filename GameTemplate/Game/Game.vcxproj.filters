@@ -197,6 +197,7 @@
     <ClInclude Include="GameObject\IGameObject.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="GameObject\IGameObjectManager.h" />
+    <ClInclude Include="GameTime.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

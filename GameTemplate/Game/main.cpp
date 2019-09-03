@@ -10,9 +10,9 @@
 ///////////////////////////////////////////////////////////////////
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow)
 {
+
 	//ゲームの初期化。
 	InitGame(hInstance, hPrevInstance, lpCmdLine, nCmdShow, "Game");
-
 	//カメラを初期化。
 	g_camera3D.SetPosition({ 0.0f, 100.0f, 300.0f });
 	g_camera3D.SetTarget({ 0.0f, 100.0f, 0.0f });
@@ -22,6 +22,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//ゲームループ。
 	while (DispatchWindowMessage() == true)
 	{
+		GetGameTime().Start();
 		NewGO<Test>(0, "nerklangla");
 		//描画開始。
 		g_graphicsEngine->BegineRender();
@@ -31,11 +32,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		}
 		//物理エンジンの更新。
 		g_physics.Update();
-
 		GameObjectManager().Execute();
 		//カメラの更新。
 		g_camera3D.Update();
 		//描画終了。
+		GetGameTime().Stop();
 		g_graphicsEngine->EndRender();
 	}
 }

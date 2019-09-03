@@ -20,7 +20,7 @@ bool Test::State()
 void Test::Update()
 {
 	No++;
-	pos.x += 10.0f;
+	pos.x += GetFrameTime()*100.0f;
 	if (No >= 10)
 	{
 		DeleteGO(this);
