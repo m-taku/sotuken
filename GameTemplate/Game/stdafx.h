@@ -36,8 +36,11 @@
 #include "graphics/animation/Animation.h"
 #include "graphics/animation/AnimationClip.h"
 #include "graphics/Camera.h"
+#include "Noncopyable/Noncopyable.h"
+#include "GameObject/IGameObjectManager.h"
 
 const float FRAME_BUFFER_W = 1280.0f;				//フレームバッファの幅。
 const float FRAME_BUFFER_H = 720.0f;				//フレームバッファの高さ。
+using namespace GameObject2;
 
 static const int MAX_BONE = 512;	//!<ボーンの最大数。

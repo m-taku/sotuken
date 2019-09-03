@@ -11,6 +11,9 @@ public:
 	 */
 	static int MakeHash( const char* string )
 	{
+		if (string == nullptr) {
+			return 0;
+		}
 		int hash = 0;
 		int l = (int)strlen(string);
 		for( int i = 0; i < l; i++ ){
@@ -24,6 +27,9 @@ public:
 	*/
 	static int MakeHash(const wchar_t* string)
 	{
+		if (string == nullptr) {
+			return 0;
+		}
 		int hash = 0;
 		int l = (int)wcslen(string);
 		for (int i = 0; i < l; i++) {

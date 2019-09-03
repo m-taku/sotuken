@@ -107,6 +107,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="GameObject\IGameObject.cpp" />
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="GameObject\IGameObjectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -191,6 +194,9 @@
       <Filter>level</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="GameObject\IGameObject.h" />
+    <ClInclude Include="Test.h" />
+    <ClInclude Include="GameObject\IGameObjectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
