@@ -1,5 +1,5 @@
 #pragma once
-namespace GameObject2 {
+namespace smEngine {
 	typedef unsigned char	GameObjectPrio;
 	class IGameObject : public Noncopyable
 	{

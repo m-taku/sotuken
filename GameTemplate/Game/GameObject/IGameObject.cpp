@@ -2,6 +2,6 @@
 #include "IGameObject.h"
 
 
-namespace GameObject2 {
+namespace smEngine {
 
 }

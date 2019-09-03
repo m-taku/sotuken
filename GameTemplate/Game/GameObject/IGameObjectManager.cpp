@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "IGameObjectManager.h"
 
-namespace GameObject2 {
+namespace smEngine {
 
 	IGameObjectManager::IGameObjectManager()
 	{

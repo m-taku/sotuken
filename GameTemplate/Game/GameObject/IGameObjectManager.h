@@ -1,7 +1,7 @@
 #pragma once
 #include"util/Util.h"
 #include"IGameObject.h"
-namespace GameObject2 {
+namespace smEngine {
 	class IGameObjectManager:Noncopyable
 	{
 	public:
