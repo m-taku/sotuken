@@ -100,6 +100,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="character\CharacterController.cpp" />
+    <ClCompile Include="GameFont.cpp" />
     <ClCompile Include="GameObject\IGameObject.cpp" />
     <ClCompile Include="graphics\animation\Animation.cpp" />
     <ClCompile Include="graphics\animation\AnimationClip.cpp" />
@@ -134,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character\CharacterController.h" />
+    <ClInclude Include="GameFont.h" />
     <ClInclude Include="GameObject\IGameObject.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="graphics\animation\Animation.h" />

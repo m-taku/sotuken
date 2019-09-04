@@ -9,7 +9,7 @@ public:
 	void Draw();
 private:
 	int No = 0;
-	CVector3 pos = CVector3::Zero();
+	CVector3 pos = {100.0f,0.0f,0.0f};
 	SkinModel m_model;
 
 };

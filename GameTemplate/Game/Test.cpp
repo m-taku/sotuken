@@ -19,10 +19,14 @@ bool Test::State()
 }
 void Test::Update()
 {
+	static float bai = 1.0f;
 	No++;
-	pos.x += GetFrameTime()*100.0f;
-	if (No >= 10)
+	CQuaternion m;
+	m.SetRotationDeg(CVector3::AxisZ(), 360.0f/30.0f*bai);
+	m.Multiply(pos);
+	if (No >= 30)
 	{
+		bai += 0.1;
 		DeleteGO(this);
 	}
 	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());

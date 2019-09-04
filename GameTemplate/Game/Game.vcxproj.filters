@@ -110,6 +110,7 @@
     <ClCompile Include="GameObject\IGameObject.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="GameObject\IGameObjectManager.cpp" />
+    <ClCompile Include="GameFont.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -198,6 +199,7 @@
     <ClInclude Include="Test.h" />
     <ClInclude Include="GameObject\IGameObjectManager.h" />
     <ClInclude Include="GameTime.h" />
+    <ClInclude Include="GameFont.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
