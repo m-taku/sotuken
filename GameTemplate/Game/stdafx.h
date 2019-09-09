@@ -24,11 +24,17 @@
 #include "DirectXTK/Inc/DDSTextureLoader.h"
 
 #include "physics/Physics.h"
+#include "Noncopyable/Noncopyable.h"
 #include "HID/Pad.h"
 
 #include "math/Vector.h"
 #include "math/Matrix.h"
 #include "graphics/GraphicsEngine.h"
+#include "graphics/StructuredBuffer.h"
+#include "graphics/VertexBuffer.h"
+#include "graphics/IndexBuffer.h"
+#include "graphics/Primitive.h"
+
 
 #include "graphics/SkinModel.h"
 #include "graphics/Skeleton.h"
@@ -36,11 +42,12 @@
 #include "graphics/animation/Animation.h"
 #include "graphics/animation/AnimationClip.h"
 #include "graphics/Camera.h"
-#include "Noncopyable/Noncopyable.h"
+
+
 #include "GameObject/IGameObjectManager.h"
 
-const float FRAME_BUFFER_W = 1280.0f;				//フレームバッファの幅。
-const float FRAME_BUFFER_H = 720.0f;				//フレームバッファの高さ。
+const float FRAME_BUFFER_W = 1920.0f;				//フレームバッファの幅。
+const float FRAME_BUFFER_H = 1080.0f;				//フレームバッファの高さ。
 using namespace GameObject2;
 
 static const int MAX_BONE = 512;	//!<ボーンの最大数。
