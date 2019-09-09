@@ -48,6 +48,6 @@
 
 const float FRAME_BUFFER_W = 1920.0f;				//フレームバッファの幅。
 const float FRAME_BUFFER_H = 1080.0f;				//フレームバッファの高さ。
-using namespace GameObject2;
+using namespace smEngine;
 
 static const int MAX_BONE = 512;	//!<ボーンの最大数。
