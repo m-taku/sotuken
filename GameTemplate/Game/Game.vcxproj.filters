@@ -116,6 +116,7 @@
     <ClCompile Include="graphics\Primitive.cpp" />
     <ClCompile Include="graphics\IndexBuffer.cpp" />
     <ClCompile Include="graphics\VertexBuffer.cpp" />
+    <ClCompile Include="GameFont\GameFont.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -209,6 +210,8 @@
     <ClInclude Include="graphics\Primitive.h" />
     <ClInclude Include="graphics\IndexBuffer.h" />
     <ClInclude Include="graphics\VertexBuffer.h" />
+    <ClInclude Include="GameFont\GameFont.h" />
+    <ClInclude Include="GameTime\GameTime.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

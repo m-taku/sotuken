@@ -45,6 +45,8 @@
 
 
 #include "GameObject/IGameObjectManager.h"
+#include "GameTime/GameTime.h"
+#include "GameFont/GameFont.h"
 
 const float FRAME_BUFFER_W = 1920.0f;				//フレームバッファの幅。
 const float FRAME_BUFFER_H = 1080.0f;				//フレームバッファの高さ。
