@@ -115,6 +115,7 @@
     <ClCompile Include="graphics\SkinModelEffect.cpp" />
     <ClCompile Include="HID\Pad.cpp" />
     <ClCompile Include="GameObject\IGameObjectManager.cpp" />
+    <ClCompile Include="graphics\IndexBuffer.cpp" />
     <ClCompile Include="level\Level.cpp" />
     <ClCompile Include="level\MapChip.cpp" />
     <ClCompile Include="main.cpp" />
@@ -126,12 +127,17 @@
     <ClCompile Include="physics\RigidBody.cpp" />
     <ClCompile Include="physics\CapsuleCollider.cpp" />
     <ClCompile Include="physics\PhysicsStaticObject.cpp" />
+    <ClCompile Include="graphics\ShaderResourceView.cpp" />
+    <ClCompile Include="graphics\Primitive.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="graphics\StructuredBuffer.cpp" />
     <ClCompile Include="system\system.cpp" />
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="graphics\UnorderedAccessView.cpp" />
+    <ClCompile Include="graphics\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character\CharacterController.h" />
@@ -152,6 +158,7 @@
     <ClInclude Include="graphics\SkinModelShaderConst.h" />
     <ClInclude Include="HID\Pad.h" />
     <ClInclude Include="GameObject\IGameObjectManager.h" />
+    <ClInclude Include="graphics\IndexBuffer.h" />
     <ClInclude Include="level\Level.h" />
     <ClInclude Include="level\MapChip.h" />
     <ClInclude Include="math\kMath.h" />
@@ -164,9 +171,14 @@
     <ClInclude Include="physics\CapsuleCollider.h" />
     <ClInclude Include="physics\CollisionAttr.h" />
     <ClInclude Include="physics\PhysicsStaticObject.h" />
+    <ClInclude Include="graphics\ShaderResourceView.h" />
+    <ClInclude Include="graphics\Primitive.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="graphics\StructuredBuffer.h" />
     <ClInclude Include="system\system.h" />
     <ClInclude Include="Test.h" />
+    <ClInclude Include="graphics\UnorderedAccessView.h" />
+    <ClInclude Include="graphics\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

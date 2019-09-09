@@ -110,7 +110,12 @@
     <ClCompile Include="GameObject\IGameObject.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="GameObject\IGameObjectManager.cpp" />
-    <ClCompile Include="GameFont.cpp" />
+    <ClCompile Include="graphics\StructuredBuffer.cpp" />
+    <ClCompile Include="graphics\ShaderResourceView.cpp" />
+    <ClCompile Include="graphics\UnorderedAccessView.cpp" />
+    <ClCompile Include="graphics\Primitive.cpp" />
+    <ClCompile Include="graphics\IndexBuffer.cpp" />
+    <ClCompile Include="graphics\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -198,8 +203,12 @@
     <ClInclude Include="GameObject\IGameObject.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="GameObject\IGameObjectManager.h" />
-    <ClInclude Include="GameTime.h" />
-    <ClInclude Include="GameFont.h" />
+    <ClInclude Include="graphics\StructuredBuffer.h" />
+    <ClInclude Include="graphics\ShaderResourceView.h" />
+    <ClInclude Include="graphics\UnorderedAccessView.h" />
+    <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="graphics\IndexBuffer.h" />
+    <ClInclude Include="graphics\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
