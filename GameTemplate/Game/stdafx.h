@@ -23,12 +23,12 @@
 #include "DirectXTK/Inc/SpriteFont.h"
 #include "DirectXTK/Inc/DDSTextureLoader.h"
 
-#include "physics/Physics.h"
 #include "Noncopyable/Noncopyable.h"
 #include "HID/Pad.h"
 
 #include "math/Vector.h"
 #include "math/Matrix.h"
+#include "graphics/Shader.h"
 #include "graphics/GraphicsEngine.h"
 #include "graphics/StructuredBuffer.h"
 #include "graphics/VertexBuffer.h"
@@ -42,7 +42,7 @@
 #include "graphics/animation/Animation.h"
 #include "graphics/animation/AnimationClip.h"
 #include "graphics/Camera.h"
-
+#include "physics/Physics.h"
 
 #include "GameObject/IGameObjectManager.h"
 #include "GameTime/GameTime.h"

@@ -13,22 +13,20 @@ Test::~Test()
 bool Test::State()
 {
 
+	m_collider.Init(100.0f, 30.0f, pos);
 	//cmoファイルの読み込み。
 	m_model.Init(L"Assets/modelData/unityChan.cmo");
 	return true;
 }
 void Test::Update()
 {
-	static float bai = 1.0f;
-	No++;
-	CQuaternion m;
-	m.SetRotationDeg(CVector3::AxisZ(), 360.0f/30.0f*bai);
-	m.Multiply(pos);
-	if (No >= 30)
-	{
-		bai += 0.1;
-		DeleteGO(this);
-	}
+	posm.x = g_pad[0].GetLStickXF() * 100.0f;
+	posm.z = g_pad[0].GetLStickYF() * 100.0f;
+	//posm.x = 300.0f;
+	//posm.x *= bai;
+
+	posm.y -= 9.8f * 10.0f * GetFrameTime();
+	pos = m_collider.Execute(GetFrameTime(),posm);
 	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());
 }
 void Test::Draw()

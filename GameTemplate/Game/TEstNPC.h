@@ -1,18 +1,19 @@
 #pragma once
 #include "character/CharacterController.h"
-class Test : public IGameObject
+class TEstNPC : public IGameObject
 {
 public:
-	Test();
-	~Test();
+	TEstNPC();
+	~TEstNPC();
 	bool State();
 	void Update();
 	void Draw();
 private:
 	int No = 0;
 	CharacterController m_collider;						//キャラクターコントローラー
-	CVector3 posm = CVector3::AxisX();
-	CVector3 pos = {0.0f,0.0f,0.0f};
-	SkinModel m_model;
-};	
+	CVector3 posm = CVector3::Zero();
+	CVector3 pos = { 0.0f,0.0f,0.0f };
+	SkinModel m_model;	
+	SkinModel m_bikkuri;
+};
 

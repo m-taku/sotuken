@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "system/system.h"
 #include "level/Level.h"
-#include "Test.h"
+#include"Title.h"
 
 
 ///////////////////////////////////////////////////////////////////
@@ -18,16 +18,12 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	g_camera3D.SetFar(10000.0f);
 	GameFont ja;
 	GameObjectManager().Init(200);
+	g_physics.SetDebugDrawMode(btIDebugDraw::DBG_DrawWireframe);
 	//ゲームループ。
-	int no = 0;
+	NewGO <Title>(0, "Title");
 	while (DispatchWindowMessage() == true)
 	{
 		GetGameTime().Start();
-		if (++no >= 10) 
-		{
-			NewGO<Test>(0, "nerklangla");
-			no = 0;
-		}
 		//描画開始。
 		g_graphicsEngine->BegineRender();
 		//ゲームパッドの更新。	
@@ -43,7 +39,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		ja.BeginDraw();
 		wchar_t fps[256];
 		swprintf_s(fps, L"FPS = %2f", 1.0/GetFrameTime());
-		ja.Draw(fps, CVector2::Zero(), CVector4::White(),0.0f,1.0f);
+		ja.Draw(fps, { -FRAME_BUFFER_W /2.0f, FRAME_BUFFER_H/2.0f }, CVector4::White(), 0.0f, 1.0f, {0.0f,1.0f});
 		ja.EndDraw();
 		g_graphicsEngine->EndRender();
 		GetGameTime().Stop();

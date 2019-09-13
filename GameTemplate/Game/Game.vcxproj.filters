@@ -117,6 +117,11 @@
     <ClCompile Include="graphics\IndexBuffer.cpp" />
     <ClCompile Include="graphics\VertexBuffer.cpp" />
     <ClCompile Include="GameFont\GameFont.cpp" />
+    <ClCompile Include="physics\PhysicsDebugDraw.cpp" />
+    <ClCompile Include="TestStage.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="TEstNPC.cpp" />
+    <ClCompile Include="Text_box.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -212,10 +217,17 @@
     <ClInclude Include="graphics\VertexBuffer.h" />
     <ClInclude Include="GameFont\GameFont.h" />
     <ClInclude Include="GameTime\GameTime.h" />
+    <ClInclude Include="physics\PhysicsDebugDraw.h" />
+    <ClInclude Include="TestStage.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="TEstNPC.h" />
+    <ClInclude Include="Text_box.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
       <Filter>Assets\modelData</Filter>
     </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\jiman.FBX" />
+    <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
   </ItemGroup>
 </Project>

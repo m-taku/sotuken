@@ -41,6 +41,10 @@ namespace smEngine {
 				Object->DrawWrapper();
 			}
 		}
+
+		g_physics.DebubDrawWorld();
+
+
 		DeleteExecution();
 	}
 	void IGameObjectManager::DeleteExecution() {
