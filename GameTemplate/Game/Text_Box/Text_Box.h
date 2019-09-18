@@ -1,9 +1,9 @@
 #pragma once
-class Text_box : public IGameObject
+class Text_Box : public IGameObject
 {
 public:
-	Text_box();
-	~Text_box();
+	Text_Box();
+	~Text_Box();
 	bool State();
 	void Update();
 	///<summary>

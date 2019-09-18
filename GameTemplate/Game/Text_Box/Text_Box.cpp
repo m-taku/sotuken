@@ -1,21 +1,21 @@
 #include "stdafx.h"
-#include "Text_box.h"
+#include "Text_Box.h"
 
 
-Text_box::Text_box()
+Text_Box::Text_Box()
 {
 }
 
 
-Text_box::~Text_box()
+Text_Box::~Text_Box()
 {
 }
-bool Text_box::State()
+bool Text_Box::State()
 {
 
 	return true;
 }
-void Text_box::Update()
+void Text_Box::Update()
 {
 	static int count = 0;
 	count++;
@@ -23,7 +23,7 @@ void Text_box::Update()
 	size_t kosuu = 0;
 	mbstowcs_s(&kosuu, m_text, min(count/ m_speed +1, m_Text.length()), m_Text.c_str(), _TRUNCATE);
 }
-void Text_box::Draw()
+void Text_Box::Draw()
 {
 	m_font.BeginDraw();
 	m_font.Draw(m_text, m_pos, m_Coler,0.0f,0.5f);

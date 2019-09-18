@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "TEstNPC.h"
 #include"Test.h"
-#include "Text_box.h"
+#include "Text_Box/Text_Box.h"
 
 
 TEstNPC::TEstNPC()
@@ -43,7 +43,7 @@ void TEstNPC::Update()
 	if (bikkuri)
 	{
 		if (g_pad[0].IsTrigger(enButtonA)) {
-			m_Text = NewGO<Text_box>(10, "Text_box");
+			m_Text = NewGO<Text_Box>(10, "Text_box");
 			m_Text->SetText("あいえーーーー？？？？？？？？？？？？？？");
 		}
 	}

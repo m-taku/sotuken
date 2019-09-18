@@ -16,8 +16,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	g_camera3D.SetPosition({ 0.0f, 100.0f, 300.0f });
 	g_camera3D.SetTarget({ 0.0f, 100.0f, 0.0f });
 	g_camera3D.SetFar(10000.0f);
+
 	GameFont FPS;
-	GameObjectManager().Init(200);
+	GameObjectManager().Init(20);
 	g_physics.SetDebugDrawMode(btIDebugDraw::DBG_DrawWireframe);
 	//ゲームループ。
 	NewGO <Title>(0, "Title");

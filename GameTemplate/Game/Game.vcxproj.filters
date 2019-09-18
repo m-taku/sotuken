@@ -121,7 +121,8 @@
     <ClCompile Include="TestStage.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TEstNPC.cpp" />
-    <ClCompile Include="Text_box.cpp" />
+    <ClCompile Include="GameCamera.cpp" />
+    <ClCompile Include="Text_Box\Text_Box.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -221,7 +222,8 @@
     <ClInclude Include="TestStage.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TEstNPC.h" />
-    <ClInclude Include="Text_box.h" />
+    <ClInclude Include="GameCamera.h" />
+    <ClInclude Include="Text_Box\Text_Box.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
