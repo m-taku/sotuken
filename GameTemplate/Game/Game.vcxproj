@@ -142,7 +142,7 @@
     <ClCompile Include="graphics\VertexBuffer.cpp" />
     <ClCompile Include="TEstNPC.cpp" />
     <ClCompile Include="TestStage.cpp" />
-    <ClCompile Include="Text_box.cpp" />
+    <ClCompile Include="Text_Box\Text_Box.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,7 +189,7 @@
     <ClInclude Include="graphics\VertexBuffer.h" />
     <ClInclude Include="TEstNPC.h" />
     <ClInclude Include="TestStage.h" />
-    <ClInclude Include="Text_box.h" />
+    <ClInclude Include="Text_Box\Text_Box.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>
   <ItemGroup>

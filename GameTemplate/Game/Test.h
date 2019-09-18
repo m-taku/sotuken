@@ -8,6 +8,10 @@ public:
 	bool State();
 	void Update();
 	void Draw();
+	CVector3 Getpos()
+	{
+		return pos;
+	}
 private:
 	int No = 0;
 	CharacterController m_collider;						//キャラクターコントローラー

@@ -13,7 +13,7 @@ Test::~Test()
 bool Test::State()
 {
 
-	m_collider.Init(100.0f, 30.0f, pos);
+	m_collider.Init(50.0f, 30.0f, pos);
 	//cmoファイルの読み込み。
 	m_model.Init(L"Assets/modelData/unityChan.cmo");
 	return true;
