@@ -20,7 +20,30 @@ namespace smEngine {
 		void SetPosition(CVector3& position) {
 			m_position = position;
 		}
-
+		/*!
+		*@brief	カメラの前方向
+		*/
+		const CVector3& GetCameraFoward() const
+		{
+			return g_camera3D.GetForward();
+		}
+		/*!
+		*@brief	カメラの右方向
+		*/
+		const CVector3& GetCameraRight() const
+		{
+			return g_camera3D.GetRight();
+		}
+		/*!
+		*@brief	カメラの上方向
+		*/
+		const CVector3& GetCameraUp() const
+		{
+			return g_camera3D.GetUp();
+		}
+		/*!
+		*@brief	インスタンス(シングルトン)
+		*/
 		static GameCamera& Instance()
 		{
 			static GameCamera Instance;

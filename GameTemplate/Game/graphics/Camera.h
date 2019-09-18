@@ -13,88 +13,88 @@ public:
 	/*!
 	 * @brief	カメラ行列を取得。
 	 */
-	CMatrix GetViewMatrix()
+	const CMatrix& GetViewMatrix() const
 	{
 		return m_viewMatrix;
 	}
 	/*!
 	 * @brief	プロジェクション行列を取得。
 	 */
-	CMatrix GetProjectionMatrix() 
+	const CMatrix& GetProjectionMatrix() const
 	{
 		return m_projMatrix;
 	}
 	/*!
 	 * @brief	視点を取得。
 	 */
-	CVector3 GetPosition()
+	const CVector3& GetPosition() const
 	{
 		return m_position;
 	}
 	/*!
 	 * @brief	注視点を取得。
 	 */
-	CVector3 GetTarget()
+	const CVector3& GetTarget() const
 	{
 		return m_target;
 	}
 	/*!
 	 * @brief	カメラの前方向を取得。
 	 */
-	CVector3 GetForward()
+	const CVector3& GetForward() const
 	{
 		return m_forward;
 	}
-	CVector3 GetRight()
+	const CVector3& GetRight() const
 	{
 		return m_right;
 	}
 	/*!
 	 * @brief	カメラの上方向を取得。
 	 */
-	CVector3 GetUp()
+	const CVector3& GetUp() const
 	{
 		return m_up;
 	}
 	/*!
 	 * @brief	視点を設定。
 	 */
-	void SetPosition( CVector3 pos )
+	void SetPosition(CVector3 pos)
 	{
 		m_position = pos;
 	}
 	/*!
 	 * @brief	注視点を設定。
 	 */
-	void SetTarget( CVector3 target )
+	void SetTarget(CVector3 target)
 	{
 		m_target = target;
 	}
 	/*!
 	 * @brief	カメラの上方向を設定。
 	 */
-	void SetUp( CVector3 up )
+	void SetUp(CVector3 up)
 	{
 		m_up = up;
 	}
 	/*!
 	 * @brief	遠平面を設定。
 	 */
-	void SetFar( float f )
+	void SetFar(float f)
 	{
 		m_far = f;
 	}
 	/*!
 	 * @brief	近平面を設定。
 	 */
-	void SetNear( float n )
+	void SetNear(float n)
 	{
 		m_near = n;
 	}
 	/*!
 	 * @brief	画角を設定。
 	 */
-	void SetViewAngle( float angle )
+	void SetViewAngle(float angle)
 	{
 		m_viewAngle = angle;
 	}
