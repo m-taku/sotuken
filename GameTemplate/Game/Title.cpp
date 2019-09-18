@@ -24,7 +24,7 @@ void Title::Update()
 {
 	if (g_pad[0].IsTrigger(enButtonA))
 	{
-		NewGO<Test>(0, "nerklangla");
+		NewGO<Test>(0, "test");
 		NewGO<TestStage>(0, "jaio");
 		NewGO<TEstNPC>(0, "TEstNPC");
 		DeleteGO(this);

@@ -44,7 +44,7 @@ namespace smEngine {
 
 		g_physics.DebubDrawWorld();
 
-
+		NewExecution();
 		DeleteExecution();
 	}
 	void IGameObjectManager::DeleteExecution() {

@@ -37,6 +37,15 @@ public:
 		x = v0.x + (v1.x - v0.x) * t;
 		y = v0.y + (v1.y - v0.y) * t;
 	}
+	//operator D3DXVECTOR3(void) { return s_cast<D3DXVECTOR3>(*this); }
+	/*!
+	*@brief	‘ã“ü‰‰ZqB
+	*/
+	CVector2& operator=(const CVector2& _v)
+	{
+		vec = _v.vec;
+		return *this;
+	}
 	static CVector2 Zero()
 	{
 		static const CVector2 zero = { 0.0f,  0.0f };
