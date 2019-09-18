@@ -42,6 +42,20 @@ namespace smEngine {
 			return g_camera3D.GetUp();
 		}
 		/*!
+		*@brief ビュー行列
+		*/
+		const CMatrix& GetCameraViewMatrix() const
+		{
+			return g_camera3D.GetViewMatrix();
+		}
+		/*!
+		*@brief プロジェクション行列
+		*/
+		const CMatrix& GetCameraProjectionMatrix() const
+		{
+			return g_camera3D.GetProjectionMatrix();
+		}
+		/*!
 		*@brief	インスタンス(シングルトン)
 		*/
 		static GameCamera& Instance()
