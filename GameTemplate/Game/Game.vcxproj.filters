@@ -123,8 +123,7 @@
     <ClCompile Include="TEstNPC.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="Text_Box\Text_Box.cpp" />
-    <ClCompile Include="graphics\ConstantBuffer.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Stage_Base.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -226,8 +225,7 @@
     <ClInclude Include="TEstNPC.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="Text_Box\Text_Box.h" />
-    <ClInclude Include="graphics\ConstantBuffer.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="Stage_Base.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

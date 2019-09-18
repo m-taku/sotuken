@@ -15,7 +15,7 @@ public:
 
 		int j = 0;
 		for (const auto& moji : ma) {
-			if (j >= 10)
+			if (j >= 20)
 			{
 				m_Text += k;
 				j = 0;

@@ -31,7 +31,7 @@ namespace smEngine {
 		void StartWrapper()
 		{
 			if (!m_isStart&&m_isActive&&!m_isDead) {
-				if (State())
+				if (Start())
 				{
 					m_isStart = true;
 				}
@@ -51,9 +51,10 @@ namespace smEngine {
 				Draw();
 			}
 		}
-		virtual bool State() { return true; };
+		virtual bool Start() { return true; };
 		virtual void Update() {};
 		virtual void Draw() {};
+		virtual void OnDestroy() {};
 
 		friend class IGameObjectManager;
 	protected:

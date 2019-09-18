@@ -4,7 +4,7 @@ class Title : public IGameObject
 public:
 	Title();
 	~Title();
-	bool State();
+	bool Start();
 	void Update();
 	void Draw();
 private:
