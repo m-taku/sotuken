@@ -131,6 +131,7 @@
     <ClCompile Include="physics\PhysicsStaticObject.cpp" />
     <ClCompile Include="graphics\ShaderResourceView.cpp" />
     <ClCompile Include="graphics\Primitive.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Stage_Base.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -182,6 +183,7 @@
     <ClInclude Include="physics\PhysicsStaticObject.h" />
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Stage_Base.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="graphics\StructuredBuffer.h" />
