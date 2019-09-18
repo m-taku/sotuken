@@ -30,6 +30,7 @@
 #include "math/Matrix.h"
 #include "graphics/Shader.h"
 #include "graphics/GraphicsEngine.h"
+#include "graphics/ConstantBuffer.h"
 #include "graphics/StructuredBuffer.h"
 #include "graphics/VertexBuffer.h"
 #include "graphics/IndexBuffer.h"

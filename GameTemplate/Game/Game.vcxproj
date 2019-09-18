@@ -100,6 +100,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="character\CharacterController.cpp" />
+    <ClCompile Include="graphics\ConstantBuffer.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameFont\GameFont.cpp" />
     <ClCompile Include="GameObject\IGameObject.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="physics\PhysicsStaticObject.cpp" />
     <ClCompile Include="graphics\ShaderResourceView.cpp" />
     <ClCompile Include="graphics\Primitive.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -147,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character\CharacterController.h" />
+    <ClInclude Include="graphics\ConstantBuffer.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameFont\GameFont.h" />
     <ClInclude Include="GameObject\IGameObject.h" />
@@ -181,6 +184,7 @@
     <ClInclude Include="physics\PhysicsStaticObject.h" />
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="graphics\StructuredBuffer.h" />
     <ClInclude Include="system\system.h" />
