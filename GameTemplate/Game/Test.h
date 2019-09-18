@@ -5,7 +5,7 @@ class Test : public IGameObject
 public:
 	Test();
 	~Test();
-	bool State();
+	bool Start();
 	void Update();
 	void Draw();
 	CVector3 Getpos()

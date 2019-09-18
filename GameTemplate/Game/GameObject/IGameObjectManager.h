@@ -41,7 +41,7 @@ namespace smEngine {
 			if (gameObject != nullptr
 				) {
 				//gameObject->SetDeadMark();
-				//gameObject->OnDestroyWrapper();
+				gameObject->OnDestroy();
 				gameObject->m_isRegistDeadList = true;
 				gameObject->m_isDead = true;
 				m_deleteObjectArray[m_currentDeleteObjectBufferNo].at(gameObject->GetPriority()).push_back(gameObject);

@@ -10,7 +10,7 @@ Test::Test()
 Test::~Test()
 {
 }
-bool Test::State()
+bool Test::Start()
 {
 
 	m_collider.Init(50.0f, 30.0f, pos);
@@ -25,7 +25,7 @@ void Test::Update()
 	//posm.x = 300.0f;
 	//posm.x *= bai;
 
-	posm.y -= 9.8f * 10.0f * GetFrameTime();
+	posm.y -= 9.8f * 10.0f;
 	pos = m_collider.Execute(GetFrameTime(),posm);
 	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());
 }

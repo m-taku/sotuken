@@ -1,5 +1,6 @@
 #pragma once
 #include "character/CharacterController.h"
+#include"physics/PhysicsStaticObject.h"
 class Test;
 class Text_Box;
 class TEstNPC : public IGameObject
@@ -7,12 +8,13 @@ class TEstNPC : public IGameObject
 public:
 	TEstNPC();
 	~TEstNPC();
-	bool State();
+	bool Start();
 	void Update();
 	void Draw();
 private:
 	int No = 0;
-	CharacterController m_collider;						//キャラクターコントローラー
+	PhysicsStaticObject m_poa;
+	//CharacterController m_collider;						//キャラクターコントローラー
 	CVector3 posm = CVector3::Zero();
 	CVector3 pos = { 0.0f,0.0f,0.0f };
 	SkinModel m_model;	

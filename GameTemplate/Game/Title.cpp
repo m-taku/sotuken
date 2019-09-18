@@ -13,7 +13,7 @@ Title::~Title()
 {
 }
 
-bool Title::State()
+bool Title::Start()
 {
 
 	m_model.Init(L"Assets/modelData/unityChan.cmo");

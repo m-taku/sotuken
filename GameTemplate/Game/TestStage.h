@@ -6,7 +6,7 @@ class TestStage : public IGameObject
 public:
 	TestStage();
 	~TestStage();
-	bool State();
+	bool Start();
 	void Update();
 	void Draw();
 private:

@@ -10,7 +10,7 @@ TestStage::TestStage()
 TestStage::~TestStage()
 {
 }
-bool TestStage::State()
+bool TestStage::Start()
 {
 	//cmoファイルの読み込み。
 	m_model.Init(L"Assets/modelData/jiman.cmo");
