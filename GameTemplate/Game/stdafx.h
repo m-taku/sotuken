@@ -44,6 +44,7 @@
 #include "graphics/animation/AnimationClip.h"
 #include "graphics/Camera.h"
 #include "physics/Physics.h"
+#include "character/CharacterController.h"
 
 #include "GameObject/IGameObjectManager.h"
 #include "GameTime/GameTime.h"

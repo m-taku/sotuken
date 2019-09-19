@@ -3,6 +3,7 @@
 #include "Test.h"
 #include"TestStage.h"
 #include "TEstNPC.h"
+#include "Player.h"
 
 Title::Title()
 {
@@ -27,6 +28,7 @@ void Title::Update()
 		NewGO<Test>(0, "test");
 		NewGO<TestStage>(0, "jaio");
 		NewGO<TEstNPC>(0, "TEstNPC");
+		NewGO<Player>(0, "player");
 		DeleteGO(this);
 	}
 	//pos.z -= 1.0f;
