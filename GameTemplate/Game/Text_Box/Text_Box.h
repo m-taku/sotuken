@@ -44,6 +44,7 @@ private:
 	CVector2 m_pos = { -500.0f,-100.0f };		//文字の表示場所
 	int m_speed = 10;							//文字の表示スピード
 	CVector4 m_Coler = CVector4::White();		//文字の色
+	int count = 0;
 	wchar_t m_text[256];						//現在表示している文字
 	std::string m_Text;							//表示する文字列
 };

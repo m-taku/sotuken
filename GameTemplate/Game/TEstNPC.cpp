@@ -45,6 +45,10 @@ void TEstNPC::Update()
 	else
 	{
 		i = 0;
+		if (m_Text != NULL) {
+			DeleteGO(m_Text);
+			m_Text = NULL;
+		}
 		bikkuri = false;
 	}
 	if (bikkuri)

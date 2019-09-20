@@ -19,7 +19,7 @@ private:
 	CVector3 pos = { 0.0f,0.0f,0.0f };
 	SkinModel m_model;	
 	SkinModel m_bikkuri;
-	Text_Box * m_Text = nullptr;
+	Text_Box *m_Text = nullptr;
 	bool bikkuri = false;
 	Test* test = nullptr;
 };

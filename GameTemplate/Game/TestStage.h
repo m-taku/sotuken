@@ -1,19 +1,14 @@
 #pragma once
-#include"physics/PhysicsStaticObject.h"
-#include "character/CharacterController.h"
-class TestStage : public IGameObject
+#include"Stage_Base.h"
+class TestStage : public Stage_Base
 {
 public:
 	TestStage();
 	~TestStage();
-	bool Start();
-	void Update();
-	void Draw();
+	bool Init();
 private:
-	int No = 0;
-	
-	PhysicsStaticObject m_poa;
-	CVector3 pos = { 0.0f,0.0f,0.0f };
-	SkinModel m_model;
+	//int No = 0;
+	//CVector3 pos = { 0.0f,0.0f,0.0f };
+	//SkinModel m_model;
 };
 
