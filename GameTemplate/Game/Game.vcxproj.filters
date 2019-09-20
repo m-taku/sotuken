@@ -124,6 +124,8 @@
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="Text_Box\Text_Box.cpp" />
     <ClCompile Include="Stage_Base.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -226,6 +228,8 @@
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="Text_Box\Text_Box.h" />
     <ClInclude Include="Stage_Base.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerMovement.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

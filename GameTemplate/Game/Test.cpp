@@ -20,13 +20,13 @@ bool Test::Start()
 }
 void Test::Update()
 {
-	posm.x = g_pad[0].GetLStickXF() * 100.0f;
-	posm.z = g_pad[0].GetLStickYF() * 100.0f;
+	/*posm.x = g_pad[0].GetLStickXF() * 100.0f;
+	posm.z = g_pad[0].GetLStickYF() * 100.0f;*/
 	//posm.x = 300.0f;
 	//posm.x *= bai;
 
 	posm.y -= 9.8f * 10.0f;
-	pos = m_collider.Execute(GetFrameTime(),posm);
+	pos = m_collider.Execute(GetFrameDeltaTime(),posm);
 	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());
 }
 void Test::Draw()

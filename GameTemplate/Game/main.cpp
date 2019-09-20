@@ -13,7 +13,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	//ゲームの初期化。
 	InitGame(hInstance, hPrevInstance, lpCmdLine, nCmdShow, "Game");
 	//カメラを初期化。
-	g_camera3D.SetPosition({ 0.0f, 100.0f, 300.0f });
+	g_camera3D.SetPosition({ 0.0f, 100.0f, -600.0f });
 	g_camera3D.SetTarget({ 0.0f, 100.0f, 0.0f });
 	g_camera3D.SetFar(10000.0f);
 
@@ -39,7 +39,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//描画終了。
 		FPS.BeginDraw();
 		wchar_t fps[256];
-		swprintf_s(fps, L"FPS = %2f", 1.0/GetFrameTime());
+		swprintf_s(fps, L"FPS = %2f", 1.0/ GetFrameDeltaTime());
 		FPS.Draw(fps, { -FRAME_BUFFER_W /2.0f, FRAME_BUFFER_H/2.0f }, CVector4::White(), 0.0f, 1.0f, {0.0f,1.0f});
 		FPS.EndDraw();
 		g_graphicsEngine->EndRender();

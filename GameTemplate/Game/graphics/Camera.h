@@ -102,7 +102,7 @@ private:
 	void MathVector() {
 		m_forward.Subtract(m_target, m_position);
 		m_forward.Normalize();
-		m_right.Cross(m_forward, m_up);
+		m_right.Cross(m_up, m_forward);
 		m_right.Normalize();
 	}
 

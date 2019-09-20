@@ -32,7 +32,7 @@ namespace smEngine {
 			SetFrameDeltaTime(m_elapsed);
 			//::QueryPerformanceCounter((LARGE_INTEGER*)&m_start);
 		}
-		float Getframetaim()
+		float GetFrameTime()
 		{
 			return m_frameDelta;
 		}
@@ -51,9 +51,9 @@ namespace smEngine {
 	{
 		return GameTime::Instance();
 	}
-	static float GetFrameTime()
+	static float GetFrameDeltaTime()
 	{
-		return  GameTime::Instance().Getframetaim();
+		return  GameTime::Instance().GetFrameTime();
 	}
 }
 

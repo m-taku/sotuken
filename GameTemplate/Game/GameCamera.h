@@ -42,6 +42,20 @@ namespace smEngine {
 			return g_camera3D.GetUp();
 		}
 		/*!
+		*@brief ビュー行列
+		*/
+		const CMatrix& GetCameraViewMatrix() const
+		{
+			return g_camera3D.GetViewMatrix();
+		}
+		/*!
+		*@brief プロジェクション行列
+		*/
+		const CMatrix& GetCameraProjectionMatrix() const
+		{
+			return g_camera3D.GetProjectionMatrix();
+		}
+		/*!
 		*@brief	インスタンス(シングルトン)
 		*/
 		static GameCamera& Instance()
@@ -51,7 +65,7 @@ namespace smEngine {
 		}
 	private:
 		const float MAXDIST = 1000.0f;					//カメラの最大距離
-		CVector3 m_position = CVector3::Zero();			//視点
+		CVector3 m_position = { 0.0f,100.0f,-500.0f };			//視点
 		CVector3 m_target = CVector3::Back()*MAXDIST;	//注視点
 	};
 	static GameCamera& smGameCamera()

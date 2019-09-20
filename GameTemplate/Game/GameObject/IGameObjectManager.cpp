@@ -35,6 +35,7 @@ namespace smEngine {
 				Object->UpdateWrapper();
 			}
 		}
+		smGameCamera().Update();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{

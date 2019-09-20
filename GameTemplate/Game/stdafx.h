@@ -30,6 +30,7 @@
 #include "math/Matrix.h"
 #include "graphics/Shader.h"
 #include "graphics/GraphicsEngine.h"
+#include "graphics/ConstantBuffer.h"
 #include "graphics/StructuredBuffer.h"
 #include "graphics/VertexBuffer.h"
 #include "graphics/IndexBuffer.h"
@@ -43,10 +44,13 @@
 #include "graphics/animation/AnimationClip.h"
 #include "graphics/Camera.h"
 #include "physics/Physics.h"
+#include "character/CharacterController.h"
 
 #include "GameObject/IGameObjectManager.h"
 #include "GameTime/GameTime.h"
 #include "GameFont/GameFont.h"
+
+#include "GameCamera.h"
 
 const float FRAME_BUFFER_W = 1920.0f;				//フレームバッファの幅。
 const float FRAME_BUFFER_H = 1080.0f;				//フレームバッファの高さ。
