@@ -1,22 +1,35 @@
 #pragma once
-class Stage_Base:public IGameObject
+#include"physics/PhysicsStaticObject.h"
+class Stage_Base : public IGameObject
 {
 public:
 	Stage_Base();
 	~Stage_Base();
+	virtual bool Init()
+	{
+		return true;
+	}
 	bool Start()
 	{
+		Init();
+		m_model.Init(m_Name);
+		m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 		return true;
 	}
 	void Update()
 	{
 
+		m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
 	}
 	void Draw()
 	{
 
+
+		m_model.Draw(g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 	}
-private:
-	SkinModel m_l;
+protected:
+	SkinModel m_model;
+	PhysicsStaticObject m_poa;
+	wchar_t* m_Name;
 };
 

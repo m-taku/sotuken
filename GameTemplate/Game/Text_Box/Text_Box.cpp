@@ -17,8 +17,8 @@ bool Text_Box::State()
 }
 void Text_Box::Update()
 {
-	static int count = 0;
-	count++;
+	
+	count += 2;
 	setlocale(LC_ALL, "japanese");
 	size_t kosuu = 0;
 	mbstowcs_s(&kosuu, m_text, min(count/ m_speed +1, m_Text.length()), m_Text.c_str(), _TRUNCATE);
