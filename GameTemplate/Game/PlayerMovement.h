@@ -6,13 +6,18 @@ class PlayerMovement
 public:
 	PlayerMovement();
 	~PlayerMovement();
-	void DefaultMove();
+	void DefaultMove();		//デフォルトの移動処理
+	/*!
+	*@brief プレイヤーのポインターをセット
+	*/
 	void SetPlayer(Player* player)
 	{
 		m_player = player;
 	}
+	
 private:
-	Player* m_player = nullptr;
-	float m_gravity = 0.0f;
+	Player* m_player = nullptr;		//プレイヤーのポインター
+	float m_gravity = 0.0f;			//重力加速度
+	float m_nowDist = 0.0f;
 };
 
