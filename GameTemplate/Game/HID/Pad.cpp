@@ -5,7 +5,7 @@
 #include "HID/Pad.h"
 #include <limits.h>
 
-#define INPUT_DEADZONE  ( 0.1f * FLOAT(0x7FFF) )  // 入力の遊びとなる範囲。
+#define INPUT_DEADZONE  ( 0.2f * FLOAT(0x7FFF) )  // 入力の遊びとなる範囲。
 Pad g_pad[Pad::CONNECT_PAD_MAX];		//g_padの定義。
 
 /*!

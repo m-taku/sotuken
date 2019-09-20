@@ -16,8 +16,11 @@ public:
 	}
 	
 private:
+	void CameraMove();
 	Player* m_player = nullptr;		//プレイヤーのポインター
 	float m_gravity = 0.0f;			//重力加速度
-	float m_nowDist = 0.0f;
+	float m_camaraAngle = 0.0f;
+	float padinput_LX = 0.0f;
+	float padinput_LY = 0.0f;
 };
 

@@ -14,8 +14,8 @@ PlayerMovement::~PlayerMovement()
 void PlayerMovement::DefaultMove()
 {
 	m_player->m_movespeed = CVector3::Zero();
-	float padinput_LX = g_pad[0].GetLStickXF();
-	float padinput_LY = g_pad[0].GetLStickYF();
+	padinput_LX = g_pad[0].GetLStickXF();
+	padinput_LY = g_pad[0].GetLStickYF();
 
 	if (!m_player->m_characon.IsOnGround())
 	{
@@ -37,7 +37,15 @@ void PlayerMovement::DefaultMove()
 	CVector3 camera_XZ = camera_z * padinput_LY + camera_x * padinput_LX;
 	camera_XZ.y = 0.0f;
 	camera_XZ.Normalize();
-	camera_XZ *=500.0f;
+	camera_XZ *= 500.0f;
 	m_player->m_movespeed += camera_XZ;
+
+	CVector3 toMainCameraTarget = m_player->m_position - smGameCamera().GetCameraPosition();
+	CVector3 toSubCameraTarget = (m_player->m_position + m_player->m_movespeed) - smGameCamera().GetCameraPosition();
+
 }
 
+void PlayerMovement::CameraMove()
+{
+
+}
