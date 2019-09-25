@@ -80,8 +80,8 @@ namespace smEngine {
 		}
 	private:
 		const float MAXDIST = 1000.0f;					//カメラの最大距離
-		CVector3 m_position = { 0.0f,100.0f,-500.0f };			//視点
-		CVector3 m_target = CVector3::Back()*MAXDIST;	//注視点
+		CVector3 m_position = CVector3::Back()*MAXDIST;			//視点
+		CVector3 m_target = CVector3::Zero();	//注視点
 	};
 	static GameCamera& smGameCamera()
 	{

@@ -1,6 +1,8 @@
 #pragma once
 #include "PlayerMovement.h"
-class Player:public IGameObject
+#include "CameraMovement.h"
+
+class Player :public IGameObject
 {
 	friend PlayerMovement;
 public:
@@ -9,8 +11,32 @@ public:
 	bool Start();
 	void Update();
 	void Draw();
+	const CVector3& GetPosition() const
+	{
+		return m_position;
+	}
+	const CVector3& GetForward() const
+	{
+		return m_forward;
+	}
+	const CVector3& GetUp() const
+	{
+		return m_up;
+	}
+	const CVector3& GetRight() const
+	{
+		return m_right;
+	}
+	const CVector3& GetMoveSpeed() const
+	{
+		return m_movespeed;
+	}
+	const CQuaternion& GetRotation() const
+	{
+		return m_rotation;
+	}
 private:
-	CVector3 m_position = {0.0f,100.0f,100.0f};		//プレイヤーのポジション
+	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向
 	CVector3 m_right = CVector3::Right();		//右方向
@@ -23,6 +49,6 @@ private:
 	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン
 	PlayerMovement Movement;
-
+	CameraMovement cameraMovement;
 };
 

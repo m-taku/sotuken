@@ -19,7 +19,7 @@ void PlayerMovement::DefaultMove()
 
 	if (!m_player->m_characon.IsOnGround())
 	{
-		m_gravity += 980.0f*GetFrameDeltaTime();
+		m_gravity += GRAVITY_PARAM * GetFrameDeltaTime();
 		m_player->m_movespeed.y -= m_gravity;
 	}
 	else

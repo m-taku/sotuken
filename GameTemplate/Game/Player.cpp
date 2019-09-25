@@ -30,9 +30,10 @@ void Player::Update()
 {
 	Movement.DefaultMove();
 	
-
+	CVector3 move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
-	smGameCamera().SetTarget(m_position);
+	move = m_position - move;
+	cameraMovement.DefaultMove(m_position+m_up*100.0f, move, m_forward, m_right, m_up);
 	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
 }
 

@@ -127,6 +127,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="graphics\ConstantBuffer.cpp" />
+    <ClCompile Include="CameraMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -232,6 +233,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="graphics\ConstantBuffer.h" />
+    <ClInclude Include="CameraMovement.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
