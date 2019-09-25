@@ -7,7 +7,7 @@ GameFont::GameFont()
 	//m_SpriteBatch = new DirectX::SpriteBatch(m_pd3dDeviceContext);
 	//m_SpriteFont = new DirectX::SpriteFont(m_pd3dDevice, L"Assets/font/floay.spritefont");
 	m_spriteBatch = new DirectX::SpriteBatch(g_graphicsEngine->GetD3DDeviceContext());
-	m_spriteFont = new DirectX::SpriteFont(g_graphicsEngine->GetD3DDevice(), L"Assets/font/myfile.spritefont");
+	m_spriteFont = new DirectX::SpriteFont(g_graphicsEngine->GetD3DDevice(), L"Assets/font/myfile2.spritefont");
 	auto& ge = g_graphicsEngine;
 	m_scaleMat.MakeScaling(
 		{
@@ -128,6 +128,6 @@ void GameFont::Draw(
 		color,
 		rotation,
 		DirectX::XMFLOAT2(pivot.x, pivot.y),
-		scale
+		scale*5.0f
 	);
 }

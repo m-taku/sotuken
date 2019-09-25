@@ -2,6 +2,7 @@
 #include "TEstNPC.h"
 #include"Test.h"
 #include "Text_Box/Text_Box.h"
+#include "Player.h"
 
 
 TEstNPC::TEstNPC()
@@ -16,7 +17,7 @@ bool TEstNPC::Start()
 {
 	//cmoファイルの読み込み。
 	m_model.Init(L"Assets/modelData/unityChan.cmo"); 
-	test =FindGO<Test>("test");
+	test =FindGO<Player>("test");
 	m_bikkuri.Init(L"Assets/modelData/bikkuri.cmo");
 	//m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	pos = { 100.0f,20.0f,-100.0f };
@@ -34,23 +35,23 @@ void TEstNPC::Update()
 	static int i = 0;
 	//posm.y -= 9.8f * 10.0f;
 	//pos = m_collider.Execute(GetFrameTime(), posm);
-	auto leng = pos - test->Getpos();
-	if (leng.Length() <= 50.0f)
-	{
-		if (i == 0) {
-			bikkuri = true;
-			i++;
-		}
-	}
-	else
-	{
-		i = 0;
-		if (m_Text != NULL) {
-			DeleteGO(m_Text);
-			m_Text = NULL;
-		}
-		bikkuri = false;
-	}
+	//auto leng = pos - test->Getpos();
+	//if (leng.Length() <= 50.0f)
+	//{
+	//	if (i == 0) {
+	//		bikkuri = true;
+	//		i++;
+	//	}
+	//}
+	//else
+	//{
+	//	i = 0;
+	//	if (m_Text != NULL) {
+	//		DeleteGO(m_Text);
+	//		m_Text = NULL;
+	//	}
+	//	bikkuri = false;
+	//}
 	if (bikkuri)
 	{
 		if (g_pad[0].IsTrigger(enButtonA)) {
