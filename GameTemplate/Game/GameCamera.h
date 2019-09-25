@@ -42,6 +42,20 @@ namespace smEngine {
 			return g_camera3D.GetUp();
 		}
 		/*!
+		*@brief	カメラのポジション
+		*/
+		const CVector3& GetCameraPosition() const
+		{
+			return g_camera3D.GetPosition();
+		}
+		/*!
+		*@brief	カメラのターゲット
+		*/
+		const CVector3& GetCameraTarget() const
+		{
+			return g_camera3D.GetTarget();
+		}
+		/*!
 		*@brief ビュー行列
 		*/
 		const CMatrix& GetCameraViewMatrix() const
@@ -55,6 +69,7 @@ namespace smEngine {
 		{
 			return g_camera3D.GetProjectionMatrix();
 		}
+
 		/*!
 		*@brief	インスタンス(シングルトン)
 		*/

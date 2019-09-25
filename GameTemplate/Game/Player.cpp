@@ -29,9 +29,10 @@ bool Player::Start()
 void Player::Update()
 {
 	Movement.DefaultMove();
-	smGameCamera().SetTarget(m_position);
+	
 
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
+	smGameCamera().SetTarget(m_position);
 	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
 }
 
