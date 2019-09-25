@@ -4,6 +4,7 @@
 #include"TestStage.h"
 #include "TEstNPC.h"
 #include "Player.h"
+#include"Title_Menu.h"
 
 Title::Title()
 {
@@ -16,19 +17,14 @@ Title::~Title()
 
 bool Title::Start()
 {
-
 	m_model.Init(L"Assets/modelData/unityChan.cmo");
 	return true;
 }
-
 void Title::Update()
 {
 	if (g_pad[0].IsTrigger(enButtonA))
 	{
-		NewGO<Test>(0, "test");
-		NewGO<TestStage>(0, "jaio");
-		NewGO<TEstNPC>(0, "TEstNPC");
-		NewGO<Player>(0, "player");
+		NewGO<Title_Menu>(0, "Title_Menu");
 		DeleteGO(this);
 	}
 	//pos.z -= 1.0f;

@@ -147,6 +147,7 @@
     <ClCompile Include="TestStage.cpp" />
     <ClCompile Include="Text_Box\Text_Box.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Title_Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="character\CharacterController.h" />
@@ -197,6 +198,7 @@
     <ClInclude Include="TestStage.h" />
     <ClInclude Include="Text_Box\Text_Box.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="Title_Menu.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />

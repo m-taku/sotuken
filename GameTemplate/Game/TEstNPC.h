@@ -2,6 +2,7 @@
 #include "character/CharacterController.h"
 #include"physics/PhysicsStaticObject.h"
 class Test;
+class Player;
 class Text_Box;
 class TEstNPC : public IGameObject
 {
@@ -21,6 +22,6 @@ private:
 	SkinModel m_bikkuri;
 	Text_Box *m_Text = nullptr;
 	bool bikkuri = false;
-	Test* test = nullptr;
+	Player* test = nullptr;
 };
 
