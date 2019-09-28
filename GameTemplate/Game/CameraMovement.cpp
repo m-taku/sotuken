@@ -28,7 +28,7 @@ void CameraMovement::DefaultMove(const CVector3 & target, const CVector3& move, 
 	qRot.SetRotationDeg(smGameCamera().GetCameraRight(), Input_RY);
 	qRot.Multiply(buckupVec);
 	float angle = smGameCamera().GetCameraUp().Dot(buckupVec);
-	if (angle < 0.99f && angle > -0.99f)
+	if (angle < 0.999f && angle > -0.999f)
 	{
 		toCameraPos = buckupVec;
 	}

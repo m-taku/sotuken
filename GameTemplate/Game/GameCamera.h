@@ -12,13 +12,21 @@ namespace smEngine {
 		*@brief	見たいものをセット
 		*/
 		void SetTarget(CVector3& target) {
-			m_target = target;
+			g_camera3D.SetTarget(target);
 		}
 		/*!
 		*@brief	視点をセット
 		*/
 		void SetPosition(CVector3& position) {
-			m_position = position;
+
+			g_camera3D.SetPosition(position);
+		}
+		/*!
+		*@brief	視点をセット
+		*/
+		void SetUp(CVector3& up) {
+
+			g_camera3D.SetUp(up);
 		}
 		/*!
 		*@brief	カメラの前方向

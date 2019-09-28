@@ -34,8 +34,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		//物理エンジンの更新。
 		g_physics.Update();
 		GameObjectManager().Execute();
-		//カメラの更新。
-		g_camera3D.Update();
 		//描画終了。
 		FPS.BeginDraw();
 		wchar_t fps[256];
