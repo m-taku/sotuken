@@ -46,6 +46,8 @@
 #include "physics/Physics.h"
 #include "character/CharacterController.h"
 
+#include "graphics/Sprite/Sprite.h";
+
 #include "GameObject/IGameObjectManager.h"
 #include "GameTime/GameTime.h"
 #include "GameFont/GameFont.h"
