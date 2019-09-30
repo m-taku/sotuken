@@ -16,11 +16,11 @@ public:
 	}
 	
 private:
-	void CameraMove();
 	Player* m_player = nullptr;		//プレイヤーのポインター
-	float m_gravity = 0.0f;			//重力加速度
-	float m_camaraAngle = 0.0f;
-	float padinput_LX = 0.0f;
-	float padinput_LY = 0.0f;
+	float m_fallSpeed = 0.0f;			//重力加速度
+	float m_addGravityTime = 0.0f;		//自由落下時間
+	float m_jumpSpeed = 500.0f;			//ジャンプスピード
+	bool IsJump = false;				//ジャンプ中？
+	const float GRAVITY_PARAM = 980.0f; //重力加速度
 };
 

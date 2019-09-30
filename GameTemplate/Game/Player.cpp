@@ -6,12 +6,14 @@
 Player::Player()
 {
 	Movement.SetPlayer(this);
+
 }
 
 
 Player::~Player()
 {
 	delete &Movement;
+	delete &cameraMovement;
 }
 
 bool Player::Start()
@@ -22,17 +24,19 @@ bool Player::Start()
 		80.0f,
 		m_position
 	);
-
+	CVector3 position = m_position + (m_forward * -100.0f + m_up * 100.0f);
+	smGameCamera().SetPosition(position);
 	return true;
 }
 
 void Player::Update()
 {
 	Movement.DefaultMove();
-	
 
+	CVector3 move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
-	smGameCamera().SetTarget(m_position);
+	move = m_position - move;
+	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
 	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
 }
 

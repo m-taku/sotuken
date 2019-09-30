@@ -14,19 +14,25 @@ PlayerMovement::~PlayerMovement()
 void PlayerMovement::DefaultMove()
 {
 	m_player->m_movespeed = CVector3::Zero();
-	padinput_LX = g_pad[0].GetLStickXF();
-	padinput_LY = g_pad[0].GetLStickYF();
+	float padinput_LX = g_pad[0].GetLStickXF();
+	float padinput_LY = g_pad[0].GetLStickYF();
 
 	if (!m_player->m_characon.IsOnGround())
 	{
-		m_gravity += 980.0f*GetFrameDeltaTime();
-		m_player->m_movespeed.y -= m_gravity;
+		m_addGravityTime += 1.0f*GetFrameDeltaTime();
+		m_fallSpeed += (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) / 2.0f;
+		m_player->m_movespeed.y -= m_fallSpeed;
 	}
 	else
 	{
-		m_gravity = 0.0f;
+		IsJump = false;
+		m_addGravityTime = 0.0f;
+		m_fallSpeed = 0.0f;
 		m_player->m_movespeed.y = 0.0f;
+		if (g_pad[0].IsTrigger(enButtonA)) IsJump = true;
 	}
+	if (IsJump) m_player->m_movespeed.y += m_jumpSpeed;
+
 	CVector3 camera_z = smGameCamera().GetCameraFoward();
 	camera_z.y = 0.0f;
 	camera_z.Normalize();
@@ -38,14 +44,6 @@ void PlayerMovement::DefaultMove()
 	camera_XZ.y = 0.0f;
 	camera_XZ.Normalize();
 	camera_XZ *= 500.0f;
-	m_player->m_movespeed += camera_XZ;
-
-	CVector3 toMainCameraTarget = m_player->m_position - smGameCamera().GetCameraPosition();
-	CVector3 toSubCameraTarget = (m_player->m_position + m_player->m_movespeed) - smGameCamera().GetCameraPosition();
-
-}
-
-void PlayerMovement::CameraMove()
-{
-
+	m_player->m_movespeed.x = camera_XZ.x;
+	m_player->m_movespeed.z = camera_XZ.z;
 }
