@@ -136,6 +136,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="graphics\Sprite\Sprite.cpp" />
+    <ClCompile Include="SaveData_Select.cpp" />
     <ClCompile Include="Stage_Base.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -147,6 +148,8 @@
     <ClCompile Include="graphics\UnorderedAccessView.cpp" />
     <ClCompile Include="graphics\VertexBuffer.cpp" />
     <ClCompile Include="TEstNPC.cpp" />
+    <ClCompile Include="TestSave.cpp" />
+    <ClCompile Include="TestSeve_Player.cpp" />
     <ClCompile Include="TestStage.cpp" />
     <ClCompile Include="Text_Box\Text_Box.cpp" />
     <ClCompile Include="Title.cpp" />
@@ -193,6 +196,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="graphics\Sprite\Sprite.h" />
+    <ClInclude Include="SaveData_Select.h" />
     <ClInclude Include="Stage_Base.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="graphics\StructuredBuffer.h" />
@@ -201,7 +205,10 @@
     <ClInclude Include="graphics\UnorderedAccessView.h" />
     <ClInclude Include="graphics\VertexBuffer.h" />
     <ClInclude Include="TEstNPC.h" />
+    <ClInclude Include="TestSave.h" />
+    <ClInclude Include="TestSeve_Player.h" />
     <ClInclude Include="TestStage.h" />
+    <ClInclude Include="Test_PlayerData.h" />
     <ClInclude Include="Text_Box\Text_Box.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Title_Menu.h" />
