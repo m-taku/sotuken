@@ -323,6 +323,23 @@ void XM_CALLCONV SpriteFont::DrawString(_In_ SpriteBatch* spriteBatch, _In_z_ wc
         baseOffset -= MeasureString(text) * axisIsMirroredTable[effects & 3];
     }
 
+	//ここから追加分（ピボットずらし）
+	{
+		//文字列の幅と高さを求める。
+		float strWidth = 0.0f;
+		float strHeight = 0.0f;
+		pImpl->ForEachGlyph(text, [&](Glyph const* glyph, float x, float, float advance)
+		{
+			strWidth = x + advance;
+			strHeight = std::max<float>(strHeight, glyph->Subrect.bottom - glyph->Subrect.top);
+		});
+		//求まった文字長からbaseOffsetを計算する。
+		XMFLOAT2 _origin;
+		XMStoreFloat2(&_origin, origin);
+		_origin.x = strWidth * _origin.x;
+		_origin.y = strHeight * _origin.y;
+		baseOffset = XMLoadFloat2(&_origin);
+	}
     // Draw each character in turn.
     pImpl->ForEachGlyph(text, [&](Glyph const* glyph, float x, float y, float advance)
     {

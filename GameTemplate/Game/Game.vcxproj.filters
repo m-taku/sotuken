@@ -127,6 +127,10 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="graphics\ConstantBuffer.cpp" />
+    <ClCompile Include="Title_Menu.cpp" />
+    <ClCompile Include="SaveData_Select.cpp" />
+    <ClCompile Include="TestSave.cpp" />
+    <ClCompile Include="TestSeve_Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -232,6 +236,11 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="graphics\ConstantBuffer.h" />
+    <ClInclude Include="Title_Menu.h" />
+    <ClInclude Include="SaveData_Select.h" />
+    <ClInclude Include="TestSave.h" />
+    <ClInclude Include="TestSeve_Player.h" />
+    <ClInclude Include="Test_PlayerData.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
