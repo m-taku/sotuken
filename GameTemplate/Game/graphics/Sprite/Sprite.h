@@ -20,7 +20,7 @@ namespace smEngine {
 		 *@param[in]	w		幅。
 		 *@param[in]	h		高さ。
 		 */
-		void Init(ShaderResourceView& tex, float w, float h);
+		void Init(ShaderResourceView* tex, float w, float h);
 		/*!
 		 * @brief	テクスチャを設定。
 		 *@param[in]	tex		テクスチャ。
@@ -70,6 +70,7 @@ namespace smEngine {
 		CVector4				m_mulColor = CVector4::White();	//!<乗算カラー。
 		Primitive				m_primitive;					//!<プリミティブ。
 		ShaderResourceView*		m_textureSRV = nullptr;			//!<テクスチャ。
+		ID3D11SamplerState*			m_samplerState = nullptr;				//サンプラーステート
 		ConstantBuffer			m_cb;
 		bool					m_isInited = false;				//!<初期化フラグ。
 		CVector2				m_size = CVector2::Zero();		//!<サイズ。
