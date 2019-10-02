@@ -5,6 +5,7 @@
 #include"TestStage.h"
 #include "TEstNPC.h"
 #include "Player.h"
+#include"SaveData_Select.h"
 
 
 Title_Menu::Title_Menu()
@@ -19,31 +20,74 @@ bool Title_Menu::Start()
 {
 
 	auto text = NewGO<Text_Box>(10, "Text_box");
+	text->Init("ÇmÇdÇvÅ@ÇfÇ`ÇlÇd", { -400.0f,100.0f }, CVector4::White(), 0.0f, { 0.0f,0.5f });
 	m_text.push_back(text);
-	text->SetText("ÇmÇdÇvÅ@ÇfÇ`ÇlÇd");
-	text->SetPos({ -200.0f,100.0f });
-	text->SetSpeed(0.0f);
 	text = NewGO<Text_Box>(10, "Text_box");
 	m_text.push_back(text);
-	text->SetText("ÇkÇnÇ`ÇcÅ@ÇfÇ`ÇlÇd");
-	text->SetSpeed(0.1f);
-	text->SetPos({ -200.0f,000.0f });
+	text->Init("ÇkÇnÇ`ÇcÅ@ÇfÇ`ÇlÇd", { -400.0f,0.0f }, CVector4::White(), 0.0f, {0.0f,0.5f});
+	text = NewGO<Text_Box>(10, "Text_box");
+	m_text.push_back(text);
+	text->Init("Å®", { -400.0f,100.0f }, CVector4::White(), 1.0f, { 1.0f,0.5f });
 	return true;
 }
 void Title_Menu::Update()
 {
-	if (g_pad[0].IsTrigger(enButtonA))
+	switch (m_state)
 	{
-		NewGO<Test>(0, "test");
-		NewGO<TestStage>(0, "jaio");
-		NewGO<TEstNPC>(0, "TEstNPC");
-		NewGO<Player>(0, "player");
-		DeleteGO(this);
-		for (auto k : m_text)
+	case Title_Menu::NewGame:	
+		if (g_pad[0].IsTrigger(enButtonDown))
 		{
-			DeleteGO(k);
+			auto ma = m_text.begin();
+			for (int i = 0; i < m_text.size() - 1; i++) {
+				ma++;
+			}
+			(*ma)->SetPos({ -400.0f,0.0f });
+			m_state = LoadGame;
+			break;
 		}
+		if (g_pad[0].IsTrigger(enButtonA))
+		{
+			NewGO<Test>(0, "test");
+			NewGO<TestStage>(0, "jaio");
+			NewGO<TEstNPC>(0, "TEstNPC");
+			NewGO<Player>(0, "player");
+			DeleteGO(this);
+			for (auto k : m_text)
+			{
+				DeleteGO(k);
+			}
+			break;
+		}
+
+
+	case Title_Menu::LoadGame:
+		if (g_pad[0].IsTrigger(enButtonUp))
+		{
+			auto ma = m_text.begin();
+			for (int i = 0; i < m_text.size() - 1; i++) {
+				ma++;
+			}
+			(*ma)->SetPos({ -400.0f,100.0f });
+			m_state = NewGame;
+			break;
+		}
+		if (g_pad[0].IsTrigger(enButtonA))
+		{
+			NewGO<SaveData_Select>(0, "SaveData_Select");
+			DeleteGO(this);
+			for (auto k : m_text)
+			{
+				DeleteGO(k);
+			}
+			break;
+		}
+		break;
+	default:
+		break;
 	}
+
+
+
 }
 void Title_Menu::Draw()
 {

@@ -26,6 +26,7 @@ void Text_Box::Update()
 void Text_Box::Draw()
 {
 	m_font.BeginDraw();
-	m_font.Draw(m_text_now, m_pos, m_Coler,0.0f,0.5f);
+	//swprintf_s(m_text_now, L"%s",  m_Text.c_str());
+	m_font.Draw(m_text_now, m_pos, m_Coler,0.0f,0.5f, m_pivot);
 	m_font.EndDraw();
 }

@@ -6,6 +6,14 @@ public:
 	~Text_Box();
 	bool State();
 	void Update();
+	void Init(const std::string& text, CVector2 pos = CVector2::Zero(), CVector4 color = CVector4::White(), float speed = 1.0f, CVector2 pivot = {0.5f,0.5f})
+	{
+		SetText(text);
+		SetPos(pos);
+		m_Coler = color;
+		SetSpeed(speed);
+		m_pivot = pivot;
+	}
 	///<summary>
 	///表示させる
 	///全角文字のみにしてください
@@ -50,6 +58,10 @@ public:
 			m_speed = 1;
 		}
 	}
+	const CVector2& Getpos()
+	{
+		return m_pos;
+	}
 	void Draw();
 private:
 	GameFont m_font;							//文字の表示機構
@@ -57,6 +69,7 @@ private:
 	int m_speed = 10;							//文字の表示スピード
 	CVector4 m_Coler = CVector4::White();		//文字の色
 	int count = 0;
+	CVector2 m_pivot = {0.5f,0.5f};
 	wchar_t m_text_now[256];						//現在表示している文字
 	std::string m_Text;							//表示する文字列
 };
