@@ -26,12 +26,12 @@ namespace smEngine {
 	Sprite::~Sprite()
 	{
 	}
-	void Sprite::Init(ShaderResourceView* tex, float w, float h)
+	void Sprite::Init(ShaderResourceView& tex, float w, float h)
 	{
 		m_ps.Load("Assets/shader/sprite.fx", "PSMain", Shader::EnType::PS);
 		m_vs.Load("Assets/shader/sprite.fx", "VSMain", Shader::EnType::VS);
-		m_size.x = w;
-		m_size.y = h;
+		m_size.x = w / FRAME_BUFFER_W;
+		m_size.y = h / FRAME_BUFFER_H;
 		float halfW = w * 0.5f;
 		float halfH = h * 0.5f;
 
@@ -68,7 +68,7 @@ namespace smEngine {
 			indices
 		);
 
-		m_textureSRV = tex;
+		m_textureSRV = &tex;
 		m_cb.Create(nullptr, sizeof(SSpriteCB));
 
 		D3D11_SAMPLER_DESC desc;
@@ -78,8 +78,9 @@ namespace smEngine {
 		desc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
 		desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
 		g_graphicsEngine->GetD3DDevice()->CreateSamplerState(&desc, &m_samplerState);
-		Update(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
 		m_isInited = true;
+		Update(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
+
 	}
 	/*!
 	*@brief	çXêV
@@ -113,7 +114,6 @@ namespace smEngine {
 		mTrans.MakeTranslation(trans);
 		mRot.MakeRotationFromQuaternion(rot);
 		mScale.MakeScaling(scale);
-
 		m_world.Mul(mPivotTrans, mScale);
 		m_world.Mul(m_world, mRot);
 		m_world.Mul(m_world, mTrans);

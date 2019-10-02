@@ -63,6 +63,7 @@ bool RenderTarget::Create(int w, int h, DXGI_FORMAT colorFormat, DXGI_FORMAT dep
 	m_viewPort.Height = h;
 	m_viewPort.MinDepth = 0.0f;
 	m_viewPort.MaxDepth = 1.0f;
+	return hr;
 }
 
 void RenderTarget::Clear(float * color)

@@ -78,7 +78,7 @@ void GameFont::EndDraw()
 
 		MemoryBarrier();
 	}
-	//d3dDeviceContext->RSSetState(g_graphicsEngine->GetRasterizerState());
+	d3dDeviceContext->RSSetState(g_graphicsEngine->GetRasterizerState());
 
 	{
 		D3D11_DEPTH_STENCIL_DESC desc = {};
