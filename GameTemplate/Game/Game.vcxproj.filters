@@ -130,9 +130,7 @@
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Title_Menu.cpp" />
     <ClCompile Include="graphics\Sprite\Sprite.cpp" />
-    <ClCompile Include="TestSave.cpp" />
-    <ClCompile Include="TestSeve_Player.cpp" />
-    <ClCompile Include="SaveData_Select.cpp" />
+    <ClCompile Include="graphics\RenderTarget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -241,10 +239,7 @@
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Title_Menu.h" />
     <ClInclude Include="graphics\Sprite\Sprite.h" />
-    <ClInclude Include="TestSave.h" />
-    <ClInclude Include="TestSeve_Player.h" />
-    <ClInclude Include="Test_PlayerData.h" />
-    <ClInclude Include="SaveData_Select.h" />
+    <ClInclude Include="graphics\RenderTarget.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

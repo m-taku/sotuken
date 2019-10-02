@@ -11,6 +11,17 @@ namespace smEngine {
 	const CVector2	Sprite::DEFAULT_PIVOT = { 0.5f, 0.5f };
 	Sprite::Sprite()
 	{
+		m_viewMatrix.MakeLookAt(
+			{ 0.0f,0.0f,-5.0f },
+			CVector3::Zero(),
+			CVector3::Up()
+		);
+		m_projMatrix.MakeOrthoProjectionMatrix(
+			FRAME_BUFFER_W,
+			FRAME_BUFFER_H,
+			1.0f,
+			10.0f
+		);
 	}
 	Sprite::~Sprite()
 	{

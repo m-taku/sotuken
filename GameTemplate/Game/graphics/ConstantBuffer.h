@@ -1,5 +1,5 @@
 #pragma once
-class ConstantBuffer
+class ConstantBuffer:Noncopyable
 {
 public:
 	ConstantBuffer();
