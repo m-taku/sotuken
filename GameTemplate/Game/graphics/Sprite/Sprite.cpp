@@ -78,6 +78,8 @@ namespace smEngine {
 		desc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
 		desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
 		g_graphicsEngine->GetD3DDevice()->CreateSamplerState(&desc, &m_samplerState);
+		Update(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
+		m_isInited = true;
 	}
 	/*!
 	*@brief	XV
@@ -117,7 +119,7 @@ namespace smEngine {
 		m_world.Mul(m_world, mTrans);
 
 	}
-	void Sprite::Draw(ID3D11DeviceContext* DeviceContext, const CMatrix& viewMatrix, const CMatrix& projMatrix)
+	void Sprite::Draw(ID3D11DeviceContext* DeviceContext)
 	{
 		if (m_isInited == false) {
 			//‰Šú‰»‚³‚ê‚Ä‚¢‚È‚¢B
@@ -129,16 +131,19 @@ namespace smEngine {
 		}
 		SSpriteCB cb;
 		cb.WVP = m_world;
-		cb.WVP.Mul(cb.WVP, viewMatrix);
-		cb.WVP.Mul(cb.WVP, projMatrix);
+		cb.WVP.Mul(cb.WVP, m_viewMatrix);
+		cb.WVP.Mul(cb.WVP, m_projMatrix);
 		cb.mulColor = m_mulColor;
 
 		DeviceContext->UpdateSubresource(m_cb.GetBody(), 0, NULL, &cb, 0, 0);
 		DeviceContext->VSSetConstantBuffers(0, 1, &m_cb.GetBody());
 		DeviceContext->PSSetConstantBuffers(0, 1, &m_cb.GetBody());
+		DeviceContext->VSSetShaderResources(0, 1, &m_textureSRV->GetBody());
 		DeviceContext->PSSetShaderResources(0, 1, &m_textureSRV->GetBody());
 		DeviceContext->PSSetShader((ID3D11PixelShader*)m_ps.GetBody(), NULL, 0);
 		DeviceContext->VSSetShader((ID3D11VertexShader*)m_vs.GetBody(), NULL, 0);
+		DeviceContext->IASetInputLayout(m_vs.GetInputLayout());
+		DeviceContext->PSSetSamplers(0, 1, &m_samplerState);
 		m_primitive.Draw(*DeviceContext);
 	}
 }

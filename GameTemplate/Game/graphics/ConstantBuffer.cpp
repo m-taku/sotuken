@@ -25,10 +25,10 @@ bool ConstantBuffer::Create(const void * pInitData, int bufferSize)
 	if (pInitData) {
 		D3D11_SUBRESOURCE_DATA InitData;
 		InitData.pSysMem = pInitData;
-		hr = GraphicsEngine().GetD3DDevice()->CreateBuffer(&bufferDesc, &InitData, &m_gpuBuffer);
+		hr = g_graphicsEngine->GetD3DDevice()->CreateBuffer(&bufferDesc, &InitData, &m_gpuBuffer);
 	}
 	else {
-		hr = GraphicsEngine().GetD3DDevice()->CreateBuffer(&bufferDesc, NULL, &m_gpuBuffer);
+		hr = g_graphicsEngine->GetD3DDevice()->CreateBuffer(&bufferDesc, NULL, &m_gpuBuffer);
 	}
 	if (FAILED(hr)) {
 		return false;

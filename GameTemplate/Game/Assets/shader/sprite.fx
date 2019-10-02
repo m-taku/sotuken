@@ -16,6 +16,7 @@ struct PSInput {
 	float2 uv : TEXCOORD0;
 };
 sampler Sampler : register(s0);
+Texture2D<float4> colorTexture : register(t0);	//カラーテクスチャ。
 
 PSInput VSMain(VSInput In)
 {
