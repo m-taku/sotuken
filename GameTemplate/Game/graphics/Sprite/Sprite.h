@@ -54,7 +54,7 @@ namespace smEngine {
 		*@param[in]	viewMatrix		ビュー行列。
 		*@param[in]	projMatrix		プロジェクション行列。
 		*/
-		void Draw(ID3D11DeviceContext* DeviceContext, const CMatrix& viewMatrix, const CMatrix& projMatrix);
+		void Draw(ID3D11DeviceContext* DeviceContext);
 
 	private:
 		struct SSpriteCB {
