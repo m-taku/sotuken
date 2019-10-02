@@ -37,7 +37,7 @@ bool SaveData_Select::Start()
 	text->Init(ma->name, { -400.0f,100.0f }, CVector4::White(), 0.0f, { 0.0f,0.5f });
 	text = NewGO<Text_Box>(10, "Text_box");
 	m_text.push_back(text);
-	text->Init(max->name, { -400.0f,00.0f }, CVector4::White(), 0.0f, { 0.0f,0.5f });
+	text->Init(max->name, { -400.0f,0.0f }, CVector4::White(), 0.0f, { 0.0f,0.5f });
 	text = NewGO<Text_Box>(10, "Text_box");
 	m_text.push_back(text);
 	text->Init(maa->name, { -400.0f,-100.0f }, CVector4::White(), 0.0f, { 0.0f,0.5f });

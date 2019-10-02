@@ -253,4 +253,7 @@
     <MeshContentTask Include="Assets\modelData\jiman.FBX" />
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
   </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\Title.png" />
+  </ItemGroup>
 </Project>

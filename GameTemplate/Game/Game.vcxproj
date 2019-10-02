@@ -68,7 +68,7 @@
       <AdditionalDependencies>DirectXTK.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies);xinput.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;LinearMath_Debug.lib</AdditionalDependencies>
     </Link>
     <ImageContentTask>
-      <ContentOutput>$(ProjectDir)\Resource\sprite\%(Filename).dds</ContentOutput>
+      <ContentOutput>$(ProjectDir)\Assets\sprite\%(Filename).dds</ContentOutput>
     </ImageContentTask>
     <MeshContentTask>
       <ContentOutput>$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
@@ -220,6 +220,9 @@
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
     </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\Title.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

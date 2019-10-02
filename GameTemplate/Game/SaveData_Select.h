@@ -14,6 +14,7 @@ public:
 	bool Start();
 	void Update();
 	void Draw();
+	void k();
 private:
 	SaveNo No = No1;
 	std::list<Text_Box*> m_text;
