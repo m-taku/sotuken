@@ -130,6 +130,7 @@
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Title_Menu.cpp" />
     <ClCompile Include="graphics\Sprite\Sprite.cpp" />
+    <ClCompile Include="RenderTarget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -238,6 +239,7 @@
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Title_Menu.h" />
     <ClInclude Include="graphics\Sprite\Sprite.h" />
+    <ClInclude Include="RenderTarget.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

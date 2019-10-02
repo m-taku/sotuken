@@ -136,6 +136,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="graphics\Sprite\Sprite.cpp" />
+    <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="Stage_Base.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -193,6 +194,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="graphics\Sprite\Sprite.h" />
+    <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="Stage_Base.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="graphics\StructuredBuffer.h" />

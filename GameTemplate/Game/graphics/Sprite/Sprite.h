@@ -69,10 +69,13 @@ namespace smEngine {
 		Shader					m_vs;							//!<頂点シェーダー。
 		CVector4				m_mulColor = CVector4::White();	//!<乗算カラー。
 		Primitive				m_primitive;					//!<プリミティブ。
-		ShaderResourceView*	m_textureSRV = nullptr;			//!<テクスチャ。
+		ShaderResourceView*		m_textureSRV = nullptr;			//!<テクスチャ。
 		ConstantBuffer			m_cb;
 		bool					m_isInited = false;				//!<初期化フラグ。
 		CVector2				m_size = CVector2::Zero();		//!<サイズ。
+
+		CMatrix						m_viewMatrix;									//ビュー行列
+		CMatrix						m_projMatrix;									//プロジェクション行列
 	};
 }
 

@@ -13,7 +13,8 @@
  * シングルトンパターン。
  * FlyweightパターンのFlyweightFactoryクラス。
  */
-class ShaderResources{
+class ShaderResources:Noncopyable
+{
 	/*!
 	*@brief	コンストラクタ。
 	*/

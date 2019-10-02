@@ -8,7 +8,8 @@
  * @brief	シェーダー。
  * @FlyweightパターンのFlyweightクラス。
  */
-class Shader {
+class Shader:Noncopyable
+{
 public:
 	/*!
 	 * @brief	シェーダータイプ。
