@@ -26,36 +26,36 @@ namespace smEngine {
 	Sprite::~Sprite()
 	{
 	}
-	void Sprite::Init(ShaderResourceView& tex, float w, float h)
+	void Sprite::Init(ShaderResourceView* tex, float w, float h)
 	{
-		//シェーダーロード。
-		m_ps.Load("shader/sprite.fx", "PSMain", Shader::EnType::PS);
-		m_vs.Load("shader/sprite.fx", "VSMain", Shader::EnType::VS);
+		m_ps.Load("Assets/shader/sprite.fx", "PSMain", Shader::EnType::PS);
+		m_vs.Load("Assets/shader/sprite.fx", "VSMain", Shader::EnType::VS);
 		m_size.x = w;
 		m_size.y = h;
 		float halfW = w * 0.5f;
 		float halfH = h * 0.5f;
-		//頂点バッファのソースデータ。
+
 		SSimpleVertex vertices[] =
 		{
-			{
-				CVector4(-halfW, -halfH, 0.0f, 1.0f),
-				CVector2(0.0f, 1.0f),
-			},
-			{
-				CVector4(halfW, -halfH, 0.0f, 1.0f),
-				CVector2(1.0f, 1.0f),
-			},
-			{
-				CVector4(-halfW, halfH, 0.0f, 1.0f),
-				CVector2(0.0f, 0.0f)
-			},
-			{
-				CVector4(halfW, halfH, 0.0f, 1.0f),
-				CVector2(1.0f, 0.0f)
-			}
-
+				{
+					CVector4(-halfW,-halfH,0.0f,1.0f),
+					CVector2(0.0f,1.0f),
+				},
+				{
+					CVector4(halfW,-halfH,0.0f,1.0f),
+					CVector2(1.0f,1.0f),
+				},
+				{
+					CVector4(-halfW, halfH, 0.0f, 1.0f),
+					CVector2(0.0f, 0.0f)
+				},
+				{
+					CVector4(halfW, halfH, 0.0f, 1.0f),
+					CVector2(1.0f, 0.0f)
+				}
 		};
+
+
 		short indices[] = { 0,1,2,3 };
 
 		m_primitive.Create(
@@ -67,9 +67,17 @@ namespace smEngine {
 			IndexBuffer::enIndexType_16,
 			indices
 		);
-		m_textureSRV = &tex;
+
+		m_textureSRV = tex;
 		m_cb.Create(nullptr, sizeof(SSpriteCB));
-		m_isInited = true;
+
+		D3D11_SAMPLER_DESC desc;
+		ZeroMemory(&desc, sizeof(desc));
+		desc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+		desc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+		desc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+		desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+		g_graphicsEngine->GetD3DDevice()->CreateSamplerState(&desc, &m_samplerState);
 	}
 	/*!
 	*@brief	更新
