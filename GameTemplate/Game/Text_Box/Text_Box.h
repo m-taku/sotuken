@@ -24,7 +24,7 @@ public:
 
 		int j = 0;
 		for (const auto& moji : ma) {
-			if (j >= 20)
+			if (j >= 200)
 			{
 				m_Text += k;
 				j = 0;

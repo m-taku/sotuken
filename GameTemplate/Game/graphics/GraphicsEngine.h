@@ -30,6 +30,10 @@ public:
 	{
 		return m_pd3dDeviceContext;
 	}
+	ID3D11RasterizerState* GetRasterizerState()
+	{
+		return m_rasterizerState;
+	}
 	/*!
 	 *@brief	•`‰æŠJnB
 	 */

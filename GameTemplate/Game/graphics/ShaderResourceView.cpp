@@ -80,6 +80,7 @@ bool ShaderResourceView::CreateFromDDSTextureFromFile(const wchar_t * fileName)
 	{
 		return false;
 	}
+	m_isValid = true;
 	return true;
 }
 

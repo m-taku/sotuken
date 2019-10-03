@@ -131,6 +131,9 @@
     <ClCompile Include="Title_Menu.cpp" />
     <ClCompile Include="graphics\Sprite\Sprite.cpp" />
     <ClCompile Include="graphics\RenderTarget.cpp" />
+    <ClCompile Include="TestSave.cpp" />
+    <ClCompile Include="TestSeve_Player.cpp" />
+    <ClCompile Include="SaveData_Select.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -240,6 +243,10 @@
     <ClInclude Include="Title_Menu.h" />
     <ClInclude Include="graphics\Sprite\Sprite.h" />
     <ClInclude Include="graphics\RenderTarget.h" />
+    <ClInclude Include="TestSave.h" />
+    <ClInclude Include="TestSeve_Player.h" />
+    <ClInclude Include="SaveData_Select.h" />
+    <ClInclude Include="Test_PlayerData.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -249,6 +256,8 @@
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
   </ItemGroup>
   <ItemGroup>
-    <ImageContentTask Include="Assets\sprite\Title.png" />
+    <Image Include="Assets\sprite\Title2.png" />
+    <Image Include="Assets\sprite\Title1.png" />
+    <Image Include="Assets\sprite\Title.png" />
   </ItemGroup>
 </Project>

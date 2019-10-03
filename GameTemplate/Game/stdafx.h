@@ -51,6 +51,7 @@
 #include "GameObject/IGameObjectManager.h"
 #include "GameTime/GameTime.h"
 #include "GameFont/GameFont.h"
+#include "graphics/Sprite/Sprite.h"
 
 #include "GameCamera.h"
 

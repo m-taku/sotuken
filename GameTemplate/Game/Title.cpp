@@ -5,6 +5,7 @@
 #include "TEstNPC.h"
 #include "Player.h"
 #include"Title_Menu.h"
+#include"Text_Box/Text_Box.h"
 
 Title::Title()
 {
@@ -17,9 +18,11 @@ Title::~Title()
 
 bool Title::Start()
 {
-	//m_data.CreateFromDDSTextureFromFile(L"Assets/sprite/Title.dds");
-	//m_sprite.Init(m_data,1280.0f,720.0f);
 	m_model.Init(L"Assets/modelData/unityChan.cmo");
+	m_srv.CreateFromDDSTextureFromFile(L"Assets/sprite/Title.dds");
+	auto text = NewGO<Text_Box>(10, "Text_box");
+	text->Init("ÇoÇíÇÖÇìÇìÅ@ÇdÇéÇôÅ@ÇaÇïÇîÇîÇèÇé", { 0.0f,-300.0f }, CVector4::White(), 0.0f, { 0.5f,0.5f });
+	m_sprite.Init(m_srv, FRAME_BUFFER_W, FRAME_BUFFER_H);
 	return true;
 }
 void Title::Update()
@@ -29,12 +32,14 @@ void Title::Update()
 		NewGO<Title_Menu>(0, "Title_Menu");
 		DeleteGO(this);
 	}
-	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), {10.0f,10.0f,10.0f});
+	//pos.z -= 1.0f;
+	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), { 10.0f,10.0f,10.0f });
 
 }
 
 void Title::Draw()
 {
-	//m_sprite.Draw(g_graphicsEngine->GetD3DDeviceContext(), g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
-	m_model.Draw(g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+	ID3D11DeviceContext* d3dDeviceContext = g_graphicsEngine->GetD3DDeviceContext();
+	m_sprite.Draw(d3dDeviceContext);
+	//m_model.Draw(g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 }
