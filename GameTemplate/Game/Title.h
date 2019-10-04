@@ -1,4 +1,5 @@
 #pragma once
+class Text_Box;
 class Title : public IGameObject
 {
 public:
@@ -14,5 +15,6 @@ private:
 	SkinModel m_model;
 	Sprite m_sprite;
 	ShaderResourceView m_srv;
+	Text_Box* text = nullptr;
 };
 

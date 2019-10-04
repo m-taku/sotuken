@@ -152,6 +152,7 @@
     <ClCompile Include="TestSave.cpp" />
     <ClCompile Include="TestSeve_Player.cpp" />
     <ClCompile Include="TestStage.cpp" />
+    <ClCompile Include="Test_QuestBase.cpp" />
     <ClCompile Include="Text_Box\Text_Box.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Title_Menu.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="TestSeve_Player.h" />
     <ClInclude Include="TestStage.h" />
     <ClInclude Include="Test_PlayerData.h" />
+    <ClInclude Include="Test_QuestBase.h" />
     <ClInclude Include="Text_Box\Text_Box.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Title_Menu.h" />

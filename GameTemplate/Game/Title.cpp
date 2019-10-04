@@ -20,8 +20,8 @@ bool Title::Start()
 {
 	m_model.Init(L"Assets/modelData/unityChan.cmo");
 	m_srv.CreateFromDDSTextureFromFile(L"Assets/sprite/Title.dds");
-	auto text = NewGO<Text_Box>(10, "Text_box");
-	text->Init("‚o‚’‚…‚“‚“@‚d‚‚™@‚a‚•‚”‚”‚‚", { 0.0f,-300.0f }, CVector4::White(), 0.0f, { 0.5f,0.5f });
+	text = NewGO<Text_Box>(10, "Text_box");
+	text->Init("‚o‚’‚…‚“‚“@‚`@‚a‚•‚”‚”‚‚", { 0.0f,-300.0f }, CVector4::White(), 0.0f, { 0.5f,0.5f });
 	m_sprite.Init(m_srv, FRAME_BUFFER_W, FRAME_BUFFER_H);
 	return true;
 }
@@ -30,6 +30,7 @@ void Title::Update()
 	if (g_pad[0].IsTrigger(enButtonA))
 	{
 		NewGO<Title_Menu>(0, "Title_Menu");
+		DeleteGO(text);
 		DeleteGO(this);
 	}
 	//pos.z -= 1.0f;
