@@ -16,7 +16,7 @@ void CameraMovement::DefaultMove(const CVector3 & target, const CVector3& move, 
 	smGameCamera().SetTarget((CVector3)target);
 	float Input_RX = g_pad[0].GetRStickXF()*speed*GetGameTime().GetFrameTime();
 	float Input_RY = -g_pad[0].GetRStickYF()*speed*GetGameTime().GetFrameTime();
-	CVector3 cameraPos = smGameCamera().GetCameraPosition();
+	CVector3 cameraPos = smGameCamera().GetCameraPosition() + move;
 	CVector3 cameraTarget = smGameCamera().GetCameraTarget();
 	CVector3 toCameraPos = cameraPos - cameraTarget;
 	toCameraPos.Normalize();
@@ -32,6 +32,6 @@ void CameraMovement::DefaultMove(const CVector3 & target, const CVector3& move, 
 	{
 		toCameraPos = buckupVec;
 	}
-	smGameCamera().SetPosition(cameraTarget + move + toCameraPos * m_dist);
+	smGameCamera().SetPosition(cameraTarget + toCameraPos * m_dist);
 
 }
