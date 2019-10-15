@@ -137,6 +137,7 @@
     <ClCompile Include="Test_QuestBase.cpp" />
     <ClCompile Include="Test_Quest.cpp" />
     <ClCompile Include="Test_GuestManager.cpp" />
+    <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -254,6 +255,7 @@
     <ClInclude Include="Test_Quest.h" />
     <ClInclude Include="Test_GuestManager.h" />
     <ClInclude Include="Test_QuestData.h" />
+    <ClInclude Include="Game.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

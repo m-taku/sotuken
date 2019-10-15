@@ -101,6 +101,7 @@
   <ItemGroup>
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="character\CharacterController.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameFont\GameFont.cpp" />
     <ClCompile Include="GameObject\IGameObject.cpp" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="character\CharacterController.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameFont\GameFont.h" />
     <ClInclude Include="GameObject\IGameObject.h" />
