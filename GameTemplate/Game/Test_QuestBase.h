@@ -1,4 +1,5 @@
 #pragma once
+class Text_Box;
 class Test_QuestBase : public IGameObject
 {
 public:
@@ -13,13 +14,17 @@ public:
 		kane,
 		monsu,
 		iraisya,
-		ikou
+		ikou,
+		num
 	};
 	bool Start();
-	void Update();
+	void Draw();
+protected:
+	wchar_t name[num][256] = {L"NULL"};
+	Text_Box* m_text[num] = { nullptr };
+private:
 	Sprite m_sprite[2];
 	ShaderResourceView m_srv[2];
-	wchar_t name[256][256] = {L"NULL"};
 
 };
 struct ma{

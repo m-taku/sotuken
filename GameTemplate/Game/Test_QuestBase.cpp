@@ -17,7 +17,9 @@ bool Test_QuestBase::Start()
 
 	return true;
 }
-void Test_QuestBase::Update()
+void Test_QuestBase::Draw()
 {
-
+	for (int i = 0; i < 2; i++) {
+		m_sprite[i].Draw(g_graphicsEngine->GetD3DDeviceContext());
+	}
 }

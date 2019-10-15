@@ -135,6 +135,8 @@
     <ClCompile Include="TestSeve_Player.cpp" />
     <ClCompile Include="SaveData_Select.cpp" />
     <ClCompile Include="Test_QuestBase.cpp" />
+    <ClCompile Include="Test_Quest.cpp" />
+    <ClCompile Include="Test_GuestManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -249,6 +251,9 @@
     <ClInclude Include="SaveData_Select.h" />
     <ClInclude Include="Test_PlayerData.h" />
     <ClInclude Include="Test_QuestBase.h" />
+    <ClInclude Include="Test_Quest.h" />
+    <ClInclude Include="Test_GuestManager.h" />
+    <ClInclude Include="Test_QuestData.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
