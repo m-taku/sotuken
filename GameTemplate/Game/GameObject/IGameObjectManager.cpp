@@ -45,6 +45,9 @@ namespace smEngine {
 
 		g_physics.DebubDrawWorld();
 
+		g_graphicsEngine->ChangeBuckBuffer();
+		g_graphicsEngine->PostEffectDraw();
+
 		NewExecution();
 		DeleteExecution();
 	}

@@ -39,6 +39,8 @@ bool RenderTarget::Create(int w, int h, DXGI_FORMAT colorFormat, DXGI_FORMAT dep
 	texDesc.SampleDesc.Count = 1;
 	texDesc.Usage = D3D11_USAGE_DEFAULT;
 	hr = d3dDevice->CreateTexture2D(&texDesc, nullptr, &m_renderTargetTex);
+
+	d3dDevice->CreateRenderTargetView(m_renderTargetTex, NULL, &m_renderTargetView);
 	D3D11_TEXTURE2D_DESC depthTexDesc = texDesc;
 
 	srvDesc.Format = texDesc.Format;
