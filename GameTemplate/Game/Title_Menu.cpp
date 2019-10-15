@@ -2,11 +2,12 @@
 #include "Title_Menu.h"
 #include "Text_Box/Text_Box.h"
 #include "Test.h"
-#include"TestStage.h"
+#include"Stage/TestStage.h"
 #include "TEstNPC.h"
 #include "Player.h"
 #include"SaveData_Select.h"
 #include"Test_GuestManager.h"
+#include"Game.h"
 
 Title_Menu::Title_Menu()
 {
@@ -18,7 +19,7 @@ Title_Menu::~Title_Menu()
 }
 bool Title_Menu::Start()
 {
-	NewGO<Test_GuestManager>(0);
+	//NewGO<Test_GuestManager>(0);
 
 	auto text = NewGO<Text_Box>(10, "Text_box");
 	text->Init("ÇmÇdÇvÅ@ÇfÇ`ÇlÇd", { -400.0f,100.0f }, CVector4::White(), 0.0f, { 0.0f,0.5f });
@@ -48,10 +49,7 @@ void Title_Menu::Update()
 		}
 		if (g_pad[0].IsTrigger(enButtonA))
 		{
-			NewGO<Test>(0, "test");
-			NewGO<TestStage>(0, "jaio");
-			NewGO<TEstNPC>(0, "TEstNPC");
-			NewGO<Player>(0, "player");
+			NewGO<Game>(0);
 			DeleteGO(this);
 			for (auto k : m_text)
 			{

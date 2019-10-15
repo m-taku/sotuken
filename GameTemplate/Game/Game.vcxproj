@@ -14,7 +14,7 @@
     <ProjectGuid>{9CB90C92-58AF-482A-B34C-AC02496110F6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Lesson_00</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -101,6 +101,7 @@
   <ItemGroup>
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="character\CharacterController.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameFont\GameFont.cpp" />
     <ClCompile Include="GameObject\IGameObject.cpp" />
@@ -139,7 +140,7 @@
     <ClCompile Include="graphics\RenderTarget.cpp" />
     <ClCompile Include="graphics\PostEffect\PostEffect.cpp" />
     <ClCompile Include="SaveData_Select.cpp" />
-    <ClCompile Include="Stage_Base.cpp" />
+    <ClCompile Include="Stage\Stage_Base.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -152,17 +153,19 @@
     <ClCompile Include="TEstNPC.cpp" />
     <ClCompile Include="TestSave.cpp" />
     <ClCompile Include="TestSeve_Player.cpp" />
-    <ClCompile Include="TestStage.cpp" />
+    <ClCompile Include="Stage\TestStage.cpp" />
     <ClCompile Include="Test_GuestManager.cpp" />
     <ClCompile Include="Test_Quest.cpp" />
     <ClCompile Include="Test_QuestBase.cpp" />
     <ClCompile Include="Text_Box\Text_Box.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Title_Menu.cpp" />
+    <ClCompile Include="Stage\Town.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="character\CharacterController.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameFont\GameFont.h" />
     <ClInclude Include="GameObject\IGameObject.h" />
@@ -204,7 +207,7 @@
     <ClInclude Include="graphics\RenderTarget.h" />
     <ClInclude Include="graphics\PostEffect\PostEffect.h" />
     <ClInclude Include="SaveData_Select.h" />
-    <ClInclude Include="Stage_Base.h" />
+    <ClInclude Include="Stage\Stage_Base.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="graphics\StructuredBuffer.h" />
     <ClInclude Include="system\system.h" />
@@ -214,7 +217,7 @@
     <ClInclude Include="TEstNPC.h" />
     <ClInclude Include="TestSave.h" />
     <ClInclude Include="TestSeve_Player.h" />
-    <ClInclude Include="TestStage.h" />
+    <ClInclude Include="Stage\TestStage.h" />
     <ClInclude Include="Test_GuestManager.h" />
     <ClInclude Include="Test_PlayerData.h" />
     <ClInclude Include="Test_Quest.h" />
@@ -223,6 +226,7 @@
     <ClInclude Include="Text_Box\Text_Box.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Title_Menu.h" />
+    <ClInclude Include="Stage\Town.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />

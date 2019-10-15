@@ -3,6 +3,7 @@
 #include"Test.h"
 #include "Text_Box/Text_Box.h"
 #include "Player.h"
+#include"Test_GuestManager.h"
 
 
 TEstNPC::TEstNPC()
@@ -17,13 +18,13 @@ bool TEstNPC::Start()
 {
 	//cmoファイルの読み込み。
 	m_model.Init(L"Assets/modelData/unityChan.cmo"); 
-	test =FindGO<Player>("test");
+	test =FindGO<Player>("player");
 	m_bikkuri.Init(L"Assets/modelData/bikkuri.cmo");
 	//m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	pos = { 100.0f,20.0f,-100.0f };
 
 	//m_poa.CreateMeshObject(m_model, pos, CQuaternion::Identity());
-	//m_collider.Init(10.0f, 30.0f, pos);
+	m_collider.Init(10.0f, 30.0f, pos);
 	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());
 	pos = { 100.0f,100.0f,-100.0f };
 	m_bikkuri.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());	
@@ -33,31 +34,65 @@ bool TEstNPC::Start()
 void TEstNPC::Update()
 {
 	static int i = 0;
-	//posm.y -= 9.8f * 10.0f;
-	//pos = m_collider.Execute(GetFrameTime(), posm);
-	//auto leng = pos - test->Getpos();
-	//if (leng.Length() <= 50.0f)
-	//{
-	//	if (i == 0) {
-	//		bikkuri = true;
-	//		i++;
-	//	}
-	//}
-	//else
-	//{
-	//	i = 0;
-	//	if (m_Text != NULL) {
-	//		DeleteGO(m_Text);
-	//		m_Text = NULL;
-	//	}
-	//	bikkuri = false;
-	//}
+	posm.y -= 9.8f * 1.0f;
+	pos = m_collider.Execute(GetFrameDeltaTime(), posm);
+	auto leng = pos - test->GetPosition();
+	if (leng.Length() <= 50.0f)
+	{
+		if (i == 0) {
+			bikkuri = true;
+			i++;
+		}
+	}
+	else
+	{
+		i = 0;
+		for (int j = 0; j < 2; j++) {
+			if (m_Text[j] != NULL) {
+				DeleteGO(m_Text[j]);
+				m_Text[j] = NULL;
+			}
+		}
+		bikkuri = false;
+	}
 	if (bikkuri)
 	{
-		if (g_pad[0].IsTrigger(enButtonA)) {
-			m_Text = NewGO<Text_Box>(10, "Text_box");
-			m_Text->SetText("あいえーーーー？？？？？？？？？？？？？？");
-			bikkuri = false;
+		if (g_pad[0].IsTrigger(enButtonB) && m_Text[0] == NULL) {
+			m_Text[0] = NewGO<Text_Box>(10, "Text_box");
+			m_Text[0]->SetText("あいえーーーー？？？？？？？？？？？？？？");
+		}
+		if (m_Text[0] != NULL && m_Text[1] == NULL) {
+			if (m_Text[0]->Getend() && m_Text[1] == NULL)
+			{
+				m_Text[1] = NewGO<Text_Box>(10, "Text_box");
+				m_Text[1]->SetPos({ -500.0f, -130.0f });
+				m_Text[1]->SetText("はい　いいえ");
+				m_Text[1]->SetSpeed(0);
+			}
+		}
+		if (m_Text[1] != NULL)
+		{
+			if (g_pad[0].IsTrigger(enButtonB))
+			{
+				NewGO<Test_GuestManager>(0);
+				for (int j = 0; j < 2; j++) {
+					if (m_Text[j] != NULL) {
+						DeleteGO(m_Text[j]);
+						m_Text[j] = NULL;
+					}
+				}
+				bikkuri = false;
+			}
+			else if(g_pad[0].IsTrigger(enButtonX))
+			{
+				for (int j = 0; j < 2; j++) {
+					if (m_Text[j] != NULL) {
+						DeleteGO(m_Text[j]);
+						m_Text[j] = NULL;
+					}
+				}
+				bikkuri = false;
+			}
 		}
 	}
 	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());

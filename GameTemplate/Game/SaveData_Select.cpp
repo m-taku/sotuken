@@ -2,19 +2,15 @@
 #include "SaveData_Select.h"
 #include "Text_Box/Text_Box.h"
 #include "Test.h"
-#include"TestStage.h"
 #include "TEstNPC.h"
 #include "Player.h"
 #include"TestSave.h"
 #include"TestSeve_Player.h"
 #include"Test_PlayerData.h"
+#include"Game.h"
 
 SaveData_Select::SaveData_Select()
 {
-	//NewGO<Test>(0, "test");
-	//NewGO<TestStage>(0, "jaio");
-	//NewGO<TEstNPC>(0, "TEstNPC");
-	//NewGO<Player>(0, "player");
 }
 
 
@@ -74,11 +70,7 @@ void SaveData_Select::Update()
 	}
 	if (g_pad[0].IsTrigger(enButtonA))
 	{
-
-		NewGO<Test>(0, "test");
-		NewGO<TestStage>(0, "jaio");
-		NewGO<TEstNPC>(0, "TEstNPC");
-		NewGO<Player>(0, "player");
+		NewGO<Game>(0);
 		DeleteGO(this);
 		for (auto k : m_text)
 		{
