@@ -17,11 +17,17 @@ bool Text_Box::State()
 }
 void Text_Box::Update()
 {
-	
-	count += m_Text.length();
+
+	m_count += m_Text.length();
 	setlocale(LC_ALL, "japanese");
 	size_t kosuu = 0;
-	mbstowcs_s(&kosuu, m_text_now, (int)(min(count / m_speed+1, m_Text.length())), m_Text.c_str(), _TRUNCATE);
+	if (!m_end) {
+		mbstowcs_s(&kosuu, m_text_now, (int)(min(m_count / m_speed + 1, m_Text.length())), m_Text.c_str(), _TRUNCATE);
+		if (m_Text.length()<=min(m_count / m_speed + 1, m_Text.length()))
+		{
+			m_end = true;
+		}
+	}
 }
 void Text_Box::Draw()
 {

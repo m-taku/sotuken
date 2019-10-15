@@ -4,23 +4,34 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.UI;
 
 [Serializable]
 public struct SaveData
 {
     public string QuestTitle;
+    public int time;
+    public int m_time;
 }
 
 public class Export : MonoBehaviour
 {
+    GameObject m_tex;
     public SaveData dete;
+    //
     static int No = 0;
-    void Start()
+    private void Start()
     {
-        string Path =  "/../../GameTemplate/Game/Assets/TestQeste/save" + No +".smqd";
+        m_tex = GameObject.Find("Text");
+    }
+    private void Update()
+    { 
+        m_tex.transform.GetComponent<Text>().text = dete.QuestTitle;
+    }
+
+    public void ExpoetQuest()
+    {
+        string Path = "/../../GameTemplate/Game/Assets/TestQeste/save" + No + ".smqd";
         string SavePath = Application.dataPath + Path;
 
         ///// 保存 /////////////////////////////////////

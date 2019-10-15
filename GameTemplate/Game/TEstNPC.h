@@ -18,9 +18,9 @@ private:
 	CharacterController m_collider;						//キャラクターコントローラー
 	CVector3 posm = CVector3::Zero();
 	CVector3 pos = { 0.0f,0.0f,0.0f };
-	SkinModel m_model;	
+	SkinModel m_model;
 	SkinModel m_bikkuri;
-	Text_Box *m_Text = nullptr;
+	Text_Box* m_Text[2] = {nullptr};
 	bool bikkuri = false;
 	Player* test = nullptr;
 };

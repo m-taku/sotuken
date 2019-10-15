@@ -6,7 +6,7 @@ public:
 	~Text_Box();
 	bool State();
 	void Update();
-	void Init(const std::string& text, CVector2 pos = CVector2::Zero(), CVector4 color = CVector4::White(), float speed = 1.0f, CVector2 pivot = {0.5f,0.5f})
+	void Init(const std::string& text, CVector2 pos = CVector2::Zero(), CVector4 color = CVector4::White(), float speed = 1.0f, CVector2 pivot = { 0.5f,0.5f })
 	{
 		SetText(text);
 		SetPos(pos);
@@ -33,7 +33,11 @@ public:
 			j++;
 		}
 		m_speed = m_Text.length();
-		count = 0;
+		m_count = 0;
+	}
+	bool Getend()
+	{
+		return m_end;
 	}
 	///<summary>
 	///
@@ -65,11 +69,12 @@ public:
 	void Draw();
 private:
 	GameFont m_font;							//文字の表示機構
-	CVector2 m_pos = { -500.0f,-100.0f };		//文字の表示場所
-	int m_speed = 10;							//文字の表示スピード
 	CVector4 m_Coler = CVector4::White();		//文字の色
-	int count = 0;
-	CVector2 m_pivot = {0.5f,0.5f};
-	wchar_t m_text_now[256];						//現在表示している文字
+	CVector2 m_pos = { -500.0f,-100.0f };		//文字の表示場所
+	CVector2 m_pivot = { 0.5f,0.5f };			//文字列のピボット
 	std::string m_Text;							//表示する文字列
+	wchar_t m_text_now[256];					//現在表示している文字
+	bool m_end = false;							//文字表示が終了したか
+	int m_speed = 10;							//文字の表示スピード
+	int m_count = 0;							//文字の個数
 };
