@@ -101,6 +101,7 @@
   <ItemGroup>
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="character\CharacterController.cpp" />
+    <ClCompile Include="graphics\Light\DirectionLight.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameFont\GameFont.cpp" />
@@ -122,6 +123,7 @@
     <ClCompile Include="graphics\IndexBuffer.cpp" />
     <ClCompile Include="level\Level.cpp" />
     <ClCompile Include="level\MapChip.cpp" />
+    <ClCompile Include="graphics\Light\LightBase.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math\kMath.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
@@ -165,6 +167,7 @@
   <ItemGroup>
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="character\CharacterController.h" />
+    <ClInclude Include="graphics\Light\DirectionLight.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameFont\GameFont.h" />
@@ -188,6 +191,8 @@
     <ClInclude Include="graphics\IndexBuffer.h" />
     <ClInclude Include="level\Level.h" />
     <ClInclude Include="level\MapChip.h" />
+    <ClInclude Include="graphics\Light\LightBase.h" />
+    <ClInclude Include="graphics\Light\Light.h" />
     <ClInclude Include="math\kMath.h" />
     <ClInclude Include="math\Matrix.h" />
     <ClInclude Include="math\Vector.h" />
