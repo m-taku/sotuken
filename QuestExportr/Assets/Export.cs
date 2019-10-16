@@ -5,28 +5,68 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine.UI;
+using System.Linq;
+
+public enum monster
+{
+    monster1,           //モンスターの名前をお願いします。
+    monster2,
+    monster3,
+    num
+}
 
 [Serializable]
 public struct SaveData
 {
     public string QuestTitle;
-    public int time;
-    public int m_time;
+    public monster m_monster;
+    public int Remuneration;
+    public int Timelimit;
+    public int Failure;
+    public string humanname;
+    public string Remarks;
 }
 
 public class Export : MonoBehaviour
 {
-    GameObject m_tex;
-    public SaveData dete;
+    /* byte配列→string */
+    static string BytesToString(byte[] bytes)
+    {
+        return new string(bytes.Select(x => (char)x).ToArray());
+    }
+    /* string→byte配列 */
+    static byte[] StringToBytes(string str)
+    {
+        return str.Select(x => (byte)x).ToArray();
+    }
+    GameObject[] m_Quest = { null };
+    public SaveData dete = new SaveData()
+    {
+        QuestTitle = "oni",
+        m_monster = monster.monster1,
+        Remuneration = 20,
+        Timelimit = 60,
+        Failure = 3,
+        humanname = "宮崎",
+        Remarks = "あいえーーーーーーーーーー"
+    };
     //
     static int No = 0;
     private void Start()
     {
-        m_tex = GameObject.Find("Text");
+       m_Quest = oyako.ChildrenSearch.GetChildren(GameObject.Find("Quest"));
     }
     private void Update()
-    { 
-        m_tex.transform.GetComponent<Text>().text = dete.QuestTitle;
+    {
+        m_Quest[2].GetComponent<Text>().text = dete.QuestTitle;
+        m_Quest[3].GetComponent<monsterImage>().m_monster = dete.m_monster;
+        m_Quest[4].GetComponent<Text>().text = dete.m_monster.ToString() + "の討伐";
+        m_Quest[5].GetComponent<Text>().text = dete.Remuneration + "G";
+        m_Quest[6].GetComponent<Text>().text = dete.Timelimit + "分";
+        m_Quest[7].GetComponent<Text>().text = dete.Failure + "ダウン";
+        m_Quest[8].GetComponent<Text>().text = dete.humanname;
+        m_Quest[9].GetComponent<Text>().text = dete.Remarks;
+        Debug.Log(dete.QuestTitle.Length);
     }
 
     public void ExpoetQuest()
@@ -38,25 +78,42 @@ public class Export : MonoBehaviour
         {
             UnicodeEncoding uniencoding = new UnicodeEncoding();
             // byte[] bytes1 = BitConverter.GetBytes(dete.Id);
-            char[] Name = new char[dete.QuestTitle.Length];
-            Debug.Log(Name.Length);
-            for (int i = 0; i < dete.QuestTitle.Length; i++)
-            {
-                Name[i] = dete.QuestTitle[i];
-            }
-            byte[] bytes = uniencoding.GetBytes(Name);
-            byte[] bytes1 = BitConverter.GetBytes(bytes.Length);
-            //byte[] bytes3 = BitConverter.GetBytes(dete.TemporaryData);
-            // Create a file to write to.
+            char[] Name = dete.QuestTitle.ToCharArray();
+            byte[][] bytes = new byte[10][];
+            bytes[0] = BitConverter.GetBytes(Name.Length);
+            bytes[1] = StringToBytes(dete.QuestTitle);
+
+            bytes[2] = BitConverter.GetBytes(dete.m_monster.GetHashCode());
+
+            bytes[3] = BitConverter.GetBytes(dete.Remuneration);
+
+            bytes[4] = BitConverter.GetBytes(dete.Timelimit);
+
+            bytes[5] = BitConverter.GetBytes(dete.Failure);
+
+            char[] Name1 = dete.humanname.ToCharArray();
+            bytes[6] = BitConverter.GetBytes(Name1.Length);
+            bytes[7] = StringToBytes(dete.humanname);
+
+
+            char[] Name2 = dete.Remarks.ToCharArray();
+            bytes[8] = BitConverter.GetBytes(Name2.Length);
+            bytes[9] = StringToBytes(dete.Remarks);
             using (FileStream sw = File.Create(SavePath))
             {
                 sw.Seek(0, SeekOrigin.End);
-                Debug.Log(bytes.Length);
-                sw.Write(bytes1, 0, bytes1.Length);
-                sw.Write(bytes, 0, bytes.Length);
-                // sw.Write(bytes3, 0, bytes3.Length);
+                for(int i=0;i< bytes.Length;i++)
+                {
+                    sw.Write(bytes[i], 0, bytes[i].Length);
+
+                }
+                //sw.Write(bytes3, 0, bytes3.Length);
                 sw.Close();
             }
+            //Debug.Log(bytes[1][0]);
+            //Debug.Log(bytes[1][1]);
+            //Debug.Log(bytes[1][2]);
+            Debug.Log(bytes[8][0]);
         }
         No++;
     }

@@ -22,8 +22,8 @@ public class QuestManager : MonoBehaviour
 {
     int No = 1;
     bool m_export = false;
-    GameObject[] m_Quest;
-    private IEnumerator coroutine;
+    GameObject[] m_Quest = { null };
+    private IEnumerator coroutine = null;
     // Start is called before the first frame update
     void Start()
     {

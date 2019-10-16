@@ -19,9 +19,9 @@ void Text_Box::Update()
 {
 
 	m_count += m_Text.length();
-	setlocale(LC_ALL, "japanese");
 	size_t kosuu = 0;
 	if (!m_end) {
+		setlocale(LC_ALL, "japanese");
 		mbstowcs_s(&kosuu, m_text_now, (int)(min(m_count / m_speed + 1, m_Text.length())), m_Text.c_str(), _TRUNCATE);
 		if (m_Text.length()<=min(m_count / m_speed + 1, m_Text.length()))
 		{
