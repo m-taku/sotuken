@@ -19,7 +19,7 @@ public:
 	bool Start();
 	void Draw();
 protected:
-	wchar_t  name[num][256] = { NULL };
+	char  name[num][256] = { NULL };
 	Text_Box* m_text[num] = { nullptr };
 	wchar_t monsuta[3][256] = { L"モンスター1", L"モンスター2",L"モンスター3" };
 private:

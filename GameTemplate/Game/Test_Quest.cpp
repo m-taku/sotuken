@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Test_Quest.h"
 #include"Test_QuestBase.h"
-
+#include<codecvt>
 
 Test_Quest::Test_Quest()
 {
@@ -10,6 +10,16 @@ Test_Quest::Test_Quest()
 
 Test_Quest::~Test_Quest()
 {
+}
+std::string wide_to_utf8_cppapi(std::wstring const& src)
+{
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+	return converter.to_bytes(src);
+}
+std::wstring utf8_to_wide_cppapi(std::string const& src)
+{
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+	return converter.from_bytes(src);
 }
 bool Test_Quest::Init(const wchar_t* fileName)
 {
@@ -20,36 +30,37 @@ bool Test_Quest::Init(const wchar_t* fileName)
 	}
 	int count = 0;
 	fread(&count, sizeof(int), 1, fp);
-	wchar_t* hoge = new wchar_t[count];
-	fread(hoge, sizeof(char)*count, 1, fp);
-
-	swprintf_s(name[Test_QuestBase::Quest::titor], 256, L"%s", hoge);
+	char* hoge = new char[count];
+	fread(hoge, sizeof(char),count, fp);
+//	std::string mane = hoge;
+	//err = wcstombs_s(&kosuu, nja, 256, hoge, _TRUNCATE);
+	sprintf_s(name[Test_QuestBase::Quest::titor], 256, "%s", hoge);
 
 	int mons = 0;
 	fread(&mons, sizeof(int), 1, fp);
 	auto monsname = monsuta[mons];
-	swprintf_s(name[Test_QuestBase::Quest::monsu],256, L"%sの討伐", monsname);
+	sprintf_s(name[Test_QuestBase::Quest::monsu],256, "%sの討伐", monsname);
 
 
 	int housyuu = 0;
 	fread(&housyuu, sizeof(int), 1, fp);
-	swprintf_s(name[Test_QuestBase::Quest::kane],256, L"%dG", housyuu);
+	sprintf_s(name[Test_QuestBase::Quest::kane],256, "%dG", housyuu);
 
 	int g_time = 0;
 	fread(&g_time, sizeof(int), 1, fp);
-	swprintf_s(name[Test_QuestBase::Quest::time],256,L"%d分", g_time);
+	sprintf_s(name[Test_QuestBase::Quest::time],256,"%d分", g_time);
 
 
 	int daun = 0;
 	fread(&daun, sizeof(int), 1, fp);
-	swprintf_s(name[Test_QuestBase::Quest::doun],256, L"%dダウン", daun);
+	sprintf_s(name[Test_QuestBase::Quest::doun],256, "%dダウン", daun);
 	
 	
 	count = 0;
 	fread(&count, sizeof(int), 1, fp);
 	auto hoge1 = new wchar_t[count];
 	fread(hoge1, sizeof(char) * count, 1, fp);
-	swprintf_s(name[Test_QuestBase::Quest::iraisya], 256, L"依頼者：%s", hoge1);
+	sprintf_s(name[Test_QuestBase::Quest::iraisya], 256, "依頼者：%s", hoge1);
 
 
 	count = 0;
@@ -57,7 +68,7 @@ bool Test_Quest::Init(const wchar_t* fileName)
 	auto hoge3 = new wchar_t[count];
 	fread(hoge3, sizeof(char) * count, 1, fp);
 
-	swprintf_s(name[Test_QuestBase::Quest::bikou], 256, L"%s", hoge3);
+	sprintf_s(name[Test_QuestBase::Quest::bikou], 256, "%s", hoge3);
 
 	fclose(fp);
 	return true;

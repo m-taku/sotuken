@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2833313231208360727}
-  - component: {fileID: 2833313231208360724}
+  - component: {fileID: 7686413548518606900}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2833313231208360724
+--- !u!114 &7686413548518606900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,8 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979a4f579fc9f7f4ab169b6e9a769a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_tex: {fileID: 1073241997737830692, guid: 21e23dffb20caa64db39c6475351dc41, type: 3}
   dete:
-    QuestTitle: "\u9B3C\u3054\u3063\u3053"
-    time: 0
-    m_time: 0
+    QuestTitle: oni
+    m_monster: 0
+    Remuneration: 20
+    Timelimit: 60
+    Failure: 3
+    humanname: "\u5BAE\u5D0E"
+    Remarks: "\u3042\u3044\u3048\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC"

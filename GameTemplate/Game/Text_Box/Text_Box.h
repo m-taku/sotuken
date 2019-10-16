@@ -41,48 +41,6 @@ public:
 		m_speed = m_Text.length();
 		m_count = 0;
 	}
-
-	///<summary>
-	///表示させる
-	///全角文字のみにしてください
-	///</summary>
-	void SetText(const wchar_t* ma)
-	{
-		////ワイド文字列(WCHAR*)をマルチバイト文字列(char*)に変換
-		//errno_t wcstombs_s(
-		//	size_t *pReturnValue,	//変換された文字数
-		//	char *mbstr,		//変換結果のマルチバイト文字列用のバッファのアドレス(変換先)
-		//	size_t sizeInBytes,	//mbstr バッファのサイズ 
-		//	const wchar_t *wcstr,	//変換されるワイド文字列のアドレス(変換元)
-		//	size_t count 		//wcstr に格納するワイド文字の最大数
-		//);
-		size_t kosuu = 0;
-		char nja[256];
-
-		errno_t err = 0;
-		setlocale(LC_ALL, "japanese");
-		err = wcstombs_s(&kosuu, nja, 30 , ma, _TRUNCATE);
-		char k[2] = "\n";
-
-		int j = 0;
-		for (const auto& moji : nja) {
-			if (moji != NULL) {
-				if (j >= 200)
-				{
-					m_Text += k;
-					j = 0;
-				}
-				m_Text += moji;
-				j++;
-			}
-			else
-			{
-				break;
-			}
-		}
-		m_speed = m_Text.length();
-		m_count = 0;
-	}
 	bool Getend()
 	{
 		return m_end;

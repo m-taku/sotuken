@@ -80,8 +80,11 @@ public class Export : MonoBehaviour
             // byte[] bytes1 = BitConverter.GetBytes(dete.Id);
             char[] Name = dete.QuestTitle.ToCharArray();
             byte[][] bytes = new byte[10][];
-            bytes[0] = BitConverter.GetBytes(Name.Length);
-            bytes[1] = StringToBytes(dete.QuestTitle);
+            //データがShift-JISの場合
+            dete.QuestTitle += "\0";
+            byte[] data = System.Text.Encoding.GetEncoding("shift_jis").GetBytes(dete.QuestTitle);
+            bytes[0] = BitConverter.GetBytes(data.Length);
+            bytes[1] = data;
 
             bytes[2] = BitConverter.GetBytes(dete.m_monster.GetHashCode());
 
@@ -91,29 +94,30 @@ public class Export : MonoBehaviour
 
             bytes[5] = BitConverter.GetBytes(dete.Failure);
 
-            char[] Name1 = dete.humanname.ToCharArray();
-            bytes[6] = BitConverter.GetBytes(Name1.Length);
-            bytes[7] = StringToBytes(dete.humanname);
+            byte[] data2 = System.Text.Encoding.GetEncoding("shift_jis").GetBytes(dete.humanname);
+            bytes[6] = BitConverter.GetBytes(data2.Length);
+            bytes[7] = data2;
 
 
-            char[] Name2 = dete.Remarks.ToCharArray();
-            bytes[8] = BitConverter.GetBytes(Name2.Length);
-            bytes[9] = StringToBytes(dete.Remarks);
+            byte[] data3 = System.Text.Encoding.GetEncoding("shift_jis").GetBytes(dete.Remarks);
+            bytes[8] = BitConverter.GetBytes(data3.Length);
+            bytes[9] = data3;
             using (FileStream sw = File.Create(SavePath))
             {
+                
                 sw.Seek(0, SeekOrigin.End);
-                for(int i=0;i< bytes.Length;i++)
+                for (int i = 0; i < bytes.Length; i++)
                 {
                     sw.Write(bytes[i], 0, bytes[i].Length);
-
                 }
                 //sw.Write(bytes3, 0, bytes3.Length);
                 sw.Close();
             }
-            //Debug.Log(bytes[1][0]);
-            //Debug.Log(bytes[1][1]);
-            //Debug.Log(bytes[1][2]);
-            Debug.Log(bytes[8][0]);
+        
+            Debug.Log(bytes[1][0]);
+            Debug.Log(bytes[1][1]);
+            Debug.Log(bytes[1][2]);
+            Debug.Log(bytes[1][3]);
         }
         No++;
     }
