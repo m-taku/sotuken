@@ -14,7 +14,7 @@ public:
 		Init();
 		m_model.Init(m_Name);
 		m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
-		m_directioinLight.SetColor(CVector4::White()*5.0f);
+		m_directioinLight.SetColor(CVector4::White());
 		m_directioinLight.SetDirection(CVector3::Down());
 		smLightManager().AddLight(&m_directioinLight);
 		return true;
