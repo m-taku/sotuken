@@ -14,9 +14,13 @@ public:
 		Init();
 		m_model.Init(m_Name);
 		m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
-		m_directioinLight.SetColor(CVector4::White());
-		m_directioinLight.SetDirection(CVector3::Down());
-		smLightManager().AddLight(&m_directioinLight);
+		/*m_directioinLight.SetColor(CVector4::White());
+		m_directioinLight.SetDirection(CVector3::Down());*/
+		m_pointLight.SetColor(CVector4::White());
+		m_pointLight.SetPosition(CVector3::Zero() + CVector3::Up()*150.0f);
+		m_pointLight.SetAttn({ 300.0f,1.0f,0.0f,0.0f });
+		//smLightManager().AddLight(&m_directioinLight);
+		smLightManager().AddLight(&m_pointLight);
 		return true;
 	}
 	void Update()
@@ -35,5 +39,6 @@ protected:
 	PhysicsStaticObject m_poa;
 	wchar_t* m_Name;
 	DirectionLight m_directioinLight;
+	PointLight m_pointLight;
 };
 

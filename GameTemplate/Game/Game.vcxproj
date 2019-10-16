@@ -142,6 +142,7 @@
     <ClCompile Include="graphics\Sprite\Sprite.cpp" />
     <ClCompile Include="graphics\RenderTarget.cpp" />
     <ClCompile Include="graphics\PostEffect\PostEffect.cpp" />
+    <ClCompile Include="graphics\Light\PointLight.cpp" />
     <ClCompile Include="SaveData_Select.cpp" />
     <ClCompile Include="Stage\Stage_Base.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -213,6 +214,7 @@
     <ClInclude Include="graphics\Sprite\Sprite.h" />
     <ClInclude Include="graphics\RenderTarget.h" />
     <ClInclude Include="graphics\PostEffect\PostEffect.h" />
+    <ClInclude Include="graphics\Light\PointLight.h" />
     <ClInclude Include="SaveData_Select.h" />
     <ClInclude Include="Stage\Stage_Base.h" />
     <ClInclude Include="stdafx.h" />

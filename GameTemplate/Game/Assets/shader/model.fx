@@ -16,7 +16,14 @@ struct SDirectionLight {
 	float3 direction;
 };
 
+struct SPointLight {
+	float4 color;
+	float4 attn;
+	float3 position;
+};
+
 StructuredBuffer<SDirectionLight>DirectionLightSB:register(t100);
+StructuredBuffer<SPointLight>PointLightSB:register(t101);
 
 /////////////////////////////////////////////////////////////
 // SamplerState
@@ -38,6 +45,7 @@ cbuffer VSPSCb : register(b0) {
 cbuffer LightParam:register(b1) {
 	float3 eyePos;
 	int numDirectionLight;
+	int numPointLight;
 }
 /////////////////////////////////////////////////////////////
 // ストラクチャードバッファー
@@ -78,6 +86,7 @@ struct PSInput {
 	float3 Normal		: NORMAL;
 	float3 Tangent		: TANGENT;
 	float2 TexCoord 	: TEXCOORD0;
+	float3 WorldPos		: TEXCOORD1;
 };
 /*!
  *@brief	スキン行列を計算。
@@ -145,7 +154,7 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 	}
 	psInput.Normal = normalize(mul(skinning, In.Normal));
 	psInput.Tangent = normalize(mul(skinning, In.Tangent));
-
+	psInput.WorldPos = pos.xyz;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
@@ -153,15 +162,36 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 	return psInput;
 }
 ////////////////////////////////////////////////////////////////////////////////////////
-float4 DirectionLight(float3 Normal)
+float4 DirectionLight(PSInput In)
 {
 	float4 finalColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
 	for (int i = 0; i < numDirectionLight; i++)
 	{
 		float4 color = DirectionLightSB[i].color;
 		float3 direction = DirectionLightSB[i].direction;
-		float dotResult = max(0.0f, dot(-direction, Normal));
+		float dotResult = max(0.0f, dot(-direction, In.Normal));
 		color *= dotResult;
+		finalColor += color;
+	}
+	finalColor.w = 1.0f;
+	return finalColor;
+}
+
+float4 PointLight(PSInput In)
+{
+	float4 finalColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	for (int i = 0; i < numPointLight; i++)
+	{
+		float4 color = PointLightSB[i].color;
+		float4 attn = PointLightSB[i].attn;
+		float3 position = PointLightSB[i].position;
+		float3 direction = In.WorldPos - position;
+		float len = length(direction);
+		direction = normalize(direction);
+		float dotResult = max(0.0f, dot(-direction, In.Normal));
+		color *= dotResult;
+		float t = (max(0.0f, attn.x - len)) / attn.x;
+		color *= pow(t, attn.y);
 		finalColor += color;
 	}
 	finalColor.w = 1.0f;
@@ -173,7 +203,7 @@ float4 DirectionLight(float3 Normal)
 float4 PSMain(PSInput In) : SV_Target0
 {
 	float4 color = albedoTexture.Sample(Sampler, In.TexCoord);
-	color *= DirectionLight(In.Normal);
+	color *= DirectionLight(In)+ PointLight(In);
 	return color;
 }
 

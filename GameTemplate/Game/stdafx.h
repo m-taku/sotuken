@@ -39,6 +39,7 @@
 #include "graphics/Light/Light.h"
 #include "graphics/Light/LightBase.h"
 #include "graphics/Light/DirectionLight.h"
+#include "graphics/Light/PointLight.h"
 #include "graphics/Light/LightManager.h"
 
 #include "graphics/GraphicsEngine.h"
