@@ -10,9 +10,9 @@ public:
 	{
 		return m_renderTargetTex;
 	}
-	ID3D11RenderTargetView* GetRenderTatgetView()
+	ID3D11RenderTargetView** GetRenderTatgetView()
 	{
-		return m_renderTargetView;
+		return &m_renderTargetView;
 	}
 	ID3D11ShaderResourceView* GetShaderResourceView()
 	{

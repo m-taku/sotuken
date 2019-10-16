@@ -42,6 +42,10 @@ public:
 	 *@brief	描画終了。
 	 */
 	void EndRender();
+
+	void ChangeBuckBuffer();
+
+	void PostEffectDraw();
 private:
 	D3D_FEATURE_LEVEL		m_featureLevel;				//Direct3D デバイスのターゲットとなる機能セット。
 	ID3D11Device*			m_pd3dDevice = NULL;		//D3D11デバイス。
@@ -51,7 +55,8 @@ private:
 	ID3D11RasterizerState*	m_rasterizerState = NULL;	//ラスタライザステート。
 	ID3D11Texture2D*		m_depthStencil = NULL;		//デプスステンシル。
 	ID3D11DepthStencilView* m_depthStencilView = NULL;	//デプスステンシルビュー。
-
+	RenderTarget			m_mainRenderTarget;
+	PostEffect m_posteffect;
 };
 
 extern GraphicsEngine* g_graphicsEngine;			//グラフィックスエンジン

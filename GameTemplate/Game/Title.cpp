@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Title.h"
 #include "Test.h"
-#include"TestStage.h"
 #include "TEstNPC.h"
 #include "Player.h"
 #include"Title_Menu.h"
@@ -34,7 +33,7 @@ void Title::Update()
 		DeleteGO(this);
 	}
 	//pos.z -= 1.0f;
-	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), { 10.0f,10.0f,10.0f });
+	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), { 1.0f,1.0f,10.0f });
 
 }
 
@@ -42,5 +41,5 @@ void Title::Draw()
 {
 	ID3D11DeviceContext* d3dDeviceContext = g_graphicsEngine->GetD3DDeviceContext();
 	m_sprite.Draw(d3dDeviceContext);
-	//m_model.Draw(g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+	m_model.Draw(g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 }

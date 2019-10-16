@@ -29,12 +29,18 @@
 #include "math/Vector.h"
 #include "math/Matrix.h"
 #include "graphics/Shader.h"
-#include "graphics/GraphicsEngine.h"
-#include "graphics/ConstantBuffer.h"
-#include "graphics/StructuredBuffer.h"
 #include "graphics/VertexBuffer.h"
 #include "graphics/IndexBuffer.h"
 #include "graphics/Primitive.h"
+#include "graphics/RenderTarget.h"
+#include "graphics/PostEffect/PostEffect.h"
+#include "graphics/ConstantBuffer.h"
+#include "graphics/StructuredBuffer.h"
+#include "graphics/Light/Light.h"
+#include "graphics/Light/LightBase.h"
+#include "graphics/Light/DirectionLight.h"
+
+#include "graphics/GraphicsEngine.h"
 
 
 #include "graphics/SkinModel.h"
@@ -51,7 +57,6 @@
 #include "GameObject/IGameObjectManager.h"
 #include "GameTime/GameTime.h"
 #include "GameFont/GameFont.h"
-#include "graphics/Sprite/Sprite.h"
 
 #include "GameCamera.h"
 

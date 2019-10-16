@@ -118,12 +118,10 @@
     <ClCompile Include="graphics\VertexBuffer.cpp" />
     <ClCompile Include="GameFont\GameFont.cpp" />
     <ClCompile Include="physics\PhysicsDebugDraw.cpp" />
-    <ClCompile Include="TestStage.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TEstNPC.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="Text_Box\Text_Box.cpp" />
-    <ClCompile Include="Stage_Base.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="graphics\ConstantBuffer.cpp" />
@@ -138,6 +136,12 @@
     <ClCompile Include="Test_Quest.cpp" />
     <ClCompile Include="Test_GuestManager.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Stage\Stage_Base.cpp" />
+    <ClCompile Include="Stage\TestStage.cpp" />
+    <ClCompile Include="Stage\Town.cpp" />
+    <ClCompile Include="graphics\PostEffect\PostEffect.cpp" />
+    <ClCompile Include="graphics\Light\LightBase.cpp" />
+    <ClCompile Include="graphics\Light\DirectionLight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -234,12 +238,10 @@
     <ClInclude Include="GameFont\GameFont.h" />
     <ClInclude Include="GameTime\GameTime.h" />
     <ClInclude Include="physics\PhysicsDebugDraw.h" />
-    <ClInclude Include="TestStage.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TEstNPC.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="Text_Box\Text_Box.h" />
-    <ClInclude Include="Stage_Base.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="graphics\ConstantBuffer.h" />
@@ -256,6 +258,13 @@
     <ClInclude Include="Test_GuestManager.h" />
     <ClInclude Include="Test_QuestData.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Stage\Stage_Base.h" />
+    <ClInclude Include="Stage\TestStage.h" />
+    <ClInclude Include="Stage\Town.h" />
+    <ClInclude Include="graphics\PostEffect\PostEffect.h" />
+    <ClInclude Include="graphics\Light\LightBase.h" />
+    <ClInclude Include="graphics\Light\DirectionLight.h" />
+    <ClInclude Include="graphics\Light\Light.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

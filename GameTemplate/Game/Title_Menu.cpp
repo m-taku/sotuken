@@ -2,7 +2,7 @@
 #include "Title_Menu.h"
 #include "Text_Box/Text_Box.h"
 #include "Test.h"
-#include"TestStage.h"
+#include"Stage/TestStage.h"
 #include "TEstNPC.h"
 #include "Player.h"
 #include"SaveData_Select.h"
@@ -19,7 +19,7 @@ Title_Menu::~Title_Menu()
 }
 bool Title_Menu::Start()
 {
-	NewGO<Test_GuestManager>(0);
+	//NewGO<Test_GuestManager>(0);
 
 	auto text = NewGO<Text_Box>(10, "Text_box");
 	text->Init("‚m‚d‚v@‚f‚`‚l‚d", { -400.0f,100.0f }, CVector4::White(), 0.0f, { 0.0f,0.5f });
