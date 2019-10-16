@@ -244,6 +244,7 @@
     </MeshContentTask>
   </ItemGroup>
   <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\QuestForm.png" />
     <ImageContentTask Include="Assets\sprite\Title.png" />
     <Image Include="Assets\sprite\Title1.png" />
     <Image Include="Assets\sprite\Title2.png" />

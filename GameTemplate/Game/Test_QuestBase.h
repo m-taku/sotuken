@@ -8,20 +8,20 @@ public:
 	enum Quest
 	{
 		titor,
-		stagi,
+		monsu,
+		kane,
 		time,
 		doun,
-		kane,
-		monsu,
 		iraisya,
-		ikou,
+		bikou,
 		num
 	};
 	bool Start();
 	void Draw();
 protected:
-	wchar_t name[num][256] = {L"NULL"};
+	wchar_t  name[num][256] = { NULL };
 	Text_Box* m_text[num] = { nullptr };
+	wchar_t monsuta[3][256] = { L"モンスター1", L"モンスター2",L"モンスター3" };
 private:
 	Sprite m_sprite[2];
 	ShaderResourceView m_srv[2];
