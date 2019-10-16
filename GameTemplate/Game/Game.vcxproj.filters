@@ -142,6 +142,7 @@
     <ClCompile Include="graphics\PostEffect\PostEffect.cpp" />
     <ClCompile Include="graphics\Light\LightBase.cpp" />
     <ClCompile Include="graphics\Light\DirectionLight.cpp" />
+    <ClCompile Include="graphics\Light\LightManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -265,6 +266,7 @@
     <ClInclude Include="graphics\Light\LightBase.h" />
     <ClInclude Include="graphics\Light\DirectionLight.h" />
     <ClInclude Include="graphics\Light\Light.h" />
+    <ClInclude Include="graphics\Light\LightManager.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

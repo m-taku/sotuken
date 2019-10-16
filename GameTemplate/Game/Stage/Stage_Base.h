@@ -14,6 +14,9 @@ public:
 		Init();
 		m_model.Init(m_Name);
 		m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
+		m_directioinLight.SetColor(CVector4::White()*5.0f);
+		m_directioinLight.SetDirection(CVector3::Down());
+		smLightManager().AddLight(&m_directioinLight);
 		return true;
 	}
 	void Update()
@@ -31,5 +34,6 @@ protected:
 	SkinModel m_model;
 	PhysicsStaticObject m_poa;
 	wchar_t* m_Name;
+	DirectionLight m_directioinLight;
 };
 

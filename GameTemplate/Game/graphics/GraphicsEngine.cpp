@@ -164,6 +164,8 @@ void GraphicsEngine::Init(HWND hWnd)
 	m_pd3dDeviceContext->RSSetViewports(1, &viewport);
 	m_pd3dDeviceContext->RSSetState(m_rasterizerState);
 
+	smLightManager().Init();
+
 	m_mainRenderTarget.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
 	float color[4] = { 0.0f,0.0f,0.0f,1.0f };
 	m_mainRenderTarget.Clear(color);

@@ -124,6 +124,7 @@
     <ClCompile Include="level\Level.cpp" />
     <ClCompile Include="level\MapChip.cpp" />
     <ClCompile Include="graphics\Light\LightBase.cpp" />
+    <ClCompile Include="graphics\Light\LightManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math\kMath.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="level\MapChip.h" />
     <ClInclude Include="graphics\Light\LightBase.h" />
     <ClInclude Include="graphics\Light\Light.h" />
+    <ClInclude Include="graphics\Light\LightManager.h" />
     <ClInclude Include="math\kMath.h" />
     <ClInclude Include="math\Matrix.h" />
     <ClInclude Include="math\Vector.h" />

@@ -39,6 +39,7 @@
 #include "graphics/Light/Light.h"
 #include "graphics/Light/LightBase.h"
 #include "graphics/Light/DirectionLight.h"
+#include "graphics/Light/LightManager.h"
 
 #include "graphics/GraphicsEngine.h"
 
@@ -59,6 +60,14 @@
 #include "GameFont/GameFont.h"
 
 #include "GameCamera.h"
+
+enum EBufferSlot
+{
+	enLightParam_Slot_No = 1,
+	enDerectionLightSB_Slot_No = 100,
+	enPointLightSB_Slot_No,
+	enSpotLightSB_Slot_No
+};
 
 const float FRAME_BUFFER_W = 1920.0f;				//フレームバッファの幅。
 const float FRAME_BUFFER_H = 1080.0f;				//フレームバッファの高さ。

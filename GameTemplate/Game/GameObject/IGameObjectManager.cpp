@@ -36,6 +36,7 @@ namespace smEngine {
 			}
 		}
 		smGameCamera().Update();
+		smLightManager().Update();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
