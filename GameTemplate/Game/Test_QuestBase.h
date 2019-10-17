@@ -24,7 +24,7 @@ public:
 		mosternum
 	};
 	bool Start();
-	void Draw();
+	void PostDraw();
 protected:
 	char  name[num][256] = { NULL };
 	Text_Box* m_text[num] = { nullptr };

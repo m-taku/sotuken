@@ -44,6 +44,13 @@ namespace smEngine {
 				Update();
 			}
 		}		
+		void PostDrawWrapper()
+		{
+			if (m_isStart&&m_isActive && !m_isDead)
+			{
+				PostDraw();
+			}
+		}
 		void DrawWrapper()
 		{
 			if (m_isStart&&m_isActive&&!m_isDead)
@@ -54,6 +61,7 @@ namespace smEngine {
 		virtual bool Start() { return true; };
 		virtual void Update() {};
 		virtual void Draw() {};
+		virtual void PostDraw() {};
 		virtual void OnDestroy() {};
 
 		friend class IGameObjectManager;

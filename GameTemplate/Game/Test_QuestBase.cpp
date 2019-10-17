@@ -32,7 +32,7 @@ bool Test_QuestBase::Start()
 	m_sprite[1].SetMulColor({ 1.0f,1.0f,2.0f,1.0f });
 	return true;
 }
-void Test_QuestBase::Draw()
+void Test_QuestBase::PostDraw()
 {
 	for (int i = 0; i < 2; i++) {
 		m_sprite[i].Draw(g_graphicsEngine->GetD3DDeviceContext());

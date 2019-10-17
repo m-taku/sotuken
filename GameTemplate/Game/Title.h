@@ -8,6 +8,7 @@ public:
 	bool Start();
 	void Update();
 	void Draw();
+	void PostDraw();
 private:
 	//ShaderResourceView m_data;
 	//Sprite m_sprite;
