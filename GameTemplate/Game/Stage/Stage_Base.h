@@ -18,7 +18,7 @@ public:
 		m_directioinLight.SetDirection(CVector3::Down());*/
 		m_pointLight.SetColor(CVector4::White());
 		m_pointLight.SetPosition(CVector3::Zero() + CVector3::Up()*150.0f);
-		m_pointLight.SetAttn({ 300.0f,1.0f,0.0f,0.0f });
+		m_pointLight.SetAttn({ 1000.0f,1.0f,0.0f,0.0f });
 		//smLightManager().AddLight(&m_directioinLight);
 		smLightManager().AddLight(&m_pointLight);
 		return true;

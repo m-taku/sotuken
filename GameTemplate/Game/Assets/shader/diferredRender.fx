@@ -89,7 +89,7 @@ float4 PointLight(NWD nwd)
 		direction = normalize(direction);
 		float dotResult = max(0.0f, dot(-direction, nwd.Normal));
 		color *= dotResult;
-		float t = (max(0.0f, attn.x - len)) / attn.x;
+		float t = max(0.0f, attn.x - len) / attn.x;
 		color *= pow(t, attn.y);
 		finalColor += color;
 	}
@@ -108,6 +108,7 @@ float4 PSMain(PSInput In) : SV_Target0
 	nwd.Depth = DepthTexture.Sample(Sampler, In.uv).x;
 
 	color *= DirectionLight(nwd) + PointLight(nwd);
+	color.w = 1.0f;
 	return color;
 }
 
