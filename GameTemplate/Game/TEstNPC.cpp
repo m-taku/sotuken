@@ -60,7 +60,7 @@ void TEstNPC::Update()
 		if (g_pad[0].IsTrigger(enButtonB) && m_Text[0] == NULL) {
 			m_Text[0] = NewGO<Text_Box>(10, "Text_box");
 			m_Text[0]->SetText("クエストを受けますか？");
-			m_Text[0]->SetSpeed(0);
+			m_Text[0]->SetSpeed(0.1);
 		}
 		if (m_Text[0] != NULL && m_Text[1] == NULL) {
 			if (m_Text[0]->Getend() && m_Text[1] == NULL)

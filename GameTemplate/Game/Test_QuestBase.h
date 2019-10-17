@@ -8,7 +8,7 @@ public:
 	enum Quest
 	{
 		titor,
-		monsu,
+		moster,
 		kane,
 		time,
 		doun,
@@ -16,15 +16,33 @@ public:
 		bikou,
 		num
 	};
+	enum Moster
+	{
+		monnsu,
+		monnsu2,
+		monnsu3,
+		mosternum
+	};
 	bool Start();
 	void Draw();
 protected:
 	char  name[num][256] = { NULL };
 	Text_Box* m_text[num] = { nullptr };
-	wchar_t monsuta[3][256] = { L"モンスター1", L"モンスター2",L"モンスター3" };
+	Moster MonsterNo = mosternum;
+	wchar_t EnglishMosterName[num][256] = {L"monnsu",L"monnsu2", L"monnsu3"};
+	char JapanMosterName[num][256] = { "モンスター1", "モンスター2","モンスター3" };
 private:
 	Sprite m_sprite[2];
 	ShaderResourceView m_srv[2];
+	CVector2 m_Textpos[num] = {
+		{0.0f,400.0f},
+	{ 0.0f,-120.0f },
+	{ -180.0f,-200.0f },
+	{ 180.0f,-200.0f },
+	{ 0.0f,-280.0f },
+	{ -200.0f,-380.0f },
+	{ 0.0f,-420.0f }
+	};
 
 };
 struct ma{

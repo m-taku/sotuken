@@ -250,6 +250,15 @@
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\QuestForm.png" />
     <ImageContentTask Include="Assets\sprite\Title.png" />
+    <ImageContentTask Include="Assets\sprite\Monster\monnsu.png">
+      <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\Assets\sprite\Monster\%(Filename).dds</ContentOutput>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Monster\monnsu2.png">
+      <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\Assets\sprite\Monster\%(Filename).dds</ContentOutput>
+    </ImageContentTask>
+    <ImageContentTask Include="Assets\sprite\Monster\monnsu3.png">
+      <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\Assets\sprite\Monster\%(Filename).dds</ContentOutput>
+    </ImageContentTask>
     <Image Include="Assets\sprite\Title1.png" />
     <Image Include="Assets\sprite\Title2.png" />
   </ItemGroup>

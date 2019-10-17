@@ -94,11 +94,12 @@ public class Export : MonoBehaviour
 
             bytes[5] = BitConverter.GetBytes(dete.Failure);
 
+            dete.humanname += "\0";
             byte[] data2 = System.Text.Encoding.GetEncoding("shift_jis").GetBytes(dete.humanname);
             bytes[6] = BitConverter.GetBytes(data2.Length);
             bytes[7] = data2;
 
-
+            dete.Remarks += "\0";
             byte[] data3 = System.Text.Encoding.GetEncoding("shift_jis").GetBytes(dete.Remarks);
             bytes[8] = BitConverter.GetBytes(data3.Length);
             bytes[9] = data3;

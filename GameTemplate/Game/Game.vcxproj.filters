@@ -286,5 +286,8 @@
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\Title.png" />
     <ImageContentTask Include="Assets\sprite\QuestForm.png" />
+    <ImageContentTask Include="Assets\sprite\Monster\monnsu.png" />
+    <ImageContentTask Include="Assets\sprite\Monster\monnsu2.png" />
+    <ImageContentTask Include="Assets\sprite\Monster\monnsu3.png" />
   </ItemGroup>
 </Project>
