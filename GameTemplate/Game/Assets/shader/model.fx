@@ -11,20 +11,6 @@ Texture2D<float4> albedoTexture : register(t0);
 //ボーン行列
 StructuredBuffer<float4x4> boneMatrix : register(t1);
 
-struct SDirectionLight {
-	float4 color;
-	float3 direction;
-};
-
-struct SPointLight {
-	float4 color;
-	float4 attn;
-	float3 position;
-};
-
-StructuredBuffer<SDirectionLight>DirectionLightSB:register(t100);
-StructuredBuffer<SPointLight>PointLightSB:register(t101);
-
 /////////////////////////////////////////////////////////////
 // SamplerState
 /////////////////////////////////////////////////////////////
@@ -41,12 +27,6 @@ cbuffer VSPSCb : register(b0) {
 	float4x4 mView;
 	float4x4 mProj;
 };
-
-cbuffer LightParam:register(b1) {
-	float3 eyePos;
-	int numDirectionLight;
-	int numPointLight;
-}
 /////////////////////////////////////////////////////////////
 // ストラクチャードバッファー
 /////////////////////////////////////////////////////////////
@@ -88,6 +68,13 @@ struct PSInput {
 	float2 TexCoord 	: TEXCOORD0;
 	float3 WorldPos		: TEXCOORD1;
 };
+
+struct PSOutput {
+	float4 diffuse : SV_Target0;
+	float4 normal  : SV_Target1;
+	float4 world   : SV_Target2;
+	float4 depth   : SV_Target3;
+};
 /*!
  *@brief	スキン行列を計算。
  */
@@ -112,6 +99,7 @@ PSInput VSMain(VSInputNmTxVcTangent In)
 {
 	PSInput psInput = (PSInput)0;
 	float4 pos = mul(mWorld, In.Position);
+	psInput.WorldPos = pos.xyz;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
@@ -161,49 +149,16 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 	psInput.TexCoord = In.TexCoord;
 	return psInput;
 }
-////////////////////////////////////////////////////////////////////////////////////////
-float4 DirectionLight(PSInput In)
-{
-	float4 finalColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
-	for (int i = 0; i < numDirectionLight; i++)
-	{
-		float4 color = DirectionLightSB[i].color;
-		float3 direction = DirectionLightSB[i].direction;
-		float dotResult = max(0.0f, dot(-direction, In.Normal));
-		color *= dotResult;
-		finalColor += color;
-	}
-	finalColor.w = 1.0f;
-	return finalColor;
-}
-
-float4 PointLight(PSInput In)
-{
-	float4 finalColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
-	for (int i = 0; i < numPointLight; i++)
-	{
-		float4 color = PointLightSB[i].color;
-		float4 attn = PointLightSB[i].attn;
-		float3 position = PointLightSB[i].position;
-		float3 direction = In.WorldPos - position;
-		float len = length(direction);
-		direction = normalize(direction);
-		float dotResult = max(0.0f, dot(-direction, In.Normal));
-		color *= dotResult;
-		float t = (max(0.0f, attn.x - len)) / attn.x;
-		color *= pow(t, attn.y);
-		finalColor += color;
-	}
-	finalColor.w = 1.0f;
-	return finalColor;
-}
 //--------------------------------------------------------------------------------------
 // ピクセルシェーダーのエントリ関数。
 //--------------------------------------------------------------------------------------
-float4 PSMain(PSInput In) : SV_Target0
+PSOutput PSMain(PSInput In) : SV_Target0
 {
-	float4 color = albedoTexture.Sample(Sampler, In.TexCoord);
-	color *= DirectionLight(In)+ PointLight(In);
-	return color;
+	PSOutput psout;
+	psout.diffuse = albedoTexture.Sample(Sampler, In.TexCoord);
+	psout.normal = float4(In.Normal, 1.0f);
+	psout.world = float4(In.WorldPos, 1.0f);
+	psout.depth = In.Position.z;
+	return psout;
 }
 

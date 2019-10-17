@@ -41,6 +41,7 @@
 #include "graphics/Light/DirectionLight.h"
 #include "graphics/Light/PointLight.h"
 #include "graphics/Light/LightManager.h"
+#include "graphics/DeferredRender.h"
 
 #include "graphics/GraphicsEngine.h"
 

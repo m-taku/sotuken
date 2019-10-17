@@ -14,9 +14,12 @@ GraphicsEngine::~GraphicsEngine()
 
 void GraphicsEngine::BegineRender()
 {
-	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f }; //red,green,blue,alpha
-													  //描き込み先をバックバッファにする。
-	m_pd3dDeviceContext->OMSetRenderTargets(1, m_mainRenderTarget.GetRenderTatgetView(), m_mainRenderTarget.GetDepthStencilView());
+	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f }; 
+	ID3D11RenderTargetView* renderTargetView[] = {
+		m_mainRenderTarget.GetRenderTatgetView()
+	};
+	m_pd3dDeviceContext->OMSetRenderTargets(1, renderTargetView, m_mainRenderTarget.GetDepthStencilView());
+	m_pd3dDeviceContext->RSSetViewports(1, m_mainRenderTarget.GetViewPort());
 	m_mainRenderTarget.Clear(ClearColor);
 }
 void GraphicsEngine::EndRender()
@@ -29,13 +32,25 @@ void GraphicsEngine::ChangeBuckBuffer()
 	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f }; //red,green,blue,alpha
 													  //描き込み先をバックバッファにする。
 	m_pd3dDeviceContext->OMSetRenderTargets(1, &m_backBuffer, m_depthStencilView);
+	D3D11_VIEWPORT viewport;
+	viewport.Width = FRAME_BUFFER_W;
+	viewport.Height = FRAME_BUFFER_H;
+	viewport.TopLeftX = 0;
+	viewport.TopLeftY = 0;
+	viewport.MinDepth = 0.0f;
+	viewport.MaxDepth = 1.0f;
+	m_pd3dDeviceContext->RSSetViewports(1, &viewport);
 	//バックバッファを灰色で塗りつぶす。
 	m_pd3dDeviceContext->ClearRenderTargetView(m_backBuffer, ClearColor);
 	m_pd3dDeviceContext->ClearDepthStencilView(m_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
 void GraphicsEngine::PostEffectDraw()
 {
-	m_posteffect.SetSRV(m_mainRenderTarget.GetShaderResourceView());
+	ID3D11ShaderResourceView* srv[] = {
+		m_mainRenderTarget.GetShaderResourceView()
+	};
+	m_pd3dDeviceContext->PSSetShaderResources(0, 1, srv);
+	m_pd3dDeviceContext->VSSetShaderResources(0, 1, srv);
 	m_posteffect.Draw();
 }
 void GraphicsEngine::Release()
@@ -170,4 +185,5 @@ void GraphicsEngine::Init(HWND hWnd)
 	float color[4] = { 0.0f,0.0f,0.0f,1.0f };
 	m_mainRenderTarget.Clear(color);
 	m_posteffect.Init();
+	m_deferredRender.Init();
 }

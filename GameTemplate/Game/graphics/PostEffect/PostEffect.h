@@ -9,20 +9,19 @@ public:
 
 	void Draw();
 
-	ID3D11ShaderResourceView* GetSRV()
+	void SetPS(const char* filepath, const char* funcName)
 	{
-		return m_textureSRV;
+		m_ps.Load(filepath, funcName, Shader::EnType::PS);
 	}
-
-	void SetSRV(ID3D11ShaderResourceView* srv)
+	void SetVS(const char* filepath, const char* funcName)
 	{
-		m_textureSRV = srv;
+		m_vs.Load(filepath, funcName, Shader::EnType::VS);
 	}
+	void Release();
 private:
 	Shader					m_ps;							//!<ピクセルシェーダー。
 	Shader					m_vs;							//!<頂点シェーダー。
 	Primitive				m_primitive;					//!<プリミティブ。
-	ID3D11ShaderResourceView*		m_textureSRV = nullptr;			//!<テクスチャ。
 	ID3D11SamplerState*		m_samplerState = nullptr;				//サンプラーステート
 	CMatrix					m_viewMatrix;									//ビュー行列
 	CMatrix					m_projMatrix;									//プロジェクション行列

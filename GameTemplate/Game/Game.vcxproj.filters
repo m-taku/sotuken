@@ -144,6 +144,7 @@
     <ClCompile Include="Stage\Town.cpp" />
     <ClCompile Include="graphics\Light\LightManager.cpp" />
     <ClCompile Include="graphics\Light\PointLight.cpp" />
+    <ClCompile Include="graphics\DeferredRender.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -269,6 +270,7 @@
     <ClInclude Include="Stage\Town.h" />
     <ClInclude Include="graphics\Light\LightManager.h" />
     <ClInclude Include="graphics\Light\PointLight.h" />
+    <ClInclude Include="graphics\DeferredRender.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

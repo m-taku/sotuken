@@ -36,13 +36,15 @@ namespace smEngine {
 			}
 		}
 		smGameCamera().Update();
-		smLightManager().Update();
+		g_graphicsEngine->GetDeferredRender().Update();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
 				Object->DrawWrapper();
 			}
 		}
+		smLightManager().Update();
+		g_graphicsEngine->GetDeferredRender().Draw();
 
 		g_physics.DebubDrawWorld();
 

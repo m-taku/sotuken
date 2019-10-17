@@ -9,6 +9,7 @@ RenderTarget::RenderTarget()
 
 RenderTarget::~RenderTarget()
 {
+	Release();
 }
 
 bool RenderTarget::Create(int w, int h, DXGI_FORMAT colorFormat, DXGI_FORMAT depthFormat)

@@ -78,12 +78,17 @@ void PostEffect::Init()
 void PostEffect::Draw()
 {
 	ID3D11DeviceContext* DeviceContext = g_graphicsEngine->GetD3DDeviceContext();
-
-	DeviceContext->VSSetShaderResources(0, 1, &m_textureSRV);
-	DeviceContext->PSSetShaderResources(0, 1, &m_textureSRV);
 	DeviceContext->PSSetShader((ID3D11PixelShader*)m_ps.GetBody(), NULL, 0);
 	DeviceContext->VSSetShader((ID3D11VertexShader*)m_vs.GetBody(), NULL, 0);
 	DeviceContext->IASetInputLayout(m_vs.GetInputLayout());
 	DeviceContext->PSSetSamplers(0, 1, &m_samplerState);
 	m_primitive.Draw(*DeviceContext);
+}
+
+void PostEffect::Release()
+{
+	if (m_samplerState != nullptr)
+	{
+		m_samplerState->Release();
+	}
 }

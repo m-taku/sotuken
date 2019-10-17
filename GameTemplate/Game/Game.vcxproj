@@ -101,6 +101,7 @@
   <ItemGroup>
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="character\CharacterController.cpp" />
+    <ClCompile Include="graphics\DeferredRender.cpp" />
     <ClCompile Include="graphics\Light\DirectionLight.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
@@ -169,6 +170,7 @@
   <ItemGroup>
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="character\CharacterController.h" />
+    <ClInclude Include="graphics\DeferredRender.h" />
     <ClInclude Include="graphics\Light\DirectionLight.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
