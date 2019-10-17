@@ -45,18 +45,18 @@ namespace smEngine {
 		}
 		smLightManager().Update();
 		g_graphicsEngine->GetDeferredRender().Draw();
-
-		g_physics.DebubDrawWorld();
-
-		g_graphicsEngine->ChangeBuckBuffer();
-		g_graphicsEngine->PostEffectDraw();
-
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
 				Object->PostDrawWrapper();
 			}
 		}
+		g_physics.DebubDrawWorld();
+
+		g_graphicsEngine->ChangeBuckBuffer();
+		g_graphicsEngine->PostEffectDraw();
+
+
 
 		NewExecution();
 		DeleteExecution();
