@@ -63,7 +63,10 @@ namespace smEngine {
 		virtual void Draw() {};
 		virtual void PostDraw() {};
 		virtual void OnDestroy() {};
-
+		void SetActive(bool Active)
+		{
+			m_isActive = Active;
+		};
 		friend class IGameObjectManager;
 	protected:
 		GameObjectPrio	m_priority;						//é¿çsóDêÊìxÅB
