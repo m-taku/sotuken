@@ -14,13 +14,13 @@ Test_GuestManager::~Test_GuestManager()
 }
 bool Test_GuestManager::Start()
 {
-	auto ka = NewGO<Test_Quest>(0);
-	ka->Init(L"Assets/TestQeste/save0.smqd");
+	//auto ka = NewGO<Test_Quest>(0);
+	//ka->Init(L"Assets/TestQeste/save0.smqd");
 	//auto ka1 = NewGO<Test_Quest>(0);
 	//ka1->Init(L"Assets/TestQeste/save1.smqd");
 
-	//auto ka2 = NewGO<Test_Quest>(0);
-	//ka1->Init(L"Assets/TestQeste/save2.smqd");
+	auto ka2 = NewGO<Test_Quest>(0);
+	ka2->Init(L"Assets/TestQeste/save2.smqd");
 
 	//auto ka3 = NewGO<Test_Quest>(0);
 	//ka1->Init(L"Assets/TestQeste/save3.smqd");
