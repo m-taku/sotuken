@@ -54,7 +54,7 @@ namespace smEngine {
 			(void*)objectName;
 			//TK_ASSERT(prio <= m_gameObjectPriorityMax, "ゲームオブジェクトの優先度の最大数が大きすぎます。");
 			T* newObject = new T;
-			m_newLest.insert({ newObject,prio });
+			m_newList.insert({ newObject,prio });
 			unsigned int hash = MakeGameObjectNameKey(objectName);
 			newObject->m_priority = prio;
 			newObject->m_nameKey = hash;
@@ -62,11 +62,11 @@ namespace smEngine {
 		}
 		void NewExecution()
 		{
-			for (auto Newobject : m_newLest)
+			for (auto Newobject : m_newList)
 			{
 				m_gameObjectListArray.at(Newobject.second).push_back(Newobject.first);
 			}
-			m_newLest.clear();
+			m_newList.clear();
 		}
 		template<class T>
 		T* FindGameObject(const char* objectName)
@@ -88,7 +88,7 @@ namespace smEngine {
 		typedef std::list<IGameObject*>	GameObjectList;						//ゲームオブジェクトのリスト
 		std::vector<GameObjectList> m_gameObjectListArray;					//優先度付きのゲームオブジェクトのリスト
 		std::vector<GameObjectList> m_deleteObjectArray[2];					//デリート予定のゲームオブジェクトのリスト（デリート中にDeleteしないように2つ用意）
-		std::map<IGameObject*, GameObjectPrio> m_newLest;					//newの際の保存場所（newGOの順序を無視して同時にするため）
+		std::map<IGameObject*, GameObjectPrio> m_newList;					//newの際の保存場所（newGOの順序を無視して同時にするため）
 		GameObjectPrio				m_gameObjectPriorityMax;				//!<ゲームオブジェクトの優先度の最大数。
 		int m_currentDeleteObjectBufferNo = 0;								//!<現在の削除オブジェクトのバッファ番号。
 		static const unsigned char 			GAME_OBJECT_PRIO_MAX = 255;		//!<ゲームオブジェクトの優先度の最大値。

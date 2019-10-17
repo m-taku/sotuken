@@ -1,5 +1,5 @@
 #pragma once
-class Text_Box;
+#include"Text_Box/Text_Box.h"
 class Test_QuestBase : public IGameObject
 {
 public:
@@ -25,6 +25,18 @@ public:
 	};
 	bool Start();
 	void PostDraw();
+	void ChangePaper()
+	{
+		bool ja = true;
+		ja = !ja;
+		m_isActive = !m_isActive;
+		for (auto na : m_text)
+		{
+			if (na != nullptr) {
+				na->SetActive(m_isActive);
+			}
+		}
+	}
 protected:
 	char  name[num][256] = { NULL };
 	Text_Box* m_text[num] = { nullptr };
@@ -43,7 +55,6 @@ private:
 	{ -200.0f,-380.0f },
 	{ 0.0f,-420.0f }
 	};
-
 };
 struct ma{
 	struct taki
