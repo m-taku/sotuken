@@ -242,6 +242,7 @@
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
     <MeshContentTask Include="Assets\modelData\jiman.FBX" />
+    <MeshContentTask Include="Assets\modelData\StarSparrow.FBX" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
@@ -261,6 +262,9 @@
     </ImageContentTask>
     <Image Include="Assets\sprite\Title1.png" />
     <Image Include="Assets\sprite\Title2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\modelData\StarSparrow.cmo" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
