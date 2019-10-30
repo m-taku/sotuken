@@ -278,10 +278,10 @@
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\jiman.FBX" />
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
-    <MeshContentTask Include="Assets\modelData\map\rock_boulder.FBX" />
-    <MeshContentTask Include="Assets\modelData\Ground.fbx" />
-    <MeshContentTask Include="Assets\modelData\map\rock_boulder_b1.FBX" />
     <MeshContentTask Include="Assets\modelData\map\Groundcori.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\rock_boulder.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\rock_boulder_b1.FBX" />
+    <MeshContentTask Include="Assets\modelData\Ground.fbx" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />
@@ -293,5 +293,8 @@
     <ImageContentTask Include="Assets\sprite\Monster\monnsu.png" />
     <ImageContentTask Include="Assets\sprite\Monster\monnsu2.png" />
     <ImageContentTask Include="Assets\sprite\Monster\monnsu3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\modelData\StarSparrow.cmo" />
   </ItemGroup>
 </Project>
