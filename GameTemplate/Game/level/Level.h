@@ -9,6 +9,7 @@ class MapChip;
 struct LevelObjectData {
 	CVector3 position;		//<座標。
 	CQuaternion rotation;	//!<回転。
+	CVector3 scale = CVector3::One();		//<座標。
 	const wchar_t* name;	//!<名前。
 };
 /*!
@@ -48,6 +49,14 @@ public :
 	*									詳細はHookWhenBuildObjectFuncのコメントを参照。
 	*/
 	void Init(const wchar_t* levelDataFilePath, HookWhenBuildObjectFunc hookFunc);
+	/*!
+	* @brief	レベルを初期化。
+	*@param[in]	levelDataFilePath		tklファイルのファイルパス。
+	*@param[in] hookFunc				オブジェクトを作成する時の処理をフックするための関数オブジェクト。
+	*									フックしないならnullptrを指定すればよい、
+	*									詳細はHookWhenBuildObjectFuncのコメントを参照。
+	*/
+	void UEInit(const wchar_t* levelDataFilePath, HookWhenBuildObjectFunc hookFunc);
 	/*!
 	* @brief	レベルを描画。
 	*/
