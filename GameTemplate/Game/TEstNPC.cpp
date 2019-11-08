@@ -21,7 +21,7 @@ bool TEstNPC::Start()
 	test =FindGO<Player>("player");
 	m_bikkuri.Init(L"Assets/modelData/bikkuri.cmo");
 	//m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
-	pos = { 100.0f,20.0f,-100.0f };
+	pos = { 100.0f,200.0f,-100.0f };
 
 	//m_poa.CreateMeshObject(m_model, pos, CQuaternion::Identity());
 	m_collider.Init(10.0f, 30.0f, pos);

@@ -53,7 +53,7 @@ namespace smEngine {
 	}
 	static float GetFrameDeltaTime()
 	{
-		return  GameTime::Instance().GetFrameTime();
+		return  min(GameTime::Instance().GetFrameTime(),1.0f);
 	}
 }
 

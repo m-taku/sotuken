@@ -19,6 +19,8 @@ Player::~Player()
 bool Player::Start()
 {
 	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
+	m_position.y += 300.0f;
+	m_position.x -= 300.0f;
 	m_characon.Init(
 		50.0f,
 		80.0f,

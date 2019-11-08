@@ -38,7 +38,7 @@ public:
 				break;
 			}
 		}
-		m_speed = m_Text.length();
+		m_speed = (int)m_Text.length();
 		m_count = 0;
 	}
 	bool Getend()
