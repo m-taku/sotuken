@@ -27,9 +27,10 @@ bool Test_QuestBase::Start()
 	wchar_t FileName[256];
 	swprintf_s(FileName,L"Assets/sprite/Monster/%s.dds", EnglishMosterName[MonsterNo]);
 	m_srv[1].CreateFromDDSTextureFromFile(FileName);
-	m_sprite[1].Init(m_srv[1], 450.0f, 450.0f);
-	m_sprite[1].Update({ 0.0f,50.0f,0.0f }, CQuaternion::Identity(), CVector3::One());
+	m_sprite[1].Init(m_srv[1], 350.0f, 350.0f);
+	m_sprite[1].Update({ 0.0f,150.0f,0.0f }, CQuaternion::Identity(), CVector3::One());
 	m_sprite[1].SetMulColor({ 1.0f,1.0f,2.0f,1.0f });
+	m_isStart = true;
 	return true;
 }
 void Test_QuestBase::PostDraw()

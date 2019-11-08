@@ -2,6 +2,7 @@
 #include "Game.h"
 #include"Player.h"
 #include "Stage/Town.h"
+#include "Stage/QuestStage.h"
 
 Game::Game()
 {

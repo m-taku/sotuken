@@ -21,14 +21,12 @@ bool TEstNPC::Start()
 	test =FindGO<Player>("player");
 	m_bikkuri.Init(L"Assets/modelData/bikkuri.cmo");
 	//m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
-	pos = { 100.0f,200.0f,-100.0f };
-
+	//pos = { 100.0f,200.0f,-100.0f };
 	//m_poa.CreateMeshObject(m_model, pos, CQuaternion::Identity());
 	m_collider.Init(10.0f, 30.0f, pos);
 	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());
-	pos = { 100.0f,100.0f,-100.0f };
-	m_bikkuri.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());	
-	pos = { 100.0f,20.0f,-100.0f };
+	CVector3 posa = { pos.x,pos.y + 100.0f,pos.z };
+	m_bikkuri.UpdateWorldMatrix(posa, CQuaternion::Identity(), CVector3::One());
 	return true;
 }
 void TEstNPC::Update()
@@ -37,7 +35,7 @@ void TEstNPC::Update()
 	posm.y -= 9.8f * 1.0f;
 	pos = m_collider.Execute(GetFrameDeltaTime(), posm);
 	auto leng = pos - test->GetPosition();
-	if (leng.Length() <= 50.0f)
+	if (leng.Length() <= 100.0f)
 	{
 		if (i == 0) {
 			bikkuri = true;
@@ -60,7 +58,7 @@ void TEstNPC::Update()
 		if (g_pad[0].IsTrigger(enButtonB) && m_Text[0] == NULL) {
 			m_Text[0] = NewGO<Text_Box>(10, "Text_box");
 			m_Text[0]->SetText("クエストを受けますか？");
-			m_Text[0]->SetSpeed(0.1);
+			m_Text[0]->SetSpeed(2);
 		}
 		if (m_Text[0] != NULL && m_Text[1] == NULL) {
 			if (m_Text[0]->Getend() && m_Text[1] == NULL)
@@ -97,6 +95,8 @@ void TEstNPC::Update()
 			}
 		}
 	}
+	CVector3 posa = { pos.x,pos.y + 100.0f,pos.z };
+	m_bikkuri.UpdateWorldMatrix(posa, CQuaternion::Identity(), CVector3::One());
 	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());
 }
 void TEstNPC::Draw()

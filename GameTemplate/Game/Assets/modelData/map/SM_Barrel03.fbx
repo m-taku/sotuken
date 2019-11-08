@@ -9,10 +9,10 @@ FBXHeaderExtension:  {
 		Year: 2019
 		Month: 11
 		Day: 8
-		Hour: 1
-		Minute: 10
-		Second: 55
-		Millisecond: 313
+		Hour: 11
+		Minute: 44
+		Second: 15
+		Millisecond: 396
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:10:55.313"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:44:15.396"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_Barrel03.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:10:55.313"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:44:15.396"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -59,7 +59,7 @@ GlobalSettings:  {
 		P: "UnitScaleFactor", "double", "Number", "",2.54
 		P: "OriginalUnitScaleFactor", "double", "Number", "",2.54
 		P: "AmbientColor", "ColorRGB", "Color", "",0,0,0
-		P: "DefaultCamera", "KString", "", "", "Producer Perspective"
+		P: "DefaultCamera", "KString", "", "", "Producer Left"
 		P: "TimeMode", "enum", "", "",6
 		P: "TimeProtocol", "enum", "", "",2
 		P: "SnapOnFrameMode", "enum", "", "",0
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2577670297968, "", "Scene" {
+	Document: 2696301261424, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -319,7 +319,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2578362652000, "Geometry::", "Mesh" {
+	Geometry: 2696099152288, "Geometry::", "Mesh" {
 		Properties70:  {
 		}
 		Vertices: *732 {
@@ -554,7 +554,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 2578362646016, "Geometry::", "Mesh" {
+	Geometry: 2696099164800, "Geometry::", "Mesh" {
 		Properties70:  {
 		}
 		Vertices: *1416 {
@@ -897,7 +897,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 2578362650912, "Geometry::", "Mesh" {
+	Geometry: 2696099149568, "Geometry::", "Mesh" {
 		Properties70:  {
 		}
 		Vertices: *2802 {
@@ -1460,7 +1460,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 2578362647104, "Geometry::", "Mesh" {
+	Geometry: 2696099158816, "Geometry::", "Mesh" {
 		Properties70:  {
 		}
 		Vertices: *4611 {
@@ -2376,7 +2376,7 @@ Objects:  {
 			}
 		}
 	}
-	NodeAttribute: 2578323401968, "NodeAttribute::SM_Barrel03", "LodGroup" {
+	NodeAttribute: 2695333211440, "NodeAttribute::SM_Barrel03", "LodGroup" {
 		Properties70:  {
 			P: "ThresholdsUsedAsPercentage", "bool", "", "",1
 			P: "Thresholds|Level0", "Distance", "", "",10, "cm"
@@ -2388,7 +2388,7 @@ Objects:  {
 			P: "DisplayLevels|Level3", "enum", "", "",0
 		}
 	}
-	Model: 2578309040688, "Model::SM_Barrel03", "LodGroup" {
+	Model: 2695580018304, "Model::SM_Barrel03", "LodGroup" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -2400,7 +2400,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2578309060416, "Model::SM_Barrel03_LOD3", "Mesh" {
+	Model: 2695580053376, "Model::SM_Barrel03_LOD3", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -2413,7 +2413,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2578309062608, "Model::SM_Barrel03_LOD2", "Mesh" {
+	Model: 2695580070912, "Model::SM_Barrel03_LOD2", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -2426,7 +2426,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2578309066992, "Model::SM_Barrel03_LOD1", "Mesh" {
+	Model: 2695580062144, "Model::SM_Barrel03_LOD1", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -2439,7 +2439,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2578309042880, "Model::SM_Barrel03_LOD0", "Mesh" {
+	Model: 2695580081872, "Model::SM_Barrel03_LOD0", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -2452,7 +2452,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2578363150960, "Material::MI_WoodDetails", "" {
+	Material: 2696090789184, "Material::MI_WoodDetails", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -2474,7 +2474,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2578363150000, "Material::MI_Doors", "" {
+	Material: 2696090805984, "Material::MI_Doors", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -2496,37 +2496,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2578363143760, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090797824, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodDetails_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_WoodDetails_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodDetails_BC.TGA"
+		RelativeFilename: "tex\T_WoodDetails_BC.TGA"
 	}
-	Video: 2578363153840, "Video::EnvSamplerTex", "Clip" {
-		Type: "Clip"
-		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
-			P: "RelPath", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
-		}
-		UseMipMap: 0
-		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
-		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
-	}
-	Video: 2578363162000, "Video::EnvSamplerTex", "Clip" {
-		Type: "Clip"
-		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_Doors_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_Doors_BC.TGA"
-		}
-		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_Doors_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_Doors_BC.TGA"
-	}
-	Video: 2578363146640, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090801184, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
@@ -2536,7 +2516,27 @@ Objects:  {
 		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 	}
-	Texture: 2578363151440, "Texture::EnvSamplerTex", "" {
+	Video: 2696090781984, "Video::EnvSamplerTex", "Clip" {
+		Type: "Clip"
+		Properties70:  {
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_Doors_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_Doors_BC.TGA"
+		}
+		UseMipMap: 0
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_Doors_BC.TGA"
+		RelativeFilename: "tex\T_Doors_BC.TGA"
+	}
+	Video: 2696090806944, "Video::EnvSamplerTex", "Clip" {
+		Type: "Clip"
+		Properties70:  {
+			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
+			P: "RelPath", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
+		}
+		UseMipMap: 0
+		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
+		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
+	}
+	Texture: 2696090791584, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -2545,14 +2545,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodDetails_BC.TGA"
+		RelativeFilename: "tex\T_WoodDetails_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578363158640, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090798784, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -2568,7 +2568,7 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578363145200, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090805024, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -2577,14 +2577,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_Doors_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_Doors_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_Doors_BC.TGA"
+		RelativeFilename: "tex\T_Doors_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578363149040, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090796864, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -2600,13 +2600,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 2577673701456, "AnimStack::Take 001", "" {
+	AnimationStack: 2695583308544, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationLayer: 2578323403600, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2695333210624, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -2616,85 +2616,85 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_Barrel03, Model::RootNode
-	C: "OO",2578309040688,0
+	C: "OO",2695580018304,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2578323403600,2577673701456
+	C: "OO",2695333210624,2695583308544
 	
 	;NodeAttribute::SM_Barrel03, Model::SM_Barrel03
-	C: "OO",2578323401968,2578309040688
+	C: "OO",2695333211440,2695580018304
 	
 	;Model::SM_Barrel03_LOD0, Model::SM_Barrel03
-	C: "OO",2578309042880,2578309040688
+	C: "OO",2695580081872,2695580018304
 	
 	;Model::SM_Barrel03_LOD1, Model::SM_Barrel03
-	C: "OO",2578309066992,2578309040688
+	C: "OO",2695580062144,2695580018304
 	
 	;Model::SM_Barrel03_LOD2, Model::SM_Barrel03
-	C: "OO",2578309062608,2578309040688
+	C: "OO",2695580070912,2695580018304
 	
 	;Model::SM_Barrel03_LOD3, Model::SM_Barrel03
-	C: "OO",2578309060416,2578309040688
+	C: "OO",2695580053376,2695580018304
 	
 	;Geometry::, Model::SM_Barrel03_LOD3
-	C: "OO",2578362652000,2578309060416
+	C: "OO",2696099152288,2695580053376
 	
 	;Material::MI_WoodDetails, Model::SM_Barrel03_LOD3
-	C: "OO",2578363150960,2578309060416
+	C: "OO",2696090789184,2695580053376
 	
 	;Material::MI_Doors, Model::SM_Barrel03_LOD3
-	C: "OO",2578363150000,2578309060416
+	C: "OO",2696090805984,2695580053376
 	
 	;Geometry::, Model::SM_Barrel03_LOD2
-	C: "OO",2578362646016,2578309062608
+	C: "OO",2696099164800,2695580070912
 	
 	;Material::MI_WoodDetails, Model::SM_Barrel03_LOD2
-	C: "OO",2578363150960,2578309062608
+	C: "OO",2696090789184,2695580070912
 	
 	;Material::MI_Doors, Model::SM_Barrel03_LOD2
-	C: "OO",2578363150000,2578309062608
+	C: "OO",2696090805984,2695580070912
 	
 	;Geometry::, Model::SM_Barrel03_LOD1
-	C: "OO",2578362650912,2578309066992
+	C: "OO",2696099149568,2695580062144
 	
 	;Material::MI_WoodDetails, Model::SM_Barrel03_LOD1
-	C: "OO",2578363150960,2578309066992
+	C: "OO",2696090789184,2695580062144
 	
 	;Material::MI_Doors, Model::SM_Barrel03_LOD1
-	C: "OO",2578363150000,2578309066992
+	C: "OO",2696090805984,2695580062144
 	
 	;Geometry::, Model::SM_Barrel03_LOD0
-	C: "OO",2578362647104,2578309042880
+	C: "OO",2696099158816,2695580081872
 	
 	;Material::MI_WoodDetails, Model::SM_Barrel03_LOD0
-	C: "OO",2578363150960,2578309042880
+	C: "OO",2696090789184,2695580081872
 	
 	;Material::MI_Doors, Model::SM_Barrel03_LOD0
-	C: "OO",2578363150000,2578309042880
+	C: "OO",2696090805984,2695580081872
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodDetails
-	C: "OP",2578363151440,2578363150960, "DiffuseColor"
+	C: "OP",2696090791584,2696090789184, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodDetails
-	C: "OP",2578363158640,2578363150960, "NormalMap"
+	C: "OP",2696090798784,2696090789184, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363143760,2578363151440
+	C: "OO",2696090797824,2696090791584
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363153840,2578363158640
+	C: "OO",2696090801184,2696090798784
 	
 	;Texture::EnvSamplerTex, Material::MI_Doors
-	C: "OP",2578363145200,2578363150000, "DiffuseColor"
+	C: "OP",2696090805024,2696090805984, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_Doors
-	C: "OP",2578363149040,2578363150000, "NormalMap"
+	C: "OP",2696090796864,2696090805984, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363162000,2578363145200
+	C: "OO",2696090781984,2696090805024
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363146640,2578363149040
+	C: "OO",2696090806944,2696090796864
 }
 ;Takes section
 ;----------------------------------------------------

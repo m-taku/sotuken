@@ -14,22 +14,19 @@ PlayerMovement::~PlayerMovement()
 void PlayerMovement::DefaultMove()
 {
 	m_player->m_movespeed = CVector3::Zero();
-	float padinput_LX = g_pad[0].GetLStickXF()*100.0f;
-	float padinput_LY = g_pad[0].GetLStickYF()*100.0f;
-
-	if (!m_player->m_characon.IsOnGround())
-	{
-		m_addGravityTime += 1.0f*GetFrameDeltaTime();
-		m_fallSpeed += (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) / 2.0f;
-		m_player->m_movespeed.y -= m_fallSpeed;
-	}
-	else
+	float padinput_LX = g_pad[0].GetLStickXF();
+	float padinput_LY = g_pad[0].GetLStickYF();
+	m_addGravityTime += 1.0f*GetFrameDeltaTime();
+	m_fallSpeed += (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) / 2.0f;
+	m_player->m_movespeed.y -= m_fallSpeed;
+	if (m_player->m_characon.IsOnGround())
 	{
 		IsJump = false;
 		m_addGravityTime = 0.0f;
 		m_fallSpeed = 0.0f;
 		m_player->m_movespeed.y = 0.0f;
 		if (g_pad[0].IsTrigger(enButtonA)) IsJump = true;
+
 	}
 	if (IsJump) m_player->m_movespeed.y += m_jumpSpeed;
 

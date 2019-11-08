@@ -9,10 +9,10 @@ FBXHeaderExtension:  {
 		Year: 2019
 		Month: 11
 		Day: 8
-		Hour: 1
-		Minute: 28
-		Second: 4
-		Millisecond: 632
+		Hour: 11
+		Minute: 47
+		Second: 21
+		Millisecond: 405
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:28:04.632"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:47:21.405"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_CastleWindow02.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:28:04.632"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:47:21.405"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -59,7 +59,7 @@ GlobalSettings:  {
 		P: "UnitScaleFactor", "double", "Number", "",2.54
 		P: "OriginalUnitScaleFactor", "double", "Number", "",2.54
 		P: "AmbientColor", "ColorRGB", "Color", "",0,0,0
-		P: "DefaultCamera", "KString", "", "", "Producer Front"
+		P: "DefaultCamera", "KString", "", "", "Producer Perspective"
 		P: "TimeMode", "enum", "", "",6
 		P: "TimeProtocol", "enum", "", "",2
 		P: "SnapOnFrameMode", "enum", "", "",0
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2577670300784, "", "Scene" {
+	Document: 2696301276016, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2578362647104, "Geometry::", "Mesh" {
+	Geometry: 2696099168064, "Geometry::", "Mesh" {
 		Vertices: *216 {
 			a: 27.9288940429688,7.63679504394531,39.3994598388672,-19.7228698730469,7.63679504394531,30.7273025512695,-27.9288940429688,7.63679504394531,39.3994598388672,19.722900390625,7.63679504394531,30.7273025512695,27.9288940429688,7.63679504394531,-39.3994636535645,19.722900390625,7.63679504394531,-30.7273025512695,-27.9288940429688,7.63679504394531,-39.3994636535645,-19.7228698730469,7.63679504394531,-30.7273025512695,-1.29444885253906,7.63680267333984,30.727294921875,5.776611328125,7.63680267333984,-30.7273063659668,-1.29444885253906,7.63680267333984,-30.7273063659668,5.776611328125,7.63680267333984,30.7273101806641,5.776611328125,7.63680267333984,0.236793518066406,19.722900390625,7.63680267333984,0.236793518066406,19.722900390625,7.63680267333984,-6.83428192138672,5.776611328125,7.63680267333984,-6.83428192138672,-27.9288940429688,-7.63679504394531,39.3994598388672,27.9288940429688,-7.63679504394531,39.3994598388672,27.9288940429688,-7.63679504394531,-39.3994636535645,-27.9288940429688,-7.63679504394531,-39.3994636535645,-19.7228698730469,7.63680267333984,-16.3379135131836,-1.29444885253906,7.63680267333984,-16.3379135131836,-1.29444885253906,7.63680267333984,-23.4089889526367,-19.7228698730469,7.63680267333984,-23.4089889526367,-19.7228698730469,7.63680267333984,17.1700210571289,-1.29444885253906,7.63680267333984,17.1700210571289,-1.29444885253906,7.63680267333984,10.0989456176758,-19.7228698730469,7.63680267333984,10.0989456176758,-19.7228698730469,-7.63679504394531,-30.7273025512695,19.722900390625,-7.63679504394531,-30.7273025512695,-20.4754028320313,-7.63679504394531,-31.4798393249512,20.4754333496094,-7.63679504394531,-31.4798393249512,-27.1444854736328,-7.63679504394531,-38.6150512695313,27.14453125,-7.63679504394531,-38.6150512695313,5.776611328125,-3.59210968017578,0.236785888671875,19.722900390625,-3.59210968017578,0.236785888671875,5.776611328125,-3.59210968017578,-0.5157470703125,19.722900390625,-3.59210968017578,-0.5157470703125,5.776611328125,-3.59210968017578,-6.08174133300781,19.722900390625,-3.59210968017578,-6.08174133300781,
 5.776611328125,-3.59210968017578,-6.83428955078125,19.722900390625,-3.59210968017578,-6.83428955078125,-19.7228698730469,-3.59210968017578,-16.3379211425781,-1.29444885253906,-3.59210968017578,-16.3379211425781,-19.7228698730469,-3.59210968017578,-17.0904541015625,-1.29444885253906,-3.59210968017578,-17.0904541015625,-19.7228698730469,-3.59210968017578,-22.6564483642578,-1.29444885253906,-3.59210968017578,-22.6564483642578,-19.7228698730469,-3.59210968017578,-23.4089965820313,-1.29444885253906,-3.59210968017578,-23.4089965820313,-19.7228698730469,-3.59210968017578,17.1700134277344,-1.29444885253906,-3.59210968017578,17.1700134277344,-19.7228698730469,-3.59210968017578,16.41748046875,-1.29444885253906,-3.59210968017578,16.41748046875,-19.7228698730469,-3.59210968017578,10.8514862060547,-1.29444885253906,-3.59210968017578,10.8514862060547,-19.7228698730469,-3.59210968017578,10.0989379882813,-1.29444885253906,-3.59210968017578,10.0989379882813,19.722900390625,-7.63679504394531,30.7273025512695,-19.7228698730469,-7.63679504394531,30.7273025512695,20.4754333496094,-7.63679504394531,31.4798431396484,-20.4754028320313,-7.63679504394531,31.4798431396484,-27.1444854736328,-7.63679504394531,38.6150436401367,27.14453125,-7.63679504394531,38.6150436401367,5.776611328125,-3.59210968017578,30.727294921875,5.776611328125,-3.59210968017578,-30.7273063659668,5.02410888671875,-3.59210968017578,30.727294921875,5.02410888671875,-3.59210968017578,-30.7273063659668,-0.541915893554688,-3.59210968017578,30.7272872924805,-0.541915893554688,-3.59210968017578,-30.7273063659668,-1.29444885253906,-3.59210968017578,30.7272872924805,-1.29444885253906,-3.59210968017578,-30.7273063659668
@@ -434,7 +434,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2578309292768, "Model::SM_CastleWindow02", "Mesh" {
+	Model: 2695580081872, "Model::SM_CastleWindow02", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -446,7 +446,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2578363144720, "Material::MI_CastleWallDetails", "" {
+	Material: 2696090793504, "Material::MI_CastleWallDetails", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -468,17 +468,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2578363161040, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090805504, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_CastleWallDetails_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_CastleWallDetails_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_CastleWallDetails_BC.TGA"
+		RelativeFilename: "tex\T_CastleWallDetails_BC.TGA"
 	}
-	Video: 2578363148560, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090802624, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
@@ -488,7 +488,7 @@ Objects:  {
 		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 	}
-	Texture: 2578363159600, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090799264, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -497,14 +497,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_CastleWallDetails_BC.TGA"
+		RelativeFilename: "tex\T_CastleWallDetails_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578363146640, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090801664, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -520,13 +520,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 2578312435024, "AnimStack::Take 001", "" {
+	AnimationStack: 2695454347024, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 2578156347584, "AnimCurve::", "" {
+	AnimationCurve: 2695118624624, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -547,7 +547,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578156348224, "AnimCurve::", "" {
+	AnimationCurve: 2696299025776, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -568,7 +568,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578156346944, "AnimCurve::", "" {
+	AnimationCurve: 2696299029136, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -589,14 +589,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 2578312445008, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2695454348688, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 2578323400064, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2696306615472, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -606,43 +606,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_CastleWindow02, Model::RootNode
-	C: "OO",2578309292768,0
+	C: "OO",2695580081872,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2578323400064,2578312435024
+	C: "OO",2696306615472,2695454347024
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",2578312445008,2578323400064
+	C: "OO",2695454348688,2696306615472
 	
 	;Geometry::, Model::SM_CastleWindow02
-	C: "OO",2578362647104,2578309292768
+	C: "OO",2696099168064,2695580081872
 	
 	;Material::MI_CastleWallDetails, Model::SM_CastleWindow02
-	C: "OO",2578363144720,2578309292768
+	C: "OO",2696090793504,2695580081872
 	
 	;AnimCurveNode::R, Model::SM_CastleWindow02
-	C: "OP",2578312445008,2578309292768, "Lcl Rotation"
+	C: "OP",2695454348688,2695580081872, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::MI_CastleWallDetails
-	C: "OP",2578363159600,2578363144720, "DiffuseColor"
+	C: "OP",2696090799264,2696090793504, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_CastleWallDetails
-	C: "OP",2578363146640,2578363144720, "NormalMap"
+	C: "OP",2696090801664,2696090793504, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363161040,2578363159600
+	C: "OO",2696090805504,2696090799264
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363148560,2578363146640
+	C: "OO",2696090802624,2696090801664
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578156347584,2578312445008, "d|X"
+	C: "OP",2695118624624,2695454348688, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578156348224,2578312445008, "d|Y"
+	C: "OP",2696299025776,2695454348688, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578156346944,2578312445008, "d|Z"
+	C: "OP",2696299029136,2695454348688, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

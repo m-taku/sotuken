@@ -12,6 +12,10 @@ public:
 	bool Start();
 	void Update();
 	void Draw();
+	void SetPos(CVector3 position)
+	{
+		pos = position;
+	}
 private:
 	int No = 0;
 	PhysicsStaticObject m_poa;

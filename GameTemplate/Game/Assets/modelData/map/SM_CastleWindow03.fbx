@@ -9,10 +9,10 @@ FBXHeaderExtension:  {
 		Year: 2019
 		Month: 11
 		Day: 8
-		Hour: 1
-		Minute: 27
-		Second: 3
-		Millisecond: 653
+		Hour: 11
+		Minute: 48
+		Second: 1
+		Millisecond: 967
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:27:03.653"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:48:01.967"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_CastleWindow03.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:27:03.653"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:48:01.967"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2577670300784, "", "Scene" {
+	Document: 2695118367232, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2578362641120, "Geometry::", "Mesh" {
+	Geometry: 2696173708944, "Geometry::", "Mesh" {
 		Vertices: *72 {
 			a: 27.9288940429688,7.63679504394531,39.3994598388672,-19.7228698730469,7.63679504394531,30.7273025512695,-27.9288940429688,7.63679504394531,39.3994598388672,19.722900390625,7.63679504394531,30.7273025512695,27.9288940429688,7.63679504394531,-39.3994636535645,19.722900390625,7.63679504394531,-30.7273025512695,-27.9288940429688,7.63679504394531,-39.3994636535645,-19.7228698730469,7.63679504394531,-30.7273025512695,-27.9288940429688,-7.63679504394531,39.3994598388672,27.9288940429688,-7.63679504394531,39.3994598388672,27.9288940429688,-7.63679504394531,-39.3994636535645,-27.9288940429688,-7.63679504394531,-39.3994636535645,-19.7228698730469,-7.63679504394531,-30.7273025512695,19.722900390625,-7.63679504394531,-30.7273025512695,-20.4754028320313,-7.63679504394531,-31.4798393249512,20.4754333496094,-7.63679504394531,-31.4798393249512,-27.1444854736328,-7.63679504394531,-38.6150512695313,27.14453125,-7.63679504394531,-38.6150512695313,19.722900390625,-7.63679504394531,30.7273025512695,-19.7228698730469,-7.63679504394531,30.7273025512695,20.4754333496094,-7.63679504394531,31.4798431396484,-20.4754028320313,-7.63679504394531,31.4798431396484,-27.1444854736328,-7.63679504394531,38.6150436401367,27.14453125,-7.63679504394531,38.6150436401367
 		} 
@@ -429,7 +429,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2578309297152, "Model::SM_CastleWindow03", "Mesh" {
+	Model: 2695580077488, "Model::SM_CastleWindow03", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -441,7 +441,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2578363149040, "Material::MI_CastleWallDetails", "" {
+	Material: 2697454175296, "Material::MI_CastleWallDetails", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -463,17 +463,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2578363144720, "Video::EnvSamplerTex", "Clip" {
+	Video: 2697454185376, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_CastleWallDetails_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_CastleWallDetails_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_CastleWallDetails_BC.TGA"
+		RelativeFilename: "tex\T_CastleWallDetails_BC.TGA"
 	}
-	Video: 2578363159600, "Video::EnvSamplerTex", "Clip" {
+	Video: 2697454172416, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
@@ -483,7 +483,7 @@ Objects:  {
 		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 	}
-	Texture: 2578363146640, "Texture::EnvSamplerTex", "" {
+	Texture: 2697454175776, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -492,14 +492,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_CastleWallDetails_BC.TGA"
+		RelativeFilename: "tex\T_CastleWallDetails_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578363161040, "Texture::EnvSamplerTex", "" {
+	Texture: 2697454170016, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -515,13 +515,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 2577552424864, "AnimStack::Take 001", "" {
+	AnimationStack: 2696306434400, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 2578485446208, "AnimCurve::", "" {
+	AnimationCurve: 2697456077856, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -542,7 +542,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578485448128, "AnimCurve::", "" {
+	AnimationCurve: 2697456076256, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -563,7 +563,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578485446528, "AnimCurve::", "" {
+	AnimationCurve: 2696306564656, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -584,14 +584,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 2577552421328, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2695580864576, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 2578311449024, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2696092231088, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -601,43 +601,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_CastleWindow03, Model::RootNode
-	C: "OO",2578309297152,0
+	C: "OO",2695580077488,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2578311449024,2577552424864
+	C: "OO",2696092231088,2696306434400
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",2577552421328,2578311449024
+	C: "OO",2695580864576,2696092231088
 	
 	;Geometry::, Model::SM_CastleWindow03
-	C: "OO",2578362641120,2578309297152
+	C: "OO",2696173708944,2695580077488
 	
 	;Material::MI_CastleWallDetails, Model::SM_CastleWindow03
-	C: "OO",2578363149040,2578309297152
+	C: "OO",2697454175296,2695580077488
 	
 	;AnimCurveNode::R, Model::SM_CastleWindow03
-	C: "OP",2577552421328,2578309297152, "Lcl Rotation"
+	C: "OP",2695580864576,2695580077488, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::MI_CastleWallDetails
-	C: "OP",2578363146640,2578363149040, "DiffuseColor"
+	C: "OP",2697454175776,2697454175296, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_CastleWallDetails
-	C: "OP",2578363161040,2578363149040, "NormalMap"
+	C: "OP",2697454170016,2697454175296, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363144720,2578363146640
+	C: "OO",2697454185376,2697454175776
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363159600,2578363161040
+	C: "OO",2697454172416,2697454170016
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578485446208,2577552421328, "d|X"
+	C: "OP",2697456077856,2695580864576, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578485448128,2577552421328, "d|Y"
+	C: "OP",2697456076256,2695580864576, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578485446528,2577552421328, "d|Z"
+	C: "OP",2696306564656,2695580864576, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

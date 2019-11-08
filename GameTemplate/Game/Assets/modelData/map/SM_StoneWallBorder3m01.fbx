@@ -9,10 +9,10 @@ FBXHeaderExtension:  {
 		Year: 2019
 		Month: 11
 		Day: 8
-		Hour: 0
-		Minute: 43
-		Second: 19
-		Millisecond: 223
+		Hour: 11
+		Minute: 27
+		Second: 5
+		Millisecond: 925
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "07/11/2019 15:43:19.223"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:27:05.924"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_StoneWallBorder3m01.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "07/11/2019 15:43:19.223"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:27:05.924"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2578165256608, "", "Scene" {
+	Document: 2696099347680, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2577677662672, "Geometry::", "Mesh" {
+	Geometry: 2696093858400, "Geometry::", "Mesh" {
 		Vertices: *24 {
 			a: 75,9.01535415649414,7.01616668701172,-75,9.01536560058594,7.01615142822266,-75,-9.01537322998047,7.01615142822266,75,-9.01536560058594,7.01616668701172,-75,9.01536560058594,-7.01614379882813,-75,-9.01537322998047,-7.01614379882813,75,-9.01536560058594,-7.01615142822266,75,9.01535415649414,-7.01615142822266
 		} 
@@ -427,19 +427,19 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2578309288384, "Model::SM_StoneWallBorder3m01", "Mesh" {
+	Model: 2695574952224, "Model::SM_StoneWallBorder3m01", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "UDP3DSMAX", "KString", "", "U", "MapChannel:1 = UVmap_0&cr;&lf;MapChannel:2 = LightMapUV&cr;&lf;"
-			P: "MaxHandle", "int", "Integer", "UH",1
+			P: "MaxHandle", "int", "Integer", "UH",2
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2578307206880, "Material::MI_CastleWallDetails", "" {
+	Material: 2696090722464, "Material::MI_CastleWallDetails", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -461,17 +461,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2578307196800, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090733984, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_CastleWallDetails_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_CastleWallDetails_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_CastleWallDetails_BC.TGA"
+		RelativeFilename: "tex\T_CastleWallDetails_BC.TGA"
 	}
-	Video: 2578307195360, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090727744, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
@@ -481,7 +481,7 @@ Objects:  {
 		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 	}
-	Texture: 2578307187200, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090726784, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -490,14 +490,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_CastleWallDetails_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_CastleWallDetails_BC.TGA"
+		RelativeFilename: "tex\T_CastleWallDetails_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578307205920, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090747424, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -513,13 +513,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 2577213827280, "AnimStack::Take 001", "" {
+	AnimationStack: 2696299189040, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 2578155965392, "AnimCurve::", "" {
+	AnimationCurve: 2696299026256, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -540,7 +540,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578155968592, "AnimCurve::", "" {
+	AnimationCurve: 2696299022896, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -561,7 +561,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578155965552, "AnimCurve::", "" {
+	AnimationCurve: 2696299028496, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -582,14 +582,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 2577213821456, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2696299189248, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 2578318910512, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2696181368640, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -599,43 +599,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_StoneWallBorder3m01, Model::RootNode
-	C: "OO",2578309288384,0
+	C: "OO",2695574952224,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2578318910512,2577213827280
+	C: "OO",2696181368640,2696299189040
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",2577213821456,2578318910512
+	C: "OO",2696299189248,2696181368640
 	
 	;Geometry::, Model::SM_StoneWallBorder3m01
-	C: "OO",2577677662672,2578309288384
+	C: "OO",2696093858400,2695574952224
 	
 	;Material::MI_CastleWallDetails, Model::SM_StoneWallBorder3m01
-	C: "OO",2578307206880,2578309288384
+	C: "OO",2696090722464,2695574952224
 	
 	;AnimCurveNode::R, Model::SM_StoneWallBorder3m01
-	C: "OP",2577213821456,2578309288384, "Lcl Rotation"
+	C: "OP",2696299189248,2695574952224, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::MI_CastleWallDetails
-	C: "OP",2578307187200,2578307206880, "DiffuseColor"
+	C: "OP",2696090726784,2696090722464, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_CastleWallDetails
-	C: "OP",2578307205920,2578307206880, "NormalMap"
+	C: "OP",2696090747424,2696090722464, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578307196800,2578307187200
+	C: "OO",2696090733984,2696090726784
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578307195360,2578307205920
+	C: "OO",2696090727744,2696090747424
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578155965392,2577213821456, "d|X"
+	C: "OP",2696299026256,2696299189248, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578155968592,2577213821456, "d|Y"
+	C: "OP",2696299022896,2696299189248, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578155965552,2577213821456, "d|Z"
+	C: "OP",2696299028496,2696299189248, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

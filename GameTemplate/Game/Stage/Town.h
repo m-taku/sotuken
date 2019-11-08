@@ -5,7 +5,7 @@ class Town : public Stage_Base
 public:
 	Town();
 	~Town();
-
 	bool Init();
+	void DrawDebug();
 };
 
