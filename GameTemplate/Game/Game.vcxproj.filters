@@ -146,7 +146,9 @@
     <ClCompile Include="graphics\DeferredRender.cpp" />
     <ClCompile Include="Stage\QuestStage.cpp" />
     <ClCompile Include="Player\Player.cpp" />
-    <ClCompile Include="Player\Player_State.cpp" />
+    <ClCompile Include="Player\PlayerWait.cpp" />
+    <ClCompile Include="Player\PlayerState.cpp" />
+    <ClCompile Include="Player\PlayerTownMove.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -274,7 +276,10 @@
     <ClInclude Include="graphics\DeferredRender.h" />
     <ClInclude Include="Stage\QuestStage.h" />
     <ClInclude Include="Player\Player.h" />
-    <ClInclude Include="Player\Player_State.h" />
+    <ClInclude Include="Player\PlayerWait.h" />
+    <ClInclude Include="Player\PlayerState.h" />
+    <ClInclude Include="Player\PlayerTownMove.h" />
+    <ClInclude Include="Player\PlayerStateALL.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

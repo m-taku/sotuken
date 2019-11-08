@@ -1,6 +1,8 @@
 #pragma once
 #include "PlayerMovement.h"
 #include "CameraMovement.h"
+#include"PlayerStateALL.h"
+#include "PlayerState.h"
 
 class Player :public IGameObject
 {
@@ -10,12 +12,8 @@ public:
 /// ó‘Ô‚ÌEnum
 /// </summary>
 	enum State {
-		State_Attack,		//UŒ‚’†
-		State_Special,		//“ÁêUŒ‚’†
-		State_Move,			//ˆÚ“®’†
-		State_Guard,		//–hŒä’†
-		State_Hit,			//ƒqƒbƒg’†
-		State_did			//€–S’†
+		StateTownMove,			//ˆÚ“®’†
+		StateWate
 	};
 	Player();
 	~Player();
@@ -57,10 +55,10 @@ private:
 
 	CQuaternion m_rotation = CQuaternion::Identity();		//‰ñ“]
 	CMatrix m_mRot = CMatrix::Identity();					//‰ñ“]Œã‚Ì‘O‰EŒã‚ğæ“¾‚·‚é‚½‚ß‚Ìs—ñ
-
+	State m_statenum = StateTownMove;
+	PlayerState* m_state = nullptr;
 	SkinModel m_skinmodel;		//ƒXƒLƒ“ƒ‚ƒfƒ‹
 	CharacterController m_characon;		//ƒLƒƒƒ‰ƒRƒ“
-	PlayerMovement Movement;
 	CameraMovement cameraMovement;
 };
 

@@ -59,6 +59,7 @@ void TEstNPC::Update()
 			m_Text[0] = NewGO<Text_Box>(10, "Text_box");
 			m_Text[0]->SetText("クエストを受けますか？");
 			m_Text[0]->SetSpeed(2);
+			test->TransitionState(Player::StateWate);
 		}
 		if (m_Text[0] != NULL && m_Text[1] == NULL) {
 			if (m_Text[0]->Getend() && m_Text[1] == NULL)
@@ -91,6 +92,8 @@ void TEstNPC::Update()
 						m_Text[j] = NULL;
 					}
 				}
+
+				test->TransitionState(Player::StateTownMove);
 				bikkuri = false;
 			}
 		}

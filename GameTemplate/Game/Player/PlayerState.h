@@ -3,7 +3,7 @@
 /// プレイヤーステートの基底クラス
 /// </summary>
 class Player;
-class Player_State :public Noncopyable
+class PlayerState :public Noncopyable
 {
 public:
 	/// <summary>
@@ -12,11 +12,11 @@ public:
 	/// <param name="player">
 	///プレイヤーのポインタ。（Player*）
 	/// </param>
-	Player_State(Player* player);
+	PlayerState(Player* player);
 	/// <summary>
 	/// デストラクタ（）
 	/// </summary>
-	virtual ~Player_State();
+	virtual ~PlayerState();
 	/// <summary>
 	/// アップデート。
 	/// </summary>
