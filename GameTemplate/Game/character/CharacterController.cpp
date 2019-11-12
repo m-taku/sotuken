@@ -118,7 +118,6 @@ void CharacterController::Init(float radius, float height, const CVector3& posit
 	m_rigidBody.GetBody()->setUserIndex(enCollisionAttr_Character);
 	m_rigidBody.GetBody()->setCollisionFlags(btCollisionObject::CF_CHARACTER_OBJECT);
 	g_physics.AddRigidBody(m_rigidBody);
-
 }
 const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpeed)
 {
@@ -275,7 +274,6 @@ const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpee
 			else {
 				//ínñ è„Ç…Ç¢Ç»Ç¢ÅB
 				m_isOnGround = false;
-
 			}
 		}
 	}
