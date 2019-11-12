@@ -74,9 +74,12 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 			LigCamTarget[i] = GameCamTarget;
 			float len = CVector3(LigCamTarget[i] - GameCamPos).Length() + (m_shadowHight[i] * 0.5f);
 			m_shadowWidth[i] = (tanf(ViewAngle)*len)*2.0f;
+
 		}
-		m_shadowWidth[i] *= scaleX;
-		m_shadowHight[i] *= scaleY;
+		LigCamTarget[i] += CameraRight * (m_shadowWidth[i] * 0.5f) * CameraRight.Dot(direction);
+		LigCamTarget[i] += GameCamXZ * (m_shadowHight[i] * 0.5f) * GameCamXZ.Dot(direction);
+		/*m_shadowWidth[i] *= scaleX;
+		m_shadowHight[i] *= scaleY;*/
 
 		m_lightViewMatrix[i].MakeLookAt(
 			LigCamTarget[i] + direction * -LightCamHight,
