@@ -41,8 +41,8 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 	direction.Normalize();
 	float AvailableLen = g_graphicsEngine->GetShadowAvailableLength();
 	float ViewAngle = g_camera3D.GetViewAngle();
-	float scaleX = 1.0f - fabsf(CameraRight.Dot(direction));
-	float scaleY = 1.0f - fabsf(GameCamXZ.Dot(direction));
+	float scaleX = 1.0f - fabsf(CameraRight.Dot(direction*-1.0f));
+	float scaleY = 1.0f - fabsf(GameCamXZ.Dot(direction*-1.0f));
 
 	for (int i = 0; i < enMapNum; i++)
 	{
@@ -76,10 +76,11 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 			m_shadowWidth[i] = (tanf(ViewAngle)*len)*2.0f;
 
 		}
-		LigCamTarget[i] += CameraRight * (m_shadowWidth[i] * 0.5f) * CameraRight.Dot(direction);
-		LigCamTarget[i] += GameCamXZ * (m_shadowHight[i] * 0.5f) * GameCamXZ.Dot(direction);
 		/*m_shadowWidth[i] *= scaleX;
 		m_shadowHight[i] *= scaleY;*/
+		LigCamTarget[i] += CameraRight * (m_shadowWidth[i] * 0.5f) * CameraRight.Dot(direction*-1.0f);
+		LigCamTarget[i] += GameCamXZ * (m_shadowHight[i] * 0.5f) * GameCamXZ.Dot(direction*-1.0f);
+
 
 		m_lightViewMatrix[i].MakeLookAt(
 			LigCamTarget[i] + direction * -LightCamHight,
@@ -91,7 +92,7 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 			m_shadowWidth[i],
 			m_shadowHight[i],
 			1.0f,
-			LightCamHight
+			10.0f//LightCamHight*0.5f
 		);
 	}
 }
