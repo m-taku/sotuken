@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Town.h"
 #include"TEstNPC.h"
+#include"Player.h"
 
 
 Town::Town()
@@ -21,7 +22,7 @@ bool Town::Init()
 	swprintf_s(moveFilePath, L"Assets/modelData/%s.cmo", m_Name);
 	m_model.Init(L"Assets/modelData/unityChan.cmo");
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
-	swprintf_s(moveFilePath, L"Assets/level/%s.tkl", m_Name);
+	swprintf_s(moveFilePath, L"Assets/level/%s1.tkl", m_Name);
 	nra.UEInit(moveFilePath, [&](LevelObjectData objData) {
 		int result = 1;
 		result = wcscmp(L"Sphere", objData.name);
@@ -89,6 +90,12 @@ bool Town::Init()
 		//{
 		//	return true;
 		//}
+		result = wcscmp(L"Cube", objData.name);
+		if (result == 0)
+		{
+			FindGO<Player>("player")->SetPosition(objData.position);
+			return true;
+		}
 		result = wcscmp(L"unityChan", objData.name);
 		if (result == 0)
 		{
@@ -120,9 +127,8 @@ bool Town::Init()
 	//レベルデザインはここで
 #else
 
-#endif // DenugWorld
 
-
+#endif 
 	return true;
 }
 void Town::DrawDebug()

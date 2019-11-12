@@ -51,7 +51,7 @@ void Title_Menu::Update()
 		{
 			NewGO<Town>(0,"town");
 			NewGO<Test_GuestManager>(0,"tes");
-			NewGO<Player>(0, "player")->SetPosition({-400.0f,500.0f,0.0f});
+			NewGO<Player>(0, "player");
 			DeleteGO(this);
 			for (auto k : m_text)
 			{

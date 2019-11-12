@@ -10,6 +10,5 @@ public:
 	void DrawDebug();
 public:
 	TEstNPC* TestNPC;
-
 };
 
