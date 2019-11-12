@@ -10,6 +10,7 @@ Town::Town()
 
 Town::~Town()
 {
+	DeleteGO(TestNPC);
 }
 bool Town::Init()
 {
@@ -17,9 +18,9 @@ bool Town::Init()
 #ifdef DenugWorld
 	//’n–Ê‚¾‚¯–¼‘O‚Ì‚Ý
 	wchar_t moveFilePath[256];
-	//swprintf_s(moveFilePath, L"Assets/modelData/%s.cmo", m_Name);
-	//m_model.Init(moveFilePath);
-	//m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
+	swprintf_s(moveFilePath, L"Assets/modelData/%s.cmo", m_Name);
+	m_model.Init(L"Assets/modelData/unityChan.cmo");
+	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	swprintf_s(moveFilePath, L"Assets/level/%s.tkl", m_Name);
 	nra.UEInit(moveFilePath, [&](LevelObjectData objData) {
 		int result = 1;
@@ -91,8 +92,8 @@ bool Town::Init()
 		result = wcscmp(L"unityChan", objData.name);
 		if (result == 0)
 		{
-			NewGO<TEstNPC>(0, "dnea")->SetPos(objData.position);
-
+			TestNPC = NewGO<TEstNPC>(0, "dnea");
+			TestNPC->SetPos(objData.position);
 			return true;
 		}
 		result = wcscmp(L"SM_Grass01", objData.name);

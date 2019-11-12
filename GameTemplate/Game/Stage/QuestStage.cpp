@@ -25,7 +25,7 @@ bool QuestStage::Init() {
 		result = wcscmp(L"rock_boulder_b1", objData.name);
 		if (result == 0)
 		{
-			return false;
+			return true;
 		}
 		return true;
 	});

@@ -18,13 +18,18 @@ public:
 	bool Start()
 	{
 		Init();
-		m_directioinLight.SetColor(CVector4::White());
-		m_directioinLight.SetDirection(CVector3::Down());
-		m_pointLight.SetColor(CVector4::White());
-		m_pointLight.SetPosition(CVector3::Zero() + CVector3::Up()*150.0f);
-		m_pointLight.SetAttn({ 300.0f,1.0f,0.0f,0.0f });
-		smLightManager().AddLight(&m_directioinLight);
-		smLightManager().AddLight(&m_pointLight);
+		if (momomomo <= 0) {
+			m_directioinLight = new DirectionLight;
+			m_directioinLight->SetColor(CVector4::White());
+			m_directioinLight->SetDirection(CVector3::Down());
+			m_pointLight = new PointLight;
+			m_pointLight->SetColor(CVector4::White());
+			m_pointLight->SetPosition(CVector3::Zero() + CVector3::Up()*150.0f);
+			m_pointLight->SetAttn({ 300.0f,1.0f,0.0f,0.0f });
+			smLightManager().AddLight(m_directioinLight);
+			smLightManager().AddLight(m_pointLight);
+			momomomo++;
+		}
 #ifdef DenugWorld
 
 #else
@@ -155,7 +160,8 @@ protected:
 	PhysicsStaticObject m_physicsStaticObject;	//!<静的物理オブジェクト。
 	wchar_t* m_Name;
 	Level nra;
-	DirectionLight m_directioinLight;
-	PointLight m_pointLight; 
+	//仮の対応絶対直せーーー
+	DirectionLight* m_directioinLight;
+	PointLight* m_pointLight; 
 };
 
