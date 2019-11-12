@@ -9,6 +9,10 @@ enum EnFbxUpAxis {
 	enFbxUpAxisY,		//Y-up
 	enFbxUpAxisZ,		//Z-up
 };
+enum EnDrawMode {
+	enNormal,
+	enShadow
+};
 /*!
 *@brief	スキンモデルクラス。
 */
@@ -52,7 +56,7 @@ public:
 	*@param[in]	projMatrix		プロジェクション行列。
 	*  カメラ座標系の3Dモデルをスクリーン座標系に変換する行列です。
 	*/
-	void Draw( CMatrix viewMatrix, CMatrix projMatrix );
+	void Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix );
 	/*!
 	*@brief	スケルトンの取得。
 	*/
@@ -72,6 +76,17 @@ public:
 			}
 		}
 	}
+
+	bool IsShadowCaster()
+	{
+		return m_isShadowCaster;
+	}
+
+	void EnableShadowCaster(bool frag)
+	{
+		m_isShadowCaster = frag;
+	}
+
 	/*!
 	*@brief	SRVのレジスタ番号。
 	*/
@@ -107,5 +122,6 @@ private:
 	CMatrix				m_worldMatrix;					//!<ワールド行列。
 	DirectX::Model*		m_modelDx;						//!<DirectXTKが提供するモデルクラス。
 	ID3D11SamplerState* m_samplerState = nullptr;		//!<サンプラステート。
+	bool m_isShadowCaster = false;
 };
 

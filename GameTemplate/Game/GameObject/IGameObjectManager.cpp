@@ -36,6 +36,7 @@ namespace smEngine {
 			}
 		}
 		smGameCamera().Update();
+		smLightManager().Update();
 		g_graphicsEngine->GetDeferredRender().Update();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
@@ -43,15 +44,16 @@ namespace smEngine {
 				Object->DrawWrapper();
 			}
 		}
-		//g_physics.DebubDrawWorld();
-		smLightManager().Update();
+		smLightManager().SendBuffer();
 		g_graphicsEngine->GetDeferredRender().Draw();
+		smLightManager().ShadowRender();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
 				Object->PostDrawWrapper();
 			}
 		}
+		g_physics.DebubDrawWorld();
 
 		g_graphicsEngine->ChangeBuckBuffer();
 		g_graphicsEngine->PostEffectDraw();

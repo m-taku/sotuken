@@ -56,6 +56,11 @@ public:
 	{
 		return m_up;
 	}
+
+	const float& GetViewAngle() const
+	{
+		return m_viewAngle;
+	}
 	/*!
 	 * @brief	‹“_‚ğİ’èB
 	 */
@@ -100,7 +105,7 @@ public:
 	}
 private:
 	void MathVector() {
-		m_forward.Subtract(m_target, m_position);
+		m_forward = m_target - m_position;
 		m_forward.Normalize();
 		m_right.Cross(m_up, m_forward);
 		m_right.Normalize();

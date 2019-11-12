@@ -15,6 +15,10 @@ public:
 	void Update();
 	void Draw();
 	void Release();
+	ID3D11ShaderResourceView* GetWorldSRV()
+	{
+		return m_renderTarget[enGBuffer_World].GetShaderResourceView();
+	}
 private:
 	RenderTarget m_renderTarget[enGBuffer_Num];
 	PostEffect m_postEffect;

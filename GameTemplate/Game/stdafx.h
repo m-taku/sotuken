@@ -36,6 +36,12 @@
 #include "graphics/PostEffect/PostEffect.h"
 #include "graphics/ConstantBuffer.h"
 #include "graphics/StructuredBuffer.h"
+
+#include "graphics/SkinModel.h"
+#include "graphics/Skeleton.h"
+
+#include "graphics/Shadow/ShadowMap.h"
+#include "graphics/Shadow/ShadowManager.h"
 #include "graphics/Light/Light.h"
 #include "graphics/Light/LightBase.h"
 #include "graphics/Light/DirectionLight.h"
@@ -43,11 +49,8 @@
 #include "graphics/Light/LightManager.h"
 #include "graphics/DeferredRender.h"
 
+
 #include "graphics/GraphicsEngine.h"
-
-
-#include "graphics/SkinModel.h"
-#include "graphics/Skeleton.h"
 
 #include "graphics/animation/Animation.h"
 #include "graphics/animation/AnimationClip.h"

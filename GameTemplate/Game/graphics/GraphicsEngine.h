@@ -51,6 +51,31 @@ public:
 	{
 		return m_deferredRender;
 	}
+
+	RenderTarget& GetMainRenderTarget()
+	{
+		return m_mainRenderTarget;
+	}
+
+	void SetShadowMapHight(float hight)
+	{
+		m_shadowMapHight = hight;
+	}
+
+	void SetShadowAvailableLength(float length)
+	{
+		m_shadowAvailableLength = length;
+	}
+
+	float GetShadowMapHight()
+	{
+		return m_shadowMapHight;
+	}
+	
+	float GetShadowAvailableLength()
+	{
+		return m_shadowAvailableLength;
+	}
 private:
 	D3D_FEATURE_LEVEL		m_featureLevel;				//Direct3D デバイスのターゲットとなる機能セット。
 	ID3D11Device*			m_pd3dDevice = NULL;		//D3D11デバイス。
@@ -63,6 +88,8 @@ private:
 	RenderTarget			m_mainRenderTarget;
 	PostEffect m_posteffect;
 	DeferredRender m_deferredRender;
+	float m_shadowMapHight = 1000.0f;
+	float m_shadowAvailableLength = 10000.0f;
 };
 
 extern GraphicsEngine* g_graphicsEngine;			//グラフィックスエンジン

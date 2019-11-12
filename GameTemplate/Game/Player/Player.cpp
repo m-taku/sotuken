@@ -5,50 +5,42 @@
 
 Player::Player()
 {
+	Movement.SetPlayer(this);
+
 }
 
 
 Player::~Player()
 {
+	delete &Movement;
 	delete &cameraMovement;
 }
-void Player::TransitionState(State state)
-{
-	delete m_state;
-	switch (state)
-	{
-	case StateTownMove:
-		m_state = new PlayerTownMove(this);
-		break;
-	case StateWate:
-		m_state = new PlayerWait(this);
-		break;
-	default:
-		break;
-	}
-	m_statenum = state;
-	//m_model.UpdateWorldMatrix(m_position, m_rotation, CVector3::One());
-	//m_animation.Update(GetTime().GetFrameTime());
-}
+
 bool Player::Start()
 {
-	TransitionState(StateTownMove);
 	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
-	m_position.y += 500.0f;
-	m_position.x -= 300.0f;
+	m_skinmodel.EnableShadowCaster(true);
 	m_characon.Init(
 		50.0f,
 		80.0f,
 		m_position
 	);
-	CVector3 position = m_position + (m_forward * -100.0f + m_up * 100.0f);
+	CVector3 position = m_position + (m_forward * -1000.0f + m_up * 100.0f);
 	smGameCamera().SetPosition(position);
+	smGameCamera().SetTarget(m_position + m_up * 100.0f);
+
+	DirectionLight* plight = new DirectionLight;
+	plight->SetColor({ 1.0f,1.0f,1.0f,1.0f });
+	plight->SetDirection(CVector3::Down());
+	plight->SetEnableShadow(true);
+	smLightManager().AddLight(plight);
 	return true;
 }
 
 void Player::Update()
 {
-	m_state->Update();
+	Movement.DefaultMove();
+
 	CVector3 move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	move = m_position - move;
@@ -59,6 +51,7 @@ void Player::Update()
 void Player::Draw()
 {
 	m_skinmodel.Draw(
+		enNormal,
 		smGameCamera().GetCameraViewMatrix(),
 		smGameCamera().GetCameraProjectionMatrix()
 	);

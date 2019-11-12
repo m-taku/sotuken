@@ -18,6 +18,7 @@ bool TEstNPC::Start()
 {
 	//cmoファイルの読み込み。
 	m_model.Init(L"Assets/modelData/unityChan.cmo"); 
+	m_model.EnableShadowCaster(true);
 	test =FindGO<Player>("player");
 	m_bikkuri.Init(L"Assets/modelData/bikkuri.cmo");
 	//m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
@@ -104,9 +105,9 @@ void TEstNPC::Update()
 }
 void TEstNPC::Draw()
 {
-	m_model.Draw(g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+	m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 	if (bikkuri)
 	{
-		m_bikkuri.Draw(g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+		m_bikkuri.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 	}
 }
