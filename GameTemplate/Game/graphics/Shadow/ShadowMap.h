@@ -1,7 +1,7 @@
 #pragma once
 class ShadowMap
 {
-	
+
 public:
 	ShadowMap();
 	~ShadowMap();
@@ -42,5 +42,8 @@ private:
 	};
 
 	ConstantBuffer m_cb;
+	float m_cascadePerHigh = 0.2f;
+	float m_cascadePerMidle = 0.5f;
+	float m_cascadePerLow = 0.3f;
 };
 
