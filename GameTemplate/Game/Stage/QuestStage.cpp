@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "QuestStage.h"
-
+#include"Player.h"
+#include"Enemy.h"
 
 QuestStage::QuestStage()
 {
@@ -19,13 +20,25 @@ bool QuestStage::Init() {
 	swprintf_s(moveFilePath, L"Assets/modelData/%s.cmo", m_Name);
 	m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
-	swprintf_s(moveFilePath, L"Assets/level/%s.tkl", m_Name);
+	swprintf_s(moveFilePath, L"Assets/level/%s1.tkl", m_Name);
 	nra.UEInit(moveFilePath, [&](LevelObjectData objData) {
 		int result = 1;
 		result = wcscmp(L"rock_boulder_b1", objData.name);
 		if (result == 0)
 		{
 			return true;
+		}
+		result = wcscmp(L"Cube", objData.name);
+		if (result == 0)
+		{
+			FindGO<Player>("player")->SetPosition(objData.position);
+			return true;
+		}
+		result = wcscmp(L"unityChan", objData.name);
+		if (result == 0)
+		{
+			NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			return false;
 		}
 		return true;
 	});

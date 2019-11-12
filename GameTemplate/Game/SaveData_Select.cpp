@@ -6,6 +6,7 @@
 #include "Player.h"
 #include"TestSave.h"
 #include"TestSeve_Player.h"
+#include"Test_GuestManager.h"
 #include"Test_PlayerData.h"
 #include"Stage/Town.h"
 
@@ -71,6 +72,8 @@ void SaveData_Select::Update()
 	if (g_pad[0].IsTrigger(enButtonA))
 	{
 		NewGO<Town>(0, "test");
+		NewGO<Test_GuestManager>(0, "tes");
+		NewGO<Player>(0, "player");
 		DeleteGO(this);
 		for (auto k : m_text)
 		{
