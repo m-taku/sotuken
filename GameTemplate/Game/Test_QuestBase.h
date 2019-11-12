@@ -24,7 +24,9 @@ public:
 		mosternum
 	};
 	bool Start();
+	//void Update();
 	void PostDraw();
+	void CreateQuest();
 	void ChangePaper()
 	{
 		bool ja = true;
@@ -46,6 +48,7 @@ protected:
 private:
 	Sprite m_sprite[2];
 	ShaderResourceView m_srv[2];
+	void* monsu = nullptr;
 	CVector2 m_Textpos[num] = {
 		{0.0f,400.0f},
 	{ 0.0f,-120.0f },

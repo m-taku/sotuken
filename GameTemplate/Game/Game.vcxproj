@@ -103,7 +103,6 @@
     <ClCompile Include="character\CharacterController.cpp" />
     <ClCompile Include="graphics\DeferredRender.cpp" />
     <ClCompile Include="graphics\Light\DirectionLight.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameFont\GameFont.cpp" />
     <ClCompile Include="GameObject\IGameObject.cpp" />
@@ -147,6 +146,7 @@
     <ClCompile Include="graphics\PostEffect\PostEffect.cpp" />
     <ClCompile Include="graphics\Light\PointLight.cpp" />
     <ClCompile Include="Player\PlayerState.cpp" />
+    <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="Stage\QuestStage.cpp" />
     <ClCompile Include="SaveData_Select.cpp" />
     <ClCompile Include="Stage\Stage_Base.cpp" />
@@ -176,7 +176,6 @@
     <ClInclude Include="character\CharacterController.h" />
     <ClInclude Include="graphics\DeferredRender.h" />
     <ClInclude Include="graphics\Light\DirectionLight.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameFont\GameFont.h" />
     <ClInclude Include="GameObject\IGameObject.h" />
@@ -225,6 +224,7 @@
     <ClInclude Include="graphics\PostEffect\PostEffect.h" />
     <ClInclude Include="graphics\Light\PointLight.h" />
     <ClInclude Include="Player\PlayerState.h" />
+    <ClInclude Include="QuestManager.h" />
     <ClInclude Include="Stage\QuestStage.h" />
     <ClInclude Include="SaveData_Select.h" />
     <ClInclude Include="Stage\Stage_Base.h" />

@@ -7,7 +7,7 @@
 #include"TestSave.h"
 #include"TestSeve_Player.h"
 #include"Test_PlayerData.h"
-#include"Game.h"
+#include"Stage/Town.h"
 
 SaveData_Select::SaveData_Select()
 {
@@ -70,7 +70,7 @@ void SaveData_Select::Update()
 	}
 	if (g_pad[0].IsTrigger(enButtonA))
 	{
-		NewGO<Game>(0);
+		NewGO<Town>(0, "test");
 		DeleteGO(this);
 		for (auto k : m_text)
 		{

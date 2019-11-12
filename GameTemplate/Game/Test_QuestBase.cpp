@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Test_QuestBase.h"
 #include"Text_Box/Text_Box.h"
+#include "Stage/QuestStage.h"
+#include"Player.h"
+#include"Stage/Town.h"
 
 
 Test_QuestBase::Test_QuestBase()
@@ -32,6 +35,20 @@ bool Test_QuestBase::Start()
 	m_sprite[1].SetMulColor({ 1.0f,1.0f,2.0f,1.0f });
 	m_isStart = true;
 	return true;
+}
+void Test_QuestBase::CreateQuest()
+{
+	NewGO<QuestStage>(0, "kouya");
+	//‘åŒ^ƒ‚ƒ“ƒXƒ^[‚Ì”­¶‚Í‚±‚±‚Å‚â‚é
+
+	//¬Œ^‚Í‚Ç‚Á‚¿‚Å‚à‚¢‚¢‚©‚È``
+	
+	//ƒNƒGƒXƒg‚ÉŠÖŒW‚·‚éŒ¸Z“™‚ ‚ê‚Î‚±‚±‚Å‚·‚éB
+	auto pla = FindGO<Player>("player");
+	pla->SetPosition({ 100.0f,300.0f,0.0f });
+
+	//’¬‚ğÁ‹‚·‚é
+	DeleteGO(FindGO<Town>("town"));
 }
 void Test_QuestBase::PostDraw()
 {

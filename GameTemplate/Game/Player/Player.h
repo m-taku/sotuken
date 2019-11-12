@@ -45,6 +45,10 @@ public:
 	{
 		return m_rotation;
 	}
+	void SetPosition(const CVector3& pos)
+	{
+		m_position = pos;
+	}
 private:
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度

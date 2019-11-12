@@ -134,7 +134,6 @@
     <ClCompile Include="Test_QuestBase.cpp" />
     <ClCompile Include="Test_Quest.cpp" />
     <ClCompile Include="Test_GuestManager.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="graphics\PostEffect\PostEffect.cpp" />
     <ClCompile Include="graphics\Light\LightBase.cpp" />
     <ClCompile Include="graphics\Light\DirectionLight.cpp" />
@@ -149,6 +148,7 @@
     <ClCompile Include="Player\PlayerWait.cpp" />
     <ClCompile Include="Player\PlayerState.cpp" />
     <ClCompile Include="Player\PlayerTownMove.cpp" />
+    <ClCompile Include="QuestManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -263,7 +263,6 @@
     <ClInclude Include="Test_Quest.h" />
     <ClInclude Include="Test_GuestManager.h" />
     <ClInclude Include="Test_QuestData.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="graphics\PostEffect\PostEffect.h" />
     <ClInclude Include="graphics\Light\LightBase.h" />
     <ClInclude Include="graphics\Light\DirectionLight.h" />
@@ -280,6 +279,7 @@
     <ClInclude Include="Player\PlayerState.h" />
     <ClInclude Include="Player\PlayerTownMove.h" />
     <ClInclude Include="Player\PlayerStateALL.h" />
+    <ClInclude Include="QuestManager.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
