@@ -44,10 +44,14 @@ public:
 	const CQuaternion& GetRotation() const
 	{
 		return m_rotation;
+	}void SetMovespeed(const CVector3& move)
+	{
+		m_movespeed = move;
 	}
 	void SetPosition(const CVector3& pos)
 	{
 		m_position = pos;
+		m_characon.SetPosition(pos);
 	}
 private:
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
