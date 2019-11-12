@@ -31,5 +31,5 @@ void Test::Update()
 }
 void Test::Draw()
 {
-	m_model.Draw(g_camera3D.GetViewMatrix(),g_camera3D.GetProjectionMatrix());
+	m_model.Draw(enNormal, g_camera3D.GetViewMatrix(),g_camera3D.GetProjectionMatrix());
 }

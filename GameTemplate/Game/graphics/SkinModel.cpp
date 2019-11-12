@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "SkinModel.h"
+#include "SkinModelEffect.h"
 #include "SkinModelDataManager.h"
 
 SkinModel::~SkinModel()
@@ -12,6 +13,8 @@ SkinModel::~SkinModel()
 		//サンプラステートを解放。
 		m_samplerState->Release();
 	}
+
+	smLightManager().DeleteSkinModel(this);
 }
 void SkinModel::Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis)
 {
@@ -28,6 +31,8 @@ void SkinModel::Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis)
 	m_modelDx = g_skinModelDataManager.Load(filePath, m_skeleton);
 
 	m_enFbxUpAxis = enFbxUpAxis;
+
+	smLightManager().AddSkinModel(this);
 }
 void SkinModel::InitSkeleton(const wchar_t* filePath)
 {
@@ -40,7 +45,7 @@ void SkinModel::InitSkeleton(const wchar_t* filePath)
 	skeletonFilePath.replace(pos, 4, L".tks");
 	//tksファイルをロードする。
 	bool result = m_skeleton.Load(skeletonFilePath.c_str());
-	if ( result == false ) {
+	if (result == false) {
 		//スケルトンが読み込みに失敗した。
 		//アニメーションしないモデルは、スケルトンが不要なので
 		//読み込みに失敗することはあるので、ログ出力だけにしておく。
@@ -89,9 +94,9 @@ void SkinModel::UpdateWorldMatrix(CVector3 position, CQuaternion rotation, CVect
 	}
 	CMatrix transMatrix, rotMatrix, scaleMatrix;
 	//平行移動行列を作成する。
-	transMatrix.MakeTranslation( position );
+	transMatrix.MakeTranslation(position);
 	//回転行列を作成する。
-	rotMatrix.MakeRotationFromQuaternion( rotation );
+	rotMatrix.MakeRotationFromQuaternion(rotation);
 	rotMatrix.Mul(mBias, rotMatrix);
 	//拡大行列を作成する。
 	scaleMatrix.MakeScaling(scale);
@@ -104,7 +109,7 @@ void SkinModel::UpdateWorldMatrix(CVector3 position, CQuaternion rotation, CVect
 	//スケルトンの更新。
 	m_skeleton.Update(m_worldMatrix);
 }
-void SkinModel::Draw(CMatrix viewMatrix, CMatrix projMatrix)
+void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix)
 {
 	DirectX::CommonStates state(g_graphicsEngine->GetD3DDevice());
 
@@ -123,6 +128,11 @@ void SkinModel::Draw(CMatrix viewMatrix, CMatrix projMatrix)
 	d3dDeviceContext->PSSetSamplers(0, 1, &m_samplerState);
 	//ボーン行列をGPUに転送。
 	m_skeleton.SendBoneMatrixArrayToGPU();
+
+	FindMesh([&](auto& ef) {
+		ModelEffect* effect = (ModelEffect*)ef->effect.get();
+		effect->SetDrawMode(drawMode);
+	});
 
 	//描画。
 	m_modelDx->Draw(

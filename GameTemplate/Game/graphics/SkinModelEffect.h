@@ -14,12 +14,13 @@ protected:
 	Shader m_psShader;
 	bool isSkining;
 	ID3D11ShaderResourceView* m_albedoTex = nullptr;
+	EnDrawMode m_drawMode = enNormal;
 
 public:
 	ModelEffect()
 	{
 		m_psShader.Load("Assets/shader/model.fx", "PSMain", Shader::EnType::PS);
-		
+
 		m_pPSShader = &m_psShader;
 	}
 	virtual ~ModelEffect()
@@ -28,6 +29,9 @@ public:
 			m_albedoTex->Release();
 		}
 	}
+
+
+
 	void __cdecl Apply(ID3D11DeviceContext* deviceContext) override;
 
 	void __cdecl GetVertexShaderBytecode(void const** pShaderByteCode, size_t* pByteCodeLength) override
@@ -43,12 +47,16 @@ public:
 	{
 		m_materialName = matName;
 	}
-	
+
 	bool EqualMaterialName(const wchar_t* name) const
 	{
 		return wcscmp(name, m_materialName.c_str()) == 0;
 	}
-	
+
+	void SetDrawMode(EnDrawMode mode)
+	{
+		m_drawMode = mode;
+	}
 };
 /*!
 *@brief
@@ -74,7 +82,7 @@ public:
 		wchar_t hoge[256];
 		GetCurrentDirectoryW(256, hoge);
 		m_vsShader.Load("Assets/shader/model.fx", "VSMainSkin", Shader::EnType::VS);
-		
+
 		m_pVSShader = &m_vsShader;
 		isSkining = true;
 	}

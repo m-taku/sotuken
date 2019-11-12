@@ -36,6 +36,7 @@ namespace smEngine {
 			}
 		}
 		smGameCamera().Update();
+		smLightManager().Update();
 		g_graphicsEngine->GetDeferredRender().Update();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
@@ -43,8 +44,9 @@ namespace smEngine {
 				Object->DrawWrapper();
 			}
 		}
-		smLightManager().Update();
+		smLightManager().SendBuffer();
 		g_graphicsEngine->GetDeferredRender().Draw();
+		smLightManager().ShadowRender();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{

@@ -19,13 +19,21 @@ Player::~Player()
 bool Player::Start()
 {
 	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
+	m_skinmodel.EnableShadowCaster(true);
 	m_characon.Init(
 		50.0f,
 		80.0f,
 		m_position
 	);
-	CVector3 position = m_position + (m_forward * -100.0f + m_up * 100.0f);
+	CVector3 position = m_position + (m_forward * -1000.0f + m_up * 100.0f);
 	smGameCamera().SetPosition(position);
+	smGameCamera().SetTarget(m_position + m_up * 100.0f);
+
+	DirectionLight* plight = new DirectionLight;
+	plight->SetColor({ 1.0f,1.0f,1.0f,1.0f });
+	plight->SetDirection(CVector3::Down());
+	plight->SetEnableShadow(true);
+	smLightManager().AddLight(plight);
 	return true;
 }
 
@@ -43,6 +51,7 @@ void Player::Update()
 void Player::Draw()
 {
 	m_skinmodel.Draw(
+		enNormal,
 		smGameCamera().GetCameraViewMatrix(),
 		smGameCamera().GetCameraProjectionMatrix()
 	);

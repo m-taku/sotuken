@@ -145,6 +145,8 @@
     <ClCompile Include="graphics\Light\LightManager.cpp" />
     <ClCompile Include="graphics\Light\PointLight.cpp" />
     <ClCompile Include="graphics\DeferredRender.cpp" />
+    <ClCompile Include="graphics\Shadow\ShadowMap.cpp" />
+    <ClCompile Include="graphics\Shadow\ShadowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -271,6 +273,8 @@
     <ClInclude Include="graphics\Light\LightManager.h" />
     <ClInclude Include="graphics\Light\PointLight.h" />
     <ClInclude Include="graphics\DeferredRender.h" />
+    <ClInclude Include="graphics\Shadow\ShadowMap.h" />
+    <ClInclude Include="graphics\Shadow\ShadowManager.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -278,7 +282,6 @@
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\jiman.FBX" />
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
-    <MeshContentTask Include="Assets\modelData\StarSparrow.FBX" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />
@@ -290,8 +293,5 @@
     <ImageContentTask Include="Assets\sprite\Monster\monnsu.png" />
     <ImageContentTask Include="Assets\sprite\Monster\monnsu2.png" />
     <ImageContentTask Include="Assets\sprite\Monster\monnsu3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\modelData\StarSparrow.cmo" />
   </ItemGroup>
 </Project>

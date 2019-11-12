@@ -3,18 +3,9 @@
  */
 
 
- /////////////////////////////////////////////////////////////
- // Shader Resource View
- /////////////////////////////////////////////////////////////
- //アルベドテクスチャ。
-Texture2D<float4> albedoTexture : register(t0);
-//ボーン行列
-StructuredBuffer<float4x4> boneMatrix : register(t1);
 
-/////////////////////////////////////////////////////////////
-// SamplerState
-/////////////////////////////////////////////////////////////
-sampler Sampler : register(s0);
+ //ボーン行列
+StructuredBuffer<float4x4> boneMatrix : register(t1);
 
 /////////////////////////////////////////////////////////////
 // 定数バッファ。
@@ -68,18 +59,6 @@ struct VSInputNmTxWeights
  */
 struct PSInput {
 	float4 Position 	: SV_POSITION;
-	float3 Normal		: NORMAL;
-	float3 Tangent		: TANGENT;
-	float2 TexCoord 	: TEXCOORD0;
-	float3 WorldPos		: TEXCOORD1;
-};
-
-struct PSOutput {
-	float4 diffuse : SV_Target0;
-	float4 normal  : SV_Target1;
-	float4 world   : SV_Target2;
-	float4 depth   : SV_Target3;
-	float4 shadow  : SV_Target4;
 };
 /*!
  *@brief	スキン行列を計算。
@@ -105,13 +84,9 @@ PSInput VSMain(VSInputNmTxVcTangent In)
 {
 	PSInput psInput = (PSInput)0;
 	float4 pos = mul(mWorld, In.Position);
-	psInput.WorldPos = pos.xyz;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
-	psInput.TexCoord = In.TexCoord;
-	psInput.Normal = normalize(mul(mWorld, In.Normal));
-	psInput.Tangent = normalize(mul(mWorld, In.Tangent));
 	return psInput;
 }
 
@@ -146,39 +121,13 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 		//mulは乗算命令。
 		pos = mul(skinning, In.Position);
 	}
-	psInput.Normal = normalize(mul(skinning, In.Normal));
-	psInput.Tangent = normalize(mul(skinning, In.Tangent));
-	psInput.WorldPos = pos.xyz;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
-	psInput.TexCoord = In.TexCoord;
 	return psInput;
 }
-//--------------------------------------------------------------------------------------
-// ピクセルシェーダーのエントリ関数。
-//--------------------------------------------------------------------------------------
-PSOutput PSMain(PSInput In)
-{
-	PSOutput psout;
-	psout.diffuse = 0.0f;
-	psout.normal = 0.0f;
-	psout.world = 0.0f;
-	psout.depth = 0.0f;
-	psout.shadow = 1.0f;
 
-	psout.diffuse = albedoTexture.Sample(Sampler, In.TexCoord);
-	psout.normal = float4(In.Normal,1.0f);
-	psout.world = float4(In.WorldPos, 1.0f);
-	psout.depth = In.Position.z;
-	return psout;
-}
-
-float ShadowPS(PSInput In) : SV_Target0
+float PSMain(PSInput In) : SV_Target0
 {
-	float4 position = float4(0.0f,0.0f,0.0f,0.0f);
-	position.xyz = In.WorldPos;
-	position = mul(LightView, position);
-	position = mul(LightProj, position);
-	return position.z;
+	return In.Position.z;
 }

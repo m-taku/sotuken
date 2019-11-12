@@ -13,6 +13,7 @@ DirectionLight::~DirectionLight()
 
 bool DirectionLight::Start()
 {
+
 	return true;
 }
 

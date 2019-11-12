@@ -17,6 +17,12 @@ namespace smEngine
 		InitDirectionLightSB();
 		InitPointLightSB();
 		m_lightParamCB.Create(&m_lightParam, sizeof(m_lightParam));
+		m_shadowCollectRenderTarget.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
+		float color[] = { 1.0f,1.0f,1.0f,1.0f };
+		m_shadowCollectRenderTarget.Clear(color);
+		m_postEffect.Init();
+		//m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSFinalMain");
+		m_postEffect.SetVS("Assets/shader/shadowcollect.fx", "VSMain");
 	}
 
 	void LightManager::AddLight(LightBase * light)
@@ -24,15 +30,22 @@ namespace smEngine
 		const std::type_info& typeInfo = typeid(*light);
 		if (typeInfo == typeid(DirectionLight))
 		{
-			if (m_deirectionLights.size() >= MAX_DIRECTION_LIGHT)
+			if (m_directionLights.size() >= MAX_DIRECTION_LIGHT)
 			{
 				/*ライト置きすぎ！！！！！！！！！！！！！*/
 				abort();
 			}
-			auto findIt = std::find(m_deirectionLights.begin(), m_deirectionLights.end(), light);
-			if (findIt == m_deirectionLights.end())
+			auto findIt = std::find(m_directionLights.begin(), m_directionLights.end(), light);
+			if (findIt == m_directionLights.end())
 			{
-				m_deirectionLights.push_back(reinterpret_cast<DirectionLight*>(light));
+				DirectionLight* Light = reinterpret_cast<DirectionLight*>(light);
+				if (Light->IsEnableShadow())
+				{
+					Light->GetShadowMap()->Init();
+					Light->GetShadowMap()->UpdateDirection(Light->GetDirection());
+				}
+
+				m_directionLights.push_back(Light);
 			}
 			else
 			{
@@ -58,17 +71,27 @@ namespace smEngine
 				abort();
 			}
 		}
+
+		
 	}
 
 	void LightManager::Update()
 	{
+		m_shadowMapArray.clear();
+		m_shadowMapSRV = NULL;
 		m_lightParam.eyePos = smGameCamera().GetCameraPosition();
-		m_lightParam.numDirectionLight = m_deirectionLights.size();
+		m_lightParam.numDirectionLight = m_directionLights.size();
 		m_lightParam.numPointLight = m_pointLights.size();
 		int lightNo = 0;
-		for (const auto& light : m_deirectionLights)
+		for (const auto& light : m_directionLights)
 		{
 			m_rawDirectionLights[lightNo] = light->GetRawData();
+			if (light->IsEnableShadow())
+			{
+				light->GetShadowMap()->UpdateDirection(light->GetDirection());
+				light->GetShadowMap()->ShadowCasterDraw();
+				m_shadowMapArray.push_back(light->GetShadowMap());
+			}
 			lightNo++;
 		}
 		lightNo = 0;
@@ -78,6 +101,66 @@ namespace smEngine
 			lightNo++;
 		}
 
+		
+	}
+	void LightManager::ShadowRender()
+	{
+		ID3D11DeviceContext* deviceContext = g_graphicsEngine->GetD3DDeviceContext();
+		
+		float color[] = { 1.0f,1.0f,1.0f,1.0f };
+		m_shadowCollectRenderTarget.Clear(color);
+		for (const auto& shadowMap : m_shadowMapArray)
+		{
+			shadowMap->DrawToShadowCollector();
+		}
+
+		ID3D11RenderTargetView* buckUpRTV = nullptr;
+		ID3D11DepthStencilView* buckUpDepth = nullptr;
+		D3D11_VIEWPORT buckUpViewPort;
+		UINT numViewPort = 1;
+		UINT* pnumViewPort = &numViewPort;
+		deviceContext->OMGetRenderTargets(1, &buckUpRTV, &buckUpDepth);
+		deviceContext->RSGetViewports(pnumViewPort, &buckUpViewPort);
+
+		RenderTarget AddShadowRT;
+		AddShadowRT.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
+		AddShadowRT.Clear(color);
+		ID3D11RenderTargetView* rtv[] = {
+			AddShadowRT.GetRenderTatgetView()
+		};
+		deviceContext->OMSetRenderTargets(1, rtv, AddShadowRT.GetDepthStencilView());
+		deviceContext->RSSetViewports(1, AddShadowRT.GetViewPort());
+
+		ID3D11ShaderResourceView* srv[] = {
+			m_shadowCollectRenderTarget.GetShaderResourceView(),
+			g_graphicsEngine->GetMainRenderTarget().GetShaderResourceView()
+		};
+		deviceContext->VSSetShaderResources(0, 2, srv);
+		deviceContext->PSSetShaderResources(0, 2, srv);
+		m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSFinalMain");
+		m_postEffect.Draw();
+
+
+
+		ID3D11RenderTargetView* copyrtv[] = {
+			g_graphicsEngine->GetMainRenderTarget().GetRenderTatgetView()
+		};
+		deviceContext->OMSetRenderTargets(1, copyrtv, g_graphicsEngine->GetMainRenderTarget().GetDepthStencilView());
+		deviceContext->RSSetViewports(1, g_graphicsEngine->GetMainRenderTarget().GetViewPort());
+
+		ID3D11ShaderResourceView* copysrv[] = {
+			AddShadowRT.GetShaderResourceView()
+		};
+		deviceContext->VSSetShaderResources(0, 1, copysrv);
+		deviceContext->PSSetShaderResources(0, 1, copysrv);
+		m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSCopyMain");
+		m_postEffect.Draw();
+
+		deviceContext->OMSetRenderTargets(1, &buckUpRTV, buckUpDepth);
+		deviceContext->RSSetViewports(*pnumViewPort, &buckUpViewPort);
+	}
+	void LightManager::SendBuffer()
+	{
 		ID3D11DeviceContext* deviceContext = g_graphicsEngine->GetD3DDeviceContext();
 		deviceContext->UpdateSubresource(m_lightParamCB.GetBody(), 0, NULL, &m_lightParam, 0, 0);
 		deviceContext->UpdateSubresource(m_directionLightSB.GetBody(), 0, NULL, m_rawDirectionLights, 0, 0);

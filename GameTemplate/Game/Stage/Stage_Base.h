@@ -26,13 +26,13 @@ public:
 	void Update()
 	{
 
-		m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
+		m_model.UpdateWorldMatrix(CVector3::Zero() + CVector3::Down()*50.0f, CQuaternion::Identity() , CVector3::One()*5.0f);
 	}
 	void Draw()
 	{
 
 
-		m_model.Draw(g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+		m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 	}
 protected:
 	SkinModel m_model;
