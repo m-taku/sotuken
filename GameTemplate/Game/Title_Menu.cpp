@@ -50,7 +50,7 @@ void Title_Menu::Update()
 		if (g_pad[0].IsTrigger(enButtonA))
 		{
 			NewGO<Town>(0,"town");
-			NewGO<Player>(0,"player");
+			NewGO<Player>(0, "player")->SetPosition({-400.0f,500.0f,0.0f});
 			DeleteGO(this);
 			for (auto k : m_text)
 			{

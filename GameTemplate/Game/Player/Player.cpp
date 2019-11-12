@@ -5,17 +5,31 @@
 
 Player::Player()
 {
-	Movement.SetPlayer(this);
 
 }
 
 
 Player::~Player()
 {
-	delete &Movement;
 	delete &cameraMovement;
 }
 
+void Player::TransitionState(State m)
+{
+	delete m_state;
+	switch (m)
+	{
+	case StateTownMove:
+		m_state = new PlayerTownMove(this);
+		break;
+	case StateWate:
+		m_state = new PlayerWait(this);
+		break;
+	default:
+		break;
+	}
+	m_statenum = m;
+}
 bool Player::Start()
 {
 	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
@@ -28,7 +42,7 @@ bool Player::Start()
 	CVector3 position = m_position + (m_forward * -1000.0f + m_up * 100.0f);
 	smGameCamera().SetPosition(position);
 	smGameCamera().SetTarget(m_position + m_up * 100.0f);
-
+	TransitionState(StateTownMove);
 	DirectionLight* plight = new DirectionLight;
 	plight->SetColor({ 1.0f,1.0f,1.0f,1.0f });
 	plight->SetDirection(CVector3::Down());
@@ -39,7 +53,7 @@ bool Player::Start()
 
 void Player::Update()
 {
-	Movement.DefaultMove();
+	m_state->Update();
 
 	CVector3 move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);

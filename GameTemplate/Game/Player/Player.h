@@ -19,7 +19,7 @@ public:
 	~Player();
 	bool Start();
 	void Update();
-	void TransitionState(State );
+	void TransitionState(State m);
 	void Draw();
 	const CVector3& GetPosition() const
 	{

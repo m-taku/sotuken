@@ -44,6 +44,7 @@ namespace smEngine {
 				Object->DrawWrapper();
 			}
 		}
+		//g_physics.DebubDrawWorld();
 		smLightManager().SendBuffer();
 		g_graphicsEngine->GetDeferredRender().Draw();
 		smLightManager().ShadowRender();
@@ -53,7 +54,6 @@ namespace smEngine {
 				Object->PostDrawWrapper();
 			}
 		}
-		g_physics.DebubDrawWorld();
 
 		g_graphicsEngine->ChangeBuckBuffer();
 		g_graphicsEngine->PostEffectDraw();

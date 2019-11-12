@@ -149,6 +149,8 @@
     <ClCompile Include="Player\PlayerState.cpp" />
     <ClCompile Include="Player\PlayerTownMove.cpp" />
     <ClCompile Include="QuestManager.cpp" />
+    <ClCompile Include="graphics\Shadow\ShadowManager.cpp" />
+    <ClCompile Include="graphics\Shadow\ShadowMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -280,6 +282,8 @@
     <ClInclude Include="Player\PlayerTownMove.h" />
     <ClInclude Include="Player\PlayerStateALL.h" />
     <ClInclude Include="QuestManager.h" />
+    <ClInclude Include="graphics\Shadow\ShadowMap.h" />
+    <ClInclude Include="graphics\Shadow\ShadowManager.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
