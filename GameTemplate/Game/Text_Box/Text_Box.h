@@ -8,6 +8,7 @@ public:
 	void Update();
 	void Init(const std::string& text, CVector2 pos = CVector2::Zero(), CVector4 color = CVector4::White(), float speed = 1.0f, CVector2 pivot = { 0.5f,0.5f })
 	{
+		State();
 		SetText(text);
 		SetPos(pos);
 		m_Coler = color;
@@ -38,7 +39,8 @@ public:
 				break;
 			}
 		}
-		m_speed = m_Text.length();
+		m_Text += "\0";
+		m_speed = (int)m_Text.length();
 		m_count = 0;
 	}
 	bool Getend()

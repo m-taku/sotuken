@@ -12,7 +12,7 @@ Text_Box::~Text_Box()
 }
 bool Text_Box::State()
 {
-
+	m_isStart = true;
 	return true;
 }
 void Text_Box::Update()
