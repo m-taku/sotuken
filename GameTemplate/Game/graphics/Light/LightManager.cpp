@@ -89,7 +89,7 @@ namespace smEngine
 			if (light->IsEnableShadow())
 			{
 				light->GetShadowMap()->UpdateDirection(light->GetDirection());
-				light->GetShadowMap()->ShadowCasterDraw();
+				
 				m_shadowMapArray.push_back(light->GetShadowMap());
 			}
 			lightNo++;
@@ -106,6 +106,10 @@ namespace smEngine
 	void LightManager::ShadowRender()
 	{
 		ID3D11DeviceContext* deviceContext = g_graphicsEngine->GetD3DDeviceContext();
+		for (const auto& shadowMap : m_shadowMapArray)
+		{
+			shadowMap->ShadowCasterDraw();
+		}
 		
 		float color[] = { 1.0f,1.0f,1.0f,1.0f };
 		m_shadowCollectRenderTarget.Clear(color);

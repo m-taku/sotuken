@@ -22,6 +22,12 @@ void DeferredRender::Init()
 			m_renderTarget[i].Clear(color);
 			break;
 		}
+		case enGBuffer_World: {
+			m_renderTarget[i].Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R32G32B32A32_FLOAT);
+			float color[4] = { 0.0f,0.0f,0.0f,1.0f };
+			m_renderTarget[i].Clear(color);
+			break;
+		}
 		default: {
 			m_renderTarget[i].Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
 			float color[4] = { 0.0f,0.0f,0.0f,1.0f };
@@ -66,15 +72,8 @@ void DeferredRender::Update()
 
 void DeferredRender::Draw()
 {
-	g_graphicsEngine->BegineRender();
+	g_graphicsEngine->ChangeMainRenderTarget(true);
 	ID3D11DeviceContext* deviceContext = g_graphicsEngine->GetD3DDeviceContext();
-	ID3D11RenderTargetView* buckUpRTV = nullptr;
-	ID3D11DepthStencilView* buckUpDepth = nullptr;
-	D3D11_VIEWPORT buckUpViewPort;
-	UINT numViewPort = 1;
-	UINT* pnumViewPort = &numViewPort;
-	deviceContext->OMGetRenderTargets(1, &buckUpRTV, &buckUpDepth);
-	deviceContext->RSGetViewports(pnumViewPort, &buckUpViewPort);
 
 	
 	ID3D11ShaderResourceView* srv[] = {
@@ -86,9 +85,6 @@ void DeferredRender::Draw()
 	deviceContext->PSSetShaderResources(0, enGBuffer_Num, srv);
 	deviceContext->VSSetShaderResources(0, enGBuffer_Num, srv);
 	m_postEffect.Draw();
-
-	deviceContext->OMSetRenderTargets(1, &buckUpRTV, buckUpDepth);
-	deviceContext->RSSetViewports(*pnumViewPort, &buckUpViewPort);
 }
 
 void DeferredRender::Release()

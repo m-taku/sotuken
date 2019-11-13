@@ -63,8 +63,8 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 	LightViewRot.m[2][3] = 0.0f;
 
 	float ShadowAreaTbl[] = {
-		AvailableLen*0.1f,
-		AvailableLen*0.5f,
+		AvailableLen*0.3f,
+		AvailableLen*0.3f,
 		AvailableLen*0.4f
 	};
 	float LightHeight = smGameCamera().GetCameraTarget().y + g_lightHeight;
@@ -130,7 +130,7 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 			width,
 			height,
 			farZ / 100.0f,
-			farZ*2.0f
+			farZ
 		);
 		NearPlaneZ = FarPlaneZ;
 		m_lightViewMatrix[i] = mLightView;
@@ -179,7 +179,6 @@ void ShadowMap::ShadowCasterDraw()
 	deviceContext->OMSetRenderTargets(1, &buckUpRTV, buckUpDepth);
 	deviceContext->RSSetViewports(*pnumViewPort, &buckUpViewPort);
 	float color[] = { 1.0f,1.0f,1.0f,1.0f };
-	deviceContext->ClearRenderTargetView(buckUpRTV, color);
 	deviceContext->ClearDepthStencilView(buckUpDepth, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
 
