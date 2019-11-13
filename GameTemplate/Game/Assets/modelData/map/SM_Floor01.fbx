@@ -9,10 +9,10 @@ FBXHeaderExtension:  {
 		Year: 2019
 		Month: 11
 		Day: 8
-		Hour: 1
-		Minute: 34
-		Second: 10
-		Millisecond: 145
+		Hour: 11
+		Minute: 48
+		Second: 57
+		Millisecond: 164
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:34:10.144"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:48:57.163"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_Floor01.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:34:10.144"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:48:57.163"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -59,7 +59,7 @@ GlobalSettings:  {
 		P: "UnitScaleFactor", "double", "Number", "",2.54
 		P: "OriginalUnitScaleFactor", "double", "Number", "",2.54
 		P: "AmbientColor", "ColorRGB", "Color", "",0,0,0
-		P: "DefaultCamera", "KString", "", "", "Producer Perspective"
+		P: "DefaultCamera", "KString", "", "", "Producer Front"
 		P: "TimeMode", "enum", "", "",6
 		P: "TimeProtocol", "enum", "", "",2
 		P: "SnapOnFrameMode", "enum", "", "",0
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2578308659152, "", "Scene" {
+	Document: 2696099352032, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2578362650912, "Geometry::", "Mesh" {
+	Geometry: 2696313774416, "Geometry::", "Mesh" {
 		Properties70:  {
 		}
 		Vertices: *120 {
@@ -431,7 +431,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2578309288384, "Model::SM_Floor01", "Mesh" {
+	Model: 2695580173936, "Model::SM_Floor01", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -443,7 +443,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2578362898000, "Material::MI_WoodDetails", "" {
+	Material: 2697453921856, "Material::MI_WoodDetails", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -465,7 +465,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2578362926320, "Material::MI_WoodTile", "" {
+	Material: 2697453950656, "Material::MI_WoodTile", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -487,37 +487,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2578362925840, "Video::EnvSamplerTex", "Clip" {
+	Video: 2697453942016, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodDetails_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_WoodDetails_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodDetails_BC.TGA"
+		RelativeFilename: "tex\T_WoodDetails_BC.TGA"
 	}
-	Video: 2578362903760, "Video::EnvSamplerTex", "Clip" {
-		Type: "Clip"
-		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
-			P: "RelPath", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
-		}
-		UseMipMap: 0
-		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
-		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
-	}
-	Video: 2578362925360, "Video::EnvSamplerTex", "Clip" {
-		Type: "Clip"
-		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-		}
-		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-	}
-	Video: 2578362904720, "Video::EnvSamplerTex", "Clip" {
+	Video: 2697453927616, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
@@ -527,7 +507,27 @@ Objects:  {
 		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 	}
-	Texture: 2578362912880, "Texture::EnvSamplerTex", "" {
+	Video: 2697453932896, "Video::EnvSamplerTex", "Clip" {
+		Type: "Clip"
+		Properties70:  {
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodTiles01_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_WoodTiles01_BC.TGA"
+		}
+		UseMipMap: 0
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodTiles01_BC.TGA"
+		RelativeFilename: "tex\T_WoodTiles01_BC.TGA"
+	}
+	Video: 2697453921376, "Video::EnvSamplerTex", "Clip" {
+		Type: "Clip"
+		Properties70:  {
+			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
+			P: "RelPath", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
+		}
+		UseMipMap: 0
+		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
+		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
+	}
+	Texture: 2697453923776, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -536,14 +536,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodDetails_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodDetails_BC.TGA"
+		RelativeFilename: "tex\T_WoodDetails_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578362899920, "Texture::EnvSamplerTex", "" {
+	Texture: 2697453950176, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -559,7 +559,7 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578362903280, "Texture::EnvSamplerTex", "" {
+	Texture: 2697453920896, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -568,14 +568,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodTiles01_BC.TGA"
+		RelativeFilename: "tex\T_WoodTiles01_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578362898960, "Texture::EnvSamplerTex", "" {
+	Texture: 2697453941536, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -591,13 +591,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 2578312433152, "AnimStack::Take 001", "" {
+	AnimationStack: 2695454358880, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 2578164082480, "AnimCurve::", "" {
+	AnimationCurve: 2696185885968, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -618,7 +618,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578164082960, "AnimCurve::", "" {
+	AnimationCurve: 2696185891248, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -639,7 +639,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578164081200, "AnimCurve::", "" {
+	AnimationCurve: 2696185885808, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -660,14 +660,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 2578312445424, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2695454359712, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 2578311454192, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2696306642400, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -677,58 +677,58 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_Floor01, Model::RootNode
-	C: "OO",2578309288384,0
+	C: "OO",2695580173936,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2578311454192,2578312433152
+	C: "OO",2696306642400,2695454358880
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",2578312445424,2578311454192
+	C: "OO",2695454359712,2696306642400
 	
 	;Geometry::, Model::SM_Floor01
-	C: "OO",2578362650912,2578309288384
+	C: "OO",2696313774416,2695580173936
 	
 	;Material::MI_WoodDetails, Model::SM_Floor01
-	C: "OO",2578362898000,2578309288384
+	C: "OO",2697453921856,2695580173936
 	
 	;Material::MI_WoodTile, Model::SM_Floor01
-	C: "OO",2578362926320,2578309288384
+	C: "OO",2697453950656,2695580173936
 	
 	;AnimCurveNode::R, Model::SM_Floor01
-	C: "OP",2578312445424,2578309288384, "Lcl Rotation"
+	C: "OP",2695454359712,2695580173936, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodDetails
-	C: "OP",2578362912880,2578362898000, "DiffuseColor"
+	C: "OP",2697453923776,2697453921856, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodDetails
-	C: "OP",2578362899920,2578362898000, "NormalMap"
+	C: "OP",2697453950176,2697453921856, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578362925840,2578362912880
+	C: "OO",2697453942016,2697453923776
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578362903760,2578362899920
+	C: "OO",2697453927616,2697453950176
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodTile
-	C: "OP",2578362903280,2578362926320, "DiffuseColor"
+	C: "OP",2697453920896,2697453950656, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodTile
-	C: "OP",2578362898960,2578362926320, "NormalMap"
+	C: "OP",2697453941536,2697453950656, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578362925360,2578362903280
+	C: "OO",2697453932896,2697453920896
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578362904720,2578362898960
+	C: "OO",2697453921376,2697453941536
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578164082480,2578312445424, "d|X"
+	C: "OP",2696185885968,2695454359712, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578164082960,2578312445424, "d|Y"
+	C: "OP",2696185891248,2695454359712, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578164081200,2578312445424, "d|Z"
+	C: "OP",2696185885808,2695454359712, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

@@ -9,10 +9,10 @@ FBXHeaderExtension:  {
 		Year: 2019
 		Month: 11
 		Day: 8
-		Hour: 1
-		Minute: 35
-		Second: 55
-		Millisecond: 727
+		Hour: 11
+		Minute: 49
+		Second: 36
+		Millisecond: 967
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:35:55.727"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:49:36.966"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_Floor02.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:35:55.727"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:49:36.966"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2577668666400, "", "Scene" {
+	Document: 2696301262192, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2578166601216, "Geometry::", "Mesh" {
+	Geometry: 2696313784752, "Geometry::", "Mesh" {
 		Vertices: *24 {
 			a: 149.999908447266,-150.000015258789,-9.9949951171875,-150.000061035156,-150.000015258789,-9.9949951171875,149.999908447266,149.999969482422,-9.9949951171875,-150.000061035156,150,-9.9949951171875,-150,150,9.9949951171875,149.999908447266,-150.000015258789,9.9949951171875,149.999908447266,149.999969482422,9.9949951171875,-150.000061035156,-150.000015258789,9.9949951171875
 		} 
@@ -427,7 +427,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2578309290576, "Model::SM_Floor02", "Mesh" {
+	Model: 2695580057760, "Model::SM_Floor02", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -439,7 +439,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2578363158640, "Material::MI_WoodTile", "" {
+	Material: 2697453935776, "Material::MI_WoodTile", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -461,17 +461,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2578362916720, "Video::EnvSamplerTex", "Clip" {
+	Video: 2697453943456, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodTiles01_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_WoodTiles01_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodTiles01_BC.TGA"
+		RelativeFilename: "tex\T_WoodTiles01_BC.TGA"
 	}
-	Video: 2578362902800, "Video::EnvSamplerTex", "Clip" {
+	Video: 2697454182496, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
@@ -481,7 +481,7 @@ Objects:  {
 		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 	}
-	Texture: 2578363150480, "Texture::EnvSamplerTex", "" {
+	Texture: 2697453935296, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -490,14 +490,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodTiles01_BC.TGA"
+		RelativeFilename: "tex\T_WoodTiles01_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578363161040, "Texture::EnvSamplerTex", "" {
+	Texture: 2697453938176, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -513,13 +513,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 2578317365744, "AnimStack::Take 001", "" {
+	AnimationStack: 2696298824368, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 2578313431216, "AnimCurve::", "" {
+	AnimationCurve: 2695118623024, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -540,7 +540,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578313431856, "AnimCurve::", "" {
+	AnimationCurve: 2695118622864, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -561,7 +561,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2578313434576, "AnimCurve::", "" {
+	AnimationCurve: 2696086748624, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -582,14 +582,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 2578317367200, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2696298827904, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 2578367953280, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2696311075360, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -599,43 +599,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_Floor02, Model::RootNode
-	C: "OO",2578309290576,0
+	C: "OO",2695580057760,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2578367953280,2578317365744
+	C: "OO",2696311075360,2696298824368
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",2578317367200,2578367953280
+	C: "OO",2696298827904,2696311075360
 	
 	;Geometry::, Model::SM_Floor02
-	C: "OO",2578166601216,2578309290576
+	C: "OO",2696313784752,2695580057760
 	
 	;Material::MI_WoodTile, Model::SM_Floor02
-	C: "OO",2578363158640,2578309290576
+	C: "OO",2697453935776,2695580057760
 	
 	;AnimCurveNode::R, Model::SM_Floor02
-	C: "OP",2578317367200,2578309290576, "Lcl Rotation"
+	C: "OP",2696298827904,2695580057760, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodTile
-	C: "OP",2578363150480,2578363158640, "DiffuseColor"
+	C: "OP",2697453935296,2697453935776, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodTile
-	C: "OP",2578363161040,2578363158640, "NormalMap"
+	C: "OP",2697453938176,2697453935776, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578362916720,2578363150480
+	C: "OO",2697453943456,2697453935296
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578362902800,2578363161040
+	C: "OO",2697454182496,2697453938176
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578313431216,2578317367200, "d|X"
+	C: "OP",2695118623024,2696298827904, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578313431856,2578317367200, "d|Y"
+	C: "OP",2695118622864,2696298827904, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2578313434576,2578317367200, "d|Z"
+	C: "OP",2696086748624,2696298827904, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

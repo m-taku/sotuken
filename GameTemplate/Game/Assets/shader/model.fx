@@ -27,6 +27,11 @@ cbuffer VSPSCb : register(b0) {
 	float4x4 mView;
 	float4x4 mProj;
 };
+
+cbuffer ShadowCB:register(b0) {
+	float4x4 LightView;
+	float4x4 LightProj;
+}
 /////////////////////////////////////////////////////////////
 // ストラクチャードバッファー
 /////////////////////////////////////////////////////////////
@@ -74,6 +79,7 @@ struct PSOutput {
 	float4 normal  : SV_Target1;
 	float4 world   : SV_Target2;
 	float4 depth   : SV_Target3;
+	float4 shadow  : SV_Target4;
 };
 /*!
  *@brief	スキン行列を計算。
@@ -152,13 +158,14 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 //--------------------------------------------------------------------------------------
 // ピクセルシェーダーのエントリ関数。
 //--------------------------------------------------------------------------------------
-PSOutput PSMain(PSInput In) : SV_Target0
+PSOutput PSMain(PSInput In)
 {
 	PSOutput psout;
 	psout.diffuse = 0.0f;
 	psout.normal = 0.0f;
 	psout.world = 0.0f;
 	psout.depth = 0.0f;
+	psout.shadow = 1.0f;
 
 	psout.diffuse = albedoTexture.Sample(Sampler, In.TexCoord);
 	psout.normal = float4(In.Normal,1.0f);
@@ -167,3 +174,11 @@ PSOutput PSMain(PSInput In) : SV_Target0
 	return psout;
 }
 
+float ShadowPS(PSInput In) : SV_Target0
+{
+	float4 position = float4(0.0f,0.0f,0.0f,0.0f);
+	position.xyz = In.WorldPos;
+	position = mul(LightView, position);
+	position = mul(LightProj, position);
+	return position.z;
+}

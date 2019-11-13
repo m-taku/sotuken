@@ -29,7 +29,7 @@ namespace smEngine {
 			::QueryPerformanceFrequency((LARGE_INTEGER*)&m_fleam);
 			::QueryPerformanceCounter((LARGE_INTEGER*)&m_stop);
 			m_elapsed = double(m_stop - m_start) / m_fleam;
-			SetFrameDeltaTime(m_elapsed);
+			SetFrameDeltaTime((float)m_elapsed);
 			//::QueryPerformanceCounter((LARGE_INTEGER*)&m_start);
 		}
 		float GetFrameTime()
@@ -53,7 +53,7 @@ namespace smEngine {
 	}
 	static float GetFrameDeltaTime()
 	{
-		return  min(GameTime::Instance().GetFrameTime(),1.0f);
+		return  min(GameTime::Instance().GetFrameTime(),0.8f);
 	}
 }
 

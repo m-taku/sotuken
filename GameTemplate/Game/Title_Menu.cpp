@@ -7,7 +7,7 @@
 #include "Player.h"
 #include"SaveData_Select.h"
 #include"Test_GuestManager.h"
-#include"Game.h"
+#include"Stage/Town.h"
 
 Title_Menu::Title_Menu()
 {
@@ -49,7 +49,9 @@ void Title_Menu::Update()
 		}
 		if (g_pad[0].IsTrigger(enButtonA))
 		{
-			NewGO<Game>(0);
+			NewGO<Town>(0,"town");
+			NewGO<Test_GuestManager>(0,"tes");
+			NewGO<Player>(0, "player");
 			DeleteGO(this);
 			for (auto k : m_text)
 			{

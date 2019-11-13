@@ -122,7 +122,6 @@
     <ClCompile Include="TEstNPC.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="Text_Box\Text_Box.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="graphics\ConstantBuffer.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
@@ -135,7 +134,6 @@
     <ClCompile Include="Test_QuestBase.cpp" />
     <ClCompile Include="Test_Quest.cpp" />
     <ClCompile Include="Test_GuestManager.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="graphics\PostEffect\PostEffect.cpp" />
     <ClCompile Include="graphics\Light\LightBase.cpp" />
     <ClCompile Include="graphics\Light\DirectionLight.cpp" />
@@ -145,6 +143,15 @@
     <ClCompile Include="graphics\Light\LightManager.cpp" />
     <ClCompile Include="graphics\Light\PointLight.cpp" />
     <ClCompile Include="graphics\DeferredRender.cpp" />
+    <ClCompile Include="Stage\QuestStage.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="Player\PlayerWait.cpp" />
+    <ClCompile Include="Player\PlayerState.cpp" />
+    <ClCompile Include="Player\PlayerTownMove.cpp" />
+    <ClCompile Include="QuestManager.cpp" />
+    <ClCompile Include="graphics\Shadow\ShadowManager.cpp" />
+    <ClCompile Include="graphics\Shadow\ShadowMap.cpp" />
+    <ClCompile Include="Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -245,7 +252,6 @@
     <ClInclude Include="TEstNPC.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="Text_Box\Text_Box.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="graphics\ConstantBuffer.h" />
     <ClInclude Include="CameraMovement.h" />
@@ -260,7 +266,6 @@
     <ClInclude Include="Test_Quest.h" />
     <ClInclude Include="Test_GuestManager.h" />
     <ClInclude Include="Test_QuestData.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="graphics\PostEffect\PostEffect.h" />
     <ClInclude Include="graphics\Light\LightBase.h" />
     <ClInclude Include="graphics\Light\DirectionLight.h" />
@@ -271,6 +276,16 @@
     <ClInclude Include="graphics\Light\LightManager.h" />
     <ClInclude Include="graphics\Light\PointLight.h" />
     <ClInclude Include="graphics\DeferredRender.h" />
+    <ClInclude Include="Stage\QuestStage.h" />
+    <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="Player\PlayerWait.h" />
+    <ClInclude Include="Player\PlayerState.h" />
+    <ClInclude Include="Player\PlayerTownMove.h" />
+    <ClInclude Include="Player\PlayerStateALL.h" />
+    <ClInclude Include="QuestManager.h" />
+    <ClInclude Include="graphics\Shadow\ShadowMap.h" />
+    <ClInclude Include="graphics\Shadow\ShadowManager.h" />
+    <ClInclude Include="Enemy.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -372,6 +387,7 @@
     <MeshContentTask Include="Assets\modelData\map\SM_CastleCorner6m02.fbx" />
     <MeshContentTask Include="Assets\modelData\map\SM_CastleCorner6m03.fbx" />
     <MeshContentTask Include="Assets\modelData\Towncori.fbx" />
+    <MeshContentTask Include="Assets\modelData\map\SM_FenceWall03.FBX" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />

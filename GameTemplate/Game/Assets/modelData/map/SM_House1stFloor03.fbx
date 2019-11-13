@@ -9,10 +9,10 @@ FBXHeaderExtension:  {
 		Year: 2019
 		Month: 11
 		Day: 8
-		Hour: 1
-		Minute: 6
-		Second: 53
-		Millisecond: 47
+		Hour: 11
+		Minute: 43
+		Second: 20
+		Millisecond: 787
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:06:53.046"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:43:20.787"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_House1stFloor03.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "07/11/2019 16:06:53.046"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "08/11/2019 02:43:20.787"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2577670287984, "", "Scene" {
+	Document: 2696088733072, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -319,7 +319,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2578362590528, "Geometry::", "Mesh" {
+	Geometry: 2695118179296, "Geometry::", "Mesh" {
 		Properties70:  {
 		}
 		Vertices: *1815 {
@@ -593,7 +593,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 2578362615008, "Geometry::", "Mesh" {
+	Geometry: 2695118172224, "Geometry::", "Mesh" {
 		Properties70:  {
 		}
 		Vertices: *3081 {
@@ -1007,7 +1007,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 2578362608480, "Geometry::", "Mesh" {
+	Geometry: 2695118172768, "Geometry::", "Mesh" {
 		Properties70:  {
 		}
 		Vertices: *5271 {
@@ -1605,7 +1605,7 @@ Objects:  {
 			}
 		}
 	}
-	NodeAttribute: 2577545926448, "NodeAttribute::SM_House1stFloor03", "LodGroup" {
+	NodeAttribute: 2696306900928, "NodeAttribute::SM_House1stFloor03", "LodGroup" {
 		Properties70:  {
 			P: "ThresholdsUsedAsPercentage", "bool", "", "",1
 			P: "Thresholds|Level0", "Distance", "", "",10, "cm"
@@ -1615,19 +1615,19 @@ Objects:  {
 			P: "DisplayLevels|Level2", "enum", "", "",0
 		}
 	}
-	Model: 2578153231584, "Model::SM_House1stFloor03", "LodGroup" {
+	Model: 2695580068720, "Model::SM_House1stFloor03", "LodGroup" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",0.102005004882813,-0.03814697265625,150.002029418945
-			P: "MaxHandle", "int", "Integer", "UH",9
+			P: "MaxHandle", "int", "Integer", "UH",5
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2578309229200, "Model::SM_House1stFloor03_LOD2", "Mesh" {
+	Model: 2695580048992, "Model::SM_House1stFloor03_LOD2", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1635,12 +1635,12 @@ Objects:  {
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",-0.102005004882813,0.03814697265625,-150.002029418945
 			P: "UDP3DSMAX", "KString", "", "U", "MapChannel:1 = UVmap_0&cr;&lf;MapChannel:2 = LightMapUV&cr;&lf;"
-			P: "MaxHandle", "int", "Integer", "UH",8
+			P: "MaxHandle", "int", "Integer", "UH",4
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2578309237968, "Model::SM_House1stFloor03_LOD1", "Mesh" {
+	Model: 2695580079680, "Model::SM_House1stFloor03_LOD1", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1648,12 +1648,12 @@ Objects:  {
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",-0.102005004882813,0.03814697265625,-150.002029418945
 			P: "UDP3DSMAX", "KString", "", "U", "MapChannel:1 = UVmap_0&cr;&lf;MapChannel:2 = LightMapUV&cr;&lf;"
-			P: "MaxHandle", "int", "Integer", "UH",7
+			P: "MaxHandle", "int", "Integer", "UH",3
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2578309273040, "Model::SM_House1stFloor03_LOD0", "Mesh" {
+	Model: 2695580081872, "Model::SM_House1stFloor03_LOD0", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1661,12 +1661,12 @@ Objects:  {
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",-0.102005004882813,0.03814697265625,-150.002029418945
 			P: "UDP3DSMAX", "KString", "", "U", "MapChannel:1 = UVmap_0&cr;&lf;MapChannel:2 = LightMapUV&cr;&lf;"
-			P: "MaxHandle", "int", "Integer", "UH",6
+			P: "MaxHandle", "int", "Integer", "UH",2
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2578363112560, "Material::M_HouseWallBase", "" {
+	Material: 2696090761344, "Material::M_HouseWallBase", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -1688,7 +1688,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2578363139440, "Material::MI_StoneWallBlend01", "" {
+	Material: 2696090779104, "Material::MI_StoneWallBlend01", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -1710,7 +1710,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2578363119280, "Material::MI_WoodTile", "" {
+	Material: 2696090796864, "Material::MI_WoodTile", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -1732,17 +1732,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2578363116880, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090800704, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_HouseWall_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_HouseWall_BC.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_HouseWall_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_HouseWall_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_HouseWall_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_HouseWall_BC.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_HouseWall_BC.TGA"
+		RelativeFilename: "tex\T_HouseWall_BC.TGA"
 	}
-	Video: 2578363139920, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090811264, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
@@ -1752,27 +1752,27 @@ Objects:  {
 		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 	}
-	Video: 2578363117360, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090801664, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_StoneWall_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_StoneWall_BC.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_StoneWall_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_StoneWall_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_StoneWall_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_StoneWall_BC.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_StoneWall_BC.TGA"
+		RelativeFilename: "tex\T_StoneWall_BC.TGA"
 	}
-	Video: 2578363135600, "Video::EnvSamplerTex", "Clip" {
+	Video: 2696090786784, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodTiles01_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_WoodTiles01_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodTiles01_BC.TGA"
+		RelativeFilename: "tex\T_WoodTiles01_BC.TGA"
 	}
-	Texture: 2578363130800, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090770944, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -1781,14 +1781,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_HouseWall_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_HouseWall_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_HouseWall_BC.TGA"
+		RelativeFilename: "tex\T_HouseWall_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578363131760, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090776704, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -1804,7 +1804,7 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578363121680, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090789184, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -1813,14 +1813,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_StoneWall_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_StoneWall_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_StoneWall_BC.TGA"
+		RelativeFilename: "tex\T_StoneWall_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2578363122640, "Texture::EnvSamplerTex", "" {
+	Texture: 2696090787264, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -1829,20 +1829,20 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
-		RelativeFilename: "..\..\..\..\..\..\..\Unreal Projects\MyProject\Content\FantasyVillage\Textures\T_WoodTiles01_BC.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_WoodTiles01_BC.TGA"
+		RelativeFilename: "tex\T_WoodTiles01_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 2578315620576, "AnimStack::Take 001", "" {
+	AnimationStack: 2696311056080, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationLayer: 2577545926176, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2696306900656, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -1852,85 +1852,85 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_House1stFloor03, Model::RootNode
-	C: "OO",2578153231584,0
+	C: "OO",2695580068720,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2577545926176,2578315620576
+	C: "OO",2696306900656,2696311056080
 	
 	;NodeAttribute::SM_House1stFloor03, Model::SM_House1stFloor03
-	C: "OO",2577545926448,2578153231584
+	C: "OO",2696306900928,2695580068720
 	
 	;Model::SM_House1stFloor03_LOD0, Model::SM_House1stFloor03
-	C: "OO",2578309273040,2578153231584
+	C: "OO",2695580081872,2695580068720
 	
 	;Model::SM_House1stFloor03_LOD1, Model::SM_House1stFloor03
-	C: "OO",2578309237968,2578153231584
+	C: "OO",2695580079680,2695580068720
 	
 	;Model::SM_House1stFloor03_LOD2, Model::SM_House1stFloor03
-	C: "OO",2578309229200,2578153231584
+	C: "OO",2695580048992,2695580068720
 	
 	;Geometry::, Model::SM_House1stFloor03_LOD2
-	C: "OO",2578362590528,2578309229200
+	C: "OO",2695118179296,2695580048992
 	
 	;Material::M_HouseWallBase, Model::SM_House1stFloor03_LOD2
-	C: "OO",2578363112560,2578309229200
+	C: "OO",2696090761344,2695580048992
 	
 	;Material::MI_StoneWallBlend01, Model::SM_House1stFloor03_LOD2
-	C: "OO",2578363139440,2578309229200
+	C: "OO",2696090779104,2695580048992
 	
 	;Material::MI_WoodTile, Model::SM_House1stFloor03_LOD2
-	C: "OO",2578363119280,2578309229200
+	C: "OO",2696090796864,2695580048992
 	
 	;Geometry::, Model::SM_House1stFloor03_LOD1
-	C: "OO",2578362615008,2578309237968
+	C: "OO",2695118172224,2695580079680
 	
 	;Material::M_HouseWallBase, Model::SM_House1stFloor03_LOD1
-	C: "OO",2578363112560,2578309237968
+	C: "OO",2696090761344,2695580079680
 	
 	;Material::MI_StoneWallBlend01, Model::SM_House1stFloor03_LOD1
-	C: "OO",2578363139440,2578309237968
+	C: "OO",2696090779104,2695580079680
 	
 	;Material::MI_WoodTile, Model::SM_House1stFloor03_LOD1
-	C: "OO",2578363119280,2578309237968
+	C: "OO",2696090796864,2695580079680
 	
 	;Geometry::, Model::SM_House1stFloor03_LOD0
-	C: "OO",2578362608480,2578309273040
+	C: "OO",2695118172768,2695580081872
 	
 	;Material::M_HouseWallBase, Model::SM_House1stFloor03_LOD0
-	C: "OO",2578363112560,2578309273040
+	C: "OO",2696090761344,2695580081872
 	
 	;Material::MI_StoneWallBlend01, Model::SM_House1stFloor03_LOD0
-	C: "OO",2578363139440,2578309273040
+	C: "OO",2696090779104,2695580081872
 	
 	;Material::MI_WoodTile, Model::SM_House1stFloor03_LOD0
-	C: "OO",2578363119280,2578309273040
+	C: "OO",2696090796864,2695580081872
 	
 	;Texture::EnvSamplerTex, Material::M_HouseWallBase
-	C: "OP",2578363130800,2578363112560, "DiffuseColor"
+	C: "OP",2696090770944,2696090761344, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::M_HouseWallBase
-	C: "OP",2578363131760,2578363112560, "NormalMap"
+	C: "OP",2696090776704,2696090761344, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363116880,2578363130800
+	C: "OO",2696090800704,2696090770944
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363139920,2578363131760
+	C: "OO",2696090811264,2696090776704
 	
 	;Texture::EnvSamplerTex, Material::MI_StoneWallBlend01
-	C: "OP",2578363121680,2578363139440, "DiffuseColor"
+	C: "OP",2696090789184,2696090779104, "DiffuseColor"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363117360,2578363121680
+	C: "OO",2696090801664,2696090789184
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodTile
-	C: "OP",2578363122640,2578363119280, "DiffuseColor"
+	C: "OP",2696090787264,2696090796864, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_WoodTile
-	C: "OP",2578363121680,2578363119280, "NormalMap"
+	C: "OP",2696090789184,2696090796864, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2578363135600,2578363122640
+	C: "OO",2696090786784,2696090787264
 }
 ;Takes section
 ;----------------------------------------------------

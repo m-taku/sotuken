@@ -1,15 +1,25 @@
 #pragma once
 #include "PlayerMovement.h"
 #include "CameraMovement.h"
+#include"PlayerStateALL.h"
+#include "PlayerState.h"
 
 class Player :public IGameObject
 {
 	friend PlayerMovement;
 public:
+/// <summary>
+/// 状態のEnum
+/// </summary>
+	enum State {
+		StateTownMove,			//移動中
+		StateWate
+	};
 	Player();
 	~Player();
 	bool Start();
 	void Update();
+	void TransitionState(State m);
 	void Draw();
 	const CVector3& GetPosition() const
 	{
@@ -34,6 +44,14 @@ public:
 	const CQuaternion& GetRotation() const
 	{
 		return m_rotation;
+	}void SetMovespeed(const CVector3& move)
+	{
+		m_movespeed = move;
+	}
+	void SetPosition(const CVector3& pos)
+	{
+		m_position = pos;
+		m_characon.SetPosition(pos);
 	}
 private:
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
@@ -45,10 +63,10 @@ private:
 
 	CQuaternion m_rotation = CQuaternion::Identity();		//回転
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列
-
+	State m_statenum = StateTownMove;
+	PlayerState* m_state = nullptr;
 	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン
-	PlayerMovement Movement;
 	CameraMovement cameraMovement;
 };
 

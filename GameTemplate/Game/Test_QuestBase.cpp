@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Test_QuestBase.h"
 #include"Text_Box/Text_Box.h"
+#include "Stage/QuestStage.h"
+#include"Player.h"
+#include"Stage/Town.h"
 
 
 Test_QuestBase::Test_QuestBase()
@@ -27,10 +30,25 @@ bool Test_QuestBase::Start()
 	wchar_t FileName[256];
 	swprintf_s(FileName,L"Assets/sprite/Monster/%s.dds", EnglishMosterName[MonsterNo]);
 	m_srv[1].CreateFromDDSTextureFromFile(FileName);
-	m_sprite[1].Init(m_srv[1], 450.0f, 450.0f);
-	m_sprite[1].Update({ 0.0f,50.0f,0.0f }, CQuaternion::Identity(), CVector3::One());
+	m_sprite[1].Init(m_srv[1], 350.0f, 350.0f);
+	m_sprite[1].Update({ 0.0f,150.0f,0.0f }, CQuaternion::Identity(), CVector3::One());
 	m_sprite[1].SetMulColor({ 1.0f,1.0f,2.0f,1.0f });
+	m_isStart = true;
 	return true;
+}
+void Test_QuestBase::CreateQuest()
+{
+	NewGO<QuestStage>(0, "kouya");
+	//‘åŒ^ƒ‚ƒ“ƒXƒ^[‚Ì”­¶‚Í‚±‚±‚Å‚â‚é
+
+	//¬Œ^‚Í‚Ç‚Á‚¿‚Å‚à‚¢‚¢‚©‚È``
+	
+	//ƒNƒGƒXƒg‚ÉŠÖŒW‚·‚éŒ¸Z“™‚ ‚ê‚Î‚±‚±‚Å‚·‚éB
+	auto pla = FindGO<Player>("player");
+	pla->SetPosition({ 100.0f,300.0f,0.0f });
+
+	//’¬‚ğÁ‹‚·‚é
+	DeleteGO(FindGO<Town>("town"));
 }
 void Test_QuestBase::PostDraw()
 {

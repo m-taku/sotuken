@@ -12,9 +12,12 @@ public:
 	bool Start();
 	void Update();
 	void Draw();
+	void SetPos(CVector3 position)
+	{
+		pos = position;
+	}
 private:
 	int No = 0;
-	PhysicsStaticObject m_poa;
 	CharacterController m_collider;						//キャラクターコントローラー
 	CVector3 posm = CVector3::Zero();
 	CVector3 pos = { 0.0f,0.0f,0.0f };

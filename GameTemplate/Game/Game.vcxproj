@@ -47,11 +47,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(ProjectDir)/DirectXTK\Bin\Desktop_2015_Win10\x64\Debug;$(SolutionDir)/x64/Debug;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(ProjectDir);$(ProjectDir)/bulletPhysics/src;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(ProjectDir)/bulletPhysics/src;$(ProjectDir)/Player;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)/bulletPhysics/src;$(ProjectDir);$(IncludePath)</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)/bulletPhysics/src;$(ProjectDir);$(ProjectDir)/Player;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)/DirectXTK\Bin\Desktop_2015_Win10\x64\Release;$(SolutionDir)/x64/Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -101,9 +101,9 @@
   <ItemGroup>
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="character\CharacterController.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="graphics\DeferredRender.cpp" />
     <ClCompile Include="graphics\Light\DirectionLight.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameFont\GameFont.cpp" />
     <ClCompile Include="GameObject\IGameObject.cpp" />
@@ -115,6 +115,8 @@
     <ClCompile Include="graphics\GraphicsEngine.cpp" />
     <ClCompile Include="graphics\Shader.cpp" />
     <ClCompile Include="graphics\ShaderResources.cpp" />
+    <ClCompile Include="graphics\Shadow\ShadowManager.cpp" />
+    <ClCompile Include="graphics\Shadow\ShadowMap.cpp" />
     <ClCompile Include="graphics\Skeleton.cpp" />
     <ClCompile Include="graphics\SkinModel.cpp" />
     <ClCompile Include="graphics\SkinModelDataManager.cpp" />
@@ -138,12 +140,17 @@
     <ClCompile Include="physics\PhysicsStaticObject.cpp" />
     <ClCompile Include="graphics\ShaderResourceView.cpp" />
     <ClCompile Include="graphics\Primitive.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Player\PlayerTownMove.cpp" />
+    <ClCompile Include="Player\PlayerWait.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="graphics\Sprite\Sprite.cpp" />
     <ClCompile Include="graphics\RenderTarget.cpp" />
     <ClCompile Include="graphics\PostEffect\PostEffect.cpp" />
     <ClCompile Include="graphics\Light\PointLight.cpp" />
+    <ClCompile Include="Player\PlayerState.cpp" />
+    <ClCompile Include="QuestManager.cpp" />
+    <ClCompile Include="Stage\QuestStage.cpp" />
     <ClCompile Include="SaveData_Select.cpp" />
     <ClCompile Include="Stage\Stage_Base.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -170,9 +177,9 @@
   <ItemGroup>
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="character\CharacterController.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="graphics\DeferredRender.h" />
     <ClInclude Include="graphics\Light\DirectionLight.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameFont\GameFont.h" />
     <ClInclude Include="GameObject\IGameObject.h" />
@@ -185,6 +192,8 @@
     <ClInclude Include="graphics\GraphicsEngine.h" />
     <ClInclude Include="graphics\Shader.h" />
     <ClInclude Include="graphics\ShaderResources.h" />
+    <ClInclude Include="graphics\Shadow\ShadowManager.h" />
+    <ClInclude Include="graphics\Shadow\ShadowMap.h" />
     <ClInclude Include="graphics\Skeleton.h" />
     <ClInclude Include="graphics\SkinModel.h" />
     <ClInclude Include="graphics\SkinModelDataManager.h" />
@@ -211,12 +220,18 @@
     <ClInclude Include="physics\PhysicsStaticObject.h" />
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="Player\PlayerStateALL.h" />
+    <ClInclude Include="Player\PlayerTownMove.h" />
+    <ClInclude Include="Player\PlayerWait.h" />
+    <ClInclude Include="Player\Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="graphics\Sprite\Sprite.h" />
     <ClInclude Include="graphics\RenderTarget.h" />
     <ClInclude Include="graphics\PostEffect\PostEffect.h" />
     <ClInclude Include="graphics\Light\PointLight.h" />
+    <ClInclude Include="Player\PlayerState.h" />
+    <ClInclude Include="QuestManager.h" />
+    <ClInclude Include="Stage\QuestStage.h" />
     <ClInclude Include="SaveData_Select.h" />
     <ClInclude Include="Stage\Stage_Base.h" />
     <ClInclude Include="stdafx.h" />
@@ -277,6 +292,7 @@
     <MeshContentTask Include="Assets\modelData\map\SM_Fabric02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Fabric03.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_FenceWall02.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_FenceWall03.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_FenceWall05.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_FenceWall06.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Flag01.FBX" />
