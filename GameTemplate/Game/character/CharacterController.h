@@ -89,4 +89,5 @@ private:
 	float				m_radius = 0.0f;
 	float				m_height = 0.0f;		
 	RigidBody			m_rigidBody;					//„‘ÌB
+	float				m_maxSpeed = 1000.0f;
 };

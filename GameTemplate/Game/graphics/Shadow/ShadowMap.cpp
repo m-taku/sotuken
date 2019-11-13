@@ -28,72 +28,113 @@ void ShadowMap::Init(int w, int h)
 
 void ShadowMap::UpdateDirection(const CVector3 & Direction)
 {
-	float LightCamHight = g_graphicsEngine->GetShadowMapHight();
-	CVector3 LigCamTarget[enMapNum];
-	CVector3 GameCamPos = smGameCamera().GetCameraPosition();
-	CVector3 GameCamTarget = smGameCamera().GetCameraTarget();
-	CVector3 GameCamXZ = smGameCamera().GetCameraFoward();
-	GameCamXZ.y = 0.0f;
-	GameCamXZ.Normalize();
-	CVector3 CameraRight = smGameCamera().GetCameraRight();
-	CVector3 ToGameCamTarget = smGameCamera().GetCameraTarget() - smGameCamera().GetCameraPosition();
-	CVector3 direction = Direction;
-	direction.Normalize();
 	float AvailableLen = g_graphicsEngine->GetShadowAvailableLength();
-	float ViewAngle = g_camera3D.GetViewAngle();
-	float scaleX = 1.0f - fabsf(CameraRight.Dot(direction*-1.0f));
-	float scaleY = 1.0f - fabsf(GameCamXZ.Dot(direction*-1.0f));
+	float g_lightHeight = g_graphicsEngine->GetShadowMapHight();
+	CVector3 LightDir = Direction;
+	LightDir.Normalize();
+	CVector3 LightViewForward = LightDir;
+	CVector3 LightViewUp;
+	if (fabsf(LightViewForward.y) > 0.999f)
+	{
+		LightViewUp.Cross(LightViewForward, CVector3::Right());
+	}
+	else
+	{
+		LightViewUp.Cross(LightViewForward, CVector3::Up());
+	}
+	LightViewUp.Normalize();
+	CVector3 LightViewRight;
+	LightViewRight.Cross(LightViewUp, LightViewForward);
+	LightViewRight.Normalize();
+
+	CMatrix LightViewRot;
+
+	LightViewRot.m[0][0] = LightViewRight.x;
+	LightViewRot.m[0][1] = LightViewRight.y;
+	LightViewRot.m[0][2] = LightViewRight.z;
+	LightViewRot.m[0][3] = 0.0f;
+	LightViewRot.m[1][0] = LightViewUp.x;
+	LightViewRot.m[1][1] = LightViewUp.y;
+	LightViewRot.m[1][2] = LightViewUp.z;
+	LightViewRot.m[1][3] = 0.0f;
+	LightViewRot.m[2][0] = LightViewForward.x;
+	LightViewRot.m[2][1] = LightViewForward.y;
+	LightViewRot.m[2][2] = LightViewForward.z;
+	LightViewRot.m[2][3] = 0.0f;
+
+	float ShadowAreaTbl[] = {
+		AvailableLen*0.1f,
+		AvailableLen*0.5f,
+		AvailableLen*0.4f
+	};
+	float LightHeight = smGameCamera().GetCameraTarget().y + g_lightHeight;
+	CVector3 GameCamPos = smGameCamera().GetCameraPosition();
+	CVector3 GameCamForward = smGameCamera().GetCameraFoward();
+	CVector3 GameCamRight = smGameCamera().GetCameraRight();
+	CVector3 GameCamUp;
+	GameCamUp.Cross(GameCamForward, GameCamRight);
+	GameCamUp.Normalize();
+	float NearPlaneZ = 0.0f;
+	float FarPlaneZ;
 
 	for (int i = 0; i < enMapNum; i++)
 	{
-		switch (i)
+		FarPlaneZ = NearPlaneZ + ShadowAreaTbl[i];
+		CMatrix mLightView = CMatrix::Identity();
+		float HalfViewAngle = g_camera3D.GetViewAngle()*0.5f;
+		float width, height;
+		float farZ = -1.0f;
+		CVector3 pos[8];
 		{
-		case enShadowMap: {
-			m_shadowHight[i] = AvailableLen * m_cascadePerHigh;
-			break;
-		}
-		case enCascadeNear: {
-			m_shadowHight[i] = AvailableLen * m_cascadePerMidle;
-			break;
-		}
-		case enCascadeFar: {
-			m_shadowHight[i] = AvailableLen * m_cascadePerLow;
-			break;
-		}
-		default:
-			break;
-		}
-		if (i > 0)
-		{
-			LigCamTarget[i] = LigCamTarget[i - 1] + (GameCamXZ*((m_shadowHight[i - 1] * 0.5f) + (m_shadowHight[i] * 0.5f)));
-			float len = CVector3(LigCamTarget[i] - GameCamPos).Length() + (m_shadowHight[i] * 0.5f);
-			m_shadowWidth[i] = (tanf(ViewAngle)*len)*2.0f;
-		}
-		else
-		{
-			LigCamTarget[i] = GameCamTarget;
-			float len = CVector3(LigCamTarget[i] - GameCamPos).Length() + (m_shadowHight[i] * 0.5f);
-			m_shadowWidth[i] = (tanf(ViewAngle)*len)*2.0f;
+			float t = tanf(HalfViewAngle);
+			CVector3 toUpNear, toUpFar;
+			toUpNear = GameCamUp * t*NearPlaneZ;
+			toUpFar = GameCamUp * t*FarPlaneZ;
+			CVector3 NearPlaneCenterPos = GameCamPos + GameCamForward * NearPlaneZ;
+			pos[0] = NearPlaneCenterPos + GameCamRight * t*NearPlaneZ + toUpNear;
+			pos[1] = pos[0] + toUpNear * -2.0f;
+			pos[2] = NearPlaneCenterPos + GameCamRight * -t * NearPlaneZ + toUpNear;
+			pos[3] = pos[2] + toUpNear * -2.0f;
+			CVector3 FarPlaneCenterPos = GameCamPos + GameCamForward * FarPlaneZ;
+			pos[4] = FarPlaneCenterPos + GameCamRight * t*FarPlaneZ + toUpFar;
+			pos[5] = pos[4] + toUpFar * -2.0f;
+			pos[6] = FarPlaneCenterPos + GameCamRight * -t * FarPlaneZ + toUpFar;
+			pos[7] = pos[6] + toUpFar * -2.0f;
 
+			CVector3 GameCamFrustumCenter = NearPlaneCenterPos + CVector3(FarPlaneCenterPos - NearPlaneCenterPos) * 0.5f;
+
+			float alpha = (LightHeight - GameCamFrustumCenter.y) / LightDir.y;
+			CVector3 LightPos = GameCamFrustumCenter + LightDir * alpha;
+
+			mLightView = LightViewRot;
+			mLightView.m[3][0] = LightPos.x;
+			mLightView.m[3][1] = LightPos.y;
+			mLightView.m[3][2] = LightPos.z;
+			mLightView.m[3][3] = 1.0f;
+			mLightView.Inverse(mLightView);
+
+			CVector3 posMax = { -FLT_MAX, -FLT_MAX, -FLT_MAX };
+			CVector3 posMin = { FLT_MAX, FLT_MAX, FLT_MAX };
+			for (auto& InLight : pos) {
+				mLightView.Mul(InLight);
+				posMax.Max(InLight);
+				posMin.Min(InLight);
+
+			}
+			width = posMax.x - posMin.x;
+			height = posMax.y - posMin.y;
+			farZ = posMax.z;
 		}
-		/*m_shadowWidth[i] *= scaleX;
-		m_shadowHight[i] *= scaleY;*/
-		LigCamTarget[i] += CameraRight * (m_shadowWidth[i] * 0.5f) * CameraRight.Dot(direction*-1.0f);
-		LigCamTarget[i] += GameCamXZ * (m_shadowHight[i] * 0.5f) * GameCamXZ.Dot(direction*-1.0f);
-
-
-		m_lightViewMatrix[i].MakeLookAt(
-			LigCamTarget[i] + direction * -LightCamHight,
-			LigCamTarget[i],
-			GameCamXZ
+		CMatrix proj;
+		proj.MakeOrthoProjectionMatrix(
+			width,
+			height,
+			farZ / 100.0f,
+			farZ*2.0f
 		);
-
-		m_lightProjectionMatrix[i].MakeOrthoProjectionMatrix(
-			m_shadowWidth[i],
-			m_shadowHight[i],
-			1.0f,
-			10.0f//LightCamHight*0.5f
-		);
+		NearPlaneZ = FarPlaneZ;
+		m_lightViewMatrix[i] = mLightView;
+		m_lightProjectionMatrix[i] = proj;
 	}
 }
 
