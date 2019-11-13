@@ -26,7 +26,7 @@ bool QuestStage::Init() {
 		result = wcscmp(L"rock_boulder_b1", objData.name);
 		if (result == 0)
 		{
-			return true;
+			return false;
 		}
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
@@ -38,7 +38,7 @@ bool QuestStage::Init() {
 		if (result == 0)
 		{
 			NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
-			return false;
+			return true;
 		}
 		return true;
 	});

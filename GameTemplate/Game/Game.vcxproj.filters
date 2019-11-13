@@ -388,6 +388,7 @@
     <MeshContentTask Include="Assets\modelData\map\SM_CastleCorner6m03.fbx" />
     <MeshContentTask Include="Assets\modelData\Towncori.fbx" />
     <MeshContentTask Include="Assets\modelData\map\SM_FenceWall03.FBX" />
+    <MeshContentTask Include="Assets\modelData\Towncori1.fbx" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />
