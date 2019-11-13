@@ -19,9 +19,9 @@ bool Town::Init()
 #ifdef DenugWorld
 	//’n–Ê‚¾‚¯–¼‘O‚Ì‚Ý
 	wchar_t moveFilePath[256];
-	//swprintf_s(moveFilePath, L"Assets/modelData/%s.cmo", m_Name);
-	//m_model.Init(L"Assets/modelData/unityChan.cmo");
-	//m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
+	swprintf_s(moveFilePath, L"Assets/modelData/%s.cmo", m_Name);
+	m_model.Init(L"Assets/modelData/unityChan.cmo");
+	m_poa.CreateMeshObject(m_model, {10000.0f,1000000.0f,0.0f}, CQuaternion::Identity());
 	swprintf_s(moveFilePath, L"Assets/level/%s1.tkl", m_Name);
 	nra.UEInit(moveFilePath, [&](LevelObjectData objData) {
 		int result = 1;
@@ -118,7 +118,7 @@ bool Town::Init()
 		{
 			return true;
 		}
-		return true;
+		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori1.cmo", m_Name);
 	m_testmodel.Init(moveFilePath);

@@ -17,7 +17,7 @@ Enemy::~Enemy()
 }
 bool Enemy::Start()
 {
-	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
+	m_skinmodel.Init(L"Assets/modelData/Dragon_1.cmo");
 	m_skinmodel.EnableShadowCaster(true);
 	return true;
 }

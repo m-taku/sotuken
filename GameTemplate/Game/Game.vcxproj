@@ -256,6 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
+    <MeshContentTask Include="Assets\modelData\Dragon\Dragon_1.FBX" />
     <MeshContentTask Include="Assets\modelData\Ground.fbx" />
     <MeshContentTask Include="Assets\modelData\jiman.FBX" />
     <MeshContentTask Include="Assets\modelData\map\Groundcori.FBX" />
