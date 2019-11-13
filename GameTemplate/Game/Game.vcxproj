@@ -256,6 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
+    <MeshContentTask Include="Assets\modelData\Dragon\Dragon_1.FBX" />
     <MeshContentTask Include="Assets\modelData\Ground.fbx" />
     <MeshContentTask Include="Assets\modelData\jiman.FBX" />
     <MeshContentTask Include="Assets\modelData\map\Groundcori.FBX" />
@@ -352,6 +353,7 @@
     <MeshContentTask Include="Assets\modelData\map\SM_WoodStairs02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_WoodStairs03.fbx" />
     <MeshContentTask Include="Assets\modelData\Towncori.fbx" />
+    <MeshContentTask Include="Assets\modelData\Towncori1.fbx" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
