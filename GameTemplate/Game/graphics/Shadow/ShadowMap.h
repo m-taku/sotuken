@@ -42,8 +42,8 @@ private:
 	};
 
 	ConstantBuffer m_cb;
-	float m_cascadePerHigh = 0.2f;
-	float m_cascadePerMidle = 0.5f;
-	float m_cascadePerLow = 0.3f;
+	float m_cascadePerHigh = 0.1f;
+	float m_cascadePerMidle = 0.3f;
+	float m_cascadePerLow = 0.6f;
 };
 

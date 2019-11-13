@@ -53,7 +53,7 @@ float4 PSMain(PSInput In) : SV_Target0
 	LUV = mul(LightViewMatrix, World);
 	LUV = mul(LightProjectionMatrix, LUV);
 	LUV.xyz /= LUV.w;
-	float Z = LUV.z;
+	float Z = min(LUV.z, 1.0f);
 	LUV.xy *= float2(0.5f, -0.5f);
 	LUV.xy += 0.5f;
 	float4 s = 1.0f;
