@@ -121,6 +121,11 @@ void CharacterController::Init(float radius, float height, const CVector3& posit
 }
 const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpeed)
 {
+	{
+		float len = moveSpeed.Length();
+		moveSpeed.Normalize();
+		moveSpeed *= min(m_maxSpeed, len);
+	}
 	if (moveSpeed.y > 0.0f) {
 		//‚Á”ò‚Ñ’†‚É‚·‚éB
 		m_isJump = true;
