@@ -107,6 +107,7 @@
     <ClCompile Include="EnemyStateLoitering.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="graphics\DeferredRender.cpp" />
+    <ClCompile Include="graphics\GaussianBlur.cpp" />
     <ClCompile Include="graphics\Light\DirectionLight.cpp" />
     <ClCompile Include="GameCamera.cpp" />
     <ClCompile Include="GameFont\GameFont.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="EnemyStatus.h" />
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="graphics\DeferredRender.h" />
+    <ClInclude Include="graphics\GaussianBlur.h" />
     <ClInclude Include="graphics\Light\DirectionLight.h" />
     <ClInclude Include="GameCamera.h" />
     <ClInclude Include="GameFont\GameFont.h" />
