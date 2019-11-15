@@ -1,19 +1,22 @@
 #pragma once
+#include"EnemyStatus.h"
+#include"EnemyState.h"
 class Enemy : public IGameObject
 {
+	friend EnemyState;
 public:
 	Enemy();
 	~Enemy();
 /// <summary>
 /// 状態のEnum
 /// </summary>
-	//enum State {
-	//	StateTownMove,			//移動中
-	//	StateWate
-	//};
+	enum StateEnemy {
+		StateLoitering,			//移動中
+		StateDead
+	};
 	bool Start();
 	void Update();
-	//void TransitionState(State m);
+	void TransitionState(StateEnemy m);
 	void Draw();
 	const CVector3& GetPosition() const
 	{
@@ -47,6 +50,8 @@ public:
 		m_position = pos;
 		m_characon.SetPosition(pos);
 	}
+protected:
+	EnemyStatus* m_status = nullptr;
 private:
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
@@ -57,12 +62,15 @@ private:
 
 	CQuaternion m_rotation = CQuaternion::Identity();		//回転
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列
-	//State m_statenum = StateTownMove;
-	//PlayerState* m_state = nullptr;
+	StateEnemy m_statenum = StateLoitering;
+	EnemyState* m_state = nullptr;
 	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン
 
 
 
+	//デバック用変数
+	float debugtaim = 0.0f;
+	
 };
 
