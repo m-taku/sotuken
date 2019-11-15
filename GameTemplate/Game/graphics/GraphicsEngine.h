@@ -45,6 +45,8 @@ public:
 
 	void ChangeBuckBuffer();
 
+	void ChangeMainRenderTarget(bool clearcolor);
+
 	void PostEffectDraw();
 
 	DeferredRender& GetDeferredRender()

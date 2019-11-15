@@ -43,6 +43,20 @@ void GraphicsEngine::ChangeBuckBuffer()
 	m_pd3dDeviceContext->ClearRenderTargetView(m_backBuffer, ClearColor);
 	m_pd3dDeviceContext->ClearDepthStencilView(m_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
+void GraphicsEngine::ChangeMainRenderTarget(bool clearcolor)
+{
+	ID3D11RenderTargetView* renderTargetView[] = {
+		m_mainRenderTarget.GetRenderTatgetView()
+	};
+	m_pd3dDeviceContext->OMSetRenderTargets(1, renderTargetView, m_mainRenderTarget.GetDepthStencilView());
+	m_pd3dDeviceContext->RSSetViewports(1, m_mainRenderTarget.GetViewPort());
+	if (clearcolor)
+	{
+		float color[] = { 0.0f,0.0f,0.0f,1.0f };
+		m_pd3dDeviceContext->ClearRenderTargetView(m_mainRenderTarget.GetRenderTatgetView(), color);
+	}
+	m_pd3dDeviceContext->ClearDepthStencilView(m_mainRenderTarget.GetDepthStencilView(), D3D11_CLEAR_DEPTH, 1.0f, 0);
+}
 void GraphicsEngine::PostEffectDraw()
 {
 	ID3D11ShaderResourceView* srv[] = {
