@@ -58,4 +58,5 @@ void Enemy::Draw()
 		smGameCamera().GetCameraViewMatrix(),
 		smGameCamera().GetCameraProjectionMatrix()
 	);
+	m_state->Draw();
 }

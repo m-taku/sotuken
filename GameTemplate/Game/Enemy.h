@@ -1,6 +1,7 @@
 #pragma once
 #include"EnemyStatus.h"
 #include"EnemyState.h"
+#include"Carving.h"
 class Enemy : public IGameObject
 {
 	friend EnemyState;
@@ -68,8 +69,8 @@ private:
 	CharacterController m_characon;		//キャラコン
 
 
-
 	//デバック用変数
+	Carving hagihagi;
 	float debugtaim = 0.0f;
 	
 };
