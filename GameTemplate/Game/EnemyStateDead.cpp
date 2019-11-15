@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "EnemyStateDead.h"
-#include"Enemy.h"
+#include"Enemy/Enemy.h"
 #include"Player.h"
 
 EnemyStateDead::EnemyStateDead(Enemy* enemypoint):EnemyState(enemypoint)

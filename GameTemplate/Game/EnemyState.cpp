@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "EnemyState.h"
-#include"Enemy.h"
+#include"Enemy/Enemy.h"
 
 
 EnemyState::EnemyState(Enemy* enemypoint)

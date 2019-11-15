@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "EnemyStateLoitering.h"
-#include"Enemy.h"
+#include"Enemy/Enemy.h"
 
 
 EnemyStateLoitering::EnemyStateLoitering(Enemy* enemypoint):EnemyState(enemypoint)
