@@ -18,10 +18,11 @@ Title::~Title()
 bool Title::Start()
 {
 	m_model.Init(L"Assets/modelData/unityChan.cmo");
-	m_srv.CreateFromDDSTextureFromFile(L"Assets/sprite/Title.dds");
+	m_srv.CreateFromDDSTextureFromFile(L"Assets/sprite/Title.dds");	
+	m_sprite.Init(m_srv, FRAME_BUFFER_W, FRAME_BUFFER_H);
 	text = NewGO<Text_Box>(10, "Text_box");
 	text->Init("ÇoÇíÇÖÇìÇìÅ@Ç`Å@ÇaÇïÇîÇîÇèÇé", { 0.0f,-300.0f }, CVector4::White(), 0.0f, { 0.5f,0.5f });
-	m_sprite.Init(m_srv, FRAME_BUFFER_W, FRAME_BUFFER_H);
+
 	return true;
 }
 void Title::Update()
