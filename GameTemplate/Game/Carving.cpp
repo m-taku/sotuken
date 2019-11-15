@@ -5,7 +5,12 @@
 
 Carving::Carving()
 {
-	srand((unsigned int)time(NULL));
+	static int f_init = false;
+	// ˆê“x‚¾‚¯‚Ì‰Šú‰»
+	if (!f_init) {
+		srand((unsigned int)time(NULL));
+		f_init = true;
+	}
 }
 
 
