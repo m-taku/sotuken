@@ -22,7 +22,7 @@ void Carving::AddItem(std::string name, int value)
 
 std::string Carving::GetItem()
 {
-	int s, count = 0, sub = 100;
+	int s,sub = 100;
 
 	s = rand() % 100;
 
