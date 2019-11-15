@@ -152,9 +152,7 @@
     <ClCompile Include="graphics\Shadow\ShadowManager.cpp" />
     <ClCompile Include="graphics\Shadow\ShadowMap.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyState.cpp" />
-    <ClCompile Include="EnemyStateLoitering.cpp" />
-    <ClCompile Include="EnemyStateDead.cpp" />
+    <ClCompile Include="Carving.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -289,10 +287,7 @@
     <ClInclude Include="graphics\Shadow\ShadowMap.h" />
     <ClInclude Include="graphics\Shadow\ShadowManager.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyState.h" />
-    <ClInclude Include="EnemyStateLoitering.h" />
-    <ClInclude Include="EnemyStatus.h" />
-    <ClInclude Include="EnemyStateDead.h" />
+    <ClInclude Include="Carving.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
