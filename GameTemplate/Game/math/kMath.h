@@ -5,22 +5,27 @@
 #pragma once
 
 
-class CMath{
+class CMath {
 public:
 	static const float PI;
 	/*!
 	 * @brief	degreeからradianに変換。
 	 */
-	static float DegToRad( float deg )
+	static float DegToRad(float deg)
 	{
-		return deg * (PI/180.0f);
+		return deg * (PI / 180.0f);
 	}
 	/*!
 	 * @brief	radianからdegreeに変換。
 	 */
-	static float RadToDeg( float rad )
+	static float RadToDeg(float rad)
 	{
-		return rad / (PI/180.0f);
+		return rad / (PI / 180.0f);
+	}
+
+	static float Acos(float dotres)
+	{
+		return acosf(min(1.0f, max(-1.0f, dotres)));
 	}
 	/*!
 	 *@brief	t0とt1間を線形補完。

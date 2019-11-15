@@ -23,6 +23,7 @@ namespace smEngine
 		m_postEffect.Init();
 		//m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSFinalMain");
 		m_postEffect.SetVS("Assets/shader/shadowcollect.fx", "VSMain");
+		m_blur.InitOriginalResolusion(m_shadowCollectRenderTarget.GetShaderResourceView(), 25.0f);
 	}
 
 	void LightManager::AddLight(LightBase * light)
@@ -72,7 +73,7 @@ namespace smEngine
 			}
 		}
 
-		
+
 	}
 
 	void LightManager::Update()
@@ -89,7 +90,7 @@ namespace smEngine
 			if (light->IsEnableShadow())
 			{
 				light->GetShadowMap()->UpdateDirection(light->GetDirection());
-				
+
 				m_shadowMapArray.push_back(light->GetShadowMap());
 			}
 			lightNo++;
@@ -101,7 +102,7 @@ namespace smEngine
 			lightNo++;
 		}
 
-		
+
 	}
 	void LightManager::ShadowRender()
 	{
@@ -110,58 +111,62 @@ namespace smEngine
 		{
 			shadowMap->ShadowCasterDraw();
 		}
-		
+
 		float color[] = { 1.0f,1.0f,1.0f,1.0f };
 		m_shadowCollectRenderTarget.Clear(color);
+		bool enableShadow = false;
 		for (const auto& shadowMap : m_shadowMapArray)
 		{
 			shadowMap->DrawToShadowCollector();
+			enableShadow = true;
 		}
 
-		ID3D11RenderTargetView* buckUpRTV = nullptr;
-		ID3D11DepthStencilView* buckUpDepth = nullptr;
-		D3D11_VIEWPORT buckUpViewPort;
-		UINT numViewPort = 1;
-		UINT* pnumViewPort = &numViewPort;
-		deviceContext->OMGetRenderTargets(1, &buckUpRTV, &buckUpDepth);
-		deviceContext->RSGetViewports(pnumViewPort, &buckUpViewPort);
+		if (enableShadow)
+		{
+			m_blur.Execute(1.5f);
 
-		RenderTarget AddShadowRT;
-		AddShadowRT.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
-		AddShadowRT.Clear(color);
-		ID3D11RenderTargetView* rtv[] = {
-			AddShadowRT.GetRenderTatgetView()
-		};
-		deviceContext->OMSetRenderTargets(1, rtv, AddShadowRT.GetDepthStencilView());
-		deviceContext->RSSetViewports(1, AddShadowRT.GetViewPort());
+			ID3D11RenderTargetView* buckUpRTV = nullptr;
+			ID3D11DepthStencilView* buckUpDepth = nullptr;
+			D3D11_VIEWPORT buckUpViewPort;
+			UINT numViewPort = 1;
+			UINT* pnumViewPort = &numViewPort;
+			deviceContext->OMGetRenderTargets(1, &buckUpRTV, &buckUpDepth);
+			deviceContext->RSGetViewports(pnumViewPort, &buckUpViewPort);
 
-		ID3D11ShaderResourceView* srv[] = {
-			m_shadowCollectRenderTarget.GetShaderResourceView(),
-			g_graphicsEngine->GetMainRenderTarget().GetShaderResourceView()
-		};
-		deviceContext->VSSetShaderResources(0, 2, srv);
-		deviceContext->PSSetShaderResources(0, 2, srv);
-		m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSFinalMain");
-		m_postEffect.Draw();
+			RenderTarget AddShadowRT;
+			AddShadowRT.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
+			AddShadowRT.Clear(color);
+			ID3D11RenderTargetView* rtv[] = {
+				AddShadowRT.GetRenderTatgetView()
+			};
+			deviceContext->OMSetRenderTargets(1, rtv, AddShadowRT.GetDepthStencilView());
+			deviceContext->RSSetViewports(1, AddShadowRT.GetViewPort());
+			ID3D11ShaderResourceView* srv[] = {
+				m_blur.GetBlurSRV(),
+				g_graphicsEngine->GetMainRenderTarget().GetShaderResourceView()
+			};
+			deviceContext->VSSetShaderResources(0, 2, srv);
+			deviceContext->PSSetShaderResources(0, 2, srv);
+			m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSFinalMain");
+			m_postEffect.Draw();
 
+			ID3D11RenderTargetView* copyrtv[] = {
+				g_graphicsEngine->GetMainRenderTarget().GetRenderTatgetView()
+			};
+			deviceContext->OMSetRenderTargets(1, copyrtv, g_graphicsEngine->GetMainRenderTarget().GetDepthStencilView());
+			deviceContext->RSSetViewports(1, g_graphicsEngine->GetMainRenderTarget().GetViewPort());
 
+			ID3D11ShaderResourceView* copysrv[] = {
+				AddShadowRT.GetShaderResourceView()
+			};
+			deviceContext->VSSetShaderResources(0, 1, copysrv);
+			deviceContext->PSSetShaderResources(0, 1, copysrv);
+			m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSCopyMain");
+			m_postEffect.Draw();
 
-		ID3D11RenderTargetView* copyrtv[] = {
-			g_graphicsEngine->GetMainRenderTarget().GetRenderTatgetView()
-		};
-		deviceContext->OMSetRenderTargets(1, copyrtv, g_graphicsEngine->GetMainRenderTarget().GetDepthStencilView());
-		deviceContext->RSSetViewports(1, g_graphicsEngine->GetMainRenderTarget().GetViewPort());
-
-		ID3D11ShaderResourceView* copysrv[] = {
-			AddShadowRT.GetShaderResourceView()
-		};
-		deviceContext->VSSetShaderResources(0, 1, copysrv);
-		deviceContext->PSSetShaderResources(0, 1, copysrv);
-		m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSCopyMain");
-		m_postEffect.Draw();
-
-		deviceContext->OMSetRenderTargets(1, &buckUpRTV, buckUpDepth);
-		deviceContext->RSSetViewports(*pnumViewPort, &buckUpViewPort);
+			deviceContext->OMSetRenderTargets(1, &buckUpRTV, buckUpDepth);
+			deviceContext->RSSetViewports(*pnumViewPort, &buckUpViewPort);
+		}
 	}
 	void LightManager::SendBuffer()
 	{

@@ -39,7 +39,7 @@
 
 #include "graphics/SkinModel.h"
 #include "graphics/Skeleton.h"
-
+#include "graphics/GaussianBlur.h"
 #include "graphics/Shadow/ShadowMap.h"
 #include "graphics/Shadow/ShadowManager.h"
 #include "graphics/Light/Light.h"

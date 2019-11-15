@@ -39,13 +39,13 @@ bool Player::Start()
 	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
 	m_skinmodel.EnableShadowCaster(true);
 
-	CVector3 position = m_position + (m_forward * -1000.0f + m_up * 100.0f);
+	CVector3 position = m_position + (m_forward * -500.0f + m_up * 100.0f);
 	smGameCamera().SetPosition(position);
 	smGameCamera().SetTarget(m_position + m_up * 100.0f);
 	TransitionState(StateTownMove);
 	DirectionLight* plight = new DirectionLight;
 	plight->SetColor({ 1.0f,1.0f,1.0f,1.0f });
-	plight->SetDirection(CVector3::Down() + CVector3::Right()*2.0f);
+	plight->SetDirection(CVector3::Down()+CVector3::Right());
 	plight->SetEnableShadow(true);
 	smLightManager().AddLight(plight);
 	return true;

@@ -13,6 +13,8 @@ PlayerMovement::~PlayerMovement()
 
 void PlayerMovement::DefaultMove()
 {
+	m_player->UpdateAxis();
+
 	m_player->m_movespeed = CVector3::Zero();
 	float padinput_LX = g_pad[0].GetLStickXF();
 	float padinput_LY = g_pad[0].GetLStickYF();
@@ -43,4 +45,24 @@ void PlayerMovement::DefaultMove()
 	camera_XZ *= 500.0f;
 	m_player->m_movespeed.x = camera_XZ.x;
 	m_player->m_movespeed.z = camera_XZ.z;
+
+	//ƒvƒŒƒCƒ„[‚Ì‰ñ“]ˆ—
+	CVector3 vec = camera_XZ;
+
+	if (vec.Length() > 0.0f)
+	{
+		vec.Normalize();
+		float angle = CMath::Acos(m_player->m_forward.Dot(vec));
+		if (angle > 0.0f);
+		{
+			CVector3 axis;
+			axis.Cross(m_player->m_forward, vec);
+			axis.Normalize();
+			CQuaternion qRot;
+
+			qRot.SetRotation(axis, angle);
+			m_player->m_rotation.Multiply(qRot);
+			m_player->UpdateAxis();
+		}
+	}
 }

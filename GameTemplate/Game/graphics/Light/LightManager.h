@@ -84,7 +84,7 @@ namespace smEngine {
 
 		RenderTarget m_shadowCollectRenderTarget;
 		PostEffect m_postEffect;
-
+		GaussianBlur m_blur;
 		void* m_shadowMapSRV = NULL;
 	};
 

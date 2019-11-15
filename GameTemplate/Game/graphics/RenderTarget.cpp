@@ -26,7 +26,6 @@ bool RenderTarget::Create(int w, int h, DXGI_FORMAT colorFormat, DXGI_FORMAT dep
 	D3D11_RENDER_TARGET_VIEW_DESC viewDesc;
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
 	D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDesc;
-
 	ZeroMemory(&texDesc, sizeof(texDesc));
 	texDesc.Width = m_width;
 	texDesc.Height = m_height;

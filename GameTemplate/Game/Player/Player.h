@@ -54,6 +54,18 @@ public:
 		m_characon.SetPosition(pos);
 	}
 private:
+	void UpdateAxis()
+	{
+		CMatrix mRot;
+		mRot.MakeRotationFromQuaternion(m_rotation);
+		
+		m_right = CVector3(mRot.m[0][0], mRot.m[0][1], mRot.m[0][2]);
+		m_up = CVector3(mRot.m[1][0], mRot.m[1][1], mRot.m[1][2]);
+		m_forward = CVector3(mRot.m[2][0], mRot.m[2][1], mRot.m[2][2]);
+		m_right.Normalize();
+		m_up.Normalize();
+		m_forward.Normalize();
+	}
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向

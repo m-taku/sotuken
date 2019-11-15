@@ -90,8 +90,8 @@ private:
 	RenderTarget			m_mainRenderTarget;
 	PostEffect m_posteffect;
 	DeferredRender m_deferredRender;
-	float m_shadowMapHight = 1000.0f;
-	float m_shadowAvailableLength = 10000.0f;
+	float m_shadowMapHight = 3000.0f;
+	float m_shadowAvailableLength = 5000.0f;
 };
 
 extern GraphicsEngine* g_graphicsEngine;			//グラフィックスエンジン

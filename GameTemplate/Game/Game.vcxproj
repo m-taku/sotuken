@@ -102,6 +102,7 @@
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="character\CharacterController.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="graphics\GaussianBlur.cpp" />
     <ClCompile Include="graphics\DeferredRender.cpp" />
     <ClCompile Include="graphics\Light\DirectionLight.cpp" />
     <ClCompile Include="GameCamera.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="character\CharacterController.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="graphics\GaussianBlur.h" />
     <ClInclude Include="graphics\DeferredRender.h" />
     <ClInclude Include="graphics\Light\DirectionLight.h" />
     <ClInclude Include="GameCamera.h" />

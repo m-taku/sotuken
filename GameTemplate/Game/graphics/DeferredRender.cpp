@@ -51,7 +51,7 @@ void DeferredRender::Update()
 		m_renderTarget[enGBuffer_Depth].GetRenderTatgetView(),
 	};
 	deviceContext->OMSetRenderTargets(enGBuffer_Num, renderTargetView, m_renderTarget[enGBuffer_DiffuseTexture].GetDepthStencilView());
-	deviceContext->RSSetViewports(enGBuffer_Num, m_renderTarget[enGBuffer_DiffuseTexture].GetViewPort());
+	deviceContext->RSSetViewports(1, m_renderTarget[enGBuffer_DiffuseTexture].GetViewPort());
 	for (int i = 0; i < enGBuffer_Num; i++)
 	{
 		switch (i)
@@ -74,8 +74,6 @@ void DeferredRender::Draw()
 {
 	g_graphicsEngine->ChangeMainRenderTarget(true);
 	ID3D11DeviceContext* deviceContext = g_graphicsEngine->GetD3DDeviceContext();
-
-	
 	ID3D11ShaderResourceView* srv[] = {
 		m_renderTarget[enGBuffer_DiffuseTexture].GetShaderResourceView(),
 		m_renderTarget[enGBuffer_Normal].GetShaderResourceView(),

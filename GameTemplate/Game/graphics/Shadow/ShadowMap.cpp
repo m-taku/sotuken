@@ -13,7 +13,6 @@ ShadowMap::~ShadowMap()
 
 void ShadowMap::Init(int w, int h)
 {
-
 	for (int i = 0; i < enMapNum; i++)
 	{
 		m_renderTarget[i].Create(
@@ -62,11 +61,7 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 	LightViewRot.m[2][2] = LightViewForward.z;
 	LightViewRot.m[2][3] = 0.0f;
 
-	float ShadowAreaTbl[] = {
-		AvailableLen*0.3f,
-		AvailableLen*0.3f,
-		AvailableLen*0.4f
-	};
+	float ShadowAreaTbl[enMapNum];
 	float LightHeight = smGameCamera().GetCameraTarget().y + g_lightHeight;
 	CVector3 GameCamPos = smGameCamera().GetCameraPosition();
 	CVector3 GameCamForward = smGameCamera().GetCameraFoward();
@@ -76,9 +71,11 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 	GameCamUp.Normalize();
 	float NearPlaneZ = 0.0f;
 	float FarPlaneZ;
-
+	float sub = 1.0f / enMapNum;
+	float aspect = FRAME_BUFFER_W / FRAME_BUFFER_H;
 	for (int i = 0; i < enMapNum; i++)
 	{
+		ShadowAreaTbl[i] = AvailableLen * sub;
 		FarPlaneZ = NearPlaneZ + ShadowAreaTbl[i];
 		CMatrix mLightView = CMatrix::Identity();
 		float HalfViewAngle = g_camera3D.GetViewAngle()*0.5f;
@@ -91,16 +88,19 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 			toUpNear = GameCamUp * t*NearPlaneZ;
 			toUpFar = GameCamUp * t*FarPlaneZ;
 			CVector3 NearPlaneCenterPos = GameCamPos + GameCamForward * NearPlaneZ;
-			pos[0] = NearPlaneCenterPos + GameCamRight * t*NearPlaneZ + toUpNear;
+			pos[0] = NearPlaneCenterPos + GameCamRight * t*NearPlaneZ*aspect + toUpNear;
 			pos[1] = pos[0] + toUpNear * -2.0f;
-			pos[2] = NearPlaneCenterPos + GameCamRight * -t * NearPlaneZ + toUpNear;
+			pos[2] = NearPlaneCenterPos + GameCamRight * -t * NearPlaneZ*aspect + toUpNear;
 			pos[3] = pos[2] + toUpNear * -2.0f;
 			CVector3 FarPlaneCenterPos = GameCamPos + GameCamForward * FarPlaneZ;
-			pos[4] = FarPlaneCenterPos + GameCamRight * t*FarPlaneZ + toUpFar;
+			pos[4] = FarPlaneCenterPos + GameCamRight * t*FarPlaneZ*aspect + toUpFar;
 			pos[5] = pos[4] + toUpFar * -2.0f;
-			pos[6] = FarPlaneCenterPos + GameCamRight * -t * FarPlaneZ + toUpFar;
+			pos[6] = FarPlaneCenterPos + GameCamRight * -t * FarPlaneZ*aspect + toUpFar;
 			pos[7] = pos[6] + toUpFar * -2.0f;
 
+
+			float a = t * 500.0f;
+			float b = t * 500.0f*aspect;
 			CVector3 GameCamFrustumCenter = NearPlaneCenterPos + CVector3(FarPlaneCenterPos - NearPlaneCenterPos) * 0.5f;
 
 			float alpha = (LightHeight - GameCamFrustumCenter.y) / LightDir.y;
@@ -150,8 +150,6 @@ void ShadowMap::ShadowCasterDraw()
 	deviceContext->OMGetRenderTargets(1, &buckUpRTV, &buckUpDepth);
 	deviceContext->RSGetViewports(pnumViewPort, &buckUpViewPort);
 
-
-
 	for (int i = 0; i < enMapNum; i++)
 	{
 		ID3D11RenderTargetView* rtv[] = {
@@ -173,8 +171,6 @@ void ShadowMap::ShadowCasterDraw()
 			}
 		}
 	}
-
-
 
 	deviceContext->OMSetRenderTargets(1, &buckUpRTV, buckUpDepth);
 	deviceContext->RSSetViewports(*pnumViewPort, &buckUpViewPort);
