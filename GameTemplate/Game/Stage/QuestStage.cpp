@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "QuestStage.h"
 #include"Player.h"
-#include"Enemy.h"
+#include"Enemy/Enemy.h"
 
 QuestStage::QuestStage()
 {

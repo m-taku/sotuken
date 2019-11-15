@@ -151,7 +151,7 @@
     <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="graphics\Shadow\ShadowManager.cpp" />
     <ClCompile Include="graphics\Shadow\ShadowMap.cpp" />
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy\Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -285,7 +285,7 @@
     <ClInclude Include="QuestManager.h" />
     <ClInclude Include="graphics\Shadow\ShadowMap.h" />
     <ClInclude Include="graphics\Shadow\ShadowManager.h" />
-    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy\Enemy.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
