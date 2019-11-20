@@ -14,6 +14,14 @@ enum EnDrawMode {
 	enNormal,
 	enShadow
 };
+
+struct OBB
+{
+	CVector3 origin = CVector3::Zero();
+	CVector3 direction[3] = { CVector3::Zero() };
+	CVector3 directionLen = CVector3::Zero();
+};
+
 /*!
 *@brief	スキンモデルクラス。
 */
@@ -113,6 +121,8 @@ private:
 	*/
 	void InitSkeleton(const wchar_t* filePath);
 
+
+	void CalculateFrustumPlanes(CMatrix pmat, int No);
 private:
 	//定数バッファ。
 	struct SVSConstantBuffer {
@@ -120,6 +130,12 @@ private:
 		CMatrix mView;
 		CMatrix mProj;
 	};
+	struct sikaku
+	{
+		CVector3 m_normal;
+		CVector3 m_popopop;
+	};
+
 	EnFbxUpAxis			m_enFbxUpAxis = enFbxUpAxisZ;	//!<FBXの上方向。
 	ID3D11Buffer*		m_cb = nullptr;					//!<定数バッファ。
 	Skeleton			m_skeleton;						//!<スケルトン。
@@ -129,6 +145,8 @@ private:
 	CVector3 Maxpos = CVector3::Zero();
 	CVector3 Minpos = CVector3::Zero();
 	//ここからマルチスレッド関連の加工済みデータ
+	OBB m_atari;
+	sikaku m_kaku[4];
 	static const int MAXTHREAD = 2;
 	SVSConstantBuffer m_vsCb[MAXTHREAD];
 	ID3D11SamplerState* m_samplerState[MAXTHREAD] = { nullptr };		//!<サンプラステート。
