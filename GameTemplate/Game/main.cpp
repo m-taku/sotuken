@@ -3,7 +3,6 @@
 #include "level/Level.h"
 #include"Title.h"
 
-
 ///////////////////////////////////////////////////////////////////
 // ウィンドウプログラムのメイン関数。
 ///////////////////////////////////////////////////////////////////
@@ -16,15 +15,20 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	g_camera3D.SetPosition({ 0.0f, 100.0f, -600.0f });
 	g_camera3D.SetTarget({ 0.0f, 100.0f, 0.0f });
 	g_camera3D.SetFar(10000.0f);
-
+#ifdef _DEBUG
+	::_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
 	GameFont FPS;
 	GameObjectManager().Init(20);
 	g_physics.SetDebugDrawMode(btIDebugDraw::DBG_DrawWireframe);
 	//ゲームループ。
-	NewGO <Title>(0, "Title");
+	NewGO<Title>(0, "Title");
+
+	int innn = 0;
 	while (DispatchWindowMessage() == true)
 	{
 		GetGameTime().Start();
+		GetSkinModelManager().SetNo(innn);
 		//描画開始。
 		g_graphicsEngine->BegineRender();
 		//ゲームパッドの更新。	
@@ -41,6 +45,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		FPS.Draw(fps, { -FRAME_BUFFER_W /2.0f, FRAME_BUFFER_H/2.0f }, CVector4::White(), 0.0f, 1.0f, {0.0f,1.0f});
 		FPS.EndDraw();
 		g_graphicsEngine->EndRender();
+		innn++;
+		innn %= 2;
 		GetGameTime().Stop();
 	}
+	delete g_graphicsEngine;
 }

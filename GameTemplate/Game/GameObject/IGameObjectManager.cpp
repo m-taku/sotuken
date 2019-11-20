@@ -10,6 +10,12 @@ namespace smEngine {
 
 	IGameObjectManager::~IGameObjectManager()
 	{
+		for (auto ObjectList : m_gameObjectListArray) {
+			for (auto Object : ObjectList) {
+				delete Object;
+			}
+		}
+
 	}
 	void IGameObjectManager::Init(int gameObjectPrioMax) {
 		if (gameObjectPrioMax > GAME_OBJECT_PRIO_MAX)
@@ -23,6 +29,8 @@ namespace smEngine {
 	}
 	void IGameObjectManager::Execute()
 	{
+		g_graphicsEngine->GetDeferredRender().Update();
+		GetSkinModelManager().NormalCulling();
 		for (auto ObjectList:m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
@@ -35,19 +43,27 @@ namespace smEngine {
 				Object->UpdateWrapper();
 			}
 		}
-		smGameCamera().Update();
-		g_graphicsEngine->GetDeferredRender().Update();
+		smGameCamera().Update();	
+
+
+
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
 				Object->DrawWrapper();
 			}
 		}
+		int n = 0;
+		while (!GetSkinModelManager().Getfafa())
+		{
+			n++;
+		} 
 		//g_physics.DebubDrawWorld();
 		smLightManager().Update();
 		smLightManager().SendBuffer();
 		g_graphicsEngine->GetDeferredRender().Draw();
-		smLightManager().ShadowRender();
+
+		//smLightManager().ShadowRender();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
