@@ -15,7 +15,7 @@ Player::Player()
 
 Player::~Player()
 {
-	delete &cameraMovement;
+	delete m_state;
 }
 
 void Player::TransitionState(State m)

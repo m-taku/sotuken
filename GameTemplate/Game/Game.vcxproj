@@ -155,6 +155,7 @@
     <ClCompile Include="graphics\Light\PointLight.cpp" />
     <ClCompile Include="Player\PlayerState.cpp" />
     <ClCompile Include="QuestManager.cpp" />
+    <ClCompile Include="graphics\SkinModelManager.cpp" />
     <ClCompile Include="Stage\QuestStage.cpp" />
     <ClCompile Include="SaveData_Select.cpp" />
     <ClCompile Include="Stage\Stage_Base.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="graphics\Light\PointLight.h" />
     <ClInclude Include="Player\PlayerState.h" />
     <ClInclude Include="QuestManager.h" />
+    <ClInclude Include="graphics\SkinModelManager.h" />
     <ClInclude Include="Stage\QuestStage.h" />
     <ClInclude Include="SaveData_Select.h" />
     <ClInclude Include="Stage\Stage_Base.h" />

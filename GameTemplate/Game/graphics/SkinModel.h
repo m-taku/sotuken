@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Skeleton.h"
+#include"SkinModelManager.h"
 
 /*!
 *@brief	FBXの上方向。
@@ -19,6 +20,7 @@ enum EnDrawMode {
 class SkinModel
 {
 public:
+
 	//メッシュが見つかったときのコールバック関数。
 	using OnFindMesh = std::function<void(const std::unique_ptr<DirectX::ModelMeshPart>&)>;
 	/*!
@@ -79,12 +81,12 @@ public:
 
 	bool IsShadowCaster()
 	{
-		return m_isShadowCaster;
+		return m_isShadowCaster[0];
 	}
 
 	void EnableShadowCaster(bool frag)
 	{
-		m_isShadowCaster = frag;
+		m_isShadowCaster[0] = frag;
 	}
 
 	/*!
@@ -94,6 +96,8 @@ public:
 		enSkinModelSRVReg_DiffuseTexture = 0,		//!<ディフューズテクスチャ。
 		enSkinModelSRVReg_BoneMatrix,				//!<ボーン行列。
 	};
+	bool Culling(int No);
+	void Draw(int No);
 private:
 	/*!
 	*@brief	サンプラステートの初期化。
@@ -108,7 +112,7 @@ private:
 	*@param[in]	filePath		ロードするcmoファイルのファイルパス。
 	*/
 	void InitSkeleton(const wchar_t* filePath);
-	
+
 private:
 	//定数バッファ。
 	struct SVSConstantBuffer {
@@ -121,7 +125,13 @@ private:
 	Skeleton			m_skeleton;						//!<スケルトン。
 	CMatrix				m_worldMatrix;					//!<ワールド行列。
 	DirectX::Model*		m_modelDx;						//!<DirectXTKが提供するモデルクラス。
-	ID3D11SamplerState* m_samplerState = nullptr;		//!<サンプラステート。
-	bool m_isShadowCaster = false;
-};
 
+	CVector3 Maxpos = CVector3::Zero();
+	CVector3 Minpos = CVector3::Zero();
+	//ここからマルチスレッド関連の加工済みデータ
+	static const int MAXTHREAD = 2;
+	SVSConstantBuffer m_vsCb[MAXTHREAD];
+	ID3D11SamplerState* m_samplerState[MAXTHREAD] = { nullptr };		//!<サンプラステート。
+	bool m_isShadowCaster[MAXTHREAD] = { false };
+	EnDrawMode m_Mode[MAXTHREAD] = { enNormal };
+};

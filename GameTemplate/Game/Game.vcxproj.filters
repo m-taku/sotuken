@@ -157,6 +157,7 @@
     <ClCompile Include="EnemyStateLoitering.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="graphics\GaussianBlur.cpp" />
+    <ClCompile Include="graphics\SkinModelManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -297,6 +298,7 @@
     <ClInclude Include="EnemyStatus.h" />
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="graphics\GaussianBlur.h" />
+    <ClInclude Include="graphics\SkinModelManager.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

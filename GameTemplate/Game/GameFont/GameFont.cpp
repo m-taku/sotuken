@@ -21,7 +21,8 @@ GameFont::GameFont()
 
 GameFont::~GameFont()
 {
-	//delete m_spriteFont;
+	delete m_spriteFont; 
+	delete m_spriteBatch;
 }
 void GameFont::BeginDraw()
 {
