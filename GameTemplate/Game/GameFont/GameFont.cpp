@@ -63,7 +63,7 @@ void GameFont::EndDraw()
 	{
 		//ÉuÉåÉìÉhê›íË
 		D3D11_BLEND_DESC BLEND_DETE;
-		BLEND_DETE.AlphaToCoverageEnable = false;
+		BLEND_DETE.AlphaToCoverageEnable = true;
 		BLEND_DETE.IndependentBlendEnable = false;
 		BLEND_DETE.RenderTarget[0].BlendEnable = 1;
 		BLEND_DETE.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;

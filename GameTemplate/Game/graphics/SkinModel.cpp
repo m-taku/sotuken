@@ -276,9 +276,79 @@ bool SkinModel::Culling(int No)
 	Minpos -= m_atari.direction[2];
 	CalculateFrustumPlanes(m_vsCb[No].mProj,No);
 
+	for (int i = 0; i < 4; i++) {
+		CVector3 Max = GetPositivePoint(i, Minpos);
+		//CVector3 Min = GetNegativePoint(No, Minpos);
+
+
+		// (vp - plane.pos)・normal
+		float dp = m_kaku[i].m_normal.Dot(Max - m_kaku[i].m_popopop);// planes[i].GetDistanceToPoint(vp);
+		if (dp < 0)
+		{
+			return true;
+		}
+	}
 	return false;
+
+	//float dn = planes[i].GetDistanceToPoint(vn);
+	//if (dn < 0)
+	//{
+	//	result = State.Intersect;
+	//}
+
+
+}
+/// <summary>
+/// 法線から一番近い点を算出する
+/// </summary>
+/// <param name="target">ターゲットとなるAABB</param>
+/// <param name="normal">算出する法線</param>
+/// <returns></returns>
+CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos)
+{
+	CVector3 normal = m_kaku[No].m_normal;
+
+	if (normal.x > 0)
+	{
+		pos += m_atari.direction[0] * m_atari.directionLen.x;
+	}
+	if (normal.y > 0)
+	{
+		pos += m_atari.direction[1] * m_atari.directionLen.y;
+	}
+	if (normal.z > 0)
+	{
+		pos += m_atari.direction[2] * m_atari.directionLen.z;
+	}
+
+	return pos;
 }
 
+///// <summary>
+///// 法線から一番遠い点を算出する
+///// </summary>
+///// <param name="target">ターゲットとなるAABB</param>
+///// <param name="normal">算出する法線</param>
+///// <returns></returns>
+//CVector3 SkinModel::GetNegativePoint(int No, CVector3 pos)
+//{
+//	CVector3 normal = m_kaku[No].m_normal;
+//
+//	if (normal.x < 0)
+//	{
+//		pos += m_atari.direction[0] * m_atari.directionLen.x;
+//	}
+//	if (normal.y < 0)
+//	{
+//		pos += m_atari.direction[1] * m_atari.directionLen.y;
+//	}
+//	if (normal.z < 0)
+//	{
+//		pos += m_atari.direction[2] * m_atari.directionLen.z;
+//	}
+//
+//	return pos;
+//}
 /// <summary>
 /// 指定されたProjection Matricsから視錐台の6面の平面を求める
 /// </summary>

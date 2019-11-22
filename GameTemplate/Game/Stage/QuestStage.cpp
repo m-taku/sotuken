@@ -26,6 +26,7 @@ bool QuestStage::Init() {
 		result = wcscmp(L"rock_boulder_b1", objData.name);
 		if (result == 0)
 		{
+			objData.name = L"SM_Tree01";
 			return false;
 		}
 		result = wcscmp(L"Cube", objData.name);

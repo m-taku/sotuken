@@ -120,8 +120,8 @@ private:
 	*@param[in]	filePath		ロードするcmoファイルのファイルパス。
 	*/
 	void InitSkeleton(const wchar_t* filePath);
-
-
+	CVector3 GetPositivePoint(int No, CVector3 pos);
+	//CVector3 GetNegativePoint(int No,CVector3 pos);
 	void CalculateFrustumPlanes(CMatrix pmat, int No);
 private:
 	//定数バッファ。

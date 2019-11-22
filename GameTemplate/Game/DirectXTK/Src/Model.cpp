@@ -270,6 +270,8 @@ void XM_CALLCONV Model::Draw(
 
         mesh->PrepareForRendering(deviceContext, states, true, wireframe);
 
+
+
         mesh->Draw(deviceContext, world, view, projection, true);
     }
 }
