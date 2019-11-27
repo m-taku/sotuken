@@ -21,24 +21,30 @@ bool QuestStage::Init() {
 	m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	swprintf_s(moveFilePath, L"Assets/level/%s1.tkl", m_Name);
+	int count = 0;
 	nra.UEInit(moveFilePath, [&](LevelObjectData objData) {
 		int result = 1;
 		result = wcscmp(L"rock_boulder_b1", objData.name);
 		if (result == 0)
 		{
-			objData.name = L"SM_Tree01";
-			return false;
+			count++;
+			if (count <= 2) {
+				return false;
+			}
+			else {
+				return true;
+			}
 		}
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
 		{
-			FindGO<Player>("player")->SetPosition(objData.position);
+			FindGO<Player>("player")->SetPosition({0.0f,0.0f,0.0f});
 			return true;
 		}
 		result = wcscmp(L"unityChan", objData.name);
 		if (result == 0)
 		{
-			NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return true;
 		}
 		return true;

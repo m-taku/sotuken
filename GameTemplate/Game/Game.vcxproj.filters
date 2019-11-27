@@ -158,6 +158,7 @@
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="graphics\GaussianBlur.cpp" />
     <ClCompile Include="graphics\SkinModelManager.cpp" />
+    <ClCompile Include="VectorDraw.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -299,6 +300,7 @@
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="graphics\GaussianBlur.h" />
     <ClInclude Include="graphics\SkinModelManager.h" />
+    <ClInclude Include="VectorDraw.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -404,6 +406,7 @@
     <MeshContentTask Include="Assets\modelData\Towncori1.fbx" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_1.FBX" />
     <MeshContentTask Include="Assets\modelData\3sdmaxでやるやつ\SM_Tree01.FBX" />
+    <MeshContentTask Include="Assets\modelData\vectormodel.fbx" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />

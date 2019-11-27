@@ -1,5 +1,7 @@
 #pragma once
 class SkinModel;
+class VectorDraw;
+
 namespace smEngine {
 	class SkinModelManager :public Noncopyable
 	{
@@ -29,10 +31,13 @@ namespace smEngine {
 			No = num;
 		}
 	private:
+
+		VectorDraw* m_vector[5];
 		std::list<SkinModel*> m_models[2];
 		std::list<SkinModel*> m_Cullingmodels[2];
 		int No = 0;
 		bool m_finisi = false;
+		float len = 10.0f;
 	};
 	static SkinModelManager& GetSkinModelManager()
 	{

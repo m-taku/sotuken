@@ -2,7 +2,6 @@
 
 #include "Skeleton.h"
 #include"SkinModelManager.h"
-
 /*!
 *@brief	FBXの上方向。
 */
@@ -106,6 +105,15 @@ public:
 	};
 	bool Culling(int No);
 	void Draw(int No);
+	struct sikaku
+	{
+		CVector3 m_normal;
+		CVector3 m_popopop;
+		CVector3 devud_front;
+		CVector3 devud_Nomal;
+		CVector3 devud_fnt;
+	};
+	sikaku m_kaku[4];
 private:
 	/*!
 	*@brief	サンプラステートの初期化。
@@ -123,6 +131,7 @@ private:
 	CVector3 GetPositivePoint(int No, CVector3 pos);
 	//CVector3 GetNegativePoint(int No,CVector3 pos);
 	void CalculateFrustumPlanes(CMatrix pmat, int No);
+
 private:
 	//定数バッファ。
 	struct SVSConstantBuffer {
@@ -130,11 +139,7 @@ private:
 		CMatrix mView;
 		CMatrix mProj;
 	};
-	struct sikaku
-	{
-		CVector3 m_normal;
-		CVector3 m_popopop;
-	};
+
 
 	EnFbxUpAxis			m_enFbxUpAxis = enFbxUpAxisZ;	//!<FBXの上方向。
 	ID3D11Buffer*		m_cb = nullptr;					//!<定数バッファ。
@@ -146,7 +151,7 @@ private:
 	CVector3 Minpos = CVector3::Zero();
 	//ここからマルチスレッド関連の加工済みデータ
 	OBB m_atari;
-	sikaku m_kaku[4];
+
 	static const int MAXTHREAD = 2;
 	SVSConstantBuffer m_vsCb[MAXTHREAD];
 	ID3D11SamplerState* m_samplerState[MAXTHREAD] = { nullptr };		//!<サンプラステート。

@@ -2,7 +2,6 @@
 #include "SkinModel.h"
 #include "SkinModelEffect.h"
 #include "SkinModelDataManager.h"
-
 SkinModel::~SkinModel()
 {
 	if (m_cb != nullptr) {
@@ -72,6 +71,7 @@ void SkinModel::Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis)
 	//AABBをOBBに
 	auto origin = Maxpos - Minpos;
 	origin /= 2.0f;
+	origin += Minpos;
 	CVector3 directionX, directionY, directionZ;
 	directionX = CVector3::AxisX();
 	directionZ = CVector3::AxisX();
@@ -80,9 +80,9 @@ void SkinModel::Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis)
 	float directionYLen = 0.0f;
 	float directionZLen = 0.0f;
 
-	directionXLen = Maxpos.x - origin.x;
-	directionYLen = Maxpos.y - origin.y;
-	directionZLen = Maxpos.z - origin.z;
+	directionXLen = (fabsf(Maxpos.x) + fabsf(Minpos.x)) / 2.0f;
+	directionYLen = (fabsf(Maxpos.y) + fabsf(Minpos.y)) / 2.0f;
+	directionZLen = (fabsf(Maxpos.z) + fabsf(Minpos.z)) / 2.0f;
 	m_atari.origin = origin;
 	m_atari.direction[0] = CVector3::AxisX();
 	m_atari.direction[1] = CVector3::AxisY();
@@ -194,7 +194,7 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 
 		FindMesh([&](auto& ef) {
 			ModelEffect* effect = (ModelEffect*)ef->effect.get();
-			effect->SetDrawMode(drawMode);
+			effect->SetDrawMode(enNormal/*drawMode*/);
 		});
 
 		//描画。
@@ -255,7 +255,12 @@ bool SkinModel::Culling(int No)
 	auto mWorld = m_vsCb[No].mWorld;
 	CMatrix transMatrix;
 	//平行移動行列を作成する。
+	//CMatrix mBias = CMatrix::Identity();
+	//mBias.MakeRotationX(CMath::PI * -0.5f);
+	//mBias.Inverse(mBias);
 	transMatrix.MakeTranslation(m_atari.origin);
+	//transMatrix.Mul(mBias, transMatrix);
+	//transMatrix.Mul(mBias, transMatrix);
 	transMatrix.Mul(mWorld, transMatrix);
 	m_atari.direction[0].x = transMatrix.m[0][0];//右
 	m_atari.direction[0].y = transMatrix.m[0][1];
@@ -266,29 +271,49 @@ bool SkinModel::Culling(int No)
 	m_atari.direction[2].x = transMatrix.m[2][0];//まえ
 	m_atari.direction[2].y = transMatrix.m[2][1];
 	m_atari.direction[2].z = transMatrix.m[2][2];
-	m_atari.origin.x = transMatrix.m[3][0];//まえ
-	m_atari.origin.y = transMatrix.m[3][1];
-	m_atari.origin.z = transMatrix.m[3][2];
-	CVector3 Minpos;
-	Minpos = m_atari.origin;
-	Minpos -= m_atari.direction[0];
-	Minpos -= m_atari.direction[1];
-	Minpos -= m_atari.direction[2];
+	m_atari.direction[0].Normalize();
+	m_atari.direction[1].Normalize();
+	m_atari.direction[2].Normalize();
+
+	CQuaternion na;
+	na.SetRotationDeg(CVector3::AxisX(),90.0f);
+	m_atari.direction[0];
+	na.Multiply(m_atari.direction[0]);
+	na.Multiply(m_atari.direction[1]);
+	na.Multiply(m_atari.direction[2]);
+	m_atari.direction[0].Normalize();
+	m_atari.direction[1].Normalize();
+	m_atari.direction[2].Normalize();
+	CVector3 ni;
+	ni.x = transMatrix.m[3][0];//まえ
+	ni.y = transMatrix.m[3][1];
+	ni.z = transMatrix.m[3][2];
+	CVector3 Minposa;
+	Minposa = ni;
+	Minposa -= m_atari.direction[0] * m_atari.directionLen.x;
+	Minposa -= m_atari.direction[1] * m_atari.directionLen.y;
+	Minposa -= m_atari.direction[2] * m_atari.directionLen.z;
 	CalculateFrustumPlanes(m_vsCb[No].mProj,No);
 
 	for (int i = 0; i < 4; i++) {
-		CVector3 Max = GetPositivePoint(i, Minpos);
+		CVector3 Max = GetPositivePoint(i, Minposa);
 		//CVector3 Min = GetNegativePoint(No, Minpos);
 
 
 		// (vp - plane.pos)・normal
-		float dp = m_kaku[i].m_normal.Dot(Max - m_kaku[i].m_popopop);// planes[i].GetDistanceToPoint(vp);
-		if (dp < 0)
+		if (Max.Length() != 0) {
+			float dp = m_kaku[i].m_normal.Dot(Max - m_kaku[i].m_popopop);// planes[i].GetDistanceToPoint(vp);
+			if (dp < 0)
+			{
+				return false;
+			}
+		}
+		else
 		{
-			return true;
+			return false;
 		}
 	}
-	return false;
+	return true;
 
 	//float dn = planes[i].GetDistanceToPoint(vn);
 	//if (dn < 0)
@@ -306,22 +331,59 @@ bool SkinModel::Culling(int No)
 /// <returns></returns>
 CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos)
 {
-	CVector3 normal = m_kaku[No].m_normal;
+	CVector3 pos12 = m_kaku[No].m_popopop;
+	float len = FLT_MAX;
+	CVector3 bb = pos;
+	CVector3 bb211 = CVector3::Zero();
+	for (int i = 0; i < 7; i++)
+	{
+		auto na = m_kaku[No].m_normal.Dot(bb - m_kaku[No].m_popopop); ;
+		if (0 < na)
+		{
+			len = fabsf(na);
+			bb211 = bb;
+			return bb211;
+		}
+		if (i % 2 == 0) {
+			//Xの動き
+			float fugou = 1.0f;
+			if (i / 2 % 2 !=0)
+			{
+				fugou *= -1.0f;
+			}
+			bb += m_atari.direction[0] * m_atari.directionLen.x*( 2.0f*fugou);
+		}
+		if ((i + 3) % 4 == 0)
+		{
+			float fugou = 1.0f;
+			if ((i+3) / 4 % 2 == 0)
+			{
+				fugou *= -1.0f;
+			}
+			bb += m_atari.direction[1] * m_atari.directionLen.y * (2.0f*fugou);
+		}
+		if (i == 3)
+		{
+			bb += m_atari.direction[2] * m_atari.directionLen.z * 2.0f;
 
-	if (normal.x > 0)
-	{
-		pos += m_atari.direction[0] * m_atari.directionLen.x;
-	}
-	if (normal.y > 0)
-	{
-		pos += m_atari.direction[1] * m_atari.directionLen.y;
-	}
-	if (normal.z > 0)
-	{
-		pos += m_atari.direction[2] * m_atari.directionLen.z;
+		}
 	}
 
-	return pos;
+	return bb211;
+	//if (normal.x > 0)
+	//{
+	//	pos += m_atari.direction[0] * m_atari.directionLen.x*2.0f;
+	//}
+	//if (normal.y > 0)
+	//{
+	//	pos += m_atari.direction[1] * m_atari.directionLen.y*2.0f;
+	//}
+	//if (normal.z > 0)
+	//{
+	//	pos += m_atari.direction[2] * m_atari.directionLen.z*2.0f;
+	//}
+
+	//return pos;
 }
 
 ///// <summary>
@@ -353,14 +415,12 @@ CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos)
 /// 指定されたProjection Matricsから視錐台の6面の平面を求める
 /// </summary>
 /// <param name="pmat">Projection Matrix</param>
-/// <param name="eyeTrans">カメラ位置</param>
-/// <param name="near">カメラのNear</param>
-/// <param name="far">カメラのFar</param>
 /// <returns></returns>
 void SkinModel::CalculateFrustumPlanes(CMatrix pmat,int No)
 {
 
 	auto n = m_vsCb[No].mView;
+	n.Inverse(n);
 	// 0: Left, 1: Right, 2: Bottm, 3: Top
 	for (int i = 0; i < 4; i++)
 	{
@@ -382,27 +442,81 @@ void SkinModel::CalculateFrustumPlanes(CMatrix pmat,int No)
 			m_pos.z = pmat.m[3][2] + pmat.m[r][2];
 			//m_pos.w = pmat.m[3][3] + pmat.m[r][3];
 		}
-		CVector3 normal;
-		m_pos.Normalize();
-		normal = m_pos * -1.0f;
-		n.Inverse(n);
-		CVector3 kaku;
+		CVector3 kaku,rite;
 		kaku.x = n.m[2][0];//まえ
 		kaku.y = n.m[2][1];
 		kaku.z = n.m[2][2];
 		kaku.Normalize();
-		CVector3 jiku;
-		jiku.Cross(kaku,CVector3::AxisZ());
-		float m = kaku.Dot(CVector3::AxisZ());
-		CQuaternion na;
-		na.SetRotation(jiku,m);
-		normal.Normalize();
-		na.Multiply(normal);
 		CVector3 popopop;
 		popopop.x = n.m[3][0];
 		popopop.y = n.m[3][1];
 		popopop.z = n.m[3][2];
+
+		//rite.x = n.m[0][0];//右
+		//rite.y = n.m[0][1];
+		//rite.z = n.m[0][2];
+		//rite.Normalize();
+
+		float aspect = FRAME_BUFFER_W / FRAME_BUFFER_H;
+
+
+		//CVector3 GameCamUp;
+		//GameCamUp.Cross(kaku, rite);
+		//GameCamUp.Normalize();
+
+		//CVector3 GameCamRight = smGameCamera().GetCameraRight();
+
+		CVector3 normal;
+		m_pos.Normalize();
+		normal = m_pos * -1.0f;
+		//CVector3 kaku;
+		kaku.x = n.m[2][0];//まえ
+		kaku.y = n.m[2][1];
+		kaku.z = n.m[2][2];
+		kaku.Normalize();
+		//kaku.y = 0.0f;
+		CVector3 jiku;
+		auto hajiki = kaku.Dot(CVector3::AxisZ());
+		if (fabsf(hajiki) < 0.99999f) {
+			jiku.Cross(CVector3::AxisZ(), kaku);
+		}
+		else
+		{
+			
+			//jiku = CVector3::AxisY();
+		}
+		CQuaternion na;
+		//if (hajiki > 0.0f || hajiki < -FLT_MIN)
+		//{
+		//	hajiki = CMath::RadToDeg(hajiki);
+		//	//CVector3 jiku;
+		//	jiku.Cross(CVector3::AxisZ(), kaku);
+		//	//if (jiku.y > 0.0f || jiku.y < -FLT_MIN)
+		//	{
+		//		jiku.Normalize();
+		//		na.SetRotationDeg(jiku, hajiki);
+		//	}
+		//}
+		float m = acosf(min(1.0f,max(-1.0f,kaku.Dot(CVector3::AxisZ()))));		
+		auto naagreagaeg = CMath::RadToDeg(m);
+		
+		
+		jiku.Normalize();
+		normal.Normalize();
+
+		//normal.z -= 1.0f;
+	//	CVector3 popopop;
+		popopop.x = n.m[3][0];
+		popopop.y = n.m[3][1];
+		popopop.z = n.m[3][2];
+		m_kaku[i].devud_Nomal = normal;
+		na.SetRotationDeg(jiku, naagreagaeg);
+		na.Multiply(normal);
+		normal.Normalize();
+		//normal = kaku + hiki;
+		m_kaku[i].devud_front = kaku;
 		m_kaku[i].m_normal = normal;
 		m_kaku[i].m_popopop = popopop;
+
 	}
 }

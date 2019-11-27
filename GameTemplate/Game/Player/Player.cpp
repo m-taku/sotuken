@@ -56,6 +56,7 @@ void Player::Update()
 	m_state->Update();
 
 	CVector3 move = m_position;
+	//m_movespeed.z += 10.0f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
