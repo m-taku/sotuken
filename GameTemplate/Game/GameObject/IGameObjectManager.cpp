@@ -53,10 +53,13 @@ namespace smEngine {
 				Object->DrawWrapper();
 			}
 		}
-		int n = 0;
-		while (!GetSkinModelManager().Getfafa())
+		while (true)
 		{
-			n++;
+			if ((GetSkinModelManager().Getfafa()))
+			{
+				break;
+			}
+
 		} 
 		//g_physics.DebubDrawWorld();
 		smLightManager().Update();

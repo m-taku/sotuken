@@ -38,8 +38,8 @@ void SkinModel::Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis)
 	Minpos.x = FLT_MAX;
 	Minpos.y = FLT_MAX;
 	Minpos.z = FLT_MAX;
+	ID3D11DeviceContext* deviceContext = g_graphicsEngine->GetD3DDeviceContext();
 	FindMesh([&](const auto& mesh) {
-		ID3D11DeviceContext* deviceContext = g_graphicsEngine->GetD3DDeviceContext();
 		//頂点バッファを作成。
 		{
 			D3D11_MAPPED_SUBRESOURCE subresource;
@@ -91,6 +91,9 @@ void SkinModel::Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis)
 	m_atari.directionLen.y = directionYLen;
 	m_atari.directionLen.z = directionZLen;
 
+
+
+	CameraAngle = g_camera3D.GetViewAngle();
 	m_enFbxUpAxis = enFbxUpAxis;
 	smLightManager().AddSkinModel(this);
 }
@@ -161,7 +164,8 @@ void SkinModel::UpdateWorldMatrix(CVector3 position, CQuaternion rotation, CVect
 	rotMatrix.MakeRotationFromQuaternion(rotation);
 	rotMatrix.Mul(mBias, rotMatrix);
 	//拡大行列を作成する。
-	scaleMatrix.MakeScaling(scale);
+	m_scale = scale;
+	scaleMatrix.MakeScaling(m_scale);
 	//ワールド行列を作成する。
 	//拡大×回転×平行移動の順番で乗算するように！
 	//順番を間違えたら結果が変わるよ。
@@ -255,12 +259,7 @@ bool SkinModel::Culling(int No)
 	auto mWorld = m_vsCb[No].mWorld;
 	CMatrix transMatrix;
 	//平行移動行列を作成する。
-	//CMatrix mBias = CMatrix::Identity();
-	//mBias.MakeRotationX(CMath::PI * -0.5f);
-	//mBias.Inverse(mBias);
 	transMatrix.MakeTranslation(m_atari.origin);
-	//transMatrix.Mul(mBias, transMatrix);
-	//transMatrix.Mul(mBias, transMatrix);
 	transMatrix.Mul(mWorld, transMatrix);
 	m_atari.direction[0].x = transMatrix.m[0][0];//右
 	m_atari.direction[0].y = transMatrix.m[0][1];
@@ -290,9 +289,9 @@ bool SkinModel::Culling(int No)
 	ni.z = transMatrix.m[3][2];
 	CVector3 Minposa;
 	Minposa = ni;
-	Minposa -= m_atari.direction[0] * m_atari.directionLen.x;
-	Minposa -= m_atari.direction[1] * m_atari.directionLen.y;
-	Minposa -= m_atari.direction[2] * m_atari.directionLen.z;
+	Minposa -= m_atari.direction[0] * m_atari.directionLen.x * m_scale.x;
+	Minposa -= m_atari.direction[1] * m_atari.directionLen.y * m_scale.y;
+	Minposa -= m_atari.direction[2] * m_atari.directionLen.z * m_scale.z;
 	CalculateFrustumPlanes(m_vsCb[No].mProj,No);
 
 	for (int i = 0; i < 4; i++) {
@@ -337,7 +336,7 @@ CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos)
 	CVector3 bb211 = CVector3::Zero();
 	for (int i = 0; i < 7; i++)
 	{
-		auto na = m_kaku[No].m_normal.Dot(bb - m_kaku[No].m_popopop); ;
+		auto na = m_kaku[No].m_normal.Dot(bb - m_kaku[No].m_popopop); 
 		if (0 < na)
 		{
 			len = fabsf(na);
@@ -351,7 +350,7 @@ CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos)
 			{
 				fugou *= -1.0f;
 			}
-			bb += m_atari.direction[0] * m_atari.directionLen.x*( 2.0f*fugou);
+			bb += m_atari.direction[0] * m_atari.directionLen.x*( 2.0f*fugou)* m_scale.x;
 		}
 		if ((i + 3) % 4 == 0)
 		{
@@ -360,11 +359,11 @@ CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos)
 			{
 				fugou *= -1.0f;
 			}
-			bb += m_atari.direction[1] * m_atari.directionLen.y * (2.0f*fugou);
+			bb += m_atari.direction[1] * m_atari.directionLen.y * (2.0f*fugou)* m_scale.y;
 		}
 		if (i == 3)
 		{
-			bb += m_atari.direction[2] * m_atari.directionLen.z * 2.0f;
+			bb += m_atari.direction[2] * m_atari.directionLen.z * 2.0f* m_scale.z;
 
 		}
 	}
@@ -420,103 +419,127 @@ void SkinModel::CalculateFrustumPlanes(CMatrix pmat,int No)
 {
 
 	auto n = m_vsCb[No].mView;
+
 	n.Inverse(n);
 	// 0: Left, 1: Right, 2: Bottm, 3: Top
-	for (int i = 0; i < 4; i++)
-	{
-		CVector3 m_pos;
-		int r = i / 2;
-		if (i % 2 == 0)
-		{
-			// 平面の方程式
-			// ax + by + cz + d = 0
-			m_pos.x = pmat.m[3][0] - pmat.m[r][0];
-			m_pos.y = pmat.m[3][1] - pmat.m[r][1];
-			m_pos.z = pmat.m[3][2] - pmat.m[r][2];
-			//m_pos.w = pmat.m[3][3] - pmat.m[r][3];
-		}
-		else
-		{
-			m_pos.x = pmat.m[3][0] + pmat.m[r][0];
-			m_pos.y = pmat.m[3][1] + pmat.m[r][1];
-			m_pos.z = pmat.m[3][2] + pmat.m[r][2];
-			//m_pos.w = pmat.m[3][3] + pmat.m[r][3];
-		}
-		CVector3 kaku,rite;
-		kaku.x = n.m[2][0];//まえ
-		kaku.y = n.m[2][1];
-		kaku.z = n.m[2][2];
-		kaku.Normalize();
-		CVector3 popopop;
-		popopop.x = n.m[3][0];
-		popopop.y = n.m[3][1];
-		popopop.z = n.m[3][2];
+	//for (int i = 0; i < 4; i++)
+	//{
+	//	CVector3 m_pos;
+	//	int r = i / 2;
+	//	if (i % 2 == 0)
+	//	{
+	//		// 平面の方程式
+	//		// ax + by + cz + d = 0
+	//		m_pos.x = pmat.m[3][0] - pmat.m[r][0];
+	//		m_pos.y = pmat.m[3][1] - pmat.m[r][1];
+	//		m_pos.z = pmat.m[3][2] - pmat.m[r][2];
+	//		//m_pos.w = pmat.m[3][3] - pmat.m[r][3];
+	//	}
+	//	else
+	//	{
+	//		m_pos.x = pmat.m[3][0] + pmat.m[r][0];
+	//		m_pos.y = pmat.m[3][1] + pmat.m[r][1];
+	//		m_pos.z = pmat.m[3][2] + pmat.m[r][2];
+	//		//m_pos.w = pmat.m[3][3] + pmat.m[r][3];
+	//	}
+	//	CVector3 normal;
+	//	//normal.Cross(leftposdown, leftposup);
+	//	
+	//	m_pos.Normalize();
+	//	normal = m_pos * -1.0f;
+	//	CVector3 kaku;
+	//	kaku.x = n.m[2][0];//まえ
+	//	kaku.y = n.m[2][1];
+	//	kaku.z = n.m[2][2];
+	//	kaku.Normalize();
+	//	//kaku.y = 0.0f;
+	//	auto ahaha = kaku;
+	//	ahaha.y = 0.0f;
+	//	CVector3 jiku;
+	//	auto hajiki = ahaha.Dot(CVector3::AxisZ());
+	//	if (fabsf(hajiki) < 0.99999f) {
+	//		jiku.Cross(CVector3::AxisZ(), ahaha);
+	//	}
+	//	else
+	//	{
+	//		
+	//		//jiku = CVector3::AxisY();
+	//	}
+	//	CQuaternion na;
+	//	//if (hajiki > 0.0f || hajiki < -FLT_MIN)
+	//	//{
+	//	//	hajiki = CMath::RadToDeg(hajiki);
+	//	//	//CVector3 jiku;
+	//	//	jiku.Cross(CVector3::AxisZ(), kaku);
+	//	//	//if (jiku.y > 0.0f || jiku.y < -FLT_MIN)
+	//	//	{
+	//	//		jiku.Normalize();
+	//	//		na.SetRotationDeg(jiku, hajiki);
+	//	//	}
+	//	//}
+	//	//auto ahaha = kaku;
+	//	ahaha.y = 0.0f;
+	//	float m = acosf(min(1.0f,max(-1.0f, ahaha.Dot(CVector3::AxisZ()))));
+	//	auto naagreagaeg = CMath::RadToDeg(m);
+	//	
+	//	
+	//	jiku.Normalize();
+	//	normal.Normalize();
 
-		//rite.x = n.m[0][0];//右
-		//rite.y = n.m[0][1];
-		//rite.z = n.m[0][2];
-		//rite.Normalize();
-
-		float aspect = FRAME_BUFFER_W / FRAME_BUFFER_H;
-
-
-		//CVector3 GameCamUp;
-		//GameCamUp.Cross(kaku, rite);
-		//GameCamUp.Normalize();
-
-		//CVector3 GameCamRight = smGameCamera().GetCameraRight();
-
-		CVector3 normal;
-		m_pos.Normalize();
-		normal = m_pos * -1.0f;
-		//CVector3 kaku;
-		kaku.x = n.m[2][0];//まえ
-		kaku.y = n.m[2][1];
-		kaku.z = n.m[2][2];
-		kaku.Normalize();
-		//kaku.y = 0.0f;
-		CVector3 jiku;
-		auto hajiki = kaku.Dot(CVector3::AxisZ());
-		if (fabsf(hajiki) < 0.99999f) {
-			jiku.Cross(CVector3::AxisZ(), kaku);
-		}
-		else
-		{
-			
-			//jiku = CVector3::AxisY();
-		}
-		CQuaternion na;
-		//if (hajiki > 0.0f || hajiki < -FLT_MIN)
-		//{
-		//	hajiki = CMath::RadToDeg(hajiki);
-		//	//CVector3 jiku;
-		//	jiku.Cross(CVector3::AxisZ(), kaku);
-		//	//if (jiku.y > 0.0f || jiku.y < -FLT_MIN)
-		//	{
-		//		jiku.Normalize();
-		//		na.SetRotationDeg(jiku, hajiki);
-		//	}
-		//}
-		float m = acosf(min(1.0f,max(-1.0f,kaku.Dot(CVector3::AxisZ()))));		
-		auto naagreagaeg = CMath::RadToDeg(m);
-		
-		
-		jiku.Normalize();
-		normal.Normalize();
-
-		//normal.z -= 1.0f;
+	//	//normal.z -= 1.0f;
 	//	CVector3 popopop;
-		popopop.x = n.m[3][0];
-		popopop.y = n.m[3][1];
-		popopop.z = n.m[3][2];
-		m_kaku[i].devud_Nomal = normal;
-		na.SetRotationDeg(jiku, naagreagaeg);
-		na.Multiply(normal);
-		normal.Normalize();
-		//normal = kaku + hiki;
-		m_kaku[i].devud_front = kaku;
-		m_kaku[i].m_normal = normal;
-		m_kaku[i].m_popopop = popopop;
+	//	popopop.x = n.m[3][0];
+	//	popopop.y = n.m[3][1];
+	//	popopop.z = n.m[3][2];
+	//	m_kaku[i].devud_Nomal = normal;
+	//	na.SetRotationDeg(jiku, naagreagaeg);
+	//	na.Multiply(normal);
+	//	normal.Normalize();
+	//	//normal = kaku + hiki;
+	//	m_kaku[i].devud_front = kaku;
+	//	m_kaku[i].m_normal = normal;
+	//	m_kaku[i].m_popopop = popopop;
+	//}
+	CVector3 kaku, rite;
+	kaku.x = n.m[2][0];//まえ
+	kaku.y = n.m[2][1];
+	kaku.z = n.m[2][2];
+	kaku.Normalize();
+	CVector3 popopop;
+	popopop.x = n.m[3][0];
+	popopop.y = n.m[3][1];
+	popopop.z = n.m[3][2];
+	rite.x = n.m[0][0];//右
+	rite.y = n.m[0][1];
+	rite.z = n.m[0][2];
+	rite.Normalize();
+	float aspect = FRAME_BUFFER_W / FRAME_BUFFER_H;
+	CVector3 GameCamUp;
+	GameCamUp.Cross(kaku, rite);
+	GameCamUp.Normalize();
+	auto lenUp = kaku.Length()* tanf(CameraAngle / 2.0f);
+	auto lenrite = lenUp * aspect;
 
+	auto XMAX = (rite * lenrite);
+	auto YMAX = (GameCamUp * lenUp);
+	auto ZMAX = kaku * 0.5f;
+
+	auto leftposup = YMAX - XMAX + ZMAX;
+	auto leftposdown = leftposup - (YMAX*2.0f);
+	auto riteposup = leftposup + (XMAX *2.0f);
+	auto Riteposdown = leftposdown + (XMAX * 2.0f);
+	leftposup.Normalize();
+	leftposdown.Normalize();
+	riteposup.Normalize();
+	Riteposdown.Normalize();
+	CVector3 nomal[4];
+	nomal[0].Cross(leftposup, leftposdown);
+	nomal[1].Cross(Riteposdown, riteposup);
+	nomal[2].Cross(leftposdown, Riteposdown);
+	nomal[3].Cross(riteposup, leftposup);
+	for (int i = 0; i < 4; i++) {
+		nomal[i].Normalize();
+		m_kaku[i].m_normal = nomal[i];
+		m_kaku[i].m_popopop = popopop;
 	}
 }

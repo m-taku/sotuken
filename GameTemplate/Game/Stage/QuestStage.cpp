@@ -27,13 +27,7 @@ bool QuestStage::Init() {
 		result = wcscmp(L"rock_boulder_b1", objData.name);
 		if (result == 0)
 		{
-			count++;
-			if (count <= 2) {
-				return false;
-			}
-			else {
-				return true;
-			}
+			return false;
 		}
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)

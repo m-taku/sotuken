@@ -118,7 +118,12 @@ bool Town::Init()
 		{
 			return true;
 		}
-		return false;
+		result = wcscmp(L"SM_SeverPiece", objData.name);
+		if (result == 0)
+		{
+			return false;
+		}
+		return true;
 	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori1.cmo", m_Name);
 	m_testmodel.Init(moveFilePath);

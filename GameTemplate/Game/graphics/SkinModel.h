@@ -109,9 +109,6 @@ public:
 	{
 		CVector3 m_normal;
 		CVector3 m_popopop;
-		CVector3 devud_front;
-		CVector3 devud_Nomal;
-		CVector3 devud_fnt;
 	};
 	sikaku m_kaku[4];
 private:
@@ -149,6 +146,9 @@ private:
 
 	CVector3 Maxpos = CVector3::Zero();
 	CVector3 Minpos = CVector3::Zero();
+	float CameraAngle = 0.0f;
+	CVector3 m_scale = CVector3::One();
+
 	//ここからマルチスレッド関連の加工済みデータ
 	OBB m_atari;
 
