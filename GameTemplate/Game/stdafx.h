@@ -40,6 +40,8 @@
 #include "graphics/SkinModel.h"
 #include "graphics/Skeleton.h"
 #include "graphics/GaussianBlur.h"
+#include "graphics/Bloom.h"
+#include "graphics/ToneMap.h"
 #include "graphics/Shadow/ShadowMap.h"
 #include "graphics/Shadow/ShadowManager.h"
 #include "graphics/Light/Light.h"
@@ -56,6 +58,7 @@
 #include "graphics/animation/AnimationClip.h"
 #include "graphics/Camera.h"
 #include "physics/Physics.h"
+#include "Physics/CollisionAttr.h"
 #include "character/CharacterController.h"
 
 #include "graphics/Sprite/Sprite.h"

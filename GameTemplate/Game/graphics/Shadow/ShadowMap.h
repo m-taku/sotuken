@@ -16,15 +16,6 @@ public:
 
 	void UpdateDirection(const CVector3& Direction);
 	void ShadowCasterDraw();
-	ID3D11ShaderResourceView** GetRenderTargetArray()
-	{
-		ID3D11ShaderResourceView* srv[] = {
-			m_renderTarget[enShadowMap].GetShaderResourceView(),
-			m_renderTarget[enCascadeNear].GetShaderResourceView(),
-			m_renderTarget[enCascadeFar].GetShaderResourceView()
-		};
-		return srv;
-	}
 
 	void DrawToShadowCollector();
 private:
@@ -34,6 +25,11 @@ private:
 	CMatrix m_lightViewMatrix[enMapNum];
 	CMatrix m_lightProjectionMatrix[enMapNum];
 	PostEffect m_postEffect;
+
+	Shader m_preCollectPS;
+	Shader m_copyPS;
+	Shader m_collectPS;
+	Shader m_vs;
 
 	struct SShadowCollectCB
 	{

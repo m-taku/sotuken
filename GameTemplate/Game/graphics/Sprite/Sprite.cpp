@@ -25,6 +25,10 @@ namespace smEngine {
 	}
 	Sprite::~Sprite()
 	{
+		if (m_samplerState !=nullptr)
+		{
+			m_samplerState->Release();
+		}
 	}
 	void Sprite::Init(ShaderResourceView& tex, float w, float h)
 	{

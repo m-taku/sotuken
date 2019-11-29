@@ -11,6 +11,7 @@ Texture2D<float4> albedoTexture : register(t0);
 Texture2D<float4> NormalTexture : register(t1);
 Texture2D<float4> WorldTexture : register(t2);
 Texture2D<float4> DepthTexture : register(t3);
+Texture2D<float4> ShadowTexture : register(t4);
 
 struct SDirectionLight {
 	float4 color;
@@ -103,11 +104,13 @@ float4 PSMain(PSInput In) : SV_Target0
 {
 	NWD nwd;
 	float4 color = albedoTexture.Sample(Sampler, In.uv);
+	float4 buckUpColor = color;
 	nwd.Normal = NormalTexture.Sample(Sampler, In.uv).xyz;
 	nwd.World = WorldTexture.Sample(Sampler, In.uv).xyz;
-	nwd.Depth = DepthTexture.Sample(Sampler, In.uv).x;
-
-	color *= DirectionLight(nwd) + PointLight(nwd);
+	//nwd.Depth = DepthTexture.Sample(Sampler, In.uv).x;
+	float4 shadow = ShadowTexture.Sample(Sampler, In.uv);
+	color *= max(0.1f,DirectionLight(nwd)*shadow);
+	color += buckUpColor * PointLight(nwd);
 	color.w = 1.0f;
 	return color;
 }

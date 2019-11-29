@@ -84,6 +84,9 @@ namespace smEngine {
 
 		RenderTarget m_shadowCollectRenderTarget;
 		PostEffect m_postEffect;
+		Shader m_addShadowPS;
+		Shader m_copyPS;
+		Shader m_vs;
 		GaussianBlur m_blur;
 		void* m_shadowMapSRV = NULL;
 	};

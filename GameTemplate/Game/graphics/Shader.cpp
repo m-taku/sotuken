@@ -103,7 +103,6 @@ Shader::~Shader()
 
 void Shader::Release()
 {
-
 }
 
 bool Shader::Load(const char* filePath, const char* entryFuncName, EnType shaderType)

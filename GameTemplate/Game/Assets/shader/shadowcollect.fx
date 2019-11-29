@@ -65,7 +65,7 @@ float4 PSMain(PSInput In) : SV_Target0
 		)
 	{
 		float mapZ = ShadowMap.Sample(Sampler, LUV.xy).x;
-		if (Z > mapZ + 0.0002f)
+		if (Z > mapZ + 0.00015f)
 		{
 			s.xyz *= 0.0f;
 		}
@@ -92,9 +92,7 @@ float4 PSFinalMain(PSInput In) : SV_Target0
 {
 	float4 color = MainColorTexture.Sample(Sampler, In.uv);
 	float4 shadowColor = ShadowCollectTexture.Sample(Sampler, In.uv);
-	shadowColor.x = min(shadowColor.x + 0.3f,1.0f);
-	shadowColor.y = min(shadowColor.y + 0.3f,1.0f);
-	shadowColor.z = min(shadowColor.z + 0.3f,1.0f);
 	color *= shadowColor;
+	color.w = 1.0f;
 	return color;
 }

@@ -37,8 +37,11 @@ void DeferredRender::Init()
 		}
 	}
 	m_postEffect.Init();
-	m_postEffect.SetVS("Assets/shader/diferredRender.fx", "VSMain");
-	m_postEffect.SetPS("Assets/shader/diferredRender.fx", "PSMain");
+	m_vs.Load("Assets/shader/diferredRender.fx", "VSMain", Shader::EnType::VS);
+	m_ps.Load("Assets/shader/diferredRender.fx", "PSMain", Shader::EnType::PS);
+	m_postEffect.SetPS(&m_ps);
+	m_postEffect.SetVS(&m_vs);
+	m_tonemap.Init(g_graphicsEngine->GetMainRenderTarget().GetShaderResourceView());
 }
 
 void DeferredRender::Update()
@@ -79,10 +82,12 @@ void DeferredRender::Draw()
 		m_renderTarget[enGBuffer_Normal].GetShaderResourceView(),
 		m_renderTarget[enGBuffer_World].GetShaderResourceView(),
 		m_renderTarget[enGBuffer_Depth].GetShaderResourceView(),
+		smLightManager().GetShadowSRV()
 	};
-	deviceContext->PSSetShaderResources(0, enGBuffer_Num, srv);
-	deviceContext->VSSetShaderResources(0, enGBuffer_Num, srv);
+	deviceContext->PSSetShaderResources(0, enGBuffer_Num+1, srv);
+	deviceContext->VSSetShaderResources(0, enGBuffer_Num+1, srv);
 	m_postEffect.Draw();
+	m_tonemap.Draw();
 }
 
 void DeferredRender::Release()

@@ -44,9 +44,10 @@ bool Player::Start()
 	smGameCamera().SetTarget(m_position + m_up * 100.0f);
 	TransitionState(StateTownMove);
 	DirectionLight* plight = new DirectionLight;
-	plight->SetColor({ 1.0f,1.0f,1.0f,1.0f });
+	float c = 1.0f;
+	plight->SetColor({ c,c,c,1.0f });
 	plight->SetDirection(CVector3::Down()+CVector3::Right());
-	plight->SetEnableShadow(true);
+	plight->ShadowEnable(true);
 	smLightManager().AddLight(plight);
 	return true;
 }

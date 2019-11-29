@@ -16,7 +16,7 @@ public:
 		m_light.color = color;
 	}
 
-	void SetEnableShadow(bool flag)
+	void ShadowEnable(bool flag)
 	{
 		m_enableShadow = flag;
 	}

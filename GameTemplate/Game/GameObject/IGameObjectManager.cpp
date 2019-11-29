@@ -46,8 +46,9 @@ namespace smEngine {
 		//g_physics.DebubDrawWorld();
 		smLightManager().Update();
 		smLightManager().SendBuffer();
-		g_graphicsEngine->GetDeferredRender().Draw();
 		smLightManager().ShadowRender();
+		g_graphicsEngine->GetDeferredRender().Draw();
+		g_graphicsEngine->BloomDraw();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{

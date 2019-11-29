@@ -202,5 +202,10 @@ void GraphicsEngine::Init(HWND hWnd)
 	float color[4] = { 0.0f,0.0f,0.0f,1.0f };
 	m_mainRenderTarget.Clear(color);
 	m_posteffect.Init();
+	m_ps.Load("Assets/shader/posteffect.fx", "PSMain", Shader::EnType::PS);
+	m_vs.Load("Assets/shader/posteffect.fx", "VSMain", Shader::EnType::VS);
+	m_posteffect.SetPS(&m_ps);
+	m_posteffect.SetVS(&m_vs);
 	m_deferredRender.Init();
+	m_bloom.Init(m_mainRenderTarget.GetShaderResourceView());
 }

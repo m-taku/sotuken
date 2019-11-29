@@ -3,8 +3,8 @@
  */
 
 
-
- //ボーン行列
+Texture2D<float4> albedoTexture : register(t0);
+//ボーン行列
 StructuredBuffer<float4x4> boneMatrix : register(t1);
 
 /////////////////////////////////////////////////////////////
@@ -27,6 +27,7 @@ cbuffer ShadowCB:register(b0) {
 // ストラクチャードバッファー
 /////////////////////////////////////////////////////////////
 
+sampler Sampler : register(s0);
 
 /////////////////////////////////////////////////////////////
 //各種構造体
@@ -59,6 +60,7 @@ struct VSInputNmTxWeights
  */
 struct PSInput {
 	float4 Position 	: SV_POSITION;
+	float2 TexCoord : TEXCOORD0;			//UV座標。
 };
 /*!
  *@brief	スキン行列を計算。
@@ -87,6 +89,7 @@ PSInput VSMain(VSInputNmTxVcTangent In)
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
+	psInput.TexCoord = In.TexCoord;
 	return psInput;
 }
 
@@ -124,10 +127,13 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
+	psInput.TexCoord = In.TexCoord;
 	return psInput;
 }
 
 float PSMain(PSInput In) : SV_Target0
 {
+	/*float a = albedoTexture.Sample(Sampler, In.TexCoord).w;
+	clip(a - 0.00001f);*/
 	return In.Position.z;
 }

@@ -126,7 +126,7 @@ public:
 		m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
 #endif
 		if (momomomo <= 0) {
-			m_directioinLight = new DirectionLight;
+			/*m_directioinLight = new DirectionLight;
 			m_directioinLight->SetColor(CVector4::White());
 			m_directioinLight->SetDirection(CVector3::Down());
 			m_pointLight = new PointLight;
@@ -134,7 +134,7 @@ public:
 			m_pointLight->SetPosition(CVector3::Zero() + CVector3::Up()*150.0f);
 			m_pointLight->SetAttn({ 300.0f,1.0f,0.0f,0.0f });
 			smLightManager().AddLight(m_directioinLight);
-			smLightManager().AddLight(m_pointLight);
+			smLightManager().AddLight(m_pointLight);*/
 			momomomo++;
 		}
 		return true;

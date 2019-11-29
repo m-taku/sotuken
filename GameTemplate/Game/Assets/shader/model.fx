@@ -168,17 +168,9 @@ PSOutput PSMain(PSInput In)
 	psout.shadow = 1.0f;
 
 	psout.diffuse = albedoTexture.Sample(Sampler, In.TexCoord);
+	clip(psout.diffuse.w - 0.0001f);
 	psout.normal = float4(In.Normal, 1.0f);
 	psout.world = float4(In.WorldPos.xyz, 1.0f);
 	psout.depth = In.Position.z;
 	return psout;
-}
-
-float ShadowPS(PSInput In) : SV_Target0
-{
-	float4 position = float4(0.0f,0.0f,0.0f,0.0f);
-	position.xyz = In.WorldPos;
-	position = mul(LightView, position);
-	position = mul(LightProj, position);
-	return position.z;
 }

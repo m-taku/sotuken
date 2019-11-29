@@ -22,6 +22,11 @@ void ShadowMap::Init(int w, int h)
 		);
 	}
 	m_postEffect.Init();
+	m_preCollectPS.Load("Assets/shader/shadowcollect.fx", "PSMain", Shader::EnType::PS);
+	m_collectPS.Load("Assets/shader/shadowcollect.fx", "PSCollectMain", Shader::EnType::PS);
+	m_copyPS.Load("Assets/shader/shadowcollect.fx", "PSCopyMain", Shader::EnType::PS);
+	m_vs.Load("Assets/shader/shadowcollect.fx", "VSMain", Shader::EnType::VS);
+	m_postEffect.SetVS(&m_vs);
 	m_cb.Create(NULL, sizeof(SShadowCollectCB));
 }
 
@@ -203,8 +208,7 @@ void ShadowMap::DrawToShadowCollector()
 	{
 		FinalCollectRT.Clear(color);
 		preCollectRT.Clear(color);
-		m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSMain");
-		m_postEffect.SetVS("Assets/shader/shadowcollect.fx", "VSMain");
+		
 
 		ID3D11RenderTargetView* precollectrtv[] = {
 			preCollectRT.GetRenderTatgetView()
@@ -225,6 +229,7 @@ void ShadowMap::DrawToShadowCollector()
 
 		deviceContext->VSSetShaderResources(0, 2, precollectsrv);
 		deviceContext->PSSetShaderResources(0, 2, precollectsrv);
+		m_postEffect.SetPS(&m_preCollectPS);
 		m_postEffect.Draw();
 
 		ID3D11RenderTargetView* collectrtv[] = {
@@ -233,7 +238,7 @@ void ShadowMap::DrawToShadowCollector()
 		deviceContext->OMSetRenderTargets(1, collectrtv, FinalCollectRT.GetDepthStencilView());
 		deviceContext->RSSetViewports(1, FinalCollectRT.GetViewPort());
 		deviceContext->ClearDepthStencilView(smLightManager().GetShadowRenderTarget().GetDepthStencilView(), D3D11_CLEAR_DEPTH, 1.0f, 0);
-		m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSCollectMain");
+		
 
 		ID3D11ShaderResourceView* collectsrv[] = {
 			preCollectRT.GetShaderResourceView(),
@@ -242,6 +247,7 @@ void ShadowMap::DrawToShadowCollector()
 
 		deviceContext->VSSetShaderResources(0, 2, collectsrv);
 		deviceContext->PSSetShaderResources(0, 2, collectsrv);
+		m_postEffect.SetPS(&m_collectPS);
 		m_postEffect.Draw();
 
 		ID3D11RenderTargetView* copyrtv[] = {
@@ -250,7 +256,7 @@ void ShadowMap::DrawToShadowCollector()
 		deviceContext->OMSetRenderTargets(1, copyrtv, smLightManager().GetShadowRenderTarget().GetDepthStencilView());
 		deviceContext->RSSetViewports(1, smLightManager().GetShadowRenderTarget().GetViewPort());
 		deviceContext->ClearDepthStencilView(smLightManager().GetShadowRenderTarget().GetDepthStencilView(), D3D11_CLEAR_DEPTH, 1.0f, 0);
-		m_postEffect.SetPS("Assets/shader/shadowcollect.fx", "PSCopyMain");
+		
 
 		ID3D11ShaderResourceView* copysrv[] = {
 			FinalCollectRT.GetShaderResourceView()
@@ -258,6 +264,7 @@ void ShadowMap::DrawToShadowCollector()
 
 		deviceContext->VSSetShaderResources(0, 1, copysrv);
 		deviceContext->PSSetShaderResources(0, 1, copysrv);
+		m_postEffect.SetPS(&m_copyPS);
 		m_postEffect.Draw();
 	}
 

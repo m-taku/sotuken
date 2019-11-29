@@ -45,5 +45,6 @@ private:
 	DXGI_FORMAT					m_depthStencilFormat = DXGI_FORMAT_UNKNOWN;		//<デプスステンシルバッファのフォーマット。
 	int m_width = 0;
 	int m_height = 0;
+
 };
 

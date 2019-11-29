@@ -78,6 +78,10 @@ public:
 	{
 		return m_shadowAvailableLength;
 	}
+	void BloomDraw()
+	{
+		m_bloom.Draw();
+	}
 private:
 	D3D_FEATURE_LEVEL		m_featureLevel;				//Direct3D デバイスのターゲットとなる機能セット。
 	ID3D11Device*			m_pd3dDevice = NULL;		//D3D11デバイス。
@@ -89,7 +93,11 @@ private:
 	ID3D11DepthStencilView* m_depthStencilView = NULL;	//デプスステンシルビュー。
 	RenderTarget			m_mainRenderTarget;
 	PostEffect m_posteffect;
+	Shader m_ps;
+	Shader m_vs;
 	DeferredRender m_deferredRender;
+	Bloom m_bloom;
+
 	float m_shadowMapHight = 3000.0f;
 	float m_shadowAvailableLength = 5000.0f;
 };

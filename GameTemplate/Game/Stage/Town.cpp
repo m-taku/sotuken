@@ -123,6 +123,7 @@ bool Town::Init()
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori1.cmo", m_Name);
 	m_testmodel.Init(moveFilePath);
 	m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
+	m_physicsStaticObject.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
 
 	//レベルデザインはここで
 #else

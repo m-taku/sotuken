@@ -99,6 +99,7 @@
     </MeshContentTask>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="graphics\Bloom.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Carving.cpp" />
     <ClCompile Include="character\CharacterController.cpp" />
@@ -178,8 +179,10 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="Title_Menu.cpp" />
     <ClCompile Include="Stage\Town.cpp" />
+    <ClCompile Include="graphics\ToneMap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="graphics\Bloom.h" />
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Carving.h" />
     <ClInclude Include="character\CharacterController.h" />
@@ -264,6 +267,7 @@
     <ClInclude Include="Title.h" />
     <ClInclude Include="Title_Menu.h" />
     <ClInclude Include="Stage\Town.h" />
+    <ClInclude Include="graphics\ToneMap.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
