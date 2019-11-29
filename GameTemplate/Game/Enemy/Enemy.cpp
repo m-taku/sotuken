@@ -15,6 +15,8 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
+
+	delete m_state;
 }
 void Enemy::TransitionState(StateEnemy m)
 {

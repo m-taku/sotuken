@@ -4,6 +4,7 @@
 #include "Text_Box/Text_Box.h"
 #include "Player.h"
 #include"QuestManager.h"
+#include"graphics/SkinModel.h"
 #include"Test_GuestManager.h"
 
 
@@ -18,7 +19,7 @@ TEstNPC::~TEstNPC()
 bool TEstNPC::Start()
 {
 	//cmoファイルの読み込み。
-	m_model.Init(L"Assets/modelData/unityChan.cmo"); 
+	m_model.Init(L"Assets/modelData/Dragon_1.cmo"); 
 	m_model.EnableShadowCaster(true);
 	test =FindGO<Player>("player");
 	m_bikkuri.Init(L"Assets/modelData/bikkuri.cmo");

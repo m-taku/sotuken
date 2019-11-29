@@ -136,13 +136,19 @@ private:
 /*!
  *@brief	スケルトン。
  */
+
+#include <mutex>
 class Skeleton  {
 public:
 	using OnPostProcessSkeletonUpdate = std::function<void()>;
-
 	Skeleton();
 	~Skeleton();
-	
+	std::mutex mtx_;
+
+	std::unique_lock<std::mutex> get_lock()
+	{
+		return std::unique_lock<std::mutex>(mtx_); // ロックを取得する
+	}
 	/*!
 	 *@brief	ボーンのローカル行列を設定。
 	 *@param[in]	boneNo		ボーン番号
@@ -150,6 +156,7 @@ public:
 	 */
 	void SetBoneLocalMatrix(int boneNo, const CMatrix& m)
 	{
+		std::unique_lock<std::mutex> lk = get_lock(); // ロックされたunique_lockを受け取る
 		if (boneNo > (int)m_bones.size() - 1) {
 			return;
 		}
@@ -185,6 +192,7 @@ public:
 	*/
 	Bone* GetBone(int boneNo)
 	{
+		std::unique_lock<std::mutex> lk = get_lock(); // ロックされたunique_lockを受け取る
 		return m_bones[boneNo];
 	}
 	/*!
@@ -213,7 +221,6 @@ public:
 	*/
 	static 	void UpdateBoneWorldMatrix(Bone& bone, const CMatrix& parentMatrix);
 private:
-	
 	std::vector<Bone*>			m_bones;					//!<ボーンの配列。
 	std::vector<CMatrix>		m_boneMatrixs;				//!<ボーン行列。
 	ID3D11Buffer*				m_boneMatrixSB = nullptr;	//!<ボーン行列のストラクチャーバッファ。

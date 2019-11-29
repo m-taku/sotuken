@@ -112,7 +112,6 @@ void Level::UEInit(const wchar_t* levelDataFilePath, Level::HookWhenBuildObjectF
 	}
 	//ファイルは開いたら、ちゃんと閉じる。。
 	fclose(fp);
-	int t = 0;
 }
 void Level::Draw()
 {

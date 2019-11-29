@@ -11,6 +11,8 @@ Texture2D<float4> albedoTexture : register(t0);
 //ボーン行列
 StructuredBuffer<float4x4> boneMatrix : register(t1);
 
+//インスタンシング描画用
+StructuredBuffer<float4x4> instanceMatrix : register(t100);
 /////////////////////////////////////////////////////////////
 // SamplerState
 /////////////////////////////////////////////////////////////
@@ -98,13 +100,14 @@ float4x4 CalcSkinMatrix(VSInputNmTxWeights In)
 	skinning += boneMatrix[In.Indices[3]] * (1.0f - w);
 	return skinning;
 }
+
 /*!--------------------------------------------------------------------------------------
  * @brief	スキンなしモデル用の頂点シェーダー。
 -------------------------------------------------------------------------------------- */
-PSInput VSMain(VSInputNmTxVcTangent In)
+PSInput VSMaincreate(VSInputNmTxVcTangent In, float4x4 worldMat)
 {
 	PSInput psInput = (PSInput)0;
-	float4 pos = mul(mWorld, In.Position);
+	float4 pos = mul(worldMat, In.Position);
 	psInput.WorldPos = pos.xyz;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
@@ -114,13 +117,20 @@ PSInput VSMain(VSInputNmTxVcTangent In)
 	psInput.Tangent = normalize(mul(mWorld, In.Tangent));
 	return psInput;
 }
-
+PSInput VSMainInstancing(VSInputNmTxVcTangent In, uint instanceID : SV_InstanceID)
+{
+	return VSMaincreate(In, instanceMatrix[instanceID]);
+}
+PSInput VSMain(VSInputNmTxVcTangent In)
+{
+	return VSMaincreate(In, mWorld);
+}
 /*!--------------------------------------------------------------------------------------
  * @brief	スキンありモデル用の頂点シェーダー。
  * 全ての頂点に対してこのシェーダーが呼ばれる。
  * Inは1つの頂点データ。VSInputNmTxWeightsを見てみよう。
 -------------------------------------------------------------------------------------- */
-PSInput VSMainSkin(VSInputNmTxWeights In)
+PSInput VSMainSkincreate(VSInputNmTxWeights In, float4x4 worldMat)
 {
 	PSInput psInput = (PSInput)0;
 	///////////////////////////////////////////////////
@@ -144,8 +154,10 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 		skinning += boneMatrix[In.Indices[3]] * (1.0f - w);
 		//頂点座標にスキン行列を乗算して、頂点をワールド空間に変換。
 		//mulは乗算命令。
-		pos = mul(skinning, In.Position);
+		//pos = mul(skinning, In.Position);
 	}
+	pos = mul(skinning, In.Position);
+	pos = mul(worldMat, pos);
 	psInput.Normal = normalize(mul(skinning, In.Normal));
 	psInput.Tangent = normalize(mul(skinning, In.Tangent));
 	psInput.WorldPos = pos.xyz;
@@ -154,6 +166,14 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 	psInput.Position = pos;
 	psInput.TexCoord = In.TexCoord;
 	return psInput;
+}
+PSInput VSMainSkinInstancing(VSInputNmTxWeights In, uint instanceID : SV_InstanceID)
+{
+	return VSMainSkincreate(In, instanceMatrix[instanceID]);
+}
+PSInput VSMainSkin(VSInputNmTxWeights In)
+{
+	return VSMainSkincreate(In, mWorld);
 }
 //--------------------------------------------------------------------------------------
 // ピクセルシェーダーのエントリ関数。
@@ -168,9 +188,18 @@ PSOutput PSMain(PSInput In)
 	psout.shadow = 1.0f;
 
 	psout.diffuse = albedoTexture.Sample(Sampler, In.TexCoord);
-	clip(psout.diffuse.w - 0.0001f);
+	clip(psout.diffuse.w - 0.00001f);
 	psout.normal = float4(In.Normal, 1.0f);
 	psout.world = float4(In.WorldPos.xyz, 1.0f);
 	psout.depth = In.Position.z;
 	return psout;
+}
+
+float ShadowPS(PSInput In) : SV_Target0
+{
+	float4 position = float4(0.0f,0.0f,0.0f,0.0f);
+	position.xyz = In.WorldPos;
+	position = mul(LightView, position);
+	position = mul(LightProj, position);
+	return position.z;
 }

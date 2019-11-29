@@ -63,4 +63,5 @@ public :
 	void Draw();
 private:
 	std::vector<MapChipPtr> m_mapChipArray;		//!<マップチップの可変長配列。
+	std::map<int,SkinModel*> m_mapinstansing;
 };

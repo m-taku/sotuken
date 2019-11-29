@@ -93,7 +93,7 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 			toUpNear = GameCamUp * t*NearPlaneZ;
 			toUpFar = GameCamUp * t*FarPlaneZ;
 			CVector3 NearPlaneCenterPos = GameCamPos + GameCamForward * NearPlaneZ;
-			pos[0] = NearPlaneCenterPos + GameCamRight * t*NearPlaneZ*aspect + toUpNear;
+			pos[0] = NearPlaneCenterPos + GameCamRight * t * NearPlaneZ * aspect + toUpNear;
 			pos[1] = pos[0] + toUpNear * -2.0f;
 			pos[2] = NearPlaneCenterPos + GameCamRight * -t * NearPlaneZ*aspect + toUpNear;
 			pos[3] = pos[2] + toUpNear * -2.0f;

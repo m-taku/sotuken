@@ -198,6 +198,8 @@ void Skeleton::InitBoneMatrixArrayShaderResourceView()
 }
 void Skeleton::Update(const CMatrix& mWorld)
 {
+
+	std::unique_lock<std::mutex> lk = get_lock(); // ロックされたunique_lockを受け取る
 	//ここがワールド行列を計算しているところ！！！
 	for (int boneNo = 0; boneNo < m_bones.size(); boneNo++) {
 		Bone* bone = m_bones[boneNo];
@@ -222,6 +224,7 @@ void Skeleton::Update(const CMatrix& mWorld)
 */
 void Skeleton::SendBoneMatrixArrayToGPU()
 {
+	std::unique_lock<std::mutex> lk = get_lock(); // ロックされたunique_lockを受け取る
 	if (m_bones.empty()) {
 		return;
 	}
