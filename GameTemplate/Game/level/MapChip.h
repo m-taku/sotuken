@@ -21,6 +21,6 @@ public:
 	void Draw();
 private:
 	SkinModel m_model;		//!<モデル。
-	//PhysicsStaticObject m_physicsStaticObject;	//!<静的物理オブジェクト。
+//	PhysicsStaticObject m_physicsStaticObject;	//!<静的物理オブジェクト。
 	
 };

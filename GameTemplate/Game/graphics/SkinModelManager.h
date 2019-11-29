@@ -1,8 +1,13 @@
 #pragma once
 class SkinModel;
-class VectorDraw;
-
+//class VectorDraw;
+struct sikaku
+{
+	CVector3 m_normal;
+	CVector3 m_popopop;
+};
 namespace smEngine {
+
 	class SkinModelManager :public Noncopyable
 	{
 	public:
@@ -30,9 +35,11 @@ namespace smEngine {
 		{
 			No = num;
 		}
+		void CalculateFrustumPlanes();
 	private:
-
-		VectorDraw* m_vector[5];
+/*
+		VectorDraw* m_vector[5];*/
+		sikaku kaku123[4];
 		std::list<SkinModel*> m_models[2];
 		std::list<SkinModel*> m_Cullingmodels[2];
 		int No = 0;

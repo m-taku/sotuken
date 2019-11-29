@@ -2,6 +2,7 @@
 
 #include "Skeleton.h"
 #include"SkinModelManager.h"
+class StructuredBuffer;
 /*!
 *@brief	FBXの上方向。
 */
@@ -11,6 +12,7 @@ enum EnFbxUpAxis {
 };
 enum EnDrawMode {
 	enNormal,
+	enInstancing,
 	enShadow
 };
 
@@ -40,7 +42,7 @@ public:
 	*@param[in]	filePath		ロードするcmoファイルのファイルパス。
 	*@param[in] enFbxUpAxis		fbxの上軸。デフォルトはenFbxUpAxisZ。
 	*/
-	void Init(const wchar_t* filePath, EnFbxUpAxis enFbxUpAxis = enFbxUpAxisZ);
+	void Init(const wchar_t* filePath, int maxInstance = 1, EnFbxUpAxis enFbxUpAxis = enFbxUpAxisZ);
 	/*!
 	*@brief	モデルをワールド座標系に変換するためのワールド行列を更新する。
 	*@param[in]	position	モデルの座標。
@@ -66,6 +68,8 @@ public:
 	*  カメラ座標系の3Dモデルをスクリーン座標系に変換する行列です。
 	*/
 	void Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix );
+	//エンジン内で呼ぶ関数のため使用禁止！！！！
+	void Draw(int No);
 	/*!
 	*@brief	スケルトンの取得。
 	*/
@@ -103,19 +107,20 @@ public:
 		enSkinModelSRVReg_DiffuseTexture = 0,		//!<ディフューズテクスチャ。
 		enSkinModelSRVReg_BoneMatrix,				//!<ボーン行列。
 	};
-	bool Culling(int No);
-	void Draw(int No);
-	struct sikaku
+
+	//カリング計算関数
+	bool Culling(int No, sikaku m_kaku[4]);
+	void CullingInstancing(int No, sikaku m_kaku[4]);
+
+	float Getcameralen()
 	{
-		CVector3 m_normal;
-		CVector3 m_popopop;
-	};
-	sikaku m_kaku[4];
+		return m_cameralen;
+	}
 private:
 	/*!
 	*@brief	サンプラステートの初期化。
 	*/
-	void InitSamplerState();
+	void InitSamplerState(int maxInstance);
 	/*!
 	*@brief	定数バッファの作成。
 	*/
@@ -125,9 +130,14 @@ private:
 	*@param[in]	filePath		ロードするcmoファイルのファイルパス。
 	*/
 	void InitSkeleton(const wchar_t* filePath);
-	CVector3 GetPositivePoint(int No, CVector3 pos);
+	void UpdateInstancingData(
+		const CVector3& trans,
+		const CQuaternion& rot,
+		const CVector3& scale
+	/*EnFbxUpAxis enUpdateAxis*/);
+	
+	CVector3 GetPositivePoint(int No, CVector3 pos, sikaku m_kaku[4]);
 	//CVector3 GetNegativePoint(int No,CVector3 pos);
-	void CalculateFrustumPlanes(CMatrix pmat, int No);
 
 private:
 	//定数バッファ。
@@ -144,11 +154,16 @@ private:
 	CMatrix				m_worldMatrix;					//!<ワールド行列。
 	DirectX::Model*		m_modelDx;						//!<DirectXTKが提供するモデルクラス。
 
+	
+	
 	CVector3 Maxpos = CVector3::Zero();
 	CVector3 Minpos = CVector3::Zero();
 	float CameraAngle = 0.0f;
 	CVector3 m_scale = CVector3::One();
+	float m_cameralen = FLT_MAX;
+	bool result = false;									//スキンモデルにボーンがあるかどうか
 
+	//bool m_isShadowReciever = false;					//!<シャドーレシーバーにするかのフラグ
 	//ここからマルチスレッド関連の加工済みデータ
 	OBB m_atari;
 
@@ -157,4 +172,11 @@ private:
 	ID3D11SamplerState* m_samplerState[MAXTHREAD] = { nullptr };		//!<サンプラステート。
 	bool m_isShadowCaster[MAXTHREAD] = { false };
 	EnDrawMode m_Mode[MAXTHREAD] = { enNormal };
+	//インスタンシング用
+	std::vector<CMatrix> m_instancingData[MAXTHREAD];		//!<インスタンシング描画用のデータ。
+	std::vector<CMatrix> m_Matrix[MAXTHREAD];						//スキンモデル付きのインスタンシング用配列
+
+	int m_numInstance = 0;								//!<インスタンシング用の個数
+	int m_maxInstance = 0;							    //!<インスタンシングデータの最大数(これ以上は表示できません)
+	StructuredBuffer m_instancingDataSB[MAXTHREAD];	    //!<インスタンシング描画用のストラクチャーバッファ。
 };

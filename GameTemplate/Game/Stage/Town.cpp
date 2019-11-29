@@ -123,7 +123,7 @@ bool Town::Init()
 		{
 			return false;
 		}
-		return true;
+		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori1.cmo", m_Name);
 	m_testmodel.Init(moveFilePath);

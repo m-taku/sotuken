@@ -51,7 +51,8 @@ void ModelMeshPart::Draw(
     ID3D11DeviceContext* deviceContext,
     IEffect* ieffect,
     ID3D11InputLayout* iinputLayout,
-    std::function<void()> setCustomState) const
+    std::function<void()> setCustomState
+	,int numInstance) const
 {
     deviceContext->IASetInputLayout(iinputLayout);
 
@@ -75,7 +76,16 @@ void ModelMeshPart::Draw(
     // Draw the primitive.
     deviceContext->IASetPrimitiveTopology(primitiveType);
 
-    deviceContext->DrawIndexed(indexCount, startIndex, vertexOffset);
+	if (numInstance == 1) {
+		//通常描画。
+		deviceContext->DrawIndexed(indexCount, startIndex, vertexOffset);
+	}
+	else {
+		//インスタンシング描画。
+		deviceContext->DrawIndexedInstanced(indexCount, numInstance, startIndex, 0, vertexOffset);
+	}
+
+    //deviceContext->DrawIndexed(indexCount, startIndex, vertexOffset);
 }
 
 
@@ -205,7 +215,8 @@ void XM_CALLCONV ModelMesh::Draw(
     CXMMATRIX view,
     CXMMATRIX projection,
     bool alpha,
-    std::function<void()> setCustomState) const
+    std::function<void()> setCustomState,
+	int numInstance) const
 {
     assert(deviceContext != 0);
 
@@ -226,7 +237,7 @@ void XM_CALLCONV ModelMesh::Draw(
             imatrices->SetMatrices(world, view, projection);
         }
 
-        part->Draw(deviceContext, part->effect.get(), part->inputLayout.Get(), setCustomState);
+        part->Draw(deviceContext, part->effect.get(), part->inputLayout.Get(), setCustomState, numInstance);
     }
 }
 
@@ -247,7 +258,9 @@ void XM_CALLCONV Model::Draw(
     FXMMATRIX world,
     CXMMATRIX view,
     CXMMATRIX projection,
-    bool wireframe) const
+    bool wireframe,
+	std::function<void()> setCustomState,
+	int numInstance) const
 {
     assert(deviceContext != 0);
 
@@ -259,7 +272,7 @@ void XM_CALLCONV Model::Draw(
 
         mesh->PrepareForRendering(deviceContext, states, false, wireframe);
 
-        mesh->Draw(deviceContext, world, view, projection, false);
+        mesh->Draw(deviceContext, world, view, projection, false, setCustomState, numInstance);
     }
 
     // Draw alpha parts
@@ -272,7 +285,7 @@ void XM_CALLCONV Model::Draw(
 
 
 
-        mesh->Draw(deviceContext, world, view, projection, true);
+        mesh->Draw(deviceContext, world, view, projection, true, setCustomState, numInstance);
     }
 }
 

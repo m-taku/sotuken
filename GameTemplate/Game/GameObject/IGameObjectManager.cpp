@@ -29,30 +29,32 @@ namespace smEngine {
 	}
 	void IGameObjectManager::Execute()
 	{
-		g_graphicsEngine->GetDeferredRender().Update();
-		GetSkinModelManager().NormalCulling();
+
+
 		for (auto ObjectList:m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
 				Object->StartWrapper();
 			}
-		}	
+		}
+
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
 				Object->UpdateWrapper();
 			}
-		}
-		smGameCamera().Update();	
-
-
+		}		
+		g_graphicsEngine->GetDeferredRender().Update();
+		GetSkinModelManager().NormalCulling();
+		smGameCamera().Update();
 
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
 				Object->DrawWrapper();
 			}
-		}
+		}				
+
 		while (true)
 		{
 			if ((GetSkinModelManager().Getfafa()))
