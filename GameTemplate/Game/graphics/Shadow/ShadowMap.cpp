@@ -164,6 +164,7 @@ void ShadowMap::ShadowCasterDraw()
 		deviceContext->RSSetViewports(1, m_renderTarget[i].GetViewPort());
 		float color[] = { 1.0f,1.0f,1.0f,1.0f };
 		m_renderTarget[i].Clear(color);
+		int count = 0;
 		for (const auto& shadowcaster : smLightManager().GetSkinModel())
 		{
 			if (shadowcaster->IsShadowCaster())

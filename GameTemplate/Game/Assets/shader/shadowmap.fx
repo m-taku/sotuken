@@ -7,6 +7,9 @@ Texture2D<float4> albedoTexture : register(t0);
 //ボーン行列
 StructuredBuffer<float4x4> boneMatrix : register(t1);
 
+
+//インスタンシング描画用
+StructuredBuffer<float4x4> instanceMatrix : register(t100);
 /////////////////////////////////////////////////////////////
 // 定数バッファ。
 /////////////////////////////////////////////////////////////
@@ -82,15 +85,23 @@ float4x4 CalcSkinMatrix(VSInputNmTxWeights In)
 /*!--------------------------------------------------------------------------------------
  * @brief	スキンなしモデル用の頂点シェーダー。
 -------------------------------------------------------------------------------------- */
-PSInput VSMain(VSInputNmTxVcTangent In)
+PSInput VSMaincreate(VSInputNmTxVcTangent In, float4x4 worldMat)
 {
 	PSInput psInput = (PSInput)0;
-	float4 pos = mul(mWorld, In.Position);
+	float4 pos = mul(worldMat, In.Position);
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
 	psInput.TexCoord = In.TexCoord;
 	return psInput;
+}
+PSInput VSMainInstancing(VSInputNmTxVcTangent In, uint instanceID : SV_InstanceID)
+{
+	return VSMaincreate(In, instanceMatrix[instanceID]);
+}
+PSInput VSMain(VSInputNmTxVcTangent In)
+{
+	return VSMaincreate(In, mWorld);
 }
 
 /*!--------------------------------------------------------------------------------------
@@ -98,7 +109,7 @@ PSInput VSMain(VSInputNmTxVcTangent In)
  * 全ての頂点に対してこのシェーダーが呼ばれる。
  * Inは1つの頂点データ。VSInputNmTxWeightsを見てみよう。
 -------------------------------------------------------------------------------------- */
-PSInput VSMainSkin(VSInputNmTxWeights In)
+PSInput VSMainSkincreate(VSInputNmTxWeights In, float4x4 worldMat)
 {
 	PSInput psInput = (PSInput)0;
 	///////////////////////////////////////////////////
@@ -122,15 +133,24 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 		skinning += boneMatrix[In.Indices[3]] * (1.0f - w);
 		//頂点座標にスキン行列を乗算して、頂点をワールド空間に変換。
 		//mulは乗算命令。
-		pos = mul(skinning, In.Position);
-	}
+		//pos = mul(skinning, In.Position);
+	}	
+	pos = mul(skinning, In.Position);
+	pos = mul(worldMat, pos);
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
 	psInput.TexCoord = In.TexCoord;
 	return psInput;
 }
-
+PSInput VSMainSkinInstancing(VSInputNmTxWeights In, uint instanceID : SV_InstanceID)
+{
+	return VSMainSkincreate(In, instanceMatrix[instanceID]);
+}
+PSInput VSMainSkin(VSInputNmTxWeights In)
+{
+	return VSMainSkincreate(In, mWorld);
+}
 float PSMain(PSInput In) : SV_Target0
 {
 	/*float a = albedoTexture.Sample(Sampler, In.TexCoord).w;

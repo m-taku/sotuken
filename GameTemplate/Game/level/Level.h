@@ -61,7 +61,8 @@ public :
 	* @brief	レベルを描画。
 	*/
 	void Draw();
+	void Updata();
 private:
 	std::vector<MapChipPtr> m_mapChipArray;		//!<マップチップの可変長配列。
-	std::map<int,SkinModel*> m_mapinstansing;
+	//std::map<int,SkinModel*> m_mapinstansing;
 };

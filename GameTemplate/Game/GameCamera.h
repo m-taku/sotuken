@@ -71,11 +71,30 @@ namespace smEngine {
 			return g_camera3D.GetViewMatrix();
 		}
 		/*!
+		*@brief ビュー行列
+		*/
+		const CMatrix& GetPreCameraViewMatrix() const
+		{
+			return m_piricamera.mView;
+		}
+		/*!
 		*@brief プロジェクション行列
 		*/
 		const CMatrix& GetCameraProjectionMatrix() const
 		{
 			return g_camera3D.GetProjectionMatrix();
+		}
+		/*!
+		*@brief プロジェクション行列
+		*/
+		const CMatrix& GetPreCameraProjectionMatrix() const
+		{
+			return m_piricamera.mProj;
+		}
+		void Updatepre()
+		{
+			m_piricamera.mProj = g_camera3D.GetProjectionMatrix();
+			m_piricamera.mView = g_camera3D.GetViewMatrix();
 		}
 
 		/*!
@@ -87,9 +106,14 @@ namespace smEngine {
 			return Instance;
 		}
 	private:
+		struct puriCamara {
+			CMatrix mView = CMatrix::Identity();
+			CMatrix mProj = CMatrix::Identity();
+		};
 		const float MAXDIST = 1000.0f;					//カメラの最大距離
 		CVector3 m_position = CVector3::Back()*MAXDIST;			//視点
 		CVector3 m_target = CVector3::Zero();	//注視点
+		puriCamara m_piricamera;
 	};
 	static GameCamera& smGameCamera()
 	{

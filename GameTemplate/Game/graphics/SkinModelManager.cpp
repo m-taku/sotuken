@@ -23,14 +23,13 @@ void SkinModelManager::NormalCulling()
 	m_finisi = false;
 	std::thread Culling([&] {
 		auto delayNo = No;
-		delayNo++;
-		delayNo %= 2;
+		/*delayNo++;
+		delayNo %= 2;*/
 		if (m_models[delayNo].size() > 0) {
 			for (auto model : m_models[delayNo])
 			{
 				if (model->Culling(delayNo, kaku123))
 				{
-					model->Draw(delayNo);
 					if (m_Cullingmodels[delayNo].size() > 0) {
 						auto num = m_Cullingmodels[delayNo].size() / 2;
 						auto hogenow = m_Cullingmodels[delayNo].begin();
@@ -77,7 +76,7 @@ void SkinModelManager::NormalCulling()
 		m_Cullingmodels[delayNo].clear();
 		m_finisi = true;
 	});
-	Culling.detach();
+	Culling.join();
 }
 
 

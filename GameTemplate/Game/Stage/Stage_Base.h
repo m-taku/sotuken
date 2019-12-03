@@ -142,6 +142,7 @@ public:
 	void Update()
 	{
 #ifdef DenugWorld
+		nra.Updata();
 #else
 		m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One()); #endif
 #endif

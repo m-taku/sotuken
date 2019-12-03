@@ -139,5 +139,6 @@ bool Town::Init()
 }
 void Town::DrawDebug()
 {
+	//nra.Updata();
 	nra.Draw();
 }

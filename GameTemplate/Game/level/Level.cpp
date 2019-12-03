@@ -105,13 +105,39 @@ void Level::UEInit(const wchar_t* levelDataFilePath, Level::HookWhenBuildObjectF
 			isHook = hookFunc(objData);
 		}
 		if (isHook == false) {
-			//フックされなかったので、マップチップを作成する。
-			auto mapChip = std::make_unique<MapChip>(objData);
-			m_mapChipArray.push_back(std::move(mapChip));
+			for (int i = 0; i <= m_mapChipArray.size(); i++)
+			{
+				if (i != m_mapChipArray.size()) {
+					int result = 1;
+					result = wcscmp((*m_mapChipArray[i].get()).getName(), objData.name);
+					if (result == 0)
+					{
+						(*m_mapChipArray[i].get()).Init(objData);
+						break;
+					}
+				}
+				else
+				{
+					//フックされなかったので、マップチップを作成する。
+					auto mapChip = std::make_unique<MapChip>(objData);
+					m_mapChipArray.push_back(std::move(mapChip));
+					break;
+				}
+			}
 		}
+	}
+	for (int i=0;i< m_mapChipArray.size();i++)
+	{
+		(*m_mapChipArray[i].get()).State();
 	}
 	//ファイルは開いたら、ちゃんと閉じる。。
 	fclose(fp);
+}
+void Level::Updata()
+{
+	for (auto& mapChip : m_mapChipArray) {
+		mapChip->Update();
+	}
 }
 void Level::Draw()
 {

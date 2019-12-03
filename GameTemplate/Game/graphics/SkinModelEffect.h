@@ -11,9 +11,13 @@ protected:
 	Shader* m_pVSShader = nullptr;
 	Shader* m_pPSShader = nullptr;
 	Shader m_vsShader;
+	Shader m_vsShaderInstancing;
 	Shader m_vsShaderShadow;
+	Shader m_vsShaderInstancingShadow;
 	Shader m_psShader;
+	Shader m_psShaderInstancing;
 	Shader m_psShaderShadow;
+	Shader m_psShaderShadowInstancing;
 	bool isSkining;
 	ID3D11ShaderResourceView* m_albedoTex = nullptr;
 	EnDrawMode m_drawMode = enNormal;
@@ -23,6 +27,8 @@ public:
 	{
 		m_psShader.Load("Assets/shader/model.fx", "PSMain", Shader::EnType::PS);
 		m_psShaderShadow.Load("Assets/shader/shadowmap.fx", "PSMain", Shader::EnType::PS);
+		m_psShaderInstancing.Load("Assets/shader/model.fx", "PSMain", Shader::EnType::PS);
+		m_psShaderShadowInstancing.Load("Assets/shader/shadowmap.fx", "PSMain", Shader::EnType::PS);
 		m_pPSShader = &m_psShader;
 	}
 	virtual ~ModelEffect()
@@ -69,7 +75,9 @@ public:
 	NonSkinModelEffect()
 	{
 		m_vsShader.Load("Assets/shader/model.fx", "VSMain", Shader::EnType::VS);
+		m_vsShaderInstancing.Load("Assets/shader/model.fx", "VSMainInstancing", Shader::EnType::VS);
 		m_vsShaderShadow.Load("Assets/shader/shadowmap.fx", "VSMain", Shader::EnType::VS);
+		m_vsShaderInstancingShadow.Load("Assets/shader/shadowmap.fx", "VSMainInstancing", Shader::EnType::VS);
 		m_pVSShader = &m_vsShader;
 		isSkining = false;
 	}
@@ -82,10 +90,13 @@ class SkinModelEffect : public ModelEffect {
 public:
 	SkinModelEffect()
 	{
+		
 		wchar_t hoge[256];
 		GetCurrentDirectoryW(256, hoge);
 		m_vsShader.Load("Assets/shader/model.fx", "VSMainSkin", Shader::EnType::VS);
+		m_vsShaderInstancing.Load("Assets/shader/model.fx", "VSMainSkinInstancing", Shader::EnType::VS);
 		m_vsShaderShadow.Load("Assets/shader/shadowmap.fx", "VSMainSkin", Shader::EnType::VS);
+		m_vsShaderInstancingShadow.Load("Assets/shader/shadowmap.fx", "VSMainSkinInstancing", Shader::EnType::VS);
 		m_pVSShader = &m_vsShader;
 		isSkining = true;
 	}

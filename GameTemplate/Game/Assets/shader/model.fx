@@ -113,8 +113,8 @@ PSInput VSMaincreate(VSInputNmTxVcTangent In, float4x4 worldMat)
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
 	psInput.TexCoord = In.TexCoord;
-	psInput.Normal = normalize(mul(mWorld, In.Normal));
-	psInput.Tangent = normalize(mul(mWorld, In.Tangent));
+	psInput.Normal = normalize(mul(worldMat, In.Normal));
+	psInput.Tangent = normalize(mul(worldMat, In.Tangent));
 	return psInput;
 }
 PSInput VSMainInstancing(VSInputNmTxVcTangent In, uint instanceID : SV_InstanceID)
@@ -193,13 +193,4 @@ PSOutput PSMain(PSInput In)
 	psout.world = float4(In.WorldPos.xyz, 1.0f);
 	psout.depth = In.Position.z;
 	return psout;
-}
-
-float ShadowPS(PSInput In) : SV_Target0
-{
-	float4 position = float4(0.0f,0.0f,0.0f,0.0f);
-	position.xyz = In.WorldPos;
-	position = mul(LightView, position);
-	position = mul(LightProj, position);
-	return position.z;
 }

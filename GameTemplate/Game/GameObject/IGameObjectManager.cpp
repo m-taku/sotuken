@@ -36,11 +36,20 @@ namespace smEngine {
 			}
 		}
 		smGameCamera().Update();
-		g_graphicsEngine->GetDeferredRender().Update();
+
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
 				Object->DrawWrapper();
+			}
+		}	
+		g_graphicsEngine->GetDeferredRender().Update();
+		GetSkinModelManager().NormalCulling();
+		while (true)
+		{
+			if (GetSkinModelManager().Getfafa())
+			{
+				break;
 			}
 		}
 		//g_physics.DebubDrawWorld();
@@ -48,7 +57,7 @@ namespace smEngine {
 		smLightManager().SendBuffer();
 		smLightManager().ShadowRender();
 		g_graphicsEngine->GetDeferredRender().Draw();
-		g_graphicsEngine->BloomDraw();
+		//g_graphicsEngine->BloomDraw();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{

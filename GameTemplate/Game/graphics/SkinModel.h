@@ -13,7 +13,8 @@ enum EnFbxUpAxis {
 enum EnDrawMode {
 	enNormal,
 	enInstancing,
-	enShadow
+	enShadow,
+	enInstancingShadow
 };
 
 struct OBB
@@ -50,6 +51,16 @@ public:
 	*@param[in]	scale		モデルの拡大率。
 	*/
 	void UpdateWorldMatrix(CVector3 position, CQuaternion rotation, CVector3 scale);
+	void UpdateInstancingData(
+		const CVector3& trans,
+		const CQuaternion& rot,
+		const CVector3& scale
+	/*EnFbxUpAxis enUpdateAxis*/);
+	/*!
+*@brief	インスタンスデータの更新開始時に呼び出してください。
+*/
+	void BeginUpdateInstancingData();
+
 	/*!
 	*@brief	ボーンを検索。
 	*@param[in]		boneName	ボーンの名前。
@@ -130,12 +141,7 @@ private:
 	*@param[in]	filePath		ロードするcmoファイルのファイルパス。
 	*/
 	void InitSkeleton(const wchar_t* filePath);
-	void UpdateInstancingData(
-		const CVector3& trans,
-		const CQuaternion& rot,
-		const CVector3& scale
-	/*EnFbxUpAxis enUpdateAxis*/);
-	
+
 	CVector3 GetPositivePoint(int No, CVector3 pos, sikaku m_kaku[4]);
 	//CVector3 GetNegativePoint(int No,CVector3 pos);
 
@@ -169,6 +175,7 @@ private:
 
 	static const int MAXTHREAD = 2;
 	SVSConstantBuffer m_vsCb[MAXTHREAD];
+	SVSConstantBuffer m_vsSCb[MAXTHREAD];
 	ID3D11SamplerState* m_samplerState[MAXTHREAD] = { nullptr };		//!<サンプラステート。
 	bool m_isShadowCaster[MAXTHREAD] = { false };
 	EnDrawMode m_Mode[MAXTHREAD] = { enNormal };
