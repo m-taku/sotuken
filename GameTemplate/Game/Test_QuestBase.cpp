@@ -14,6 +14,10 @@ Test_QuestBase::Test_QuestBase()
 
 Test_QuestBase::~Test_QuestBase()
 {
+	for (int i = 0; i < num; i++)
+	{
+		DeleteGO(m_text[i]);
+	}
 }
 bool Test_QuestBase::Start()
 {

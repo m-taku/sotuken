@@ -17,7 +17,6 @@ Title::~Title()
 
 bool Title::Start()
 {
-	m_model.Init(L"Assets/modelData/unityChan.cmo");
 	m_srv.CreateFromDDSTextureFromFile(L"Assets/sprite/Title.dds");	
 	m_sprite.Init(m_srv, FRAME_BUFFER_W, FRAME_BUFFER_H);
 	text = NewGO<Text_Box>(10, "Text_box");
@@ -33,15 +32,12 @@ void Title::Update()
 		DeleteGO(text);
 		DeleteGO(this);
 	}
-	//pos.z -= 1.0f;
-	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), { 1.0f,1.0f,10.0f });
 
 }
 void Title::PostDraw()
 {
 	ID3D11DeviceContext* d3dDeviceContext = g_graphicsEngine->GetD3DDeviceContext();
 	m_sprite.Draw(d3dDeviceContext);
-	//m_model.Draw(g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 }
 void Title::Draw()
 {

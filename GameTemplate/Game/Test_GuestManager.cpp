@@ -5,12 +5,14 @@
 
 Test_GuestManager::Test_GuestManager()
 {
-	int i = 0;
 }
 
 
 Test_GuestManager::~Test_GuestManager()
 {
+	for (int i = 0; i < m_Quest.size(); i++) {
+		DeleteGO(m_Quest[i]);
+	}
 }
 bool Test_GuestManager::Start()
 {

@@ -16,6 +16,7 @@ SkinModelManager::SkinModelManager()
 
 SkinModelManager::~SkinModelManager()
 {
+
 }
 void SkinModelManager::NormalCulling()
 {
@@ -23,12 +24,12 @@ void SkinModelManager::NormalCulling()
 	m_finisi = false;
 	std::thread Culling([&] {
 		auto delayNo = No;
-		/*delayNo++;
-		delayNo %= 2;*/
+		delayNo++;
+		delayNo %= 2;
 		if (m_models[delayNo].size() > 0) {
 			for (auto model : m_models[delayNo])
 			{
-				if (model->Culling(delayNo, kaku123))
+				if (model->Culling(enNormal, delayNo, kaku123))
 				{
 					if (m_Cullingmodels[delayNo].size() > 0) {
 						auto num = m_Cullingmodels[delayNo].size() / 2;
@@ -76,95 +77,66 @@ void SkinModelManager::NormalCulling()
 		m_Cullingmodels[delayNo].clear();
 		m_finisi = true;
 	});
-	Culling.join();
+	Culling.detach();
 }
+const sikaku* SkinModelManager::SCalculateFrustumPlanes(CMatrix mView,float height,float width,float farZ)
+{
+	auto n = mView;
+	n.Inverse(n);
+	CVector3 kaku, rite;
+	kaku.x = n.m[2][0];//‚Ü‚¦
+	kaku.y = n.m[2][1];
+	kaku.z = n.m[2][2];
+	kaku.Normalize();
+	CVector3 popopop;
+	popopop.x = n.m[3][0];
+	popopop.y = n.m[3][1];
+	popopop.z = n.m[3][2];
+	rite.x = n.m[0][0];//‰E
+	rite.y = n.m[0][1];
+	rite.z = n.m[0][2];
+	rite.Normalize();
+	CVector3 GameCamUp;
+	GameCamUp.Cross(kaku, rite);
+	GameCamUp.Normalize();
 
 
+	/*auto lenUp = kaku.Length()* tanf(CameraAngle / 2.0f);
+	auto lenrite = lenUp * aspect;
+
+	auto XMAX = (rite * lenrite);
+	auto YMAX = (GameCamUp * lenUp);
+	auto ZMAX = kaku * 0.5f;
+
+	auto leftposup = YMAX - XMAX + ZMAX;
+	auto leftposdown = leftposup - (YMAX*2.0f);
+	auto riteposup = leftposup + (XMAX *2.0f);
+	auto Riteposdown = leftposdown + (XMAX * 2.0f);
+	leftposup.Normalize();
+	leftposdown.Normalize();
+	riteposup.Normalize();
+	Riteposdown.Normalize();
+	*/
+	kaku123[0].m_normal = rite;
+	kaku123[1].m_normal = rite * -1.0f;
+	kaku123[2].m_normal = GameCamUp;
+	kaku123[3].m_normal = GameCamUp * -1.0f;
+	kaku123[4].m_normal = kaku;
+	kaku123[5].m_normal = kaku * -1.0f;
+	kaku123[0].m_popopop = popopop + (rite * -1.0f)*(width / 2.0f);
+	kaku123[1].m_popopop = popopop + rite *(width / 2.0f);
+	kaku123[2].m_popopop = popopop + (GameCamUp *-1.0f) * (height / 2.0f);
+	kaku123[3].m_popopop = popopop + (GameCamUp) * (height / 2.0f);
+	kaku123[4].m_popopop = popopop + kaku * (farZ / 100.0f);
+	kaku123[5].m_popopop = popopop + kaku * farZ;
+	return kaku123;
+}
 void SkinModelManager::CalculateFrustumPlanes()
 {
 	auto n = g_camera3D.GetViewMatrix();
 
 	auto CameraAngle = g_camera3D.GetViewAngle();
 	n.Inverse(n);
-	// 0: Left, 1: Right, 2: Bottm, 3: Top
-	//for (int i = 0; i < 4; i++)
-	//{
-	//	CVector3 m_pos;
-	//	int r = i / 2;
-	//	if (i % 2 == 0)
-	//	{
-	//		// •½–Ê‚Ì•û’öŽ®
-	//		// ax + by + cz + d = 0
-	//		m_pos.x = pmat.m[3][0] - pmat.m[r][0];
-	//		m_pos.y = pmat.m[3][1] - pmat.m[r][1];
-	//		m_pos.z = pmat.m[3][2] - pmat.m[r][2];
-	//		//m_pos.w = pmat.m[3][3] - pmat.m[r][3];
-	//	}
-	//	else
-	//	{
-	//		m_pos.x = pmat.m[3][0] + pmat.m[r][0];
-	//		m_pos.y = pmat.m[3][1] + pmat.m[r][1];
-	//		m_pos.z = pmat.m[3][2] + pmat.m[r][2];
-	//		//m_pos.w = pmat.m[3][3] + pmat.m[r][3];
-	//	}
-	//	CVector3 normal;
-	//	//normal.Cross(leftposdown, leftposup);
-	//	
-	//	m_pos.Normalize();
-	//	normal = m_pos * -1.0f;
-	//	CVector3 kaku;
-	//	kaku.x = n.m[2][0];//‚Ü‚¦
-	//	kaku.y = n.m[2][1];
-	//	kaku.z = n.m[2][2];
-	//	kaku.Normalize();
-	//	//kaku.y = 0.0f;
-	//	auto ahaha = kaku;
-	//	ahaha.y = 0.0f;
-	//	CVector3 jiku;
-	//	auto hajiki = ahaha.Dot(CVector3::AxisZ());
-	//	if (fabsf(hajiki) < 0.99999f) {
-	//		jiku.Cross(CVector3::AxisZ(), ahaha);
-	//	}
-	//	else
-	//	{
-	//		
-	//		//jiku = CVector3::AxisY();
-	//	}
-	//	CQuaternion na;
-	//	//if (hajiki > 0.0f || hajiki < -FLT_MIN)
-	//	//{
-	//	//	hajiki = CMath::RadToDeg(hajiki);
-	//	//	//CVector3 jiku;
-	//	//	jiku.Cross(CVector3::AxisZ(), kaku);
-	//	//	//if (jiku.y > 0.0f || jiku.y < -FLT_MIN)
-	//	//	{
-	//	//		jiku.Normalize();
-	//	//		na.SetRotationDeg(jiku, hajiki);
-	//	//	}
-	//	//}
-	//	//auto ahaha = kaku;
-	//	ahaha.y = 0.0f;
-	//	float m = acosf(min(1.0f,max(-1.0f, ahaha.Dot(CVector3::AxisZ()))));
-	//	auto naagreagaeg = CMath::RadToDeg(m);
-	//	
-	//	
-	//	jiku.Normalize();
-	//	normal.Normalize();
-
-	//	//normal.z -= 1.0f;
-	//	CVector3 popopop;
-	//	popopop.x = n.m[3][0];
-	//	popopop.y = n.m[3][1];
-	//	popopop.z = n.m[3][2];
-	//	m_kaku[i].devud_Nomal = normal;
-	//	na.SetRotationDeg(jiku, naagreagaeg);
-	//	na.Multiply(normal);
-	//	normal.Normalize();
-	//	//normal = kaku + hiki;
-	//	m_kaku[i].devud_front = kaku;
-	//	m_kaku[i].m_normal = normal;
-	//	m_kaku[i].m_popopop = popopop;
-	//}
 	CVector3 kaku, rite;
 	kaku.x = n.m[2][0];//‚Ü‚¦
 	kaku.y = n.m[2][1];
@@ -197,15 +169,25 @@ void SkinModelManager::CalculateFrustumPlanes()
 	leftposdown.Normalize();
 	riteposup.Normalize();
 	Riteposdown.Normalize();
-	CVector3 nomal[4];
+	CVector3 nomal[6];
 	nomal[0].Cross(leftposup, leftposdown);
 	nomal[1].Cross(Riteposdown, riteposup);
 	nomal[2].Cross(leftposdown, Riteposdown);
 	nomal[3].Cross(riteposup, leftposup);
-	for (int i = 0; i < 4; i++) {
+	nomal[4] = kaku;
+	nomal[5] = kaku * -1.0f;
+	for (int i = 0; i < 6; i++) {
 		nomal[i].Normalize();
 		kaku123[i].m_normal = nomal[i];
 		kaku123[i].m_popopop = popopop;
+		if (i == 4)
+		{
+			kaku123[i].m_popopop += kaku * g_camera3D.GatNear();
+		}
+		if (i == 5)
+		{
+			kaku123[i].m_popopop += kaku * g_camera3D.GetFar();
+		}
 	}
 
 }

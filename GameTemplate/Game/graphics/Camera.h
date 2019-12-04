@@ -97,6 +97,20 @@ public:
 		m_near = n;
 	}
 	/*!
+	* @brief	‰“•½–Ê‚ğİ’èB
+	*/
+	float GetFar()
+	{
+		return m_far;
+	}
+	/*!
+	 * @brief	‹ß•½–Ê‚ğİ’èB
+	 */
+	float GatNear()
+	{
+		return m_near;
+	}
+	/*!
 	 * @brief	‰æŠp‚ğİ’èB
 	 */
 	void SetViewAngle(float angle)

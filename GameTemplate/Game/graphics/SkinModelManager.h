@@ -35,11 +35,12 @@ namespace smEngine {
 		{
 			No = num;
 		}
+		const sikaku* SCalculateFrustumPlanes(CMatrix mView, float height, float width, float farZ);
 		void CalculateFrustumPlanes();
 	private:
 /*
 		VectorDraw* m_vector[5];*/
-		sikaku kaku123[4];
+		sikaku kaku123[6];
 		std::list<SkinModel*> m_models[2];
 		std::list<SkinModel*> m_Cullingmodels[2];
 		int No = 0;

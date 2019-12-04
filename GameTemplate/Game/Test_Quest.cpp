@@ -53,7 +53,9 @@ bool Test_Quest::Init(const wchar_t* fileName)
 	fread(hoge3, sizeof(char)  ,count, fp);
 
 	sprintf_s(name[Test_QuestBase::Quest::bikou], 256, "%s", hoge3);
-
 	fclose(fp);
+	delete hoge3;
+	delete hoge1;
+	delete hoge;
 	return true;
 }

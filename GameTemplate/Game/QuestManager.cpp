@@ -17,7 +17,7 @@ QuestManager::~QuestManager()
 bool QuestManager::Start()
 {
 	FindGO<Test_GuestManager>("tes")->Printkami();
-		return true;
+	return true;
 }
 void QuestManager::Update()
 {

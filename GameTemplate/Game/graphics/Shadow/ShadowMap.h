@@ -36,7 +36,13 @@ private:
 		CMatrix m_lightViewMatrix;
 		CMatrix m_lightProjectionMatrix;
 	};
-
+	struct camer
+	{
+		float width = 0.0f;
+		float farZ = 0.0f;
+		float height = 0.0f;
+	};
+	camer m_Camera;
 	ConstantBuffer m_cb;
 	float m_cascadePerHigh = 0.1f;
 	float m_cascadePerMidle = 0.3f;
