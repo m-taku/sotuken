@@ -25,6 +25,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 	NewGO<Title>(0, "Title");
 
 	int innn = 0;
+	int count = 0;
 	while (DispatchWindowMessage() == true)
 	{
 		GetGameTime().Start();
@@ -47,6 +48,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		g_graphicsEngine->EndRender();
 		innn++;
 		innn %= 2;
+		count++;
 		GetGameTime().Stop();
 	}
 	delete g_graphicsEngine;

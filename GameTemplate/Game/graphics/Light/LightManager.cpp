@@ -10,6 +10,10 @@ namespace smEngine
 
 	LightManager::~LightManager()
 	{
+		for (auto direction : m_directionLights)
+		{
+			delete direction;
+		}
 	}
 
 	void LightManager::Init()

@@ -99,8 +99,8 @@ bool Town::Init()
 		result = wcscmp(L"unityChan", objData.name);
 		if (result == 0)
 		{
-			TestNPC = NewGO<TEstNPC>(0, "dnea");
-			TestNPC->SetPos(objData.position);
+			//TestNPC = NewGO<TEstNPC>(0, "dnea");
+			//TestNPC->SetPos(objData.position);
 			return true;
 		}
 		result = wcscmp(L"SM_Grass01", objData.name);

@@ -120,8 +120,8 @@ public:
 	};
 
 	//カリング計算関数
-	bool Culling(int No, sikaku m_kaku[4]);
-	void CullingInstancing(int No, sikaku m_kaku[4]);
+	bool Culling(EnDrawMode drawMode, int No,const sikaku m_kaku[6]);
+	void CullingInstancing(EnDrawMode drawMode, int No,const sikaku m_kaku[6]);
 
 	float Getcameralen()
 	{
@@ -142,7 +142,7 @@ private:
 	*/
 	void InitSkeleton(const wchar_t* filePath);
 
-	CVector3 GetPositivePoint(int No, CVector3 pos, sikaku m_kaku[4]);
+	CVector3 GetPositivePoint(int No, CVector3 pos,const sikaku m_kaku[6]);
 	//CVector3 GetNegativePoint(int No,CVector3 pos);
 
 private:
@@ -178,9 +178,12 @@ private:
 	SVSConstantBuffer m_vsSCb[MAXTHREAD];
 	ID3D11SamplerState* m_samplerState[MAXTHREAD] = { nullptr };		//!<サンプラステート。
 	bool m_isShadowCaster[MAXTHREAD] = { false };
-	EnDrawMode m_Mode[MAXTHREAD] = { enNormal };
+	EnDrawMode m_Mode[MAXTHREAD] = { enShadow,enShadow };
 	//インスタンシング用
 	std::vector<CMatrix> m_instancingData[MAXTHREAD];		//!<インスタンシング描画用のデータ。
+	std::vector<CMatrix> m_drawData[2];		//!<インスタンシング描画用のデータ。（表示の数だけ必要）
+
+
 	std::vector<CMatrix> m_Matrix[MAXTHREAD];						//スキンモデル付きのインスタンシング用配列
 
 	int m_numInstance = 0;								//!<インスタンシング用の個数

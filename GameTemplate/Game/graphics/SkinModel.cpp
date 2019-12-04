@@ -15,7 +15,9 @@ SkinModel::~SkinModel()
 			m_samplerState[i]->Release();
 		}
 	}
-
+	for (int i = 0; i < MAXTHREAD; i++) {
+		m_instancingDataSB[i].Release();
+	}
 	smLightManager().DeleteSkinModel(this);
 }
 void SkinModel::Init(const wchar_t* filePath, int maxInstance, EnFbxUpAxis enFbxUpAxis)
@@ -163,6 +165,7 @@ void SkinModel::InitSamplerState(int maxInstance)
 			desc.StructureByteStride = sizeof(CMatrix);
 			m_instancingDataSB[i].Create(m_instancingData[i].data(), desc);
 			m_maxInstance = maxInstance;
+			m_instancingData->clear();
 		}
 	}
 
@@ -238,20 +241,26 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 
 	auto No = GetSkinModelManager().GetNo();
 	if (drawMode == enShadow) {
+		m_vsSCb[No].mWorld = m_worldMatrix;
+		m_vsSCb[No].mProj = projMatrix;
+		m_vsSCb[No].mView = viewMatrix;
+		auto delayNo = No;
+		delayNo++;
+		delayNo %= 2;
 		DirectX::CommonStates state(g_graphicsEngine->GetD3DDevice());
 		ID3D11DeviceContext* d3dDeviceContext = g_graphicsEngine->GetD3DDeviceContext();
-		if (m_maxInstance > 1) {
+		if (m_numInstance > 1) {
 			//インスタンシング用のデータを更新。
 			if (result)
 			{
-				m_Matrix[No][m_maxInstance - 1] = CMatrix::Identity();
+				m_Matrix[delayNo][m_maxInstance - 1] = CMatrix::Identity();
 				for (int i = 0; i < m_maxInstance; i++)
 				{
-					m_instancingData[No][i] = m_Matrix[No][i];
+					m_instancingData[delayNo][i] = m_Matrix[delayNo][i];
 				}
 			}
-			d3dDeviceContext->UpdateSubresource(m_instancingDataSB[No].GetBody(), 0, NULL, m_instancingData[No].data(), 0, 0);
-			d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[No].GetSRV()).GetBody());
+			d3dDeviceContext->UpdateSubresource(m_instancingDataSB[delayNo].GetBody(), 0, NULL, m_drawData[0].data(), 0, 0);
+			d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[delayNo].GetSRV()).GetBody());
 		}
 		//定数バッファの内容を更新。
 		SVSConstantBuffer vsCb;
@@ -260,25 +269,24 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 		}
 		else
 		{
-			vsCb.mWorld = m_worldMatrix;
+			vsCb.mWorld = m_vsSCb[delayNo].mWorld;
 		}
-		//vsCb.mWorld = m_worldMatrix;
-		vsCb.mProj = projMatrix;
-		vsCb.mView = viewMatrix;
+		vsCb.mProj = m_vsSCb[No].mProj;
+		vsCb.mView = m_vsSCb[No].mView;
 		d3dDeviceContext->UpdateSubresource(m_cb, 0, nullptr, &vsCb, 0, 0);
 		//定数バッファをGPUに転送。
 		d3dDeviceContext->VSSetConstantBuffers(0, 1, &m_cb);
 		d3dDeviceContext->PSSetConstantBuffers(0, 1, &m_cb);
 		//サンプラステートを設定。
-		d3dDeviceContext->PSSetSamplers(0, 1, &m_samplerState[No]);
+		d3dDeviceContext->PSSetSamplers(0, 1, &m_samplerState[delayNo]);
 		//ボーン行列をGPUに転送。
-		m_skeleton.Update(m_worldMatrix);
+		m_skeleton.Update(m_vsSCb[delayNo].mWorld);
 		m_skeleton.SendBoneMatrixArrayToGPU();
 
 		FindMesh([&](auto& ef) {
 			ModelEffect* effect = (ModelEffect*)ef->effect.get();
 			effect->SetDrawMode(drawMode);
-			if (m_maxInstance > 1)
+			if (m_numInstance > 1)
 			{
 				effect->SetDrawMode(enInstancingShadow);
 			}
@@ -287,9 +295,9 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 		m_modelDx->Draw(
 			d3dDeviceContext,
 			state,
-			m_worldMatrix,
-			viewMatrix,
-			projMatrix,
+			m_vsSCb[delayNo].mWorld,
+			m_vsSCb[No].mView,
+			m_vsSCb[No].mProj,
 			false,
 			nullptr,
 			m_numInstance > 1 ? m_numInstance : 1
@@ -305,7 +313,6 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 		GetSkinModelManager().SetModel(this);
 	}
 }
-
 void SkinModel::Draw(int No)
 {
 	DirectX::CommonStates state(g_graphicsEngine->GetD3DDevice());
@@ -320,7 +327,7 @@ void SkinModel::Draw(int No)
 				m_instancingData[No][i] = m_Matrix[No][i];
 			}
 		}
-		d3dDeviceContext->UpdateSubresource(m_instancingDataSB[No].GetBody(), 0, NULL, m_instancingData[No].data(), 0, 0);
+		d3dDeviceContext->UpdateSubresource(m_instancingDataSB[No].GetBody(), 0, NULL, m_drawData[1].data(), 0, 0);
 		d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[No].GetSRV()).GetBody());
 	}
 		
@@ -368,10 +375,16 @@ void SkinModel::BeginUpdateInstancingData(){
 	auto No = GetSkinModelManager().GetNo();
 	m_instancingData[No].clear();
 }
-void SkinModel::CullingInstancing(int No, sikaku m_kaku[4])
+void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const sikaku m_kaku[6])
 {
-	auto data = m_instancingData[No].begin();
-	while(data != m_instancingData[No].end()) {
+	int hoge = 0;
+	if (drawMode != enShadow)
+	{
+		hoge = 1;
+	}
+	m_drawData[hoge] = (m_instancingData[No]);
+	auto data = m_drawData[hoge].begin();
+	while(data != m_drawData[hoge].end()) {
 		auto mWorld = (*data);
 		CMatrix transMatrix;
 		//平行移動行列を作成する。
@@ -411,32 +424,32 @@ void SkinModel::CullingInstancing(int No, sikaku m_kaku[4])
 		//CalculateFrustumPlanes(m_vsCb[No].mProj, No);
 		m_cameralen = (ni - m_kaku[0].m_popopop).Length();
 		int count = 0;
-		for (int j = 0; j < 4; j++) {
+		for (int j = 0; j < 6; j++) {
 			CVector3 Max = GetPositivePoint(j, Minposa, m_kaku);
 			count++;
-			if (Max.Length() == 0) 
+			if (Max.Length() == 0)
 			{
-				data = m_instancingData[No].erase(data);
+				data = m_drawData[hoge].erase(data);
 				//*data = CMatrix::Identity();
 				//m_Matrix[No].erase(data);
 				//data++;
 				break;
 			}
 		}	
-		if (data == m_instancingData[No].end())
+		if (data == m_drawData[hoge].end())
 		{
 			break;
 		}
-		if (count >= 4) {
+		if (count >= 6) {
 
 			data++;						//それ以外は次へ。
 		}
 
 	}
 }
-bool SkinModel::Culling(int No, sikaku m_kaku[4])
+bool SkinModel::Culling(EnDrawMode drawMode, int No,const sikaku m_kaku[6])
 {
-	if (m_Mode[No] != enInstancing) {
+	if (m_numInstance < 1){
 		auto mWorld = m_vsCb[No].mWorld;
 		CMatrix transMatrix;
 		//平行移動行列を作成する。
@@ -475,7 +488,7 @@ bool SkinModel::Culling(int No, sikaku m_kaku[4])
 		Minposa -= m_atari.direction[2] * m_atari.directionLen.z * m_scale.z;
 		//CalculateFrustumPlanes(m_vsCb[No].mProj, No);
 		m_cameralen = (ni - m_kaku[0].m_popopop).Length();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 6; i++) {
 			CVector3 Max = GetPositivePoint(i, Minposa, m_kaku);
 			//CVector3 Min = GetNegativePoint(No, Minpos);
 			// (vp - plane.pos)・normal
@@ -497,7 +510,7 @@ bool SkinModel::Culling(int No, sikaku m_kaku[4])
 	{
 		if (m_instancingData[No].size() > 0)
 		{
-			CullingInstancing(No, m_kaku);
+			CullingInstancing(drawMode,No, m_kaku);
 			if (m_instancingData[No].size() > 0)
 			{
 				return true;
@@ -505,14 +518,6 @@ bool SkinModel::Culling(int No, sikaku m_kaku[4])
 		}
 		return false;
 	}
-
-	//float dn = planes[i].GetDistanceToPoint(vn);
-	//if (dn < 0)
-	//{
-	//	result = State.Intersect;
-	//}
-
-
 }
 /// <summary>
 /// 法線から一番近い点を算出する
@@ -520,7 +525,7 @@ bool SkinModel::Culling(int No, sikaku m_kaku[4])
 /// <param name="target">ターゲットとなるAABB</param>
 /// <param name="normal">算出する法線</param>
 /// <returns></returns>
-CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos, sikaku m_kaku[4])
+CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos,const sikaku m_kaku[6])
 {
 	CVector3 pos12 = m_kaku[No].m_popopop;
 	float len = FLT_MAX;
@@ -576,6 +581,7 @@ CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos, sikaku m_kaku[4])
 
 	//return pos;
 }
+
 
 ///// <summary>
 ///// 法線から一番遠い点を算出する

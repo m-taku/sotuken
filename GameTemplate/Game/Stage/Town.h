@@ -9,6 +9,6 @@ public:
 	bool Init();
 	void DrawDebug();
 public:
-	TEstNPC* TestNPC;
+	TEstNPC* TestNPC = nullptr;
 };
 
