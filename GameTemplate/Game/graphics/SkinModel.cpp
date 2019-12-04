@@ -511,7 +511,12 @@ bool SkinModel::Culling(EnDrawMode drawMode, int No,const sikaku m_kaku[6])
 		if (m_instancingData[No].size() > 0)
 		{
 			CullingInstancing(drawMode,No, m_kaku);
-			if (m_instancingData[No].size() > 0)
+			int hoge = 0;
+			if (drawMode != enShadow)
+			{
+				hoge = 1;
+			}
+			if (m_drawData[hoge].size() > 0)
 			{
 				return true;
 			}
