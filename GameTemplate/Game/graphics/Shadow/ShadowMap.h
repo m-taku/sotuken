@@ -7,8 +7,8 @@ public:
 	~ShadowMap();
 	enum EnMap {
 		enShadowMap,
-		/*enCascadeNear,
-		enCascadeFar,*/
+		enCascadeNear,
+		enCascadeFar,
 		enMapNum
 	};
 

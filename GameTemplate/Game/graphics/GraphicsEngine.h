@@ -98,7 +98,7 @@ private:
 	DeferredRender m_deferredRender;
 	Bloom m_bloom;
 
-	float m_shadowMapHight = 3000.0f;
+	float m_shadowMapHight = 5000.0f;
 	float m_shadowAvailableLength = 5000.0f;
 };
 
