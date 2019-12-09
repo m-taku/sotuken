@@ -102,10 +102,6 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 			pos[5] = pos[4] + toUpFar * -2.0f;
 			pos[6] = FarPlaneCenterPos + GameCamRight * -t * FarPlaneZ*aspect + toUpFar;
 			pos[7] = pos[6] + toUpFar * -2.0f;
-
-
-			float a = t * 500.0f;
-			float b = t * 500.0f*aspect;
 			CVector3 GameCamFrustumCenter = NearPlaneCenterPos + CVector3(FarPlaneCenterPos - NearPlaneCenterPos) * 0.5f;
 
 			float alpha = (LightHeight - GameCamFrustumCenter.y) / LightDir.y;

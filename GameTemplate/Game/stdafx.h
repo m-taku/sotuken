@@ -50,6 +50,7 @@
 #include "graphics/Light/PointLight.h"
 #include "graphics/Light/LightManager.h"
 #include "graphics/DeferredRender.h"
+#include "graphics/DepthFog.h"
 
 
 #include "graphics/GraphicsEngine.h"
@@ -72,6 +73,7 @@
 enum EBufferSlot
 {
 	enLightParam_Slot_No = 1,
+	enDepthFogParam_Slot_No,
 	enDerectionLightSB_Slot_No = 100,
 	enPointLightSB_Slot_No,
 	enSpotLightSB_Slot_No

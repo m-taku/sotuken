@@ -65,10 +65,12 @@ namespace smEngine {
 			CVector3 eyePos;
 			int numDirectionLight;
 			int numPointLight;
+			float specPow = 50.0f;
 		};
 
 		SLightParam m_lightParam;
 		ConstantBuffer m_lightParamCB;
+		
 
 		SDirectionLight m_rawDirectionLights[MAX_DIRECTION_LIGHT];
 		SPointLight m_rawPointLights[MAX_POINT_LIGHT];

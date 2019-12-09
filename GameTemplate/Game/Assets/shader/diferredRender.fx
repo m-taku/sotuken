@@ -36,6 +36,7 @@ cbuffer LightParam:register(b1) {
 	float3 eyePos;
 	int numDirectionLight;
 	int numPointLight;
+	float specPow;
 }
 
 struct VSInput {
@@ -65,10 +66,15 @@ PSInput VSMain(VSInput In)
 float4 DirectionLight(NWD nwd)
 {
 	float4 finalColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	float3 eyeToWorld = normalize(nwd.World - eyePos);
+	float3 refrectdir = reflect(eyeToWorld, nwd.Normal);
+	refrectdir = normalize(refrectdir);
 	for (int i = 0; i < numDirectionLight; i++)
 	{
-		float4 color = DirectionLightSB[i].color;
 		float3 direction = DirectionLightSB[i].direction;
+		float t = max(0.0f, dot(refrectdir, -direction));
+		float4 color = DirectionLightSB[i].color + DirectionLightSB[i].color*pow(t, specPow);
+
 		float dotResult = max(0.0f, dot(-direction, nwd.Normal));
 		color *= dotResult;
 		finalColor += color;
@@ -80,17 +86,22 @@ float4 DirectionLight(NWD nwd)
 float4 PointLight(NWD nwd)
 {
 	float4 finalColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	float3 eyeToWorld = normalize(nwd.World - eyePos);
+	float3 refrectdir = reflect(eyeToWorld, nwd.Normal);
 	for (int i = 0; i < numPointLight; i++)
 	{
-		float4 color = PointLightSB[i].color;
-		float4 attn = PointLightSB[i].attn;
 		float3 position = PointLightSB[i].position;
 		float3 direction = nwd.World - position;
+		float t = max(0.0f, dot(refrectdir, -direction));
+		float4 color = PointLightSB[i].color + PointLightSB[i].color*pow(t, specPow);
+		float4 attn = PointLightSB[i].attn;
+
+
 		float len = length(direction);
 		direction = normalize(direction);
 		float dotResult = max(0.0f, dot(-direction, nwd.Normal));
 		color *= dotResult;
-		float t = max(0.0f, attn.x - len) / attn.x;
+		t = max(0.0f, attn.x - len) / attn.x;
 		color *= pow(t, attn.y);
 		finalColor += color;
 	}
@@ -107,7 +118,7 @@ float4 PSMain(PSInput In) : SV_Target0
 	float4 buckUpColor = color;
 	nwd.Normal = NormalTexture.Sample(Sampler, In.uv).xyz;
 	nwd.World = WorldTexture.Sample(Sampler, In.uv).xyz;
-	//nwd.Depth = DepthTexture.Sample(Sampler, In.uv).x;
+	nwd.Depth = min(1.0f,max(0.0f,DepthTexture.Sample(Sampler, In.uv).x));
 	float4 shadow = ShadowTexture.Sample(Sampler, In.uv);
 	color *= max(0.1f,DirectionLight(nwd)*shadow);
 	color += buckUpColor * PointLight(nwd);

@@ -99,6 +99,7 @@
     </MeshContentTask>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="graphics\DepthFog.cpp" />
     <ClCompile Include="graphics\Bloom.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Carving.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="graphics\ToneMap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="graphics\DepthFog.h" />
     <ClInclude Include="graphics\Bloom.h" />
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Carving.h" />

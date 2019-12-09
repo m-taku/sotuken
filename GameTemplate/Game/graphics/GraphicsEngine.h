@@ -4,6 +4,9 @@
  */
 class GraphicsEngine
 {
+	struct DepthFogParam {
+		float depthPow = 2000.0f;
+	};
 public:
 	GraphicsEngine();
 	~GraphicsEngine();
@@ -82,6 +85,14 @@ public:
 	{
 		m_bloom.Draw();
 	}
+	void DepthFogDraw()
+	{
+		m_depthFog.Draw();
+	}
+	DepthFogParam& GetDepthFogParam()
+	{
+		return m_depthFogParam;
+	}
 private:
 	D3D_FEATURE_LEVEL		m_featureLevel;				//Direct3D デバイスのターゲットとなる機能セット。
 	ID3D11Device*			m_pd3dDevice = NULL;		//D3D11デバイス。
@@ -97,7 +108,10 @@ private:
 	Shader m_vs;
 	DeferredRender m_deferredRender;
 	Bloom m_bloom;
+	DepthFog m_depthFog;
 
+	
+	DepthFogParam m_depthFogParam;
 	float m_shadowMapHight = 5000.0f;
 	float m_shadowAvailableLength = 5000.0f;
 };
