@@ -17,7 +17,7 @@ bool QuestStage::Init() {
 #ifdef DenugWorld
 	//’n–Ê‚¾‚¯–¼‘O‚Ì‚Ý
 	wchar_t moveFilePath[256];
-	swprintf_s(moveFilePath, L"Assets/modelData/%s.cmo", m_Name);
+	swprintf_s(moveFilePath, L"Assets/modelData/%s12.cmo", m_Name);
 	m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	swprintf_s(moveFilePath, L"Assets/level/%s1.tkl", m_Name);
@@ -32,7 +32,7 @@ bool QuestStage::Init() {
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
 		{
-			FindGO<Player>("player")->SetPosition({0.0f,0.0f,0.0f});
+			FindGO<Player>("player")->SetPosition(objData.position);
 			return true;
 		}
 		result = wcscmp(L"unityChan", objData.name);
@@ -47,6 +47,7 @@ bool QuestStage::Init() {
 	m_testmodel.Init(moveFilePath);
 	m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
 	m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
+	m_physicsStaticObject.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
 #else
 
 #endif // DEBUG

@@ -87,13 +87,13 @@ void SkinModel::Init(const wchar_t* filePath, int maxInstance, EnFbxUpAxis enFbx
 	directionXLen = (fabsf(Maxpos.x) + fabsf(Minpos.x)) / 2.0f;
 	directionYLen = (fabsf(Maxpos.y) + fabsf(Minpos.y)) / 2.0f;
 	directionZLen = (fabsf(Maxpos.z) + fabsf(Minpos.z)) / 2.0f;
-	m_atari.origin = origin;
-	m_atari.direction[0] = CVector3::AxisX();
-	m_atari.direction[1] = CVector3::AxisY();
-	m_atari.direction[2] = CVector3::AxisZ();
-	m_atari.directionLen.x = directionXLen;	
-	m_atari.directionLen.y = directionYLen;
-	m_atari.directionLen.z = directionZLen;
+	m_box.origin = origin;
+	m_box.direction[0] = CVector3::AxisX();
+	m_box.direction[1] = CVector3::AxisY();
+	m_box.direction[2] = CVector3::AxisZ();
+	m_box.directionLen.x = directionXLen;	
+	m_box.directionLen.y = directionYLen;
+	m_box.directionLen.z = directionZLen;
 
 
 
@@ -180,6 +180,7 @@ void SkinModel::UpdateInstancingData(
 	if (m_numInstance < m_maxInstance) {
 		auto No = GetSkinModelManager().GetNo();
 		m_instancingData[No].push_back(m_worldMatrix);
+		m_instancingScale[No].push_back(m_scale);
 		if (result) {
 			//3dsMaxと軸を合わせるためのバイアス。
 			CMatrix mBias = CMatrix::Identity();
@@ -327,8 +328,15 @@ void SkinModel::Draw(int No)
 				m_instancingData[No][i] = m_Matrix[No][i];
 			}
 		}
-		d3dDeviceContext->UpdateSubresource(m_instancingDataSB[No].GetBody(), 0, NULL, m_drawData[1].data(), 0, 0);
-		d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[No].GetSRV()).GetBody());
+		if (m_drawData[1].size() > 0) {
+			d3dDeviceContext->UpdateSubresource(m_instancingDataSB[No].GetBody(), 0, NULL, m_drawData[1].data(), 0, 0);
+			d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[No].GetSRV()).GetBody());
+		}
+		else
+		{
+			d3dDeviceContext->UpdateSubresource(m_instancingDataSB[No].GetBody(), 0, NULL, m_instancingData[No].data(), 0, 0);
+			d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[No].GetSRV()).GetBody());
+		}
 	}
 		
 	SVSConstantBuffer vsCb;
@@ -367,15 +375,16 @@ void SkinModel::Draw(int No)
 		m_vsCb[No].mProj,
 		false,
 		nullptr,
-		m_numInstance > 1 ? m_numInstance : 1
+		m_drawData[1].size() > 1 ? m_drawData[1].size() : 1
 	);
 }
 void SkinModel::BeginUpdateInstancingData(){
 	m_numInstance = 0;
 	auto No = GetSkinModelManager().GetNo();
 	m_instancingData[No].clear();
+	m_instancingScale[No].clear();
 }
-void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const sikaku m_kaku[6])
+void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku[6])
 {
 	int hoge = 0;
 	if (drawMode != enShadow)
@@ -384,50 +393,48 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const sikaku m_kak
 	}
 	m_drawData[hoge] = (m_instancingData[No]);
 	auto data = m_drawData[hoge].begin();
+	int countNo = 0;
 	while(data != m_drawData[hoge].end()) {
 		auto mWorld = (*data);
 		CMatrix transMatrix;
 		//平行移動行列を作成する。
-		transMatrix.MakeTranslation(m_atari.origin);
+		transMatrix.MakeTranslation(m_box.origin);
 		transMatrix.Mul(mWorld, transMatrix);
-		m_atari.direction[0].x = transMatrix.m[0][0];//右
-		m_atari.direction[0].y = transMatrix.m[0][1];
-		m_atari.direction[0].z = transMatrix.m[0][2];
-		m_atari.direction[1].x = transMatrix.m[1][0];//うｐ
-		m_atari.direction[1].y = transMatrix.m[1][1];
-		m_atari.direction[1].z = transMatrix.m[1][2];
-		m_atari.direction[2].x = transMatrix.m[2][0];//まえ
-		m_atari.direction[2].y = transMatrix.m[2][1];
-		m_atari.direction[2].z = transMatrix.m[2][2];
-		m_atari.direction[0].Normalize();
-		m_atari.direction[1].Normalize();
-		m_atari.direction[2].Normalize();
+		m_box.direction[0].x = transMatrix.m[0][0];//右
+		m_box.direction[0].y = transMatrix.m[0][1];
+		m_box.direction[0].z = transMatrix.m[0][2];
+		m_box.direction[1].x = transMatrix.m[1][0];//うｐ
+		m_box.direction[1].y = transMatrix.m[1][1];
+		m_box.direction[1].z = transMatrix.m[1][2];
+		m_box.direction[2].x = transMatrix.m[2][0];//まえ
+		m_box.direction[2].y = transMatrix.m[2][1];
+		m_box.direction[2].z = transMatrix.m[2][2];
+		m_box.direction[0].Normalize();
+		m_box.direction[1].Normalize();
+		m_box.direction[2].Normalize();
 
 		CQuaternion na;
 		na.SetRotationDeg(CVector3::AxisX(), 90.0f);
-		m_atari.direction[0];
-		na.Multiply(m_atari.direction[0]);
-		na.Multiply(m_atari.direction[1]);
-		na.Multiply(m_atari.direction[2]);
-		m_atari.direction[0].Normalize();
-		m_atari.direction[1].Normalize();
-		m_atari.direction[2].Normalize();
+		na.Multiply(m_box.direction[0]);
+		na.Multiply(m_box.direction[1]);
+		na.Multiply(m_box.direction[2]);
+		m_box.direction[0].Normalize();
+		m_box.direction[1].Normalize();
+		m_box.direction[2].Normalize();
 		CVector3 ni;
-		ni.x = transMatrix.m[3][0];//まえ
+		ni.x = transMatrix.m[3][0];//pos
 		ni.y = transMatrix.m[3][1];
 		ni.z = transMatrix.m[3][2];
 		CVector3 Minposa;
 		Minposa = ni;
-		Minposa -= m_atari.direction[0] * m_atari.directionLen.x * m_scale.x;
-		Minposa -= m_atari.direction[1] * m_atari.directionLen.y * m_scale.y;
-		Minposa -= m_atari.direction[2] * m_atari.directionLen.z * m_scale.z;
+		Minposa -= m_box.direction[0] * (m_box.directionLen.x * m_instancingScale[No][countNo].x);
+		Minposa -= m_box.direction[1] * (m_box.directionLen.y * m_instancingScale[No][countNo].y);
+		Minposa -= m_box.direction[2] * (m_box.directionLen.z * m_instancingScale[No][countNo].z);
 		//CalculateFrustumPlanes(m_vsCb[No].mProj, No);
-		m_cameralen = (ni - m_kaku[0].m_popopop).Length();
+		m_cameralen = (ni - m_kaku[0].m_centerPos).Length();
 		int count = 0;
 		for (int j = 0; j < 6; j++) {
-			CVector3 Max = GetPositivePoint(j, Minposa, m_kaku);
-			count++;
-			if (Max.Length() == 0)
+			if (GetPositivePoint(j, Minposa, m_kaku,No, countNo))
 			{
 				data = m_drawData[hoge].erase(data);
 				//*data = CMatrix::Identity();
@@ -435,6 +442,7 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const sikaku m_kak
 				//data++;
 				break;
 			}
+			count++;
 		}	
 		if (data == m_drawData[hoge].end())
 		{
@@ -444,83 +452,75 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const sikaku m_kak
 
 			data++;						//それ以外は次へ。
 		}
+		countNo++;
 
 	}
 }
-bool SkinModel::Culling(EnDrawMode drawMode, int No,const sikaku m_kaku[6])
+bool SkinModel::Culling(EnDrawMode drawMode, int No,const Plane m_kaku[6])
 {
 	if (m_numInstance < 1){
 		auto mWorld = m_vsCb[No].mWorld;
 		CMatrix transMatrix;
 		//平行移動行列を作成する。
-		transMatrix.MakeTranslation(m_atari.origin);
+		transMatrix.MakeTranslation(m_box.origin);
 		transMatrix.Mul(mWorld, transMatrix);
-		m_atari.direction[0].x = transMatrix.m[0][0];//右
-		m_atari.direction[0].y = transMatrix.m[0][1];
-		m_atari.direction[0].z = transMatrix.m[0][2];
-		m_atari.direction[1].x = transMatrix.m[1][0];//うｐ
-		m_atari.direction[1].y = transMatrix.m[1][1];
-		m_atari.direction[1].z = transMatrix.m[1][2];
-		m_atari.direction[2].x = transMatrix.m[2][0];//まえ
-		m_atari.direction[2].y = transMatrix.m[2][1];
-		m_atari.direction[2].z = transMatrix.m[2][2];
-		m_atari.direction[0].Normalize();
-		m_atari.direction[1].Normalize();
-		m_atari.direction[2].Normalize();
+		m_box.direction[0].x = transMatrix.m[0][0];//右
+		m_box.direction[0].y = transMatrix.m[0][1];
+		m_box.direction[0].z = transMatrix.m[0][2];
+		m_box.direction[1].x = transMatrix.m[1][0];//うｐ
+		m_box.direction[1].y = transMatrix.m[1][1];
+		m_box.direction[1].z = transMatrix.m[1][2];
+		m_box.direction[2].x = transMatrix.m[2][0];//まえ
+		m_box.direction[2].y = transMatrix.m[2][1];
+		m_box.direction[2].z = transMatrix.m[2][2];
+		m_box.direction[0].Normalize();
+		m_box.direction[1].Normalize();
+		m_box.direction[2].Normalize();
 
-		CQuaternion na;
-		na.SetRotationDeg(CVector3::AxisX(), 90.0f);
-		m_atari.direction[0];
-		na.Multiply(m_atari.direction[0]);
-		na.Multiply(m_atari.direction[1]);
-		na.Multiply(m_atari.direction[2]);
-		m_atari.direction[0].Normalize();
-		m_atari.direction[1].Normalize();
-		m_atari.direction[2].Normalize();
+		CQuaternion alignment;
+		alignment.SetRotationDeg(CVector3::AxisX(), 90.0f);
+		m_box.direction[0];
+		alignment.Multiply(m_box.direction[0]);
+		alignment.Multiply(m_box.direction[1]);
+		alignment.Multiply(m_box.direction[2]);
+		m_box.direction[0].Normalize();
+		m_box.direction[1].Normalize();
+		m_box.direction[2].Normalize();
 		CVector3 ni;
 		ni.x = transMatrix.m[3][0];//まえ
 		ni.y = transMatrix.m[3][1];
 		ni.z = transMatrix.m[3][2];
 		CVector3 Minposa;
 		Minposa = ni;
-		Minposa -= m_atari.direction[0] * m_atari.directionLen.x * m_scale.x;
-		Minposa -= m_atari.direction[1] * m_atari.directionLen.y * m_scale.y;
-		Minposa -= m_atari.direction[2] * m_atari.directionLen.z * m_scale.z;
+		Minposa -= m_box.direction[0] * m_box.directionLen.x * m_scale.x;
+		Minposa -= m_box.direction[1] * m_box.directionLen.y * m_scale.y;
+		Minposa -= m_box.direction[2] * m_box.directionLen.z * m_scale.z;
 		//CalculateFrustumPlanes(m_vsCb[No].mProj, No);
-		m_cameralen = (ni - m_kaku[0].m_popopop).Length();
+		m_cameralen = (ni - m_kaku[0].m_centerPos).Length();
 		for (int i = 0; i < 6; i++) {
-			CVector3 Max = GetPositivePoint(i, Minposa, m_kaku);
-			//CVector3 Min = GetNegativePoint(No, Minpos);
-			// (vp - plane.pos)・normal
-			if (Max.Length() != 0) {
-				float dp = m_kaku[i].m_normal.Dot(Max - m_kaku[i].m_popopop);// planes[i].GetDistanceToPoint(vp);
-				if (dp < 0)
-				{
+			if(GetPositivePoint(i, Minposa, m_kaku)) {
 					return false;
-				}
-			}
-			else
-			{
-				return false;
 			}
 		}
 		return true;
 	}
 	else
 	{
+		int hoge = 0;
+		if (drawMode != enShadow)
+		{
+			hoge = 1;
+		}
 		if (m_instancingData[No].size() > 0)
 		{
 			CullingInstancing(drawMode,No, m_kaku);
-			int hoge = 0;
-			if (drawMode != enShadow)
-			{
-				hoge = 1;
-			}
+
 			if (m_drawData[hoge].size() > 0)
 			{
 				return true;
 			}
 		}
+		m_numInstance = m_maxInstance;
 		return false;
 	}
 }
@@ -530,20 +530,17 @@ bool SkinModel::Culling(EnDrawMode drawMode, int No,const sikaku m_kaku[6])
 /// <param name="target">ターゲットとなるAABB</param>
 /// <param name="normal">算出する法線</param>
 /// <returns></returns>
-CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos,const sikaku m_kaku[6])
+bool SkinModel::GetPositivePoint(int No, CVector3 pos,const Plane m_kaku[6])
 {
-	CVector3 pos12 = m_kaku[No].m_popopop;
 	float len = FLT_MAX;
 	CVector3 bb = pos;
 	CVector3 bb211 = CVector3::Zero();
 	for (int i = 0; i < 7; i++)
 	{
-		auto na = m_kaku[No].m_normal.Dot(bb - m_kaku[No].m_popopop); 
+		auto na = m_kaku[No].m_normal.Dot(bb - m_kaku[No].m_centerPos); 
 		if (0 < na)
 		{
-			len = fabsf(na);
-			bb211 = bb;
-			return bb211;
+			return false;
 		}
 		if (i % 2 == 0) {
 			//Xの動き
@@ -552,7 +549,7 @@ CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos,const sikaku m_kaku[6]
 			{
 				fugou *= -1.0f;
 			}
-			bb += m_atari.direction[0] * m_atari.directionLen.x*( 2.0f*fugou)* m_scale.x;
+			bb += m_box.direction[0] * m_box.directionLen.x*( 2.0f*fugou)* m_scale.x;
 		}
 		if ((i + 3) % 4 == 0)
 		{
@@ -561,32 +558,59 @@ CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos,const sikaku m_kaku[6]
 			{
 				fugou *= -1.0f;
 			}
-			bb += m_atari.direction[1] * m_atari.directionLen.y * (2.0f*fugou)* m_scale.y;
+			bb += m_box.direction[1] * m_box.directionLen.y * (2.0f*fugou)* m_scale.y;
 		}
 		if (i == 3)
 		{
-			bb += m_atari.direction[2] * m_atari.directionLen.z * 2.0f* m_scale.z;
+			bb += m_box.direction[2] * m_box.directionLen.z * 2.0f* m_scale.z;
 
 		}
 	}
-
-	return bb211;
-	//if (normal.x > 0)
-	//{
-	//	pos += m_atari.direction[0] * m_atari.directionLen.x*2.0f;
-	//}
-	//if (normal.y > 0)
-	//{
-	//	pos += m_atari.direction[1] * m_atari.directionLen.y*2.0f;
-	//}
-	//if (normal.z > 0)
-	//{
-	//	pos += m_atari.direction[2] * m_atari.directionLen.z*2.0f;
-	//}
-
-	//return pos;
+	return true;
 }
+/// 法線から一番近い点を算出する
+/// </summary>
+/// <param name="target">ターゲットとなるAABB</param>
+/// <param name="normal">算出する法線</param>
+/// <returns></returns>
+bool SkinModel::GetPositivePoint(int No, CVector3 pos, const Plane m_kaku[6],int nn,int sNo)
+{
+	float len = FLT_MAX;
+	CVector3 bb = pos;
+	CVector3 bb211 = CVector3::Zero();
+	for (int i = 0; i < 7; i++)
+	{
+		auto na = m_kaku[No].m_normal.Dot(bb - m_kaku[No].m_centerPos);
+		if (0 < na)
+		{
+			return false;
+		}
+		if (i % 2 == 0) {
+			//Xの動き
+			float fugou = 1.0f;
+			if (i / 2 % 2 != 0)
+			{
+				fugou *= -1.0f;
+			}
+			bb += m_box.direction[0] * m_box.directionLen.x*(2.0f*fugou)* m_instancingScale[nn][sNo].x;
+		}
+		if ((i + 3) % 4 == 0)
+		{
+			float fugou = 1.0f;
+			if ((i + 3) / 4 % 2 == 0)
+			{
+				fugou *= -1.0f;
+			}
+			bb += m_box.direction[1] * m_box.directionLen.y * (2.0f*fugou)* m_instancingScale[nn][sNo].y;
+		}
+		if (i == 3)
+		{
+			bb += m_box.direction[2] * m_box.directionLen.z * 2.0f* m_instancingScale[nn][sNo].z;
 
+		}
+	}
+	return true;
+}
 
 ///// <summary>
 ///// 法線から一番遠い点を算出する
@@ -600,15 +624,15 @@ CVector3 SkinModel::GetPositivePoint(int No, CVector3 pos,const sikaku m_kaku[6]
 //
 //	if (normal.x < 0)
 //	{
-//		pos += m_atari.direction[0] * m_atari.directionLen.x;
+//		pos += m_box.direction[0] * m_box.directionLen.x;
 //	}
 //	if (normal.y < 0)
 //	{
-//		pos += m_atari.direction[1] * m_atari.directionLen.y;
+//		pos += m_box.direction[1] * m_box.directionLen.y;
 //	}
 //	if (normal.z < 0)
 //	{
-//		pos += m_atari.direction[2] * m_atari.directionLen.z;
+//		pos += m_box.direction[2] * m_box.directionLen.z;
 //	}
 //
 //	return pos;

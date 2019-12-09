@@ -29,14 +29,15 @@ namespace smEngine {
 	}
 	void IGameObjectManager::Execute()
 	{
-		g_graphicsEngine->GetDeferredRender().Update();
-		GetSkinModelManager().NormalCulling();
+
 		for (auto ObjectList:m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
 				Object->StartWrapper();
 			}
-		}	
+		}		
+		g_graphicsEngine->GetDeferredRender().Update();
+		GetSkinModelManager().NormalCulling();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
