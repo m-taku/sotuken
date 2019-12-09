@@ -120,8 +120,8 @@ public:
 	};
 
 	//カリング計算関数
-	bool Culling(EnDrawMode drawMode, int No,const sikaku m_kaku[6]);
-	void CullingInstancing(EnDrawMode drawMode, int No,const sikaku m_kaku[6]);
+	bool Culling(EnDrawMode drawMode, int No,const Plane m_kaku[6]);
+	void CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku[6]);
 
 	float Getcameralen()
 	{
@@ -142,7 +142,8 @@ private:
 	*/
 	void InitSkeleton(const wchar_t* filePath);
 
-	CVector3 GetPositivePoint(int No, CVector3 pos,const sikaku m_kaku[6]);
+	bool GetPositivePoint(int No, CVector3 pos,const Plane m_kaku[6]);
+	bool GetPositivePoint(int No, CVector3 pos, const Plane m_kaku[6], int nn, int sNo);
 	//CVector3 GetNegativePoint(int No,CVector3 pos);
 
 private:
@@ -171,7 +172,7 @@ private:
 
 	//bool m_isShadowReciever = false;					//!<シャドーレシーバーにするかのフラグ
 	//ここからマルチスレッド関連の加工済みデータ
-	OBB m_atari;
+	OBB m_box;
 
 	static const int MAXTHREAD = 2;
 	SVSConstantBuffer m_vsCb[MAXTHREAD];
@@ -181,6 +182,7 @@ private:
 	EnDrawMode m_Mode[MAXTHREAD] = { enShadow,enShadow };
 	//インスタンシング用
 	std::vector<CMatrix> m_instancingData[MAXTHREAD];		//!<インスタンシング描画用のデータ。
+	std::vector<CVector3> m_instancingScale[MAXTHREAD];		//!<インスタンシングの拡大データ。
 	std::vector<CMatrix> m_drawData[2];		//!<インスタンシング描画用のデータ。（表示の数だけ必要）
 
 

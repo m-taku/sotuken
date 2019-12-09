@@ -1,10 +1,10 @@
 #pragma once
 class SkinModel;
 //class VectorDraw;
-struct sikaku
+struct Plane
 {
 	CVector3 m_normal;
-	CVector3 m_popopop;
+	CVector3 m_centerPos;
 };
 namespace smEngine {
 
@@ -35,14 +35,14 @@ namespace smEngine {
 		{
 			No = num;
 		}
-		const sikaku* SCalculateFrustumPlanes(CMatrix mView, float height, float width, float farZ);
+		const Plane* SCalculateFrustumPlanes(CMatrix mView, float height, float width, float farZ);
 		void CalculateFrustumPlanes();
 	private:
 /*
 		VectorDraw* m_vector[5];*/
-		sikaku kaku123[6];
+		Plane m_Plane[6];
 		std::list<SkinModel*> m_models[2];
-		std::list<SkinModel*> m_Cullingmodels[2];
+		std::list<SkinModel*> m_cullingModels[2];
 		int No = 0;
 		bool m_finisi = false;
 		float len = 10.0f;
