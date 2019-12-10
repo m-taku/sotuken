@@ -408,6 +408,10 @@
     <MeshContentTask Include="Assets\modelData\Towncori1.fbx" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_1.FBX" />
     <MeshContentTask Include="Assets\modelData\Ground12.fbx" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Tree03.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Tree01.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Tree02.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Tree04.FBX" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />

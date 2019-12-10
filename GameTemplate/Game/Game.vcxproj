@@ -356,6 +356,10 @@
     <MeshContentTask Include="Assets\modelData\map\SM_StreetLight03.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_StreetLight04.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_TileGround4m.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Tree01.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Tree02.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Tree03.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Tree04.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Wagon01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Wagon02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Wagon03.fbx" />

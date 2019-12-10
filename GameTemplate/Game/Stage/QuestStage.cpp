@@ -20,7 +20,7 @@ bool QuestStage::Init() {
 	swprintf_s(moveFilePath, L"Assets/modelData/%s12.cmo", m_Name);
 	m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
-	swprintf_s(moveFilePath, L"Assets/level/%s1.tkl", m_Name);
+	swprintf_s(moveFilePath, L"Assets/level/%s2.tkl", m_Name);
 	int count = 0;
 	nra.UEInit(moveFilePath, [&](LevelObjectData objData) {
 		int result = 1;
@@ -40,6 +40,30 @@ bool QuestStage::Init() {
 		{
 			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return true;
+		}	
+		result = wcscmp(L"SM_Tree01", objData.name);
+		if (result == 0)
+		{
+			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			return false;
+		}
+		result = wcscmp(L"SM_Tree02", objData.name);
+		if (result == 0)
+		{
+			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			return false;
+		}
+		result = wcscmp(L"SM_Tree03", objData.name);
+		if (result == 0)
+		{
+			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			return false;
+		}
+		result = wcscmp(L"SM_Tree04", objData.name);
+		if (result == 0)
+		{
+			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			return false;
 		}
 		return true;
 	});

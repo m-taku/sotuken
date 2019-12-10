@@ -153,7 +153,7 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 }
 float PSMain(PSInput In) : SV_Target0
 {
-	/*float a = albedoTexture.Sample(Sampler, In.TexCoord).w;
-	clip(a - 0.00001f);*/
+	float a = albedoTexture.Sample(Sampler, In.TexCoord).w;
+	clip(a - 0.00001f);
 	return In.Position.z;
 }
