@@ -282,9 +282,11 @@
     <MeshContentTask Include="Assets\modelData\map\Groundcori.FBX" />
     <MeshContentTask Include="Assets\modelData\map\rock_boulder.FBX" />
     <MeshContentTask Include="Assets\modelData\map\rock_boulder_b1.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\rock_boulder_b2.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Barrel01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Barrel03.fbx" />
     <MeshContentTask Include="Assets\modelData\map\SM_Barrel04.fbx" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Bush02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Canopy01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Canopy02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Canopy03.FBX" />
@@ -334,6 +336,7 @@
     <MeshContentTask Include="Assets\modelData\map\SM_Planks.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Rock01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Rock02.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Rock05.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Rope.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Rope01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Rope02.FBX" />

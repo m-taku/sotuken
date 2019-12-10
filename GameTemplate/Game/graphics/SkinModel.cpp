@@ -301,7 +301,7 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 			m_vsSCb[No].mProj,
 			false,
 			nullptr,
-			m_numInstance > 1 ? m_numInstance : 1
+			m_drawData[0].size() > 1 ? m_drawData[0].size() : 1
 		);
 
 	}

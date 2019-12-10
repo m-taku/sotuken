@@ -29,6 +29,16 @@ bool QuestStage::Init() {
 		{
 			return false;
 		}
+		result = wcscmp(L"rock_boulder_b2", objData.name);
+		if (result == 0)
+		{
+			return false;
+		}	
+		result = wcscmp(L"SM_Rock05", objData.name);
+		if (result == 0)
+		{
+			return false;
+		}
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
 		{
@@ -67,6 +77,18 @@ bool QuestStage::Init() {
 		}
 		return true;
 	});
+	swprintf_s(moveFilePath, L"Assets/level/www.tkl", m_Name);
+	nra1.Init(moveFilePath, [&](LevelObjectData objData) {
+
+		int result = 1;
+		result = wcscmp(L"SM_Bush02", objData.name);
+		if (result == 0)
+		{
+			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			return false;
+		}
+		return true;
+	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
 	m_testmodel.Init(moveFilePath);
 	m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
@@ -80,5 +102,6 @@ bool QuestStage::Init() {
 void QuestStage::DrawDebug()
 {
 	nra.Draw();
+	nra1.Draw();
 	m_model.Draw(enNormal,g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 }
