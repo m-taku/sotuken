@@ -19,6 +19,10 @@ public:
 	{
 		return m_renderTarget[enGBuffer_World].GetShaderResourceView();
 	}
+	ID3D11ShaderResourceView* GetDepthSRV()
+	{
+		return m_renderTarget[enGBuffer_Depth].GetShaderResourceView();
+	}
 private:
 	RenderTarget m_renderTarget[enGBuffer_Num];
 	PostEffect m_postEffect;

@@ -21,6 +21,7 @@ namespace smEngine
 		InitDirectionLightSB();
 		InitPointLightSB();
 		m_lightParamCB.Create(&m_lightParam, sizeof(m_lightParam));
+		
 		m_shadowCollectRenderTarget.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
 		float color[] = { 1.0f,1.0f,1.0f,1.0f };
 		m_shadowCollectRenderTarget.Clear(color);
@@ -161,11 +162,14 @@ namespace smEngine
 	{
 		ID3D11DeviceContext* deviceContext = g_graphicsEngine->GetD3DDeviceContext();
 		deviceContext->UpdateSubresource(m_lightParamCB.GetBody(), 0, NULL, &m_lightParam, 0, 0);
+		
 		deviceContext->UpdateSubresource(m_directionLightSB.GetBody(), 0, NULL, m_rawDirectionLights, 0, 0);
 		deviceContext->UpdateSubresource(m_pointLightSB.GetBody(), 0, NULL, m_rawPointLights, 0, 0);
 		deviceContext->PSSetConstantBuffers(enLightParam_Slot_No, 1, &m_lightParamCB.GetBody());
+		
 		deviceContext->PSSetShaderResources(enDerectionLightSB_Slot_No, 1, &m_directionLightSB.GetSRV().GetBody());
 		deviceContext->PSSetShaderResources(enPointLightSB_Slot_No, 1, &m_pointLightSB.GetSRV().GetBody());
+
 	}
 	void LightManager::InitDirectionLightSB()
 	{

@@ -208,4 +208,5 @@ void GraphicsEngine::Init(HWND hWnd)
 	m_posteffect.SetVS(&m_vs);
 	m_deferredRender.Init();
 	m_bloom.Init(m_mainRenderTarget.GetShaderResourceView());
+	m_depthFog.Init();
 }
