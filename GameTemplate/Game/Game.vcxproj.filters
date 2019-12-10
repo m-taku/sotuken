@@ -161,7 +161,6 @@
     <ClCompile Include="graphics\ToneMap.cpp" />
     <ClCompile Include="graphics\SkinModelManager.cpp" />
     <ClCompile Include="graphics\DepthFog.cpp" />
-    <ClCompile Include="SkyCube.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -306,7 +305,6 @@
     <ClInclude Include="graphics\ToneMap.h" />
     <ClInclude Include="graphics\SkinModelManager.h" />
     <ClInclude Include="graphics\DepthFog.h" />
-    <ClInclude Include="SkyCube.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
