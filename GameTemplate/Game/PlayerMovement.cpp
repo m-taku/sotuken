@@ -19,7 +19,7 @@ void PlayerMovement::DefaultMove()
 	float padinput_LX = g_pad[0].GetLStickXF();
 	float padinput_LY = g_pad[0].GetLStickYF();
 	m_addGravityTime += 1.0f*GetFrameDeltaTime();
-	m_fallSpeed += (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) / 2.0f;
+	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
 	m_player->m_movespeed.y -= m_fallSpeed;
 	if (m_player->m_characon.IsOnGround())
 	{
