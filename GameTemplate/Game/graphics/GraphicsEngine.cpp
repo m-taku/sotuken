@@ -14,7 +14,7 @@ GraphicsEngine::~GraphicsEngine()
 
 void GraphicsEngine::BegineRender()
 {
-	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	float ClearColor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 	ID3D11RenderTargetView* renderTargetView[] = {
 		m_mainRenderTarget.GetRenderTatgetView()
 	};
@@ -52,7 +52,7 @@ void GraphicsEngine::ChangeMainRenderTarget(bool clearcolor)
 	m_pd3dDeviceContext->RSSetViewports(1, m_mainRenderTarget.GetViewPort());
 	if (clearcolor)
 	{
-		float color[] = { 0.0f,0.0f,0.0f,1.0f };
+		float color[] = { 0.5f,0.5f,0.5f,1.0f };
 		m_pd3dDeviceContext->ClearRenderTargetView(m_mainRenderTarget.GetRenderTatgetView(), color);
 	}
 	m_pd3dDeviceContext->ClearDepthStencilView(m_mainRenderTarget.GetDepthStencilView(), D3D11_CLEAR_DEPTH, 1.0f, 0);
@@ -199,7 +199,7 @@ void GraphicsEngine::Init(HWND hWnd)
 	smLightManager().Init();
 
 	m_mainRenderTarget.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
-	float color[4] = { 0.0f,0.0f,0.0f,1.0f };
+	float color[4] = { 0.5f,0.5f,0.5f,1.0f };
 	m_mainRenderTarget.Clear(color);
 	m_posteffect.Init();
 	m_ps.Load("Assets/shader/posteffect.fx", "PSMain", Shader::EnType::PS);
