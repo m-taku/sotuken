@@ -28,6 +28,12 @@ void DeferredRender::Init()
 			m_renderTarget[i].Clear(color);
 			break;
 		}
+		case enGBuffer_DiffuseTexture: {
+			m_renderTarget[i].Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
+			float color[4] = { 0.5f,0.5f,0.5f,1.0f };
+			m_renderTarget[i].Clear(color);
+			break;
+		}
 		default: {
 			m_renderTarget[i].Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
 			float color[4] = { 0.0f,0.0f,0.0f,1.0f };
@@ -61,6 +67,11 @@ void DeferredRender::Update()
 		{
 		case enGBuffer_Depth: {
 			float color[4] = { 1.0f,1.0f,1.0f,1.0f };
+			m_renderTarget[i].Clear(color);
+			break;
+		}
+		case enGBuffer_DiffuseTexture: {
+			float color[4] = { 0.5f,0.5f,0.5f,1.0f };
 			m_renderTarget[i].Clear(color);
 			break;
 		}
