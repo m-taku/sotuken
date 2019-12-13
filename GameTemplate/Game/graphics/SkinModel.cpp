@@ -373,7 +373,7 @@ void SkinModel::Draw(int No)
 		ModelEffect* effect = (ModelEffect*)ef->effect.get();
 		effect->SetDrawMode(m_Mode[No]);
 	});
-
+	auto num = m_drawData[1].size();
 	//描画。
 	m_modelDx->Draw(
 		d3dDeviceContext,
@@ -383,7 +383,7 @@ void SkinModel::Draw(int No)
 		m_vsCb[No].mProj,
 		false,
 		nullptr,
-		m_drawData[1].size() > 1 ? m_drawData[1].size() : 1
+		num > 1 ? num : 1
 	);
 }
 void SkinModel::BeginUpdateInstancingData(){
@@ -466,7 +466,7 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku
 }
 bool SkinModel::Culling(EnDrawMode drawMode, int No,const Plane m_kaku[6])
 {
-	if (m_numInstance < 1){
+	if (m_instancingData[No].size() < 1){
 		auto mWorld = m_vsCb[No].mWorld;
 		CMatrix transMatrix;
 		//平行移動行列を作成する。

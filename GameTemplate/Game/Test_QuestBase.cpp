@@ -48,7 +48,7 @@ void Test_QuestBase::CreateQuest()
 	auto manager = NewGO<QuestManager>(5,"QuestManager");
 	manager->Setdoun(1);
 
-	manager->setTime(50.0f);
+	manager->setTime(50.0f * 60.0f);
 	//¬Œ^‚Í‚Ç‚Á‚¿‚Å‚à‚¢‚¢‚©‚È``
 	
 	//ƒNƒGƒXƒg‚ÉŠÖŒW‚·‚éŒ¸Z“™‚ ‚ê‚Î‚±‚±‚Å‚·‚éB
