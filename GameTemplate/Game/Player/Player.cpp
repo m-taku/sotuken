@@ -39,6 +39,7 @@ void Player::TransitionState(State m)
 }
 bool Player::Start()
 {
+	smGameCamera().Init();
 	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
 	m_skinmodel.EnableShadowCaster(true);
 
