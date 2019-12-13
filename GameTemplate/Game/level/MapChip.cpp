@@ -41,21 +41,25 @@ void MapChip::State()
 		}
 	}
 	if (m_LevelData.size() <= 1) {
-		m_physicsStaticObject.push_back(new PhysicsStaticObject);
-		m_physicsStaticObject[0]->CreateMeshObject(*ka,m_LevelData[0].position,m_LevelData[0].rotation,m_LevelData[0].scale);
-		m_physicsStaticObject[0]->GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
+		if (m_Shadow) {
+			m_physicsStaticObject.push_back(new PhysicsStaticObject);
+			m_physicsStaticObject[0]->CreateMeshObject(*ka, m_LevelData[0].position, m_LevelData[0].rotation, m_LevelData[0].scale);
+			m_physicsStaticObject[0]->GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
+		}
 		m_model.UpdateWorldMatrix(m_LevelData[0].position, m_LevelData[0].rotation, m_LevelData[0].scale);
 	}
 	else
 	{
 		for (int i = 0; i < m_LevelData.size();i++) {
-			m_physicsStaticObject.push_back(new PhysicsStaticObject);
-			m_physicsStaticObject[i]->CreateMeshObject(*ka, m_LevelData[i].position, m_LevelData[i].rotation, m_LevelData[i].scale);
-			m_physicsStaticObject[i]->GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
+			if (m_Shadow) {
+				m_physicsStaticObject.push_back(new PhysicsStaticObject);
+				m_physicsStaticObject[i]->CreateMeshObject(*ka, m_LevelData[i].position, m_LevelData[i].rotation, m_LevelData[i].scale);
+				m_physicsStaticObject[i]->GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
+			}
 			m_model.UpdateInstancingData(m_LevelData[i].position, m_LevelData[i].rotation, m_LevelData[i].scale);
 		}
 	}
-	m_model.EnableShadowCaster(true);
+	m_model.EnableShadowCaster(m_Shadow);
 }
 void MapChip::Update()
 {

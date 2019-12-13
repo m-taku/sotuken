@@ -27,9 +27,14 @@ public:
 	}
 	void Update();
 	void Draw();
+	void SetShadow(bool furg)
+	{
+		m_Shadow = furg;
+	}
 private:
 	SkinModel m_model;		//!<モデル。
 	wchar_t filePath[256];
+	bool m_Shadow = true;
 	std::vector<LevelObjectData> m_LevelData;
 	std::vector<PhysicsStaticObject*> m_physicsStaticObject;	//!<静的物理オブジェクト。
 	
