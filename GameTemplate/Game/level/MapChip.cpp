@@ -29,7 +29,7 @@ void MapChip::State()
 	swprintf_s(file, L"Assets/modelData/%s.cmo", filePath);
 	m_model.Init(file, m_LevelData.size());
 	SkinModel k;
-	swprintf_s(file, L"Assets/modelData/%sk.cmo", filePath);
+	swprintf_s(file, L"Assets/modelData/%skni.cmo", filePath);
 	SkinModel* ka;
 	{
 		if (k.init(file)) {

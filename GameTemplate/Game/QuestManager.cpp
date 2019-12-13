@@ -19,7 +19,7 @@ QuestManager::~QuestManager()
 bool QuestManager::Start()
 {
 	Stage = NewGO<QuestStage>(0, "kouya");
-	m_player = FindGO<Player>("player"); m_target = FindGO<Enemy>("enemy");
+	m_player = FindGO<Player>("player");
 	return true;
 }
 void QuestManager::Update()
@@ -29,6 +29,7 @@ void QuestManager::Update()
 	{
 		NewGO<Town>(0, "town");
 		NewGO<Test_GuestManager>(0, "tes");
+		m_target = FindGO<Enemy>("enemy");
 		DeleteGO(m_target);
 		DeleteGO(Stage);
 		DeleteGO(this);
@@ -39,6 +40,7 @@ void QuestManager::Update()
 			if (debugtime >= 120) {
 				NewGO<Town>(0, "town");
 				NewGO<Test_GuestManager>(0, "tes");
+				m_target = FindGO<Enemy>("enemy");
 				DeleteGO(m_target);
 				DeleteGO(Stage);
 				DeleteGO(this);
