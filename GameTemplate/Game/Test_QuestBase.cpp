@@ -4,6 +4,8 @@
 #include "Stage/QuestStage.h"
 #include"Player.h"
 #include"Stage/Town.h"
+#include"QuestManager.h"
+#include"Test_GuestManager.h"
 
 
 Test_QuestBase::Test_QuestBase()
@@ -42,15 +44,17 @@ bool Test_QuestBase::Start()
 }
 void Test_QuestBase::CreateQuest()
 {
-	NewGO<QuestStage>(0, "kouya");
 	//‘åŒ^ƒ‚ƒ“ƒXƒ^[‚Ì”­¶‚Í‚±‚±‚Å‚â‚é
+	auto manager = NewGO<QuestManager>(5,"QuestManager");
+	manager->Setdoun(1);
 
+	manager->setTime(50.0f);
 	//¬Œ^‚Í‚Ç‚Á‚¿‚Å‚à‚¢‚¢‚©‚È``
 	
 	//ƒNƒGƒXƒg‚ÉŠÖŒW‚·‚éŒ¸Z“™‚ ‚ê‚Î‚±‚±‚Å‚·‚éB
-	auto pla = FindGO<Player>("player");
-	pla->SetPosition({ 100.0f,300.0f,0.0f });
-
+	//auto pla = FindGO<Player>("player");
+	//pla->SetPosition({ 100.0f,300.0f,0.0f });
+	DeleteGO(FindGO<Test_GuestManager>("tes"));
 	//’¬‚ğÁ‹‚·‚é
 	DeleteGO(FindGO<Town>("town"));
 }

@@ -29,6 +29,9 @@ void Player::TransitionState(State m)
 	case StateWate:
 		m_state = new PlayerWait(this);
 		break;
+	case Statedeath:
+		m_state = new Playerdeath(this);
+		break;
 	default:
 		break;
 	}
@@ -54,10 +57,15 @@ bool Player::Start()
 
 void Player::Update()
 {
+	if (Hp <= 0&& m_statenum != Statedeath)
+	{
+		TransitionState(Statedeath);
+	}
 	m_state->Update();
 
 	CVector3 move = m_position;
 	//m_movespeed.z += 10.0f;
+	//m_movespeed.y -= 0.001f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);

@@ -20,6 +20,7 @@ bool QuestStage::Init() {
 	swprintf_s(moveFilePath, L"Assets/modelData/%s12.cmo", m_Name);
 	m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
+	m_poa.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
 	swprintf_s(moveFilePath, L"Assets/level/%s2.tkl", m_Name);
 	int count = 0;
 	nra.UEInit(moveFilePath, [&](LevelObjectData objData) {
@@ -42,7 +43,11 @@ bool QuestStage::Init() {
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
 		{
-			FindGO<Player>("player")->SetPosition(objData.position);
+			auto pos = objData.position;
+			pos.y += 100.0f;
+			FindGO<Player>("player")->SetPosition(pos);
+			pos.z += 500.0f;
+			NewGO<Enemy>(0, "enemy")->SetPosition(pos);
 			return true;
 		}
 		result = wcscmp(L"unityChan", objData.name);
@@ -66,7 +71,6 @@ bool QuestStage::Init() {
 		result = wcscmp(L"SM_Tree03", objData.name);
 		if (result == 0)
 		{
-			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return false;
 		}
 		result = wcscmp(L"SM_Tree04", objData.name);
@@ -87,13 +91,13 @@ bool QuestStage::Init() {
 			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return false;
 		}
-		return true;
+		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
 	m_testmodel.Init(moveFilePath);
-	m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
+	//m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
 	m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
-	m_physicsStaticObject.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
+	//m_physicsStaticObject.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
 #else
 
 #endif // DEBUG

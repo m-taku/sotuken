@@ -43,8 +43,8 @@ protected:
 	char  name[num][256] = { NULL };
 	Text_Box* m_text[num] = { nullptr };
 	Moster MonsterNo = mosternum;
-	wchar_t EnglishMosterName[num][256] = {L"monnsu",L"monnsu2", L"monnsu3"};
-	char JapanMosterName[num][256] = { "モンスター1", "モンスター2","モンスター3" };
+	wchar_t EnglishMosterName[mosternum][256] = {L"monnsu",L"monnsu2", L"monnsu3"};
+	char JapanMosterName[mosternum][256] = { "モンスター1", "モンスター2","モンスター3" };
 private:
 	Sprite m_sprite[2];
 	ShaderResourceView m_srv[2];

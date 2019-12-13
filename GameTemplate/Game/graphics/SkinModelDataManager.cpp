@@ -51,6 +51,53 @@ DirectX::Model* SkinModelDataManager::Load(const wchar_t* filePath, const Skelet
 	return retModel;
 }
 
+DirectX::Model* SkinModelDataManager::Load(const wchar_t* filePath)
+{
+	DirectX::Model* retModel = NULL;
+	//ボーンを発見したときのコールバック関数。
+	auto onFindBone = [&](
+		const wchar_t* boneName,
+		const VSD3DStarter::Bone* bone,
+		std::vector<int>& localBoneIDtoGlobalBoneIDTbl
+		)
+	{
+		return;
+		//int globalBoneID = skeleton.FindBoneID(boneName);
+		//localBoneIDtoGlobalBoneIDTbl.push_back(globalBoneID);
+	};
+	//マップに登録されているか調べる。
+	auto it = m_directX.find(filePath);
+	if (it == m_directX.end()) {
+		//未登録なので、新規でロードする。
+		//エフェクトファクトリ。
+		SkinModelEffectFactory effectFactory(g_graphicsEngine->GetD3DDevice());
+		//テクスチャがあるフォルダを設定する。
+		effectFactory.SetDirectory(L"Assets/modelData");
+		//CMOファイルのロード。
+		auto model = DirectX::Model::CreateFrom(	//CMOファイルからモデルを作成する関数の、CreateFromCMOを実行する。
+			g_graphicsEngine->GetD3DDevice(),			//第一引数はD3Dデバイス。
+			filePath,									//第二引数は読み込むCMOファイルのファイルパス。
+			effectFactory,								//第三引数はエフェクトファクトリ。
+			false,										//第四引数はCullモード。今は気にしなくてよい。
+			false,
+			onFindBone
+		);
+		if (model != NULL) {
+			retModel = model.get();
+			//新規なのでマップに登録する。
+			m_directX.insert({ filePath, std::move(model) });
+		}
+		else {
+			retModel = NULL;
+		}
+	}
+	else {
+		//登録されているので、読み込み済みのデータを取得。
+		retModel = it->second.get();
+	}
+	return retModel;
+}
+
 void SkinModelDataManager::Release()
 {
 	//mapを空にする。

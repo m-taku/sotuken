@@ -162,7 +162,7 @@ protected:
 	SkinModel m_model;
 	SkinModel m_testmodel;
 	PhysicsStaticObject m_poa;
-	PhysicsStaticObject m_physicsStaticObject;	//!<静的物理オブジェクト。
+	//PhysicsStaticObject m_physicsStaticObject;	//!<静的物理オブジェクト。
 	wchar_t* m_Name;
 	Level nra;
 	Level nra1;

@@ -10,11 +10,12 @@ public:
 	void Printkami()
 	{
 		m_isActive = true;
-		m_Quest[0]->ChangePaper();
+		m_Quest[m_No]->ChangePaper();
 	}
-	void Printkami1()
+	void CloseGuest()
 	{
 		m_isActive =false;
+		m_Quest[m_No]->CreateQuest();
 		m_Quest[m_No]->ChangePaper();
 	}
 private:

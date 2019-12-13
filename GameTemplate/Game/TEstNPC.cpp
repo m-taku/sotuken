@@ -3,7 +3,7 @@
 #include"Test.h"
 #include "Text_Box/Text_Box.h"
 #include "Player.h"
-#include"QuestManager.h"
+#include"QuestSelect.h"
 #include"graphics/SkinModel.h"
 #include"Test_GuestManager.h"
 
@@ -74,7 +74,7 @@ void TEstNPC::Update()
 		{
 			if (g_pad[0].IsTrigger(enButtonB))
 			{
-				NewGO<QuestManager>(0,"da");
+				NewGO<QuestSelect>(0,"da");
 				for (int j = 0; j < 2; j++) {
 					if (m_Text[j] != NULL) {
 						DeleteGO(m_Text[j]);

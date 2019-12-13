@@ -755,3 +755,32 @@ std::unique_ptr<Model> DirectX::Model::CreateFromCMO(
 
     return model;
 }
+std::unique_ptr<Model> DirectX::Model::CreateFrom(
+	ID3D11Device* d3dDevice,
+	const wchar_t* szFileName,
+	IEffectFactory& fxFactory,
+	bool ccw,
+	bool pmalpha,
+	OnFindBoneData onFindBoneData
+)
+{
+	size_t dataSize = 0;
+	std::unique_ptr<uint8_t[]> data;
+	HRESULT hr = BinaryReader::ReadEntireFile(szFileName, data, &dataSize);
+	if (FAILED(hr))
+	{
+
+		return NULL;	
+		DebugTrace("CreateFromCMO failed (%08X) loading '%ls'\n", hr, szFileName);
+		throw std::exception("CreateFromCMO");
+	}
+
+	auto model = CreateFromCMO(
+		d3dDevice, data.get(), dataSize,
+		fxFactory, ccw, pmalpha,
+		onFindBoneData);
+
+	model->name = szFileName;
+
+	return model;
+}

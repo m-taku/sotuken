@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MapChip.h"
 #include "Level.h"
+#include "../graphics/SkinModelDataManager.h"
 
 MapChip::MapChip(const LevelObjectData& objData)
 {
@@ -10,7 +11,13 @@ MapChip::MapChip(const LevelObjectData& objData)
 	//m_model.UpdateWorldMatrix(objData.position, objData.rotation, objData.scale);
 	//m_model.EnableShadowCaster(true);
 	//静的物理オブジェクトをメッシュコライダーから作成する。
-	//m_physicsStaticObject.CreateMeshObject(m_model, objData.position, objData.rotation);
+}
+MapChip::~MapChip()
+{
+	for (auto atari : m_physicsStaticObject)
+	{
+		delete atari;
+	}
 }
 void MapChip::Init(const LevelObjectData& objData)
 {
@@ -21,13 +28,31 @@ void MapChip::State()
 	wchar_t file[256];
 	swprintf_s(file, L"Assets/modelData/%s.cmo", filePath);
 	m_model.Init(file, m_LevelData.size());
+	SkinModel k;
+	swprintf_s(file, L"Assets/modelData/%sk.cmo", filePath);
+	SkinModel* ka;
+	{
+		if (k.init(file)) {
+			ka = &k;
+		}
+		else
+		{
+			ka = &m_model;
+		}
+	}
 	if (m_LevelData.size() <= 1) {
+		m_physicsStaticObject.push_back(new PhysicsStaticObject);
+		m_physicsStaticObject[0]->CreateMeshObject(*ka,m_LevelData[0].position,m_LevelData[0].rotation,m_LevelData[0].scale);
+		m_physicsStaticObject[0]->GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
 		m_model.UpdateWorldMatrix(m_LevelData[0].position, m_LevelData[0].rotation, m_LevelData[0].scale);
 	}
 	else
 	{
-		for (auto obj : m_LevelData) {
-			m_model.UpdateInstancingData(obj.position, obj.rotation, obj.scale);
+		for (int i = 0; i < m_LevelData.size();i++) {
+			m_physicsStaticObject.push_back(new PhysicsStaticObject);
+			m_physicsStaticObject[i]->CreateMeshObject(*ka, m_LevelData[i].position, m_LevelData[i].rotation, m_LevelData[i].scale);
+			m_physicsStaticObject[i]->GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
+			m_model.UpdateInstancingData(m_LevelData[i].position, m_LevelData[i].rotation, m_LevelData[i].scale);
 		}
 	}
 	m_model.EnableShadowCaster(true);
