@@ -130,7 +130,7 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 		proj.MakeOrthoProjectionMatrix(
 			width,
 			height,
-			farZ / 100.0f,
+			1.0f,
 			farZ
 		);
 		m_Camera.height = height;

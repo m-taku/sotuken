@@ -5,7 +5,7 @@
 class GraphicsEngine
 {
 	struct DepthFogParam {
-		float depthPow = 1000.0f;
+		float depthPow = 2000.0f;
 	};
 public:
 	GraphicsEngine();
