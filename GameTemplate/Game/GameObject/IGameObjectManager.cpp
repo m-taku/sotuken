@@ -60,7 +60,7 @@ namespace smEngine {
 				break;
 			}
 		}
-		g_physics.DebubDrawWorld();
+		//g_physics.DebubDrawWorld();
 		smLightManager().Update();
 		smLightManager().SendBuffer();
 		smLightManager().ShadowRender();

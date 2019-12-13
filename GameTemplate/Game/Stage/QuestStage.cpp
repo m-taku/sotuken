@@ -82,17 +82,17 @@ bool QuestStage::Init() {
 		return true;
 	});
 	swprintf_s(moveFilePath, L"Assets/level/www.tkl", m_Name);
-	//nra1.Init(moveFilePath, [&](LevelObjectData objData) {
+	nra1.Init(moveFilePath, [&](LevelObjectData objData) {
 
-	//	int result = 1;
-	//	result = wcscmp(L"SM_Bush02", objData.name);
-	//	if (result == 0)
-	//	{
-	//		//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
-	//		return false;
-	//	}
-	//	return false;
-	//});
+		int result = 1;
+		result = wcscmp(L"SM_Bush02", objData.name);
+		if (result == 0)
+		{
+			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			return false;
+		}
+		return false;
+	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
 	m_testmodel.Init(moveFilePath);
 	//m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
