@@ -36,7 +36,6 @@ float4 PSMain(PSInput In) : SV_Target0
 	float depth = depthTexture.Sample(Sampler, In.uv).x;
 	float colorlen = length(color.xyz);
 	depth = max(0.0f,pow(depth, depthPow));
-	//color = color + float4(depth, depth, depth, 1.0f);
 	color = color * (1.0f - depth) + float4(depth, depth, depth, 1.0f);
 	color.w = 1.0f;
 	return color;
