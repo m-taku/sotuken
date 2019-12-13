@@ -148,7 +148,6 @@
     <ClCompile Include="Player\PlayerWait.cpp" />
     <ClCompile Include="Player\PlayerState.cpp" />
     <ClCompile Include="Player\PlayerTownMove.cpp" />
-    <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="graphics\Shadow\ShadowManager.cpp" />
     <ClCompile Include="graphics\Shadow\ShadowMap.cpp" />
     <ClCompile Include="Carving.cpp" />
@@ -161,6 +160,9 @@
     <ClCompile Include="graphics\ToneMap.cpp" />
     <ClCompile Include="graphics\SkinModelManager.cpp" />
     <ClCompile Include="graphics\DepthFog.cpp" />
+    <ClCompile Include="Player\Playerdeath.cpp" />
+    <ClCompile Include="QuestSelect.cpp" />
+    <ClCompile Include="QuestManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -291,7 +293,6 @@
     <ClInclude Include="Player\PlayerState.h" />
     <ClInclude Include="Player\PlayerTownMove.h" />
     <ClInclude Include="Player\PlayerStateALL.h" />
-    <ClInclude Include="QuestManager.h" />
     <ClInclude Include="graphics\Shadow\ShadowMap.h" />
     <ClInclude Include="graphics\Shadow\ShadowManager.h" />
     <ClInclude Include="Carving.h" />
@@ -305,6 +306,9 @@
     <ClInclude Include="graphics\ToneMap.h" />
     <ClInclude Include="graphics\SkinModelManager.h" />
     <ClInclude Include="graphics\DepthFog.h" />
+    <ClInclude Include="Player\Playerdeath.h" />
+    <ClInclude Include="QuestSelect.h" />
+    <ClInclude Include="QuestManager.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -417,6 +421,15 @@
     <MeshContentTask Include="Assets\modelData\map\rock_boulder_b2.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Rock05.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Bush02.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Bush01.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Cloverpatch01.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Flower01.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Flower02.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Grass01.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Grass02.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Grass03.FBX" />
+    <MeshContentTask Include="Assets\modelData\unityChan2.fbx" />
+    <MeshContentTask Include="Assets\modelData\map\SM_TileGround4mk.FBX" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />

@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "physics/PhysicsStaticObject.h"
+#include "physics/PhysicsStaticObject.h"
 
 class Level;
 struct LevelObjectData;
@@ -15,6 +15,7 @@ public:
 	*@param[in] objData			オブジェクト情報。
 	*/
 	MapChip(const LevelObjectData& objData);
+	~MapChip();
 	void Init(const LevelObjectData& objData);
 	void State();
 	/*!
@@ -30,6 +31,6 @@ private:
 	SkinModel m_model;		//!<モデル。
 	wchar_t filePath[256];
 	std::vector<LevelObjectData> m_LevelData;
-//	PhysicsStaticObject m_physicsStaticObject;	//!<静的物理オブジェクト。
+	std::vector<PhysicsStaticObject*> m_physicsStaticObject;	//!<静的物理オブジェクト。
 	
 };

@@ -10,7 +10,7 @@ SkinModel::~SkinModel()
 		m_cb->Release();
 	}
 	for (int i = 0; i < MAXTHREAD; i++) {
-		if (m_samplerState != nullptr) {
+		if (m_samplerState[i] != nullptr) {
 			//サンプラステートを解放。
 			m_samplerState[i]->Release();
 		}
@@ -102,6 +102,14 @@ void SkinModel::Init(const wchar_t* filePath, int maxInstance, EnFbxUpAxis enFbx
 	//if (maxInstance <= 1) {
 	smLightManager().AddSkinModel(this);
 	//}
+}
+bool SkinModel::init(const wchar_t* filePath)
+{
+	m_modelDx = g_skinModelDataManager.Load(filePath);
+	if (m_modelDx != NULL) {
+		return true;
+	}
+	return false;
 }
 void SkinModel::InitSkeleton(const wchar_t* filePath)
 {

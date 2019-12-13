@@ -3,7 +3,7 @@
 #include"Player.h"
 
 
-PlayerWait::PlayerWait(Player* player) :PlayerState(player)
+PlayerWait::PlayerWait(Player* player) : PlayerState(player)
 {
 	m_player->SetMovespeed(CVector3::Zero());
 }
@@ -14,5 +14,4 @@ PlayerWait::~PlayerWait()
 }
 void PlayerWait::Update()
 {
-
 }

@@ -13,7 +13,8 @@ public:
 /// </summary>
 	enum State {
 		StateTownMove,			//移動中
-		StateWate
+		StateWate,
+		Statedeath
 	};
 	Player();
 	~Player();
@@ -44,7 +45,12 @@ public:
 	const CQuaternion& GetRotation() const
 	{
 		return m_rotation;
-	}void SetMovespeed(const CVector3& move)
+	}
+	void SetRotation(CQuaternion rot)
+	{
+		m_rotation = rot;
+	}
+	void SetMovespeed(const CVector3& move)
 	{
 		m_movespeed = move;
 	}
@@ -53,6 +59,7 @@ public:
 		m_position = pos;
 		m_characon.SetPosition(pos);
 	}
+	int Hp = 1;
 private:
 	void UpdateAxis()
 	{
@@ -72,7 +79,6 @@ private:
 	CVector3 m_right = CVector3::Right();		//右方向
 	CVector3 m_up = CVector3::Up();				//上方向
 	CVector3 m_scale = CVector3::One();			//スケール
-
 	CQuaternion m_rotation = CQuaternion::Identity();		//回転
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列
 	State m_statenum = StateTownMove;

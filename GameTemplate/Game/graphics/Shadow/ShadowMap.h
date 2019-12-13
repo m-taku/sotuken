@@ -42,7 +42,7 @@ private:
 		float farZ = 0.0f;
 		float height = 0.0f;
 	};
-	camer m_Camera;
+	camer m_Camera[enMapNum];
 	ConstantBuffer m_cb;
 	float m_cascadePerHigh = 0.1f;
 	float m_cascadePerMidle = 0.3f;

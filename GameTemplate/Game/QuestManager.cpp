@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "QuestManager.h"
-#include"Player.h"
-#include"Stage/Town.h"
-#include"Stage/QuestStage.h"
 #include"Test_GuestManager.h"
+#include "Stage/Town.h"
+#include"Player.h"
+#include"Stage/QuestStage.h"
+#include"Enemy/Enemy.h"
 
 
 QuestManager::QuestManager()
@@ -14,22 +15,34 @@ QuestManager::QuestManager()
 QuestManager::~QuestManager()
 {
 }
+
 bool QuestManager::Start()
 {
-	FindGO<Test_GuestManager>("tes")->Printkami();
+	Stage = NewGO<QuestStage>(0, "kouya");
+	m_player = FindGO<Player>("player"); m_target = FindGO<Enemy>("enemy");
 	return true;
 }
 void QuestManager::Update()
 {
-	if (g_pad[0].IsTrigger(EnButton::enButtonRB3))
+	m_nowtime += GetFrameDeltaTime();
+	if (m_time <= m_nowtime)
 	{
-		NewGO<QuestStage>(0,"town");
-		FindGO<Player>("player")->SetPosition({-300.0f,500.0f,0.0f});
-		FindGO<Test_GuestManager>("tes")->Printkami1();
-		auto pul = FindGO<Player>("player");
-		pul->TransitionState(Player::StateTownMove);
-		pul->SetPosition({0.0f,1000.0f,0.0f});
-		DeleteGO(FindGO<Town>("town"));
+		NewGO<Town>(0, "town");
+		NewGO<Test_GuestManager>(0, "tes");
+		DeleteGO(m_target);
+		DeleteGO(Stage);
 		DeleteGO(this);
+	}
+	else {
+		if (m_doun <= 0) {
+			debugtime++;
+			if (debugtime >= 120) {
+				NewGO<Town>(0, "town");
+				NewGO<Test_GuestManager>(0, "tes");
+				DeleteGO(m_target);
+				DeleteGO(Stage);
+				DeleteGO(this);
+			}
+		}
 	}
 }

@@ -31,7 +31,7 @@ void PlayerMovement::DefaultMove()
 
 	}
 	if (IsJump) m_player->m_movespeed.y += m_jumpSpeed;
-
+	//m_player->m_movespeed.y *= 0.5f;
 	CVector3 camera_z = smGameCamera().GetCameraFoward();
 	camera_z.y = 0.0f;
 	camera_z.Normalize();

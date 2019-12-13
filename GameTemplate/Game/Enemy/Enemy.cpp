@@ -2,6 +2,7 @@
 #include "Enemy.h"
 #include"EnemyStateLoitering.h"
 #include"EnemyStateDead.h"
+#include"Player.h"
 
 Enemy::Enemy()
 {
@@ -43,6 +44,10 @@ bool Enemy::Start()
 }
 void Enemy::Update()
 {
+	if (g_pad[0].IsTrigger(enButtonRB2))
+	{
+		FindGO<Player>("player")->Hp--;
+	}
 	debugtaim += GetFrameDeltaTime();
 	if (debugtaim >= 30.0f)
 	{

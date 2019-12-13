@@ -93,7 +93,12 @@ bool Town::Init()
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
 		{
-			FindGO<Player>("player")->SetPosition(objData.position);
+			auto pos = objData.position;
+			pos.y += 1000.0f;
+			auto player = FindGO<Player>("player");
+			player->SetPosition(pos);
+			player->Hp = 1;
+			player->TransitionState(Player::StateTownMove);
 			return true;
 		}
 		result = wcscmp(L"unityChan", objData.name);
@@ -118,17 +123,22 @@ bool Town::Init()
 		{
 			return true;
 		}
-		result = wcscmp(L"SM_SeverPiece", objData.name);
+		result = wcscmp(L"SM_TileGround4m", objData.name);
 		if (result == 0)
 		{
 			return false;
+		}
+		result = wcscmp(L"SM_SeverPiece", objData.name);
+		if (result == 0)
+		{
+			return false; 
 		}
 		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori1.cmo", m_Name);
 	m_testmodel.Init(moveFilePath);
-	m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
-	m_physicsStaticObject.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
+	/*m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
+	m_physicsStaticObject.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);*/
 
 	//レベルデザインはここで
 #else

@@ -133,9 +133,9 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 			farZ / 100.0f,
 			farZ
 		);
-		m_Camera.height = height;
-		m_Camera.width = width;
-		m_Camera.farZ = farZ;
+		m_Camera[i].height = height;
+		m_Camera[i].width = width;
+		m_Camera[i].farZ = farZ;
 		NearPlaneZ = FarPlaneZ;
 		m_lightViewMatrix[i] = mLightView;
 		m_lightProjectionMatrix[i] = proj;
@@ -163,7 +163,7 @@ void ShadowMap::ShadowCasterDraw()
 		deviceContext->RSSetViewports(1, m_renderTarget[i].GetViewPort());
 		float color[] = { 1.0f,1.0f,1.0f,1.0f };
 		m_renderTarget[i].Clear(color);
-		auto n = GetSkinModelManager().SCalculateFrustumPlanes(m_lightViewMatrix[i], m_Camera.height, m_Camera.width, m_Camera.farZ);
+		auto n = GetSkinModelManager().SCalculateFrustumPlanes(m_lightViewMatrix[i], m_Camera[i].height, m_Camera[i].width, m_Camera[i].farZ);
 		auto No = GetSkinModelManager().GetNo();
 		for (const auto& shadowcaster : smLightManager().GetSkinModel())
 		{

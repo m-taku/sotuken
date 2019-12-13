@@ -148,6 +148,7 @@
     <ClCompile Include="physics\PhysicsStaticObject.cpp" />
     <ClCompile Include="graphics\ShaderResourceView.cpp" />
     <ClCompile Include="graphics\Primitive.cpp" />
+    <ClCompile Include="Player\Playerdeath.cpp" />
     <ClCompile Include="Player\PlayerTownMove.cpp" />
     <ClCompile Include="Player\PlayerWait.cpp" />
     <ClCompile Include="Player\Player.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="graphics\Light\PointLight.cpp" />
     <ClCompile Include="Player\PlayerState.cpp" />
     <ClCompile Include="QuestManager.cpp" />
+    <ClCompile Include="QuestSelect.cpp" />
     <ClCompile Include="Stage\QuestStage.cpp" />
     <ClCompile Include="SaveData_Select.cpp" />
     <ClCompile Include="Stage\Stage_Base.cpp" />
@@ -238,6 +240,7 @@
     <ClInclude Include="physics\PhysicsStaticObject.h" />
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="Player\Playerdeath.h" />
     <ClInclude Include="Player\PlayerStateALL.h" />
     <ClInclude Include="Player\PlayerTownMove.h" />
     <ClInclude Include="Player\PlayerWait.h" />
@@ -249,6 +252,7 @@
     <ClInclude Include="graphics\Light\PointLight.h" />
     <ClInclude Include="Player\PlayerState.h" />
     <ClInclude Include="QuestManager.h" />
+    <ClInclude Include="QuestSelect.h" />
     <ClInclude Include="Stage\QuestStage.h" />
     <ClInclude Include="SaveData_Select.h" />
     <ClInclude Include="Stage\Stage_Base.h" />
@@ -286,6 +290,7 @@
     <MeshContentTask Include="Assets\modelData\map\SM_Barrel01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Barrel03.fbx" />
     <MeshContentTask Include="Assets\modelData\map\SM_Barrel04.fbx" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Bush01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Bush02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Canopy01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Canopy02.FBX" />
@@ -309,6 +314,7 @@
     <MeshContentTask Include="Assets\modelData\map\SM_ChimneyLarge01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_ChimneyLarge02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_ChimneyLarge03.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Cloverpatch01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Door01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Door02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Fabric01.fbx" />
@@ -321,6 +327,11 @@
     <MeshContentTask Include="Assets\modelData\map\SM_Flag01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Floor01.fbx" />
     <MeshContentTask Include="Assets\modelData\map\SM_Floor02.fbx" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Flower01.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Flower02.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Grass01.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Grass02.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_Grass03.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_House1stFloor01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_House1stFloor02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_House1stFloor03.fbx" />
@@ -361,6 +372,7 @@
     <MeshContentTask Include="Assets\modelData\map\SM_StreetLight03.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_StreetLight04.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_TileGround4m.FBX" />
+    <MeshContentTask Include="Assets\modelData\map\SM_TileGround4mk.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Tree01.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Tree02.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_Tree03.FBX" />
@@ -385,6 +397,7 @@
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
     </MeshContentTask>
+    <MeshContentTask Include="Assets\modelData\unityChan2.fbx" />
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\QuestForm.png" />

@@ -45,6 +45,13 @@ public:
 	*/
 	void Init(const wchar_t* filePath, int maxInstance = 1, EnFbxUpAxis enFbxUpAxis = enFbxUpAxisZ);
 	/*!
+	*@brief	初期化。
+	*@param[in]	filePath		ロードするcmoファイルのファイルパス。
+	*@param[in] enFbxUpAxis		fbxの上軸。デフォルトはenFbxUpAxisZ。
+	*/
+	bool init(const wchar_t* filePath);
+
+	/*!
 	*@brief	モデルをワールド座標系に変換するためのワールド行列を更新する。
 	*@param[in]	position	モデルの座標。
 	*@param[in]	rotation	モデルの回転。
@@ -177,7 +184,7 @@ private:
 	static const int MAXTHREAD = 2;
 	SVSConstantBuffer m_vsCb[MAXTHREAD];
 	SVSConstantBuffer m_vsSCb[MAXTHREAD];
-	ID3D11SamplerState* m_samplerState[MAXTHREAD] = { nullptr };		//!<サンプラステート。
+	ID3D11SamplerState* m_samplerState[MAXTHREAD] = { nullptr,nullptr };		//!<サンプラステート。
 	bool m_isShadowCaster[MAXTHREAD] = { false };
 	EnDrawMode m_Mode[MAXTHREAD] = { enShadow,enShadow };
 	//インスタンシング用
