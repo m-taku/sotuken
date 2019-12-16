@@ -14,10 +14,13 @@ protected:
 	Shader m_vsShaderInstancing;
 	Shader m_vsShaderShadow;
 	Shader m_vsShaderInstancingShadow;
+
+
 	Shader m_psShader;
-	Shader m_psShaderInstancing;
+	Shader m_psTreeShader;
 	Shader m_psShaderShadow;
-	Shader m_psShaderShadowInstancing;
+	Shader m_psTreeShaderShadow;
+
 	bool isSkining;
 	ID3D11ShaderResourceView* m_albedoTex = nullptr;
 	EnDrawMode m_drawMode = enNormal;
@@ -25,10 +28,11 @@ protected:
 public:
 	ModelEffect()
 	{
+		
 		m_psShader.Load("Assets/shader/model.fx", "PSMain", Shader::EnType::PS);
 		m_psShaderShadow.Load("Assets/shader/shadowmap.fx", "PSMain", Shader::EnType::PS);
-		m_psShaderInstancing.Load("Assets/shader/model.fx", "PSMain", Shader::EnType::PS);
-		m_psShaderShadowInstancing.Load("Assets/shader/shadowmap.fx", "PSMain", Shader::EnType::PS);
+		m_psTreeShader.Load("Assets/shader/model.fx", "PSTreeMain", Shader::EnType::PS);
+		m_psTreeShaderShadow.Load("Assets/shader/shadowmap.fx", "PSTreeMain", Shader::EnType::PS);
 		m_pPSShader = &m_psShader;
 	}
 	virtual ~ModelEffect()

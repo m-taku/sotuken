@@ -306,6 +306,10 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 			{
 				effect->SetDrawMode(enInstancingShadow);
 			}
+			if (m_Mode[delayNo] == enTree)
+			{
+				effect->SetDrawMode(enTreeShadow);
+			}
 		});
 		//•`‰æB
 		m_modelDx->Draw(
@@ -416,7 +420,6 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku
 	m_drawData[hoge].clear();
 	auto data = m_instancingData[No].begin();
 	int countNo = 0;
-	int Notdraw = 0;
 	while(data != m_instancingData[No].end()) {
 		CMatrix mWorld = (*data);
 		CMatrix transMatrix;
@@ -459,7 +462,6 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku
 		for (count = 0; count < 6; count++) {
 			if (GetPositivePoint(count, Minposa, m_kaku,No, countNo))
 			{
-				Notdraw++;
 				break;
 
 			}

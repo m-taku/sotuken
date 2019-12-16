@@ -21,6 +21,12 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 		//deviceContext->PSSetShaderResources(enSkinModelSRVReg_AlbedoTexture, 1, &m_albedoTex);
 		break;
 	}
+	case enTree:
+	{
+		m_pVSShader = &m_vsShaderInstancing;
+		m_pPSShader = &m_psTreeShader;
+		break;
+	}
 	case enShadow: {
 		//if (isSkining)
 		//{
@@ -45,14 +51,19 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 		//	m_vsShader.Load("Assets/shader/shadowmap.fx", "VSMain", Shader::EnType::VS);
 		//}
 		m_pVSShader = &m_vsShaderInstancing;
-		m_pPSShader = &m_psShaderInstancing;
+		m_pPSShader = &m_psShader;
 		//m_psShader.Load("Assets/shader/shadowmap.fx", "PSMain", Shader::EnType::PS);
 		break;
 	}
-	case enInstancingShadow:{
-
+	case enTreeShadow:
+	{
 		m_pVSShader = &m_vsShaderInstancingShadow;
-		m_pPSShader = &m_psShaderShadowInstancing;
+		m_pPSShader = &m_psTreeShaderShadow;
+		break;
+	}
+	case enInstancingShadow:{
+		m_pVSShader = &m_vsShaderInstancingShadow;
+		m_pPSShader = &m_psShaderShadow;
 		break;
 	}
 	default: break;

@@ -76,11 +76,16 @@ void MapChip::Update()
 }
 void MapChip::Draw()
 {
-	if (m_LevelData.size() <= 1) {
-		m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+	if (m_LevelData[0].m_furag) {
+		m_model.Draw(enTree, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 	}
-	else
-	{
-		m_model.Draw(enInstancing, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+	else {
+		if (m_LevelData.size() <= 1) {
+			m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+		}
+		else
+		{
+			m_model.Draw(enInstancing, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+		}
 	}
 }

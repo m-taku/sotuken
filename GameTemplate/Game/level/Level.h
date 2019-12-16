@@ -10,6 +10,7 @@ struct LevelObjectData {
 	CVector3 position;		//<座標。
 	CQuaternion rotation;	//!<回転。
 	CVector3 scale = CVector3::One();		//<座標。
+	bool m_furag = false;
 	const wchar_t* name;	//!<名前。
 };
 /*!

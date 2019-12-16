@@ -23,7 +23,7 @@ bool QuestStage::Init() {
 	m_poa.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
 	swprintf_s(moveFilePath, L"Assets/level/%s2.tkl", m_Name);
 	int count = 0;
-	nra.UEInit(moveFilePath, [&](LevelObjectData objData) {
+	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
 		int result = 1;
 		result = wcscmp(L"rock_boulder_b1", objData.name);
 		if (result == 0)
@@ -59,31 +59,36 @@ bool QuestStage::Init() {
 		result = wcscmp(L"SM_Tree01", objData.name);
 		if (result == 0)
 		{
+			objData.m_furag = true;
 			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return false;
 		}
 		result = wcscmp(L"SM_Tree02", objData.name);
 		if (result == 0)
 		{
+			objData.m_furag = true;
 			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return false;
 		}
 		result = wcscmp(L"SM_Tree03", objData.name);
 		if (result == 0)
 		{
+			objData.m_furag = true;
 			return false;
 		}
 		result = wcscmp(L"SM_Tree04", objData.name);
 		if (result == 0)
 		{
+			objData.m_furag = true;
 			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return false;
 		}
 		return true;
 	});
 	swprintf_s(moveFilePath, L"Assets/level/www1.tkl", m_Name);
-	nra1.Init(moveFilePath, [&](LevelObjectData objData) {
+	nra1.Init(moveFilePath, [&](LevelObjectData& objData) {
 
+		objData.m_furag = true;
 		int result = 1;
 		result = wcscmp(L"SM_Bush02", objData.name);
 		if (result == 0)

@@ -12,8 +12,10 @@ enum EnFbxUpAxis {
 };
 enum EnDrawMode {
 	enNormal,
+	enTree,
 	enInstancing,
-	enShadow,
+	enShadow, 
+	enTreeShadow,
 	enInstancingShadow
 };
 
