@@ -197,5 +197,5 @@ private:
 
 	int m_numInstance = 0;								//!<インスタンシング用の個数
 	int m_maxInstance = 0;							    //!<インスタンシングデータの最大数(これ以上は表示できません)
-	StructuredBuffer m_instancingDataSB[MAXTHREAD];	    //!<インスタンシング描画用のストラクチャーバッファ。
+	StructuredBuffer m_instancingDataSB[2];	    //!<インスタンシング描画用のストラクチャーバッファ。
 };

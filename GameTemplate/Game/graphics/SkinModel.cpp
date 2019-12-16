@@ -267,7 +267,14 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 				{
 					m_instancingData[delayNo][i] = m_Matrix[delayNo][i];
 				}
-			}
+			}	
+			D3D11_BUFFER_DESC desc;
+			ZeroMemory(&desc, sizeof(desc));
+			desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;	//SRVとしてバインド可能。
+			desc.ByteWidth = sizeof(CMatrix) * m_drawData[0].size();
+			desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
+			desc.StructureByteStride = sizeof(CMatrix);
+			m_instancingDataSB[delayNo].Create(m_drawData[0].data(), desc);
 			d3dDeviceContext->UpdateSubresource(m_instancingDataSB[delayNo].GetBody(), 0, NULL, m_drawData[0].data(), 0, 0);
 			d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[delayNo].GetSRV()).GetBody());
 		}
@@ -337,6 +344,13 @@ void SkinModel::Draw(int No)
 			}
 		}
 		if (m_drawData[1].size() > 0) {
+			D3D11_BUFFER_DESC desc;
+			ZeroMemory(&desc, sizeof(desc));
+			desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;	//SRVとしてバインド可能。
+			desc.ByteWidth = sizeof(CMatrix) * m_drawData[1].size();
+			desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
+			desc.StructureByteStride = sizeof(CMatrix);
+			m_instancingDataSB[No].Create(m_drawData[1].data(), desc);
 			d3dDeviceContext->UpdateSubresource(m_instancingDataSB[No].GetBody(), 0, NULL, m_drawData[1].data(), 0, 0);
 			d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[No].GetSRV()).GetBody());
 		}
@@ -399,11 +413,12 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku
 	{
 		hoge = 1;
 	}
-	m_drawData[hoge] = (m_instancingData[No]);
-	auto data = m_drawData[hoge].begin();
+	m_drawData[hoge].clear();
+	auto data = m_instancingData[No].begin();
 	int countNo = 0;
-	while(data != m_drawData[hoge].end()) {
-		auto mWorld = (*data);
+	int Notdraw = 0;
+	while(data != m_instancingData[No].end()) {
+		CMatrix mWorld = (*data);
 		CMatrix transMatrix;
 		//平行移動行列を作成する。
 		transMatrix.MakeTranslation(m_box.origin);
@@ -441,28 +456,26 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku
 		//CalculateFrustumPlanes(m_vsCb[No].mProj, No);
 		m_cameralen = (ni - m_kaku[0].m_centerPos).Length();
 		int count = 0;
-		for (int j = 0; j < 6; j++) {
-			if (GetPositivePoint(j, Minposa, m_kaku,No, countNo))
+		for (count = 0; count < 6; count++) {
+			if (GetPositivePoint(count, Minposa, m_kaku,No, countNo))
 			{
-				data = m_drawData[hoge].erase(data);
-				//*data = CMatrix::Identity();
-				//m_Matrix[No].erase(data);
-				//data++;
+				Notdraw++;
 				break;
+
 			}
-			count++;
-		}	
-		if (data == m_drawData[hoge].end())
-		{
-			break;
 		}
-		if (count >= 6) {
-
-			data++;						//それ以外は次へ。
+		if (count >= 5) {
+			m_drawData[hoge].push_back(mWorld);
 		}
+		data++;						//それ以外は次へ。
 		countNo++;
-
 	}
+	//for (int i = 0; i < Notdraw; i++)
+	//{
+	//	CMatrix kari;
+	//	kari.MakeTranslation({100000.0f,100000.0f,100000.0f});
+	//	m_drawData[hoge].push_back(kari);
+	//}
 }
 bool SkinModel::Culling(EnDrawMode drawMode, int No,const Plane m_kaku[6])
 {
