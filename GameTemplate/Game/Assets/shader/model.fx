@@ -184,6 +184,22 @@ PSOutput PSMain(PSInput In)
 	psout.diffuse = 0.0f;
 	psout.normal = 0.0f;
 	psout.world = 0.0f;
+	psout.depth = 1.0f;
+	psout.shadow = 1.0f;
+
+	psout.diffuse = albedoTexture.Sample(Sampler, In.TexCoord);
+	psout.normal = float4(In.Normal, 1.0f);
+	psout.world = float4(In.WorldPos.xyz, 1.0f);
+	psout.depth = In.Position.z;
+	return psout;
+}
+
+PSOutput PSTreeMain(PSInput In)
+{
+	PSOutput psout;
+	psout.diffuse = 0.0f;
+	psout.normal = 0.0f;
+	psout.world = 0.0f;
 	psout.depth = 0.0f;
 	psout.shadow = 1.0f;
 
