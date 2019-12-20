@@ -110,7 +110,6 @@ private:
 	Bloom m_bloom;
 	DepthFog m_depthFog;
 
-	
 	DepthFogParam m_depthFogParam;
 	float m_shadowMapHight = 5000.0f;
 	float m_shadowAvailableLength = 5000.0f;
