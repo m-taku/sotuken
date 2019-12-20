@@ -42,7 +42,6 @@ bool Player::Start()
 	smGameCamera().Init();
 	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
 	m_skinmodel.EnableShadowCaster(true);
-
 	CVector3 position = m_position + (m_forward * -500.0f + m_up * 100.0f);
 	smGameCamera().SetPosition(position);
 	smGameCamera().SetTarget(m_position + m_up * 100.0f);

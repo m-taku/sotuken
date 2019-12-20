@@ -163,6 +163,7 @@
     <ClCompile Include="Player\Playerdeath.cpp" />
     <ClCompile Include="QuestSelect.cpp" />
     <ClCompile Include="QuestManager.cpp" />
+    <ClCompile Include="Player\PlayerAttack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -309,6 +310,7 @@
     <ClInclude Include="Player\Playerdeath.h" />
     <ClInclude Include="QuestSelect.h" />
     <ClInclude Include="QuestManager.h" />
+    <ClInclude Include="Player\PlayerAttack.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

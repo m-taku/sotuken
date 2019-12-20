@@ -148,6 +148,7 @@
     <ClCompile Include="physics\PhysicsStaticObject.cpp" />
     <ClCompile Include="graphics\ShaderResourceView.cpp" />
     <ClCompile Include="graphics\Primitive.cpp" />
+    <ClCompile Include="Player\PlayerAttack.cpp" />
     <ClCompile Include="Player\Playerdeath.cpp" />
     <ClCompile Include="Player\PlayerTownMove.cpp" />
     <ClCompile Include="Player\PlayerWait.cpp" />
@@ -240,6 +241,7 @@
     <ClInclude Include="physics\PhysicsStaticObject.h" />
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="Player\PlayerAttack.h" />
     <ClInclude Include="Player\Playerdeath.h" />
     <ClInclude Include="Player\PlayerStateALL.h" />
     <ClInclude Include="Player\PlayerTownMove.h" />

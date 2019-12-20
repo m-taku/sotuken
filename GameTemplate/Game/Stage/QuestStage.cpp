@@ -85,7 +85,7 @@ bool QuestStage::Init() {
 		}
 		return true;
 	});
-	swprintf_s(moveFilePath, L"Assets/level/www1.tkl", m_Name);
+	swprintf_s(moveFilePath, L"Assets/level/www.tkl", m_Name);
 	nra1.Init(moveFilePath, [&](LevelObjectData& objData) {
 
 		objData.m_furag = true;

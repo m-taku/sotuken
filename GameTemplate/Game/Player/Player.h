@@ -16,6 +16,10 @@ public:
 		StateWate,
 		Statedeath
 	};
+	enum anim {
+		attack,
+		num
+	};
 	Player();
 	~Player();
 	bool Start();
@@ -82,6 +86,8 @@ private:
 	CQuaternion m_rotation = CQuaternion::Identity();		//回転
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列
 	State m_statenum = StateTownMove;
+	Animation m_anim;
+	AnimationClip m_animClip;
 	PlayerState* m_state = nullptr;
 	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン

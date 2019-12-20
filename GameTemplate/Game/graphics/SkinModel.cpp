@@ -268,15 +268,29 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 					m_instancingData[delayNo][i] = m_Matrix[delayNo][i];
 				}
 			}	
-			D3D11_BUFFER_DESC desc;
-			ZeroMemory(&desc, sizeof(desc));
-			desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;	//SRVとしてバインド可能。
-			desc.ByteWidth = sizeof(CMatrix) * m_drawData[0].size();
-			desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
-			desc.StructureByteStride = sizeof(CMatrix);
-			m_instancingDataSB[delayNo].Create(m_drawData[0].data(), desc);
-			d3dDeviceContext->UpdateSubresource(m_instancingDataSB[delayNo].GetBody(), 0, NULL, m_drawData[0].data(), 0, 0);
-			d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[delayNo].GetSRV()).GetBody());
+			if (m_drawData[0].size() > 0) {
+				D3D11_BUFFER_DESC desc;
+				ZeroMemory(&desc, sizeof(desc));
+				desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;	//SRVとしてバインド可能。
+				desc.ByteWidth = sizeof(CMatrix) * m_drawData[0].size();
+				desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
+				desc.StructureByteStride = sizeof(CMatrix);
+				m_instancingDataSB[delayNo].Create(m_drawData[0].data(), desc);
+				d3dDeviceContext->UpdateSubresource(m_instancingDataSB[delayNo].GetBody(), 0, NULL, m_drawData[0].data(), 0, 0);
+				d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[delayNo].GetSRV()).GetBody());
+			}
+			else
+			{
+				D3D11_BUFFER_DESC desc;
+				ZeroMemory(&desc, sizeof(desc));
+				desc.BindFlags = D3D11_BIND_SHADER_RESOURCE;	//SRVとしてバインド可能。
+				desc.ByteWidth = sizeof(CMatrix) * m_numInstance;
+				desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
+				desc.StructureByteStride = sizeof(CMatrix);
+				m_instancingDataSB[delayNo].Create(m_instancingData[delayNo].data(), desc);		
+				d3dDeviceContext->UpdateSubresource(m_instancingDataSB[delayNo].GetBody(), 0, NULL, m_instancingData[delayNo].data(), 0, 0);
+				d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[delayNo].GetSRV()).GetBody());
+			}
 		}
 		//定数バッファの内容を更新。
 		SVSConstantBuffer vsCb;
@@ -543,7 +557,6 @@ bool SkinModel::Culling(EnDrawMode drawMode, int No,const Plane m_kaku[6])
 				return true;
 			}
 		}
-		m_numInstance = m_maxInstance;
 		return false;
 	}
 }
