@@ -18,12 +18,16 @@ public:
 	};
 	enum anim {
 		attack,
+		idel,
+		walk,
+		run,
 		num
 	};
 	Player();
 	~Player();
 	bool Start();
 	void Update();
+	void PostDraw();
 	void TransitionState(State m);
 	void Draw();
 	const CVector3& GetPosition() const
@@ -63,6 +67,10 @@ public:
 		m_position = pos;
 		m_characon.SetPosition(pos);
 	}
+	void Playanim(anim No)
+	{
+		m_anim.Play(No,0.2f);
+	}
 	int Hp = 1;
 private:
 	void UpdateAxis()
@@ -87,7 +95,7 @@ private:
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列
 	State m_statenum = StateTownMove;
 	Animation m_anim;
-	AnimationClip m_animClip;
+	AnimationClip m_animClip[num];
 	PlayerState* m_state = nullptr;
 	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン
