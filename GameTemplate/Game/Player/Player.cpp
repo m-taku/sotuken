@@ -41,6 +41,15 @@ bool Player::Start()
 {
 	smGameCamera().Init();
 	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
+	m_animClip[attack].Load(L"Assets/animData/death.tka");
+	m_animClip[attack].SetLoopFlag(false); 
+	m_animClip[idel].Load(L"Assets/animData/idel.tka");
+	m_animClip[idel].SetLoopFlag(true);
+	m_animClip[run].Load(L"Assets/animData/run.tka");
+	m_animClip[run].SetLoopFlag(true);
+	m_animClip[walk].Load(L"Assets/animData/walk.tka");
+	m_animClip[walk].SetLoopFlag(true);
+	m_anim.Init(m_skinmodel, m_animClip, num);
 	m_skinmodel.EnableShadowCaster(true);
 	CVector3 position = m_position + (m_forward * -500.0f + m_up * 100.0f);
 	smGameCamera().SetPosition(position);
@@ -67,9 +76,22 @@ void Player::Update()
 	//m_movespeed.z += 10.0f;
 	//m_movespeed.y -= 0.001f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
+	if (m_movespeed.Length() != 0.0f&&m_statenum != Statedeath)
+	{
+		Playanim(run);
+	}
+	else if(m_statenum != Statedeath)
+	{
+		Playanim(idel);
+	}
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
 	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
+}
+void  Player::PostDraw()
+{
+	m_anim.Update(GetFrameDeltaTime());
+
 }
 
 void Player::Draw()
