@@ -71,7 +71,7 @@ void SaveData_Select::Update()
 	}
 	if (g_pad[0].IsTrigger(enButtonA))
 	{
-		NewGO<Town>(0, "test");
+		NewGO<Town>(0, "town");
 		NewGO<Test_GuestManager>(0, "tes");
 		NewGO<Player>(0, "player");
 		DeleteGO(this);

@@ -1,11 +1,16 @@
 #pragma once
 #include"EnemyStatus.h"
 #include"EnemyState.h"
+#include"EnemyStateList.h"
+#include"enemyname/monster.h"
 #include"Carving.h"
 class Enemy : public IGameObject
 {
-	friend EnemyState;
 public:
+	friend EnemyStateAttack;
+	friend EnemyStateDead;
+	friend EnemyStateLoitering;
+	friend monster;
 	Enemy();
 	~Enemy();
 /// <summary>
@@ -13,6 +18,7 @@ public:
 /// </summary>
 	enum StateEnemy {
 		StateLoitering,			//移動中
+		StateAttack,
 		StateDead
 	};
 	bool Start();
@@ -52,8 +58,11 @@ public:
 		m_characon.SetPosition(pos);
 	}
 protected:
+	monster* m_monster = nullptr;
 	EnemyStatus* m_status = nullptr;
+
 private:
+
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向

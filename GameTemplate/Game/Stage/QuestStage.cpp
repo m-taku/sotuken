@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "QuestStage.h"
 #include"Player.h"
+#include"../Enemyname/MonsterList.h"
 #include"Enemy/Enemy.h"
 
 QuestStage::QuestStage()
@@ -47,7 +48,8 @@ bool QuestStage::Init() {
 			pos.y += 100.0f;
 			FindGO<Player>("player")->SetPosition(pos);
 			pos.z += 500.0f;
-			NewGO<Enemy>(0, "enemy")->SetPosition(pos);
+			new dorakomesu(pos);
+		//	FindGO<Enemy>("dorakomesu")->SetPosition(pos);
 			return true;
 		}
 		result = wcscmp(L"unityChan", objData.name);
@@ -73,15 +75,15 @@ bool QuestStage::Init() {
 		result = wcscmp(L"SM_Tree03", objData.name);
 		if (result == 0)
 		{
-			objData.m_furag = true;
-			return false;
+			//objData.m_furag = true;
+			//return false;
 		}
 		result = wcscmp(L"SM_Tree04", objData.name);
 		if (result == 0)
 		{
-			objData.m_furag = true;
-			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
-			return false;
+			//objData.m_furag = true;
+			////NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			//return false;
 		}
 		return true;
 	});

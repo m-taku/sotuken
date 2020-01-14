@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Enemy.h"
-#include"EnemyStateLoitering.h"
-#include"EnemyStateDead.h"
+#include "EnemyStateList.h"
 #include"Player.h"
 
 Enemy::Enemy()
@@ -16,7 +15,7 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
-
+	delete m_monster;
 	delete m_state;
 }
 void Enemy::TransitionState(StateEnemy m)
@@ -30,6 +29,8 @@ void Enemy::TransitionState(StateEnemy m)
 	case StateDead:
 		m_state = new EnemyStateDead(this);
 		break;
+	case StateAttack:
+		m_state = new EnemyStateAttack(this);
 	default:
 		break;
 	}
@@ -44,15 +45,15 @@ bool Enemy::Start()
 }
 void Enemy::Update()
 {
-	if (g_pad[0].IsTrigger(enButtonRB2))
-	{
-		FindGO<Player>("player")->Hp--;
-	}
+	//if (g_pad[0].IsTrigger(enButtonRB2))
+	//{
+	//	FindGO<Player>("player")->Hp--;
+	//}
 	debugtaim += GetFrameDeltaTime();
 	if (debugtaim >= 30.0f)
 	{
 		debugtaim = -FLT_MAX;
-		TransitionState(StateDead);
+		TransitionState(StateAttack);
 	}
 	m_state->Update();
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
