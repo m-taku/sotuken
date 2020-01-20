@@ -56,7 +56,6 @@ void Test_QuestBase::CreateQuest()
 		}
 	}
 	m_Quest = true;
-	m_GameManager->cheng(m_Quest);
 	m_nowtime = 0.0f;
 
 	//クエストに関係する減算等あればここでする。

@@ -12,7 +12,7 @@ dorakomesu::~dorakomesu()
 }
 void dorakomesu::attack()
 {
-	FindGO<Player>("player")->Hp--;
+	//FindGO<Player>("player")->Hp--;
 }
 void dorakomesu::Init()
 {

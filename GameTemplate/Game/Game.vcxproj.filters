@@ -133,7 +133,6 @@
     <ClCompile Include="SaveData_Select.cpp" />
     <ClCompile Include="Test_QuestBase.cpp" />
     <ClCompile Include="Test_Quest.cpp" />
-    <ClCompile Include="Test_GuestManager.cpp" />
     <ClCompile Include="graphics\PostEffect\PostEffect.cpp" />
     <ClCompile Include="graphics\Light\LightBase.cpp" />
     <ClCompile Include="graphics\Light\DirectionLight.cpp" />
@@ -283,7 +282,6 @@
     <ClInclude Include="Test_PlayerData.h" />
     <ClInclude Include="Test_QuestBase.h" />
     <ClInclude Include="Test_Quest.h" />
-    <ClInclude Include="Test_GuestManager.h" />
     <ClInclude Include="Test_QuestData.h" />
     <ClInclude Include="graphics\PostEffect\PostEffect.h" />
     <ClInclude Include="graphics\Light\LightBase.h" />

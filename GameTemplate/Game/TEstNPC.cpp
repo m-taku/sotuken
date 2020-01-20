@@ -6,7 +6,6 @@
 #include"QuestSelect.h"
 #include"graphics/SkinModel.h"
 #include"QuestManager.h"
-#include"Test_GuestManager.h"
 
 
 TEstNPC::TEstNPC()

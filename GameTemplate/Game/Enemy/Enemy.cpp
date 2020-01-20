@@ -83,7 +83,7 @@ void Enemy::Update()
 		m_VectorDraw[i]->Update(pos, m_papa, 50.0f);
 	}
 	m_state->Update();
-	m_movespeed.y -= 9.8f;
+	//m_movespeed.y -= 9.8f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, CVector3::One());
 }
@@ -106,6 +106,6 @@ void Enemy::PostUpdate()
 	}*/
 	if (g_pad[0].IsPress(enButtonDown))
 	{
-		m_anim.Update(0.005f);
+		m_anim.Update(GetFrameDeltaTime());
 	}
 }

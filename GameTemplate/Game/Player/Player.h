@@ -1,5 +1,6 @@
 #pragma once
 #include "PlayerMovement.h"
+#include"../Test_PlayerData.h"
 #include "CameraMovement.h"
 #include"PlayerStateALL.h"
 #include "PlayerState.h"
@@ -96,6 +97,7 @@ private:
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列
 	State m_statenum = StateTownMove;
 	Animation m_anim;
+	Palyer_Data_Test m_Palyer_Data;
 	AnimationClip m_animClip[num];
 	PlayerState* m_state = nullptr;
 	SkinModel m_skinmodel;		//スキンモデル

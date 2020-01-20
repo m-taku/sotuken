@@ -3,7 +3,6 @@
 #include"Enemy/Enemy.h"
 #include "Player.h"
 #include"QuestManager.h"
-#include"Test_GuestManager.h"
 #include"QuestManager.h"
 GameManager::GameManager()
 {
@@ -16,7 +15,7 @@ GameManager::~GameManager()
 
 bool GameManager::Start()
 {
-	m_Stage.changQuestStage();
+	m_Stage.changTown();
 	m_QuestManager = NewGO<QuestManager>(0, "QuestManager");
 	NewGO<Player>(0, "player");
 	//cheng(true);
@@ -37,6 +36,7 @@ void  GameManager::cheng(bool furag)
 	}
 	else
 	{
+		m_QuestManager->CloseGuest();
 		m_Stage.changQuestStage();
 	}
 

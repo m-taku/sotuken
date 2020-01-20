@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "QuestManager.h"
-#include"Test_GuestManager.h"
 #include "Stage/Town.h"
 #include"Player.h"
+#include"GameManager.h"
 #include"Stage/QuestStage.h"
 #include"Enemy/Enemy.h"
 
@@ -60,12 +60,7 @@ void QuestManager::Update()
 	}
 	if (g_pad[0].IsTrigger(EnButton::enButtonRB3))
 	{
-		//NewGO<QuestStage>(0,"town");
-		//FindGO<Player>("player")->SetPosition({-300.0f,500.0f,0.0f});
-		CloseGuest();
-		//pul->SetPosition({0.0f,1000.0f,0.0f});
-		//DeleteGO(FindGO<Town>("town"));
-		//DeleteGO(this);
+		FindGO<GameManager>("GameManager")->cheng(true);
 	}
 
 }

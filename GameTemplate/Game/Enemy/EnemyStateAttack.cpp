@@ -17,5 +17,5 @@ EnemyStateAttack::~EnemyStateAttack()
 
 void EnemyStateAttack::Update()
 {
-	//m_enemy->m_monster->attack();
+	m_enemy->m_monster->attack();
 }
