@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Town.h"
 #include"TEstNPC.h"
+#include"../Enemyname/MonsterList.h"
 #include"Player.h"
 
 
@@ -99,6 +100,10 @@ bool Town::Init()
 			player->SetPosition(pos);
 			player->Hp = 1;
 			player->TransitionState(Player::StateTownMove);
+			//pos.y += 100.0f;
+			//FindGO<Player>("player")->SetPosition(pos);
+			pos.y = 150.0f;
+			//new dorakomesu(pos);
 			return true;
 		}
 		result = wcscmp(L"unityChan", objData.name);

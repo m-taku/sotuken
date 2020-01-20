@@ -5,6 +5,7 @@
 #include "Player.h"
 #include"QuestSelect.h"
 #include"graphics/SkinModel.h"
+#include"QuestManager.h"
 #include"Test_GuestManager.h"
 
 
@@ -74,7 +75,9 @@ void TEstNPC::Update()
 		{
 			if (g_pad[0].IsTrigger(enButtonB))
 			{
-				NewGO<QuestSelect>(0,"da");
+				auto quest = FindGO<QuestManager>("QuestManager");
+				quest->SetActive(true);
+				quest->Printkami();
 				for (int j = 0; j < 2; j++) {
 					if (m_Text[j] != NULL) {
 						DeleteGO(m_Text[j]);

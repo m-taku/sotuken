@@ -2,11 +2,15 @@
 #include "PlayerAttack.h"
 
 
-PlayerAttack::PlayerAttack()
+PlayerAttack::PlayerAttack(Player* player) :PlayerState(player)
 {
 }
 
 
 PlayerAttack::~PlayerAttack()
 {
+}
+void PlayerAttack::Update()
+{
+
 }

@@ -4,10 +4,8 @@
 #include "Test.h"
 #include"Stage/TestStage.h"
 #include "TEstNPC.h"
-#include "Player.h"
+#include "GameManager.h"
 #include"SaveData_Select.h"
-#include"Test_GuestManager.h"
-#include "Stage/Town.h"
 #include"Stage/QuestStage.h"
 
 Title_Menu::Title_Menu()
@@ -50,9 +48,7 @@ void Title_Menu::Update()
 		}
 		if (g_pad[0].IsTrigger(enButtonA))
 		{
-			NewGO<Town>(0,"town");
-			NewGO<Test_GuestManager>(0,"tes");
-			NewGO<Player>(0, "player");
+			NewGO<GameManager>(0,"GameManager");
 			DeleteGO(this);
 			for (auto k : m_text)
 			{

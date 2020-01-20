@@ -5,8 +5,7 @@
 
 monster::monster(CVector3 pos)
 {
-
-	m_enemy = NewGO<Enemy>(0, "dorakomesu");
+	m_enemy = NewGO<Enemy>(0,"enemy");
 	m_enemy->SetPosition(pos);
 	m_enemy->m_monster = this;
 }

@@ -166,8 +166,8 @@ protected:
 	wchar_t* m_Name;
 	Level nra;
 	Level nra1;
-	//‰¼‚Ì‘Î‰â‘Î’¼‚¹
-	DirectionLight* m_directioinLight;
-	PointLight* m_pointLight; 
+	////‰¼‚Ì‘Î‰â‘Î’¼‚¹
+	//DirectionLight* m_directioinLight;
+	//PointLight* m_pointLight; 
 };
 

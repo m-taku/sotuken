@@ -1,5 +1,7 @@
 #pragma once
 #include"Text_Box/Text_Box.h"
+class Enemy;
+class GameManager;
 class Test_QuestBase : public IGameObject
 {
 public:
@@ -24,13 +26,11 @@ public:
 		mosternum
 	};
 	bool Start();
-	//void Update();
+	void Update();
 	void PostDraw();
 	void CreateQuest();
 	void ChangePaper()
 	{
-		bool ja = true;
-		ja = !ja;
 		m_isActive = !m_isActive;
 		for (auto na : m_text)
 		{
@@ -39,9 +39,15 @@ public:
 			}
 		}
 	}
+	void Playerdoun()
+	{
+		m_nowdoun = true;
+	}
 protected:
 	char  name[num][256] = { NULL };
 	Text_Box* m_text[num] = { nullptr };
+	int m_Maxdoun = 0;
+	float m_time = FLT_MAX;
 	Moster MonsterNo = mosternum;
 	wchar_t EnglishMosterName[mosternum][256] = {L"monnsu",L"monnsu2", L"monnsu3"};
 	char JapanMosterName[mosternum][256] = { "モンスター1", "モンスター2","モンスター3" };
@@ -49,6 +55,16 @@ private:
 	Sprite m_sprite[2];
 	ShaderResourceView m_srv[2];
 	void* monsu = nullptr;
+	
+	GameManager* m_GameManager = nullptr;
+	bool m_Quest = false;
+	bool m_nowdoun = false;
+	int m_doun = 0;
+	
+	float m_nowtime = 0.0f;
+	Enemy* m_target = nullptr;
+	int debugtime = 0;
+
 	CVector2 m_Textpos[num] = {
 		{0.0f,400.0f},
 	{ 0.0f,-120.0f },

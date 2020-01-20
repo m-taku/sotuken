@@ -4,6 +4,7 @@
 #include"EnemyStateList.h"
 #include"enemyname/monster.h"
 #include"Carving.h"
+class VectorDraw;
 class Enemy : public IGameObject
 {
 public:
@@ -12,7 +13,11 @@ public:
 	friend EnemyStateLoitering;
 	friend monster;
 	Enemy();
-	~Enemy();
+	~Enemy();	
+	enum anim {
+		attack,
+		num
+	};
 /// <summary>
 /// 状態のEnum
 /// </summary>
@@ -25,6 +30,7 @@ public:
 	void Update();
 	void TransitionState(StateEnemy m);
 	void Draw();
+	void PostUpdate();
 	const CVector3& GetPosition() const
 	{
 		return m_position;
@@ -62,7 +68,8 @@ protected:
 	EnemyStatus* m_status = nullptr;
 
 private:
-
+	Animation m_anim;
+	AnimationClip m_animClip[num];
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向
@@ -81,6 +88,6 @@ private:
 	//デバック用変数
 	Carving hagihagi;
 	float debugtaim = 0.0f;
-	
+	std::vector<VectorDraw*> m_VectorDraw;
 };
 
