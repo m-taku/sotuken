@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "QuestStage.h"
 #include"Player.h"
+#include"../Enemyname/MonsterList.h"
 #include"Enemy/Enemy.h"
 
 QuestStage::QuestStage()
@@ -10,6 +11,7 @@ QuestStage::QuestStage()
 
 QuestStage::~QuestStage()
 {
+
 }
 bool QuestStage::Init() {
 
@@ -21,7 +23,7 @@ bool QuestStage::Init() {
 	m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	m_poa.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
-	swprintf_s(moveFilePath, L"Assets/level/%s2.tkl", m_Name);
+	swprintf_s(moveFilePath, L"Assets/level/%s3.tkl", m_Name);
 	int count = 0;
 	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
 		int result = 1;
@@ -46,8 +48,9 @@ bool QuestStage::Init() {
 			auto pos = objData.position;
 			pos.y += 100.0f;
 			FindGO<Player>("player")->SetPosition(pos);
-			pos.z += 500.0f;
-			NewGO<Enemy>(0, "enemy")->SetPosition(pos);
+			pos.y += -150.0f;
+			new dorakomesu(pos);
+			//FindGO<Enemy>("dorakomesu")->SetPosition(pos);
 			return true;
 		}
 		result = wcscmp(L"unityChan", objData.name);
@@ -60,14 +63,12 @@ bool QuestStage::Init() {
 		if (result == 0)
 		{
 			objData.m_furag = true;
-			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return false;
 		}
 		result = wcscmp(L"SM_Tree02", objData.name);
 		if (result == 0)
 		{
 			objData.m_furag = true;
-			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return false;
 		}
 		result = wcscmp(L"SM_Tree03", objData.name);
@@ -80,7 +81,6 @@ bool QuestStage::Init() {
 		if (result == 0)
 		{
 			objData.m_furag = true;
-			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return false;
 		}
 		return true;

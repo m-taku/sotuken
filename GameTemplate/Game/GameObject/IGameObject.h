@@ -43,7 +43,14 @@ namespace smEngine {
 			{
 				Update();
 			}
-		}		
+		}
+		void PostUpdateWrapper()
+		{
+			if (m_isStart&&m_isActive && !m_isDead)
+			{
+				PostUpdate();
+			}
+		}
 		void PostDrawWrapper()
 		{
 			if (m_isStart&&m_isActive && !m_isDead)
@@ -61,6 +68,7 @@ namespace smEngine {
 		virtual bool Start() { return true; };
 		virtual void Update() {};
 		virtual void Draw() {};
+		virtual void PostUpdate() {};
 		virtual void PostDraw() {};
 		virtual void OnDestroy() {};
 		void SetActive(bool Active)

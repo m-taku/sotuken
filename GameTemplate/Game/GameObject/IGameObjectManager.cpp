@@ -70,6 +70,12 @@ namespace smEngine {
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
+				Object->PostUpdateWrapper();
+			}
+		}
+		for (auto ObjectList : m_gameObjectListArray) {
+			for (auto Object : ObjectList)
+			{
 				Object->PostDrawWrapper();
 			}
 		}

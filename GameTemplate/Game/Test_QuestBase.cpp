@@ -3,9 +3,10 @@
 #include"Text_Box/Text_Box.h"
 #include "Stage/QuestStage.h"
 #include"Player.h"
+#include"Enemy/Enemy.h"
 #include"Stage/Town.h"
 #include"QuestManager.h"
-#include"Test_GuestManager.h"
+#include"GameManager.h"
 
 
 Test_QuestBase::Test_QuestBase()
@@ -40,27 +41,74 @@ bool Test_QuestBase::Start()
 	m_sprite[1].Update({ 0.0f,150.0f,0.0f }, CQuaternion::Identity(), CVector3::One());
 	m_sprite[1].SetMulColor({ 1.0f,1.0f,2.0f,1.0f });
 	m_isStart = true;
+	m_GameManager = FindGO<GameManager>("GameManager");
+	m_time *= 60.0f;
 	return true;
 }
 void Test_QuestBase::CreateQuest()
 {
-	//ëÂå^ÉÇÉìÉXÉ^Å[ÇÃî≠ê∂ÇÕÇ±Ç±Ç≈Ç‚ÇÈ
-	auto manager = NewGO<QuestManager>(5,"QuestManager");
-	manager->Setdoun(1);
-
-	manager->setTime(50.0f * 60.0f);
+	m_doun = m_Maxdoun;
 	//è¨å^ÇÕÇ«Ç¡ÇøÇ≈Ç‡Ç¢Ç¢Ç©Ç»Å`Å`
-	
+	for (auto na : m_text)
+	{
+		if (na != nullptr) {
+			na->SetActive(false);
+		}
+	}
+	m_Quest = true;
+	m_GameManager->cheng(m_Quest);
+	m_nowtime = 0.0f;
+
 	//ÉNÉGÉXÉgÇ…ä÷åWÇ∑ÇÈå∏éZìôÇ†ÇÍÇŒÇ±Ç±Ç≈Ç∑ÇÈÅB
-	//auto pla = FindGO<Player>("player");
-	//pla->SetPosition({ 100.0f,300.0f,0.0f });
-	DeleteGO(FindGO<Test_GuestManager>("tes"));
-	//í¨Çè¡ãéÇ∑ÇÈ
-	DeleteGO(FindGO<Town>("town"));
+	auto pla = FindGO<Player>("player");
+	pla->TransitionState(Player::StateTownMove);
+	//DeleteGO(FindGO<Test_GuestManager>("tes"));
+}
+void Test_QuestBase::Update()
+{
+	if (m_Quest) {
+		m_nowtime += GetFrameDeltaTime();
+		if (m_time <= m_nowtime)
+		{
+			//NewGO<Test_GuestManager>(0, "tes");
+			m_Quest = false;
+			SetActive(false);
+			m_GameManager->cheng(m_Quest);
+			//DeleteGO(this);
+		}
+		else {
+			if (m_nowdoun) {
+				debugtime++;
+				if (debugtime >= 120) {
+					m_doun--;
+					if (m_doun <= 0) {
+						//NewGO<Town>(0, "town");
+						//NewGO<Test_GuestManager>(0, "tes");
+						m_Quest = false;
+						SetActive(false);
+						m_GameManager->cheng(m_Quest);
+						//	DeleteGO(Stage);
+						//	DeleteGO(this);
+					}
+					else
+					{
+						auto pla = FindGO<Player>("player");
+						pla->TransitionState(Player::StateTownMove);
+						pla->Hp = 1;
+
+					}
+					debugtime = 0;
+					m_nowdoun = false;
+				}
+			}
+		}
+	}
 }
 void Test_QuestBase::PostDraw()
 {
-	for (int i = 0; i < 2; i++) {
-		m_sprite[i].Draw(g_graphicsEngine->GetD3DDeviceContext());
+	if (!m_Quest) {
+		for (int i = 0; i < 2; i++) {
+			m_sprite[i].Draw(g_graphicsEngine->GetD3DDeviceContext());
+		}
 	}
 }

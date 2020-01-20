@@ -99,14 +99,17 @@
     </MeshContentTask>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Enemyname\dorakomesu.cpp" />
+    <ClCompile Include="Enemy\EnemyStateAttack.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="graphics\DepthFog.cpp" />
     <ClCompile Include="graphics\Bloom.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Carving.cpp" />
     <ClCompile Include="character\CharacterController.cpp" />
-    <ClCompile Include="EnemyState.cpp" />
-    <ClCompile Include="EnemyStateDead.cpp" />
-    <ClCompile Include="EnemyStateLoitering.cpp" />
+    <ClCompile Include="Enemy\EnemyState.cpp" />
+    <ClCompile Include="Enemy\EnemyStateDead.cpp" />
+    <ClCompile Include="Enemy\EnemyStateLoitering.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="graphics\DeferredRender.cpp" />
     <ClCompile Include="graphics\GaussianBlur.cpp" />
@@ -132,6 +135,7 @@
     <ClCompile Include="HID\Pad.cpp" />
     <ClCompile Include="GameObject\IGameObjectManager.cpp" />
     <ClCompile Include="graphics\IndexBuffer.cpp" />
+    <ClCompile Include="HitObject.cpp" />
     <ClCompile Include="level\Level.cpp" />
     <ClCompile Include="level\MapChip.cpp" />
     <ClCompile Include="graphics\Light\LightBase.cpp" />
@@ -140,6 +144,7 @@
     <ClCompile Include="math\kMath.cpp" />
     <ClCompile Include="math\Matrix.cpp" />
     <ClCompile Include="math\Vector.cpp" />
+    <ClCompile Include="Enemyname\monster.cpp" />
     <ClCompile Include="physics\MeshCollider.cpp" />
     <ClCompile Include="physics\Physics.cpp" />
     <ClCompile Include="physics\PhysicsDebugDraw.cpp" />
@@ -161,6 +166,7 @@
     <ClCompile Include="Player\PlayerState.cpp" />
     <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="QuestSelect.cpp" />
+    <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="Stage\QuestStage.cpp" />
     <ClCompile Include="SaveData_Select.cpp" />
     <ClCompile Include="Stage\Stage_Base.cpp" />
@@ -185,17 +191,22 @@
     <ClCompile Include="Title_Menu.cpp" />
     <ClCompile Include="Stage\Town.cpp" />
     <ClCompile Include="graphics\ToneMap.cpp" />
+    <ClCompile Include="VectorDraw.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemyname\dorakomesu.h" />
+    <ClInclude Include="Enemy\EnemyStateList.h" />
+    <ClInclude Include="Enemy\EnemyStateAttack.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="graphics\DepthFog.h" />
     <ClInclude Include="graphics\Bloom.h" />
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Carving.h" />
     <ClInclude Include="character\CharacterController.h" />
-    <ClInclude Include="EnemyState.h" />
-    <ClInclude Include="EnemyStateDead.h" />
-    <ClInclude Include="EnemyStateLoitering.h" />
-    <ClInclude Include="EnemyStatus.h" />
+    <ClInclude Include="Enemy\EnemyState.h" />
+    <ClInclude Include="Enemy\EnemyStateDead.h" />
+    <ClInclude Include="Enemy\EnemyStateLoitering.h" />
+    <ClInclude Include="Enemy\EnemyStatus.h" />
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="graphics\DeferredRender.h" />
     <ClInclude Include="graphics\GaussianBlur.h" />
@@ -223,6 +234,8 @@
     <ClInclude Include="HID\Pad.h" />
     <ClInclude Include="GameObject\IGameObjectManager.h" />
     <ClInclude Include="graphics\IndexBuffer.h" />
+    <ClInclude Include="HitManeger.h" />
+    <ClInclude Include="HitObject.h" />
     <ClInclude Include="level\Level.h" />
     <ClInclude Include="level\MapChip.h" />
     <ClInclude Include="graphics\Light\LightBase.h" />
@@ -231,6 +244,8 @@
     <ClInclude Include="math\kMath.h" />
     <ClInclude Include="math\Matrix.h" />
     <ClInclude Include="math\Vector.h" />
+    <ClInclude Include="Enemyname\monster.h" />
+    <ClInclude Include="Enemyname\MonsterList.h" />
     <ClInclude Include="physics\PhysicsDebugDraw.h" />
     <ClInclude Include="physics\ICollider.h" />
     <ClInclude Include="physics\MeshCollider.h" />
@@ -255,6 +270,7 @@
     <ClInclude Include="Player\PlayerState.h" />
     <ClInclude Include="QuestManager.h" />
     <ClInclude Include="QuestSelect.h" />
+    <ClInclude Include="StageManager.h" />
     <ClInclude Include="Stage\QuestStage.h" />
     <ClInclude Include="SaveData_Select.h" />
     <ClInclude Include="Stage\Stage_Base.h" />
@@ -278,10 +294,13 @@
     <ClInclude Include="Title_Menu.h" />
     <ClInclude Include="Stage\Town.h" />
     <ClInclude Include="graphics\ToneMap.h" />
+    <ClInclude Include="VectorDraw.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
+    <MeshContentTask Include="Assets\modelData\Dragon\Dragon_0.FBX" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_1.FBX" />
+    <MeshContentTask Include="Assets\modelData\Dragon\Dragon_2.FBX" />
     <MeshContentTask Include="Assets\modelData\Ground.fbx" />
     <MeshContentTask Include="Assets\modelData\Ground12.fbx" />
     <MeshContentTask Include="Assets\modelData\jiman.FBX" />
@@ -493,6 +512,7 @@
       <ContentOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\Assets\modelData\%(Filename).cmo</ContentOutput>
     </MeshContentTask>
     <MeshContentTask Include="Assets\modelData\unityChan2.fbx" />
+    <MeshContentTask Include="Assets\modelData\vectormodel.fbx" />
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\QuestForm.png" />

@@ -151,9 +151,6 @@
     <ClCompile Include="graphics\Shadow\ShadowManager.cpp" />
     <ClCompile Include="graphics\Shadow\ShadowMap.cpp" />
     <ClCompile Include="Carving.cpp" />
-    <ClCompile Include="EnemyState.cpp" />
-    <ClCompile Include="EnemyStateDead.cpp" />
-    <ClCompile Include="EnemyStateLoitering.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="graphics\GaussianBlur.cpp" />
     <ClCompile Include="graphics\Bloom.cpp" />
@@ -164,6 +161,16 @@
     <ClCompile Include="QuestSelect.cpp" />
     <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="Player\PlayerAttack.cpp" />
+    <ClCompile Include="Enemy\EnemyState.cpp" />
+    <ClCompile Include="Enemy\EnemyStateDead.cpp" />
+    <ClCompile Include="Enemy\EnemyStateLoitering.cpp" />
+    <ClCompile Include="Enemy\EnemyStateAttack.cpp" />
+    <ClCompile Include="Enemyname\dorakomesu.cpp" />
+    <ClCompile Include="Enemyname\monster.cpp" />
+    <ClCompile Include="VectorDraw.cpp" />
+    <ClCompile Include="HitObject.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="StageManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -297,10 +304,6 @@
     <ClInclude Include="graphics\Shadow\ShadowMap.h" />
     <ClInclude Include="graphics\Shadow\ShadowManager.h" />
     <ClInclude Include="Carving.h" />
-    <ClInclude Include="EnemyState.h" />
-    <ClInclude Include="EnemyStateDead.h" />
-    <ClInclude Include="EnemyStateLoitering.h" />
-    <ClInclude Include="EnemyStatus.h" />
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="graphics\GaussianBlur.h" />
     <ClInclude Include="graphics\Bloom.h" />
@@ -311,6 +314,20 @@
     <ClInclude Include="QuestSelect.h" />
     <ClInclude Include="QuestManager.h" />
     <ClInclude Include="Player\PlayerAttack.h" />
+    <ClInclude Include="Enemy\EnemyState.h" />
+    <ClInclude Include="Enemy\EnemyStateDead.h" />
+    <ClInclude Include="Enemy\EnemyStateLoitering.h" />
+    <ClInclude Include="Enemy\EnemyStatus.h" />
+    <ClInclude Include="Enemy\EnemyStateAttack.h" />
+    <ClInclude Include="Enemyname\dorakomesu.h" />
+    <ClInclude Include="Enemyname\monster.h" />
+    <ClInclude Include="Enemy\EnemyStateList.h" />
+    <ClInclude Include="Enemyname\MonsterList.h" />
+    <ClInclude Include="VectorDraw.h" />
+    <ClInclude Include="HitManeger.h" />
+    <ClInclude Include="HitObject.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="StageManager.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -525,6 +542,9 @@
     <MeshContentTask Include="Assets\modelData\map\SM_WoodStairs02kni.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_WoodStairs03kni.FBX" />
     <MeshContentTask Include="Assets\modelData\map\SM_TileGround4mkni.FBX" />
+    <MeshContentTask Include="Assets\modelData\Dragon\Dragon_0.FBX" />
+    <MeshContentTask Include="Assets\modelData\Dragon\Dragon_2.FBX" />
+    <MeshContentTask Include="Assets\modelData\vectormodel.fbx" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />

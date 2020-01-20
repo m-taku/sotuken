@@ -34,11 +34,13 @@ bool Test_Quest::Init(const wchar_t* fileName)
 	sprintf_s(name[Test_QuestBase::Quest::kane],256, "%d‚f", housyuu);
 	int g_time = 0;
 	fread(&g_time, sizeof(int), 1, fp);
+	m_time = g_time;
 	sprintf_s(name[Test_QuestBase::Quest::time], 256, "%d•ª", g_time);
 	int daun = 0;
 	fread(&daun, sizeof(int), 1, fp);
 	sprintf_s(name[Test_QuestBase::Quest::doun],256, "%dƒ_ƒEƒ“", daun);
-	
+
+	m_Maxdoun = daun;
 	
 	count = 0;
 	fread(&count, sizeof(int), 1, fp);

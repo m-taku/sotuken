@@ -1,9 +1,11 @@
 #pragma once
 class Player;
-class PlayerAttack :public Noncopyable
+
+#include"PlayerState.h"
+class PlayerAttack : public PlayerState
 {
 public:
-	PlayerAttack();
+	PlayerAttack(Player* player);
 	~PlayerAttack();
 	void Update();
 private:

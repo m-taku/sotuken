@@ -158,9 +158,11 @@ PSInput VSMainSkincreate(VSInputNmTxWeights In, float4x4 worldMat)
 	}
 	pos = mul(skinning, In.Position);
 	pos = mul(worldMat, pos);
-	psInput.Normal = normalize(mul(skinning, In.Normal));
+	float4x4 normal = 0;
+	normal = mul(worldMat, skinning);
+	psInput.Normal = normalize(mul(normal, In.Normal));
 	psInput.Tangent = normalize(mul(skinning, In.Tangent));
-	psInput.WorldPos = pos.xyz;
+	psInput.WorldPos = pos;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;

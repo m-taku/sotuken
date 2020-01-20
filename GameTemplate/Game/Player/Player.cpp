@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
+#include"../HitManeger.h"
 
 
 
@@ -71,7 +72,9 @@ void Player::Update()
 		TransitionState(Statedeath);
 	}
 	m_state->Update();
+	GetHitObjict().Create(&m_position, 50,[&](float damage) {
 
+	},HitObject::enemy);
 	CVector3 move = m_position;
 	//m_movespeed.z += 10.0f;
 	//m_movespeed.y -= 0.001f;
@@ -88,7 +91,7 @@ void Player::Update()
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
 	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
 }
-void  Player::PostDraw()
+void  Player::PostUpdate()
 {
 	m_anim.Update(GetFrameDeltaTime());
 

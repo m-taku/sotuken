@@ -31,6 +31,8 @@ bool Test_GuestManager::Start()
 	Quest->Start();
 	Quest->ChangePaper();
 	m_Quest.push_back(Quest);
+	m_isActive = false;
+	return true;
 	//Quest = NewGO<Test_Quest>(0);
 	//Quest->Init(L"Assets/TestQeste/save3.smqd");
 	//Quest->SetActive(false);
@@ -39,8 +41,7 @@ bool Test_GuestManager::Start()
 	//Quest->Init(L"Assets/TestQeste/save4.smqd");
 	//Quest->SetActive(false);
 	//m_Quest.push_back(Quest);
-	m_isActive = false;
-	return true;
+
 }
 void Test_GuestManager::Update()
 {
