@@ -23,6 +23,7 @@ protected:
 
 	bool isSkining;
 	ID3D11ShaderResourceView* m_albedoTex = nullptr;
+	ID3D11ShaderResourceView* m_normalTex = nullptr;
 	EnDrawMode m_drawMode = enNormal;
 
 public:
