@@ -1,7 +1,7 @@
 #pragma once
 
 class Player;
-class PlayerMovement
+class PlayerMovement : public Noncopyable
 {
 public:
 	PlayerMovement();

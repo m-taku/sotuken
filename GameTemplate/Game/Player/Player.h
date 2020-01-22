@@ -14,6 +14,7 @@ public:
 /// </summary>
 	enum State {
 		StateTownMove,			//ˆÚ“®’†
+		StateQuestMove,
 		StateWate,
 		Statedeath
 	};

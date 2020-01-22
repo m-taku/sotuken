@@ -23,6 +23,7 @@ protected:
 
 	bool isSkining;
 	ID3D11ShaderResourceView* m_albedoTex = nullptr;
+	ID3D11ShaderResourceView* m_normalTex = nullptr;
 	EnDrawMode m_drawMode = enNormal;
 
 public:
@@ -54,6 +55,10 @@ public:
 	void SetAlbedoTexture(ID3D11ShaderResourceView* tex)
 	{
 		m_albedoTex = tex;
+	}
+	void SetNormalTexture(ID3D11ShaderResourceView* tex)
+	{
+		m_normalTex = tex;
 	}
 	void SetMatrialName(const wchar_t* matName)
 	{
@@ -131,6 +136,48 @@ public:
 			ID3D11ShaderResourceView* texSRV;
 			DirectX::EffectFactory::CreateTexture(info.diffuseTexture, deviceContext, &texSRV);
 			effect->SetAlbedoTexture(texSRV);
+			auto ma = wcsstr(info.diffuseTexture,L"T_");
+			wchar_t name[256];
+			if (ma != NULL) {
+				auto num = wcslen(ma);
+				wcscpy(name, ma);
+				name[num - 8] = NULL;
+				wchar_t moveFilePath[256];
+				swprintf_s(moveFilePath, L"Assets/sprite/%s_N.dds", name);
+				HRESULT hr = DirectX::CreateDDSTextureFromFileEx(
+					g_graphicsEngine->GetD3DDevice(),
+					moveFilePath,
+					0,
+					D3D11_USAGE_DEFAULT,
+					D3D11_BIND_SHADER_RESOURCE,
+					0,
+					0,
+					false,
+					nullptr,
+					&texSRV
+				);
+				if (FAILED(hr))
+				{
+
+				}
+				effect->SetNormalTexture(texSRV);
+			}
+			else
+			{
+				HRESULT hr = DirectX::CreateDDSTextureFromFileEx(
+					g_graphicsEngine->GetD3DDevice(),
+					L"Assets/sprite/nomal.dds",
+					0,
+					D3D11_USAGE_DEFAULT,
+					D3D11_BIND_SHADER_RESOURCE,
+					0,
+					0,
+					false,
+					nullptr,
+					&texSRV
+				);
+			}
+			effect->SetNormalTexture(texSRV);
 		}
 		return effect;
 	}

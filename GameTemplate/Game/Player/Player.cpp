@@ -33,6 +33,9 @@ void Player::TransitionState(State m)
 	case Statedeath:
 		m_state = new Playerdeath(this);
 		break;
+	case StateQuestMove:
+		m_state = new PlayerQuestMove(this);
+		break;
 	default:
 		break;
 	}
@@ -41,7 +44,7 @@ void Player::TransitionState(State m)
 bool Player::Start()
 {
 	smGameCamera().Init();
-	m_skinmodel.Init(L"Assets/modelData/unityChan.cmo");
+	m_skinmodel.Init(L"Assets/modelData/Player.cmo");
 	m_animClip[attack].Load(L"Assets/animData/death.tka");
 	m_animClip[attack].SetLoopFlag(false); 
 	m_animClip[idel].Load(L"Assets/animData/idel.tka");
@@ -62,6 +65,9 @@ bool Player::Start()
 	plight->SetDirection(CVector3::Down()+CVector3::Right());
 	plight->ShadowEnable(true);
 	smLightManager().AddLight(plight);
+	GetHitObjict().Create(&m_position, 50,[&](float damage) {
+
+	},HitObject::enemy);
 	return true;
 }
 
@@ -72,20 +78,18 @@ void Player::Update()
 		TransitionState(Statedeath);
 	}
 	m_state->Update();
-	GetHitObjict().Create(&m_position, 50,[&](float damage) {
 
-	},HitObject::enemy);
 	CVector3 move = m_position;
 	//m_movespeed.z += 10.0f;
 	//m_movespeed.y -= 0.001f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	if (m_movespeed.Length() != 0.0f&&m_statenum != Statedeath)
 	{
-		Playanim(run);
+		Playanim(walk);
 	}
 	else if(m_statenum != Statedeath)
 	{
-		Playanim(idel);
+		Playanim(walk);
 	}
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
@@ -93,7 +97,7 @@ void Player::Update()
 }
 void  Player::PostUpdate()
 {
-	m_anim.Update(GetFrameDeltaTime());
+	//m_anim.Update(GetFrameDeltaTime());
 
 }
 

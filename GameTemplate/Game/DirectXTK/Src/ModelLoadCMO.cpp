@@ -224,7 +224,7 @@ std::unique_ptr<Model> DirectX::Model::CreateFromCMO(
                 m.texture[t].assign( txtName, *nName );
             }
 
-            materials.emplace_back( m );
+			materials.emplace_back( m );
         }
 
         assert( materials.size() == *nMats );
