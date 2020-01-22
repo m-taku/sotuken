@@ -12,7 +12,7 @@ public:
 		enMapNum
 	};
 
-	void Init(int w = 4096, int h = 4096);
+	void Init(int w = 2048, int h = 2048);
 
 	void UpdateDirection(const CVector3& Direction);
 	void ShadowCasterDraw();
