@@ -6,13 +6,13 @@ FBXHeaderExtension:  {
 	FBXVersion: 7400
 	CreationTimeStamp:  {
 		Version: 1000
-		Year: 2019
-		Month: 12
-		Day: 11
-		Hour: 9
-		Minute: 50
-		Second: 36
-		Millisecond: 15
+		Year: 2020
+		Month: 1
+		Day: 24
+		Hour: 11
+		Minute: 3
+		Second: 23
+		Millisecond: 653
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:50:36.014"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "24/01/2020 02:03:23.652"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_Flower02.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:50:36.014"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "24/01/2020 02:03:23.652"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1984334866272, "", "Scene" {
+	Document: 2044150589056, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1983089320608, "Geometry::", "Mesh" {
+	Geometry: 2044148821008, "Geometry::", "Mesh" {
 		Vertices: *90 {
 			a: -34.7894401550293,-5.72841262817383,3.72374987602234,-18.2862224578857,4.10381174087524,70.9765472412109,3.7724928855896,-3.65130066871643,-6.04266214370728,20.2757091522217,6.18092346191406,61.2101364135742,-14.0905199050903,-11.1196460723877,-10.4978742599487,-57.466724395752,2.92455959320068,45.7565574645996,16.5303077697754,9.40552043914795,7.98877000808716,-26.8458957672119,23.4497261047363,64.2432022094727,0.337524354457855,-19.8977527618408,-10.8796367645264,11.7256355285645,-51.5262184143066,47.8123931884766,-11.2639217376709,11.4509468078613,8.26486778259277,0.124188899993896,-20.1775188446045,66.9568939208984,-15.443733215332,-31.5074920654297,72.3421020507813,40.8453598022461,-28.661449432373,45.0149612426758,15.6138010025024,-31.5074920654297,72.3421020507813,-49.0069427490234,-24.5203437805176,33.6373672485352,-40.7348175048828,-4.99387836456299,-0.503434777259827,40.6937637329102,-4.99387836456299,-0.503434777259827,-22.7082843780518,18.6938877105713,71.943244934082,-39.269100189209,-31.7372913360596,45.3968925476074,-30.9622611999512,-9.55039119720459,71.6265716552734,-13.4054908752441,49.5227661132813,35.0227851867676,-3.28356051445007,38.7921905517578,-0.0853714048862457,-24.924352645874,-35.2604217529297,-0.915652334690094,23.0625953674316,8.78707790374756,56.2582206726074,-8.46743583679199,46.6013259887695,33.8041114807129,9.16660213470459,31.739673614502,56.3151054382324,26.958459854126,-22.672492980957,24.7871265411377,3.79683494567871,-28.2782554626465,-0.466101348400116,-32.636547088623,31.9002895355225,-0.316963016986847
 		} 
@@ -447,7 +447,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1984542484480, "Model::SM_Flower02", "Mesh" {
+	Model: 2044101143840, "Model::SM_Flower02", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -459,7 +459,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1984478552704, "Material::M_Flower02", "" {
+	Material: 2044147854352, "Material::M_Flower02", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -483,17 +483,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 1984478554144, "Video::EnvSamplerTex", "Clip" {
+	Video: 2044147858192, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_flower02.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "tex\t_flower02.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_flower02_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_flower02_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_flower02.TGA"
-		RelativeFilename: "tex\t_flower02.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_flower02_BC.TGA"
+		RelativeFilename: "tex\T_flower02_BC.TGA"
 	}
-	Video: 1984478554624, "Video::EnvSamplerTex", "Clip" {
+	Video: 2044147854832, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\gifts\grass01\t_grass01_normals.tga"
@@ -503,7 +503,7 @@ Objects:  {
 		Filename: "C:\gifts\grass01\t_grass01_normals.tga"
 		RelativeFilename: "..\..\..\..\..\..\..\..\..\..\gifts\grass01\t_grass01_normals.tga"
 	}
-	Texture: 1984478555104, "Texture::EnvSamplerTex", "" {
+	Texture: 2044147833232, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -512,14 +512,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_flower02.TGA"
-		RelativeFilename: "tex\t_flower02.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_flower02_BC.TGA"
+		RelativeFilename: "tex\T_flower02_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 1984478555584, "Texture::EnvSamplerTex", "" {
+	Texture: 2044147838512, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -535,13 +535,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 1984610799456, "AnimStack::Take 001", "" {
+	AnimationStack: 2044148788304, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 1983338626688, "AnimCurve::", "" {
+	AnimationCurve: 2043999011776, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -562,7 +562,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1983338626848, "AnimCurve::", "" {
+	AnimationCurve: 2043999012096, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -583,7 +583,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1983338627488, "AnimCurve::", "" {
+	AnimationCurve: 2043999012256, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -604,14 +604,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 1984610799040, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2044148791424, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 1984516881968, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2044110337392, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -621,43 +621,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_Flower02, Model::RootNode
-	C: "OO",1984542484480,0
+	C: "OO",2044101143840,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1984516881968,1984610799456
+	C: "OO",2044110337392,2044148788304
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",1984610799040,1984516881968
+	C: "OO",2044148791424,2044110337392
 	
 	;Geometry::, Model::SM_Flower02
-	C: "OO",1983089320608,1984542484480
+	C: "OO",2044148821008,2044101143840
 	
 	;Material::M_Flower02, Model::SM_Flower02
-	C: "OO",1984478552704,1984542484480
+	C: "OO",2044147854352,2044101143840
 	
 	;AnimCurveNode::R, Model::SM_Flower02
-	C: "OP",1984610799040,1984542484480, "Lcl Rotation"
+	C: "OP",2044148791424,2044101143840, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::M_Flower02
-	C: "OP",1984478555104,1984478552704, "DiffuseColor"
+	C: "OP",2044147833232,2044147854352, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::M_Flower02
-	C: "OP",1984478555584,1984478552704, "NormalMap"
+	C: "OP",2044147838512,2044147854352, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1984478554144,1984478555104
+	C: "OO",2044147858192,2044147833232
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1984478554624,1984478555584
+	C: "OO",2044147854832,2044147838512
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1983338626688,1984610799040, "d|X"
+	C: "OP",2043999011776,2044148791424, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1983338626848,1984610799040, "d|Y"
+	C: "OP",2043999012096,2044148791424, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1983338627488,1984610799040, "d|Z"
+	C: "OP",2043999012256,2044148791424, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

@@ -6,13 +6,13 @@ FBXHeaderExtension:  {
 	FBXVersion: 7400
 	CreationTimeStamp:  {
 		Version: 1000
-		Year: 2019
-		Month: 12
-		Day: 11
-		Hour: 9
-		Minute: 54
-		Second: 29
-		Millisecond: 628
+		Year: 2020
+		Month: 1
+		Day: 24
+		Hour: 11
+		Minute: 4
+		Second: 57
+		Millisecond: 901
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:54:29.626"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "24/01/2020 02:04:57.901"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_Grass02.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:54:29.626"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "24/01/2020 02:04:57.901"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1984334865760, "", "Scene" {
+	Document: 2043279910784, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1984319331376, "Geometry::", "Mesh" {
+	Geometry: 2044106469136, "Geometry::", "Mesh" {
 		Vertices: *96 {
 			a: 2.29959845542908,7.30152654647827,114.324737548828,18.0192241668701,26.0354309082031,0.753808438777924,18.0192165374756,26.0354385375977,120.214431762695,-7.20346355438232,-4.02379560470581,0.753808557987213,-0.833261787891388,-10.7521095275879,97.5614700317383,23.5290660858154,-8.62069225311279,0.643278658390045,23.5290660858154,-8.62068462371826,102.587562561035,-15.5611553192139,-12.0406379699707,0.643278658390045,-37.4934501647949,-6.7880597114563,43.9559059143066,23.9920139312744,2.57130002975464,0.807287395000458,-36.2172775268555,-9.22624492645264,0.856386065483093,35.1768341064453,5.01133680343628,43.8809127807617,26.2677268981934,9.23540210723877,149.323089599609,-33.1012115478516,0.395718276500702,149.380065917969,-4.49072217941284,-4.66508960723877,37.977725982666,7.57819223403931,-26.6096477508545,-3.43979477882385,-0.710013806819916,-0.343309491872787,-0.225961476564407,7.72179651260376,-38.9920425415039,34.0880393981934,-22.7581405639648,19.2697296142578,-1.39123892784119,-20.4962406158447,-51.6126327514648,121.600280761719,-36.444450378418,27.8031024932861,37.0705032348633,-28.1395874023438,-24.1959018707275,125.181419372559,-53.5792579650879,-1.57928860187531,123.834312438965,7.20093441009521,15.809476852417,30.5467700958252,-15.6691617965698,20.6536560058594,-4.5499587059021,2.05908751487732,4.3247013092041,-0.369934767484665,-16.9980964660645,36.6449317932129,25.6160106658936,27.1305522918701,-2.07336235046387,-3.35919427871704,8.69860553741455,72.9577255249023,92.2815322875977,45.3134117126465,3.55698156356812,27.3496265411377,26.451265335083,55.545352935791,97.0329437255859,55.3734512329102,48.172981262207,93.5801086425781
 		} 
@@ -447,7 +447,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1984542475712, "Model::SM_Grass02", "Mesh" {
+	Model: 2044101135072, "Model::SM_Grass02", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -459,7 +459,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1982408112400, "Material::M_Grass02", "" {
+	Material: 2044147853392, "Material::M_Grass02", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -483,17 +483,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 1982408112880, "Video::EnvSamplerTex", "Clip" {
+	Video: 2044147855792, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_grass02.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "tex\t_grass02.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_grass02_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_grass02_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_grass02.TGA"
-		RelativeFilename: "tex\t_grass02.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_grass02_BC.TGA"
+		RelativeFilename: "tex\T_grass02_BC.TGA"
 	}
-	Video: 1982408115760, "Video::EnvSamplerTex", "Clip" {
+	Video: 2044147857232, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\gifts\grass01\t_grass01_normals.tga"
@@ -503,7 +503,7 @@ Objects:  {
 		Filename: "C:\gifts\grass01\t_grass01_normals.tga"
 		RelativeFilename: "..\..\..\..\..\..\..\..\..\..\gifts\grass01\t_grass01_normals.tga"
 	}
-	Texture: 1982408114320, "Texture::EnvSamplerTex", "" {
+	Texture: 2044147833232, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -512,14 +512,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_grass02.TGA"
-		RelativeFilename: "tex\t_grass02.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_grass02_BC.TGA"
+		RelativeFilename: "tex\T_grass02_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 1982408114800, "Texture::EnvSamplerTex", "" {
+	Texture: 2044147857712, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -535,13 +535,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 1982414553280, "AnimStack::Take 001", "" {
+	AnimationStack: 2043282955680, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 1983338637728, "AnimCurve::", "" {
+	AnimationCurve: 2044103913584, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -562,7 +562,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1983338636448, "AnimCurve::", "" {
+	AnimationCurve: 2044103912944, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -583,7 +583,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1983338638848, "AnimCurve::", "" {
+	AnimationCurve: 2044103911664, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -604,14 +604,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 1982414551200, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2043282954432, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 1984538645840, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2042987348912, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -621,43 +621,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_Grass02, Model::RootNode
-	C: "OO",1984542475712,0
+	C: "OO",2044101135072,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1984538645840,1982414553280
+	C: "OO",2042987348912,2043282955680
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",1982414551200,1984538645840
+	C: "OO",2043282954432,2042987348912
 	
 	;Geometry::, Model::SM_Grass02
-	C: "OO",1984319331376,1984542475712
+	C: "OO",2044106469136,2044101135072
 	
 	;Material::M_Grass02, Model::SM_Grass02
-	C: "OO",1982408112400,1984542475712
+	C: "OO",2044147853392,2044101135072
 	
 	;AnimCurveNode::R, Model::SM_Grass02
-	C: "OP",1982414551200,1984542475712, "Lcl Rotation"
+	C: "OP",2043282954432,2044101135072, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::M_Grass02
-	C: "OP",1982408114320,1982408112400, "DiffuseColor"
+	C: "OP",2044147833232,2044147853392, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::M_Grass02
-	C: "OP",1982408114800,1982408112400, "NormalMap"
+	C: "OP",2044147857712,2044147853392, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1982408112880,1982408114320
+	C: "OO",2044147855792,2044147833232
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1982408115760,1982408114800
+	C: "OO",2044147857232,2044147857712
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1983338637728,1982414551200, "d|X"
+	C: "OP",2044103913584,2043282954432, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1983338636448,1982414551200, "d|Y"
+	C: "OP",2044103912944,2043282954432, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1983338638848,1982414551200, "d|Z"
+	C: "OP",2044103911664,2043282954432, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

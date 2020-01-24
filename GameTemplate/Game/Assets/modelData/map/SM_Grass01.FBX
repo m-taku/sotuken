@@ -6,13 +6,13 @@ FBXHeaderExtension:  {
 	FBXVersion: 7400
 	CreationTimeStamp:  {
 		Version: 1000
-		Year: 2019
-		Month: 12
-		Day: 11
-		Hour: 9
-		Minute: 52
-		Second: 40
-		Millisecond: 180
+		Year: 2020
+		Month: 1
+		Day: 24
+		Hour: 11
+		Minute: 4
+		Second: 15
+		Millisecond: 378
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:52:40.178"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "24/01/2020 02:04:15.377"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_Grass01.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:52:40.178"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "24/01/2020 02:04:15.377"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1982629645200, "", "Scene" {
+	Document: 2044150591104, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1983088307600, "Geometry::", "Mesh" {
+	Geometry: 2044148832976, "Geometry::", "Mesh" {
 		Vertices: *198 {
 			a: 24.667911529541,3.92014980316162,33.9192810058594,-42.409107208252,-14.0530681610107,30.73464012146,-44.5061149597168,-6.13666391372681,0.454621851444244,44.4696197509766,17.7042942047119,0.454621851444244,-34.2373847961426,18.2316036224365,-0.113135755062103,-65.4273529052734,32.3603172302246,20.7825508117676,-62.8064346313477,46.8007011413574,-0.113127782940865,-47.8123397827148,14.7453451156616,20.7825489044189,-66.9321975708008,7.84649085998535,45.3880310058594,-28.3835906982422,72.0678939819336,0.6082923412323,-70.4036102294922,-18.0442581176758,0.608289003372192,-35.2541084289551,75.7802429199219,41.1265754699707,20.6044006347656,-8.75537872314453,22.4787120819092,7.08725547790527,-16.4694519042969,0.319926649332047,22.906810760498,17.5612869262695,22.4787120819092,10.8214473724365,26.2125339508057,0.319921970367432,36.5557708740234,41.441478729248,0.34601691365242,71.1516571044922,44.4682655334473,0.346016645431519,65.9469757080078,33.6036262512207,18.3068141937256,44.6159629821777,31.7373847961426,18.3068161010742,54.715446472168,48.5367469787598,33.3816986083984,66.2104797363281,-16.6548156738281,30.2475204467773,57.4656219482422,-18.1177635192871,0.447369903326035,42.2177925109863,68.3569564819336,0.447373747825623,-10.8017835617065,-12.0418291091919,40.1544761657715,-57.9547500610352,-79.3832550048828,36.3843955993652,-63.608154296875,-74.8486785888672,0.53812313079834,-1.06109142303467,14.4777812957764,0.538126170635223,-5.59588813781738,-42.9357604980469,36.7703437805176,2.54041028022766,-40.2466659545898,0.543827414512634,-18.6119709014893,30.8821411132813,40.5804138183594,-14.7250423431396,57.6706466674805,0.543831706047058,-0.09958615899086,57.5728492736816,30.0137100219727,67.2418518066406,10.4198532104492,27.1957378387451,61.6283149719238,3.564044713974,0.402219235897064,-27.6981582641602,66.1111297607422,0.40221643447876,-65.3180694580078,-5.15347766876221,52.6195640563965,-44.604549407959,-28.6578922271729,8.9275992650073e-05,-61.5069313049316,-7.87307119369507,7.74553918745369e-05,
 -53.5547370910645,-29.547887802124,68.4343643188477,-56.1845474243164,-56.9518165588379,60.377140045166,-54.4577140808105,-47.8511734008789,8.85770859895274e-05,21.3820858001709,50.1746520996094,0.106390699744225,34.5654258728027,42.2634468078613,31.8542079925537,28.2531719207764,46.3156967163086,0.106390461325645,21.3820819854736,46.1223945617676,45.8712043762207,4.33200168609619,42.2634544372559,35.602970123291,15.7871055603027,46.3156967163086,0.106390602886677,-48.9839935302734,48.1418685913086,8.78710397955729e-06,-61.7845802307129,43.7261619567871,28.089204788208,-55.4772605895996,45.690788269043,8.75707519298885e-06,-51.7178840637207,50.4358749389648,40.4340858459473,-44.6691703796387,64.1234970092773,31.3907585144043,-48.4201164245605,54.1011657714844,9.03233740245923e-06,-36.1441307067871,-12.0827236175537,-3.45655735145556e-07,-18.7596683502197,-22.5149402618408,42.7034568786621,-27.0834426879883,-17.1713943481445,-6.63016066937416e-07,-36.1441192626953,-17.42626953125,61.1872138977051,-58.6275062561035,-22.5149402618408,47.6468124389648,-43.5220413208008,-17.1713962554932,-4.77040657642647e-07,47.0853157043457,-14.8312492370605,0.0711222812533379,34.641658782959,-5.80115079879761,27.70778465271,40.5767097473145,-10.388129234314,0.0711225420236588,47.4385070800781,-10.7944183349609,39.9096527099609,64.7600173950195,-8.43616962432861,30.9710960388184,52.9953384399414,-11.4746122360229,0.0711223557591438
@@ -473,7 +473,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1984542484480, "Model::SM_Grass01", "Mesh" {
+	Model: 2044101143840, "Model::SM_Grass01", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -485,7 +485,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1984373263712, "Material::M_Grass01", "" {
+	Material: 2044147857712, "Material::M_Grass01", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -509,17 +509,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 1984342578256, "Video::EnvSamplerTex", "Clip" {
+	Video: 2044147854832, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_grass01.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "tex\t_grass01.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_grass01_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_grass01_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_grass01.TGA"
-		RelativeFilename: "tex\t_grass01.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_grass01_BC.TGA"
+		RelativeFilename: "tex\T_grass01_BC.TGA"
 	}
-	Video: 1984565847696, "Video::EnvSamplerTex", "Clip" {
+	Video: 2044147832752, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\gifts\grass01\t_grass01_normals.tga"
@@ -529,7 +529,7 @@ Objects:  {
 		Filename: "C:\gifts\grass01\t_grass01_normals.tga"
 		RelativeFilename: "..\..\..\..\..\..\..\..\..\..\gifts\grass01\t_grass01_normals.tga"
 	}
-	Texture: 1984373261792, "Texture::EnvSamplerTex", "" {
+	Texture: 2044147830352, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -538,14 +538,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_grass01.TGA"
-		RelativeFilename: "tex\t_grass01.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_grass01_BC.TGA"
+		RelativeFilename: "tex\T_grass01_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 1983342139760, "Texture::EnvSamplerTex", "" {
+	Texture: 2044147831792, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -561,13 +561,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 1983089214096, "AnimStack::Take 001", "" {
+	AnimationStack: 2044148784768, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 1984715873328, "AnimCurve::", "" {
+	AnimationCurve: 2044107193584, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -588,7 +588,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1984715875088, "AnimCurve::", "" {
+	AnimationCurve: 2043999011136, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -609,7 +609,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1984715887888, "AnimCurve::", "" {
+	AnimationCurve: 2043999008256, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -630,14 +630,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 1984610785552, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2044148792880, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 1984602931648, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2044110355616, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -647,43 +647,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_Grass01, Model::RootNode
-	C: "OO",1984542484480,0
+	C: "OO",2044101143840,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1984602931648,1983089214096
+	C: "OO",2044110355616,2044148784768
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",1984610785552,1984602931648
+	C: "OO",2044148792880,2044110355616
 	
 	;Geometry::, Model::SM_Grass01
-	C: "OO",1983088307600,1984542484480
+	C: "OO",2044148832976,2044101143840
 	
 	;Material::M_Grass01, Model::SM_Grass01
-	C: "OO",1984373263712,1984542484480
+	C: "OO",2044147857712,2044101143840
 	
 	;AnimCurveNode::R, Model::SM_Grass01
-	C: "OP",1984610785552,1984542484480, "Lcl Rotation"
+	C: "OP",2044148792880,2044101143840, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::M_Grass01
-	C: "OP",1984373261792,1984373263712, "DiffuseColor"
+	C: "OP",2044147830352,2044147857712, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::M_Grass01
-	C: "OP",1983342139760,1984373263712, "NormalMap"
+	C: "OP",2044147831792,2044147857712, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1984342578256,1984373261792
+	C: "OO",2044147854832,2044147830352
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1984565847696,1983342139760
+	C: "OO",2044147832752,2044147831792
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1984715873328,1984610785552, "d|X"
+	C: "OP",2044107193584,2044148792880, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1984715875088,1984610785552, "d|Y"
+	C: "OP",2043999011136,2044148792880, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1984715887888,1984610785552, "d|Z"
+	C: "OP",2043999008256,2044148792880, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------
