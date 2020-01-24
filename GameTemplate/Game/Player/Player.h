@@ -15,6 +15,8 @@ public:
 	enum State {
 		StateTownMove,			//移動中
 		StateQuestMove,
+		StateAttack, 
+		StateAttackMode,
 		StateWate,
 		Statedeath
 	};
@@ -87,7 +89,8 @@ private:
 		m_right.Normalize();
 		m_up.Normalize();
 		m_forward.Normalize();
-	}
+	}	DirectionLight* plight = nullptr;
+
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向

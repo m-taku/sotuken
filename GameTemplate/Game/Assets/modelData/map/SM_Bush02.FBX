@@ -6,13 +6,13 @@ FBXHeaderExtension:  {
 	FBXVersion: 7400
 	CreationTimeStamp:  {
 		Version: 1000
-		Year: 2019
-		Month: 12
-		Day: 10
-		Hour: 16
-		Minute: 35
-		Second: 3
-		Millisecond: 317
+		Year: 2020
+		Month: 1
+		Day: 22
+		Hour: 15
+		Minute: 32
+		Second: 23
+		Millisecond: 897
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "10/12/2019 07:35:03.316"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "22/01/2020 06:32:23.896"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_Bush02.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "10/12/2019 07:35:03.316"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "22/01/2020 06:32:23.896"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2290107620960, "", "Scene" {
+	Document: 2132569889920, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2290811724976, "Geometry::", "Mesh" {
+	Geometry: 2132605543808, "Geometry::", "Mesh" {
 		Vertices: *72 {
 			a: 81.9569244384766,-1.69541954994202,54.0723724365234,-6.25779342651367,38.4997596740723,83.9851226806641,-0.644268035888672,0.0474984645843506,-10.2494812011719,-52.1973152160645,42.9307327270508,57.1161842346191,8.43050765991211,-69.7663192749023,46.4809074401855,36.4473037719727,9.36624145507813,72.3838729858398,3.69990825653076,1.62162184715271,-9.21865844726563,36.8025283813477,49.3306503295898,49.1166954040527,-66.2661437988281,50.7428741455078,36.3663024902344,-46.833309173584,-32.3055572509766,57.4183731079102,-1.19350242614746,5.70017051696777,-7.88031768798828,-15.163200378418,-60.5121231079102,38.9783096313477,-43.0725173950195,-10.9243202209473,34.0955200195313,51.7430191040039,-12.8064804077148,35.9731788635254,-0.375539779663086,-0.356712579727173,-6.84328460693359,13.9422760009766,-26.9941558837891,89.9041595458984,32.1312370300293,47.5571327209473,20.2666893005371,-10.4893341064453,63.4549522399902,48.2677841186523,8.15560436248779,4.99934387207031,-3.64115142822266,-34.0542793273926,11.9633388519287,17.3283767700195,-27.683177947998,-69.5551986694336,27.2926635742188,-0.0305824279785156,-0.00182366371154785,-1.98004150390625,-47.789493560791,-24.3983974456787,7.04631614685059,26.0962524414063,-36.233024597168,14.5904331207275
 		} 
@@ -427,7 +427,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2291480198352, "Model::SM_Bush02", "Mesh" {
+	Model: 2132603469248, "Model::SM_Bush02", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -439,7 +439,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2290902457296, "Material::M_Bush02", "" {
+	Material: 2132575535008, "Material::M_Bush02", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -463,17 +463,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2290902456816, "Video::EnvSamplerTex", "Clip" {
+	Video: 2132575551808, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_bush02.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "tex\t_bush02.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_bush02_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_bush02_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_bush02.TGA"
-		RelativeFilename: "tex\t_bush02.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_bush02_BC.TGA"
+		RelativeFilename: "tex\T_bush02_BC.TGA"
 	}
-	Video: 2290843661824, "Video::EnvSamplerTex", "Clip" {
+	Video: 2132575552288, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\gifts\grass01\t_grass01_normals.tga"
@@ -483,7 +483,7 @@ Objects:  {
 		Filename: "C:\gifts\grass01\t_grass01_normals.tga"
 		RelativeFilename: "..\..\..\..\..\..\..\..\..\..\gifts\grass01\t_grass01_normals.tga"
 	}
-	Texture: 2290902455376, "Texture::EnvSamplerTex", "" {
+	Texture: 2132575554688, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -492,14 +492,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_bush02.TGA"
-		RelativeFilename: "tex\t_bush02.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_bush02_BC.TGA"
+		RelativeFilename: "tex\T_bush02_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2290902455856, "Texture::EnvSamplerTex", "" {
+	Texture: 2132575553728, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -515,13 +515,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 2292089780976, "AnimStack::Take 001", "" {
+	AnimationStack: 2132579561984, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 2291502536464, "AnimCurve::", "" {
+	AnimationCurve: 2133827360272, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -542,7 +542,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2291502536624, "AnimCurve::", "" {
+	AnimationCurve: 2133827362032, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -563,7 +563,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2291502536944, "AnimCurve::", "" {
+	AnimationCurve: 2133827357392, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -584,14 +584,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 2292089781808, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2132579574256, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 2291538865760, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2133802231664, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -601,43 +601,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_Bush02, Model::RootNode
-	C: "OO",2291480198352,0
+	C: "OO",2132603469248,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2291538865760,2292089780976
+	C: "OO",2133802231664,2132579561984
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",2292089781808,2291538865760
+	C: "OO",2132579574256,2133802231664
 	
 	;Geometry::, Model::SM_Bush02
-	C: "OO",2290811724976,2291480198352
+	C: "OO",2132605543808,2132603469248
 	
 	;Material::M_Bush02, Model::SM_Bush02
-	C: "OO",2290902457296,2291480198352
+	C: "OO",2132575535008,2132603469248
 	
 	;AnimCurveNode::R, Model::SM_Bush02
-	C: "OP",2292089781808,2291480198352, "Lcl Rotation"
+	C: "OP",2132579574256,2132603469248, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::M_Bush02
-	C: "OP",2290902455376,2290902457296, "DiffuseColor"
+	C: "OP",2132575554688,2132575535008, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::M_Bush02
-	C: "OP",2290902455856,2290902457296, "NormalMap"
+	C: "OP",2132575553728,2132575535008, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2290902456816,2290902455376
+	C: "OO",2132575551808,2132575554688
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",2290843661824,2290902455856
+	C: "OO",2132575552288,2132575553728
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2291502536464,2292089781808, "d|X"
+	C: "OP",2133827360272,2132579574256, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2291502536624,2292089781808, "d|Y"
+	C: "OP",2133827362032,2132579574256, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2291502536944,2292089781808, "d|Z"
+	C: "OP",2133827357392,2132579574256, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

@@ -5,3 +5,4 @@
 #include "Playerdeath.h"
 #include "PlayerAttack.h"
 #include "PlayerQuestMove.h"
+#include "PlayerAttackMode.h"

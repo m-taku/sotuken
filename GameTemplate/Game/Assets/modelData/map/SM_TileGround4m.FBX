@@ -6,13 +6,13 @@ FBXHeaderExtension:  {
 	FBXVersion: 7400
 	CreationTimeStamp:  {
 		Version: 1000
-		Year: 2019
-		Month: 11
-		Day: 7
-		Hour: 20
-		Minute: 44
-		Second: 18
-		Millisecond: 335
+		Year: 2020
+		Month: 1
+		Day: 22
+		Hour: 13
+		Minute: 49
+		Second: 49
+		Millisecond: 219
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "07/11/2019 11:44:18.334"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "22/01/2020 04:49:49.218"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_TileGround4m.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "07/11/2019 11:44:18.334"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "22/01/2020 04:49:49.218"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1950145224976, "", "Scene" {
+	Document: 2149765911120, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1950143500336, "Geometry::", "Mesh" {
+	Geometry: 2149768422368, "Geometry::", "Mesh" {
 		Vertices: *1014 {
 			a: -400,-400,-25,-333.333343505859,-400,-25,-400,-400,-2.44929351458792e-14,-333.333312988281,-400,-2.44929351458792e-14,-266.666687011719,-400,-25,-266.666656494141,-400,-2.44929351458792e-14,-200,-400,-25,-200,-400,-2.44929351458792e-14,-133.333343505859,-400,-25,-133.33332824707,-400,-2.44929351458792e-14,-66.6666717529297,-400,-25,-66.6666564941406,-400,-2.44929351458792e-14,0,-400,-25,0,-400,-2.44929351458792e-14,66.6666564941406,-400,-25,66.6666717529297,-400,-2.44929351458792e-14,133.33332824707,-400,-25,133.333343505859,-400,-2.44929351458792e-14,200,-400,-25,200,-400,-2.44929351458792e-14,266.666656494141,-400,-25,266.666687011719,-400,-2.44929351458792e-14,333.333312988281,-400,-25,333.333343505859,-400,-2.44929351458792e-14,400,-400,-25,400,-400,-2.44929351458792e-14,400,400,-25,333.333343505859,400,-25,400,400,2.44929351458792e-14,333.333312988281,400,2.44929351458792e-14,266.666687011719,400,-25,266.666656494141,400,2.44929351458792e-14,200,400,-25,200,400,2.44929351458792e-14,133.333343505859,400,-25,133.33332824707,400,2.44929351458792e-14,66.6666717529297,400,-25,66.6666564941406,400,2.44929351458792e-14,0,400,-25,0,400,2.44929351458792e-14,-66.6666564941406,400,-25,-66.6666717529297,400,2.44929351458792e-14,-133.33332824707,400,-25,-133.333343505859,400,2.44929351458792e-14,-200,400,-25,-200,400,2.44929351458792e-14,-266.666656494141,400,-25,-266.666687011719,400,2.44929351458792e-14,-333.333312988281,400,-25,-333.333343505859,400,2.44929351458792e-14,-400,400,-25,-400,400,2.44929351458792e-14,400,-333.333343505859,-25,400,-333.333312988281,-2.04107784411997e-14,400,-266.666687011719,-25,400,-266.666656494141,-1.63286234305862e-14,400,-200,-25,400,-200,-1.22464675729396e-14,400,-133.333343505859,-25,400,-133.33332824707,-8.16431171529308e-15,400,-66.6666717529297,-25,400,-66.6666564941406,-4.08215543413006e-15,400,1.53080844661745e-15,-25,400,0,0,400,66.6666564941406,-25,400,66.6666717529297,4.08215628116301e-15,400,133.33332824707,-25,400,133.333343505859,8.16431256232602e-15,400,200,-25,
 400,200,1.22464675729396e-14,400,266.666656494141,-25,400,266.666687011719,1.6328625124652e-14,400,333.333312988281,-25,400,333.333343505859,2.04107801352656e-14,-400,333.333343505859,-25,-400,333.333312988281,2.04107784411997e-14,-400,266.666687011719,-25,-400,266.666656494141,1.63286234305862e-14,-400,200,-25,-400,200,1.22464675729396e-14,-400,133.333343505859,-25,-400,133.33332824707,8.16431171529308e-15,-400,66.6666717529297,-25,-400,66.6666564941406,4.08215543413006e-15,-400,1.53080844661745e-15,-25,-400,0,0,-400,-66.6666564941406,-25,-400,-66.6666717529297,-4.08215628116301e-15,-400,-133.33332824707,-25,-400,-133.333343505859,-8.16431256232602e-15,-400,-200,-25,-400,-200,-1.22464675729396e-14,-400,-266.666656494141,-25,-400,-266.666687011719,-1.6328625124652e-14,-400,-333.333312988281,-25,-400,-333.333343505859,-2.04107801352656e-14,333.333343505859,-333.333312988281,-2.04107784411997e-14,266.666687011719,-333.333343505859,-2.04107801352656e-14,333.333343505859,-266.666656494141,-1.63286234305862e-14,266.666687011719,-266.666687011719,-1.6328625124652e-14,200,-333.333312988281,-2.04107784411997e-14,333.333343505859,-200,-1.22464675729396e-14,266.666687011719,-200,-1.22464675729396e-14,200,-266.666656494141,-1.63286234305862e-14,333.333343505859,-133.33332824707,-8.16431171529308e-15,266.666687011719,-133.333343505859,-8.16431256232602e-15,333.333312988281,-66.6666564941406,-4.08215543413006e-15,200,-200,-1.22464675729396e-14,333.333312988281,0,0,266.666656494141,-66.6666717529297,-4.08215628116301e-15,333.333312988281,66.6666717529297,4.08215628116301e-15,266.666656494141,0,0,266.666656494141,66.6666564941406,4.08215543413006e-15,333.333312988281,133.333343505859,8.16431256232602e-15,266.666656494141,133.33332824707,8.16431171529308e-15,333.333312988281,200,1.22464675729396e-14,266.666656494141,200,1.22464675729396e-14,333.333312988281,266.666687011719,1.6328625124652e-14,266.666656494141,266.666656494141,1.63286234305862e-14,333.333312988281,333.333343505859,2.04107801352656e-14,266.666656494141,333.333312988281,2.04107784411997e-14,
@@ -519,7 +519,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1949342111312, "Model::SM_TileGround4m", "Mesh" {
+	Model: 2149776823184, "Model::SM_TileGround4m", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -531,7 +531,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1950414082816, "Material::MI_GroundStones", "" {
+	Material: 2149286899776, "Material::MI_GroundStones", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -553,7 +553,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 1950414071776, "Video::EnvSamplerTex", "Clip" {
+	Video: 2149286898336, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_GroundStones_BC.TGA"
@@ -563,7 +563,7 @@ Objects:  {
 		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_GroundStones_BC.TGA"
 		RelativeFilename: "tex\T_GroundStones_BC.TGA"
 	}
-	Video: 1950414081856, "Video::EnvSamplerTex", "Clip" {
+	Video: 2149286902656, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
@@ -573,7 +573,7 @@ Objects:  {
 		Filename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 		RelativeFilename: "F:\Unreal_marketplace\FantasyVillage\Source\HouseWalls\low2_DefaultMaterial_Normal.png"
 	}
-	Texture: 1950414076576, "Texture::EnvSamplerTex", "" {
+	Texture: 2149286897376, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -589,7 +589,7 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 1950414079936, "Texture::EnvSamplerTex", "" {
+	Texture: 2149286884896, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -605,13 +605,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 1948365276816, "AnimStack::Take 001", "" {
+	AnimationStack: 2149377431008, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 1950150557728, "AnimCurve::", "" {
+	AnimationCurve: 2148458904048, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -632,7 +632,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1950150561088, "AnimCurve::", "" {
+	AnimationCurve: 2148458906608, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -653,7 +653,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1950150556448, "AnimCurve::", "" {
+	AnimationCurve: 2148458906928, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -674,14 +674,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 1948365274944, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2149377427472, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 1950440009616, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2149776567472, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -691,43 +691,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_TileGround4m, Model::RootNode
-	C: "OO",1949342111312,0
+	C: "OO",2149776823184,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1950440009616,1948365276816
+	C: "OO",2149776567472,2149377431008
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",1948365274944,1950440009616
+	C: "OO",2149377427472,2149776567472
 	
 	;Geometry::, Model::SM_TileGround4m
-	C: "OO",1950143500336,1949342111312
+	C: "OO",2149768422368,2149776823184
 	
 	;Material::MI_GroundStones, Model::SM_TileGround4m
-	C: "OO",1950414082816,1949342111312
+	C: "OO",2149286899776,2149776823184
 	
 	;AnimCurveNode::R, Model::SM_TileGround4m
-	C: "OP",1948365274944,1949342111312, "Lcl Rotation"
+	C: "OP",2149377427472,2149776823184, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::MI_GroundStones
-	C: "OP",1950414076576,1950414082816, "DiffuseColor"
+	C: "OP",2149286897376,2149286899776, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::MI_GroundStones
-	C: "OP",1950414079936,1950414082816, "NormalMap"
+	C: "OP",2149286884896,2149286899776, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1950414071776,1950414076576
+	C: "OO",2149286898336,2149286897376
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1950414081856,1950414079936
+	C: "OO",2149286902656,2149286884896
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1950150557728,1948365274944, "d|X"
+	C: "OP",2148458904048,2149377427472, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1950150561088,1948365274944, "d|Y"
+	C: "OP",2148458906608,2149377427472, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1950150556448,1948365274944, "d|Z"
+	C: "OP",2148458906928,2149377427472, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

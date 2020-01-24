@@ -6,13 +6,13 @@ FBXHeaderExtension:  {
 	FBXVersion: 7400
 	CreationTimeStamp:  {
 		Version: 1000
-		Year: 2019
-		Month: 12
-		Day: 10
-		Hour: 10
-		Minute: 25
-		Second: 5
-		Millisecond: 16
+		Year: 2020
+		Month: 1
+		Day: 22
+		Hour: 16
+		Minute: 4
+		Second: 34
+		Millisecond: 875
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "10/12/2019 01:25:05.016"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "22/01/2020 07:04:34.875"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\rock_boulder_b2.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "10/12/2019 01:25:05.016"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "22/01/2020 07:04:34.875"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1881457749856, "", "Scene" {
+	Document: 2133830328800, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1881266483520, "Geometry::", "Mesh" {
+	Geometry: 2134080338752, "Geometry::", "Mesh" {
 		Vertices: *990 {
 			a: 55.713321685791,-20.409782409668,-73.8165588378906,42.6140213012695,-22.8466300964355,-72.6961822509766,44.1859931945801,-18.2841281890869,-72.8644790649414,58.3969612121582,-34.3410339355469,-72.9374618530273,62.9163932800293,-30.9150505065918,-73.4027938842773,-103.266830444336,-29.8240623474121,-47.3942756652832,-123.647369384766,-5.20700216293335,-45.8462791442871,-129.646575927734,2.7045841217041,-48.2091827392578,-97.7229537963867,-14.6615285873413,-68.6387710571289,-128.855499267578,19.5395565032959,-67.4085998535156,-85.2001495361328,-50.0825309753418,-50.5135955810547,-105.708999633789,8.37279605865479,-74.6543197631836,-122.293586730957,38.3064765930176,-75.5890655517578,-78.9592895507813,-37.7539329528809,-71.1328125,-60.365406036377,-74.4745635986328,-48.9536476135254,-75.8284378051758,-61.2658081054688,-47.0556106567383,-71.1120452880859,-70.4499588012695,-42.0898780822754,-54.6065292358398,-58.4745826721191,-68.5710296630859,-65.4073104858398,-37.6949577331543,-73.4125442504883,-31.607120513916,-84.0647430419922,-53.0506896972656,-48.1651382446289,-80.7345657348633,-47.8228416442871,-3.61390352249146,-95.1801986694336,-42.2752342224121,-23.9798412322998,-88.7676544189453,-41.9964942932129,-15.2409152984619,-52.4056358337402,-72.6572875976563,34.3348197937012,-91.1564712524414,-52.2002220153809,20.9445133209229,-95.260368347168,-44.6247024536133,46.2554931640625,-93.785026550293,-43.1980743408203,68.0823059082031,-88.9004516601563,-45.4051856994629,9.26987361907959,-66.6918716430664,-65.1151428222656,72.1542282104492,-81.5911560058594,-50.8022232055664,83.5675048828125,-77.9327850341797,-49.6093635559082,100.456428527832,-54.2447319030762,-57.4859504699707,81.5897445678711,-52.3590049743652,-66.53564453125,109.384330749512,-27.1039428710938,-58.339714050293,107.930274963379,-20.1095943450928,-62.8407440185547,96.4930877685547,-21.3424606323242,-69.3633804321289,105.742454528809,-15.4890937805176,-67.0182952880859,71.9217758178711,-26.5613994598389,-69.8666152954102,60.3334350585938,-13.8644485473633,-74.2416534423828,
 66.1947402954102,-47.7925834655762,-69.3358840942383,54.5381393432617,-20.8545665740967,-73.4018173217773,-2.29725098609924,-17.720911026001,-77.2524871826172,-65.4520645141602,1.84812068939209,-77.1010971069336,18.5797805786133,-2.81731867790222,-75.4024505615234,-81.8262100219727,19.5977039337158,-82.877799987793,-24.4744968414307,-2.00694847106934,-80.9469375610352,0.675125598907471,8.71251010894775,-81.2582244873047,-22.6579494476318,8.41170883178711,-84.0958709716797,30.8712997436523,-6.05219030380249,-77.7268142700195,8.05761814117432,20.462121963501,-87.7160568237305,-7.96313858032227,28.8659782409668,-85.8971862792969,46.8727836608887,-5.52432537078857,-81.8537445068359,90.19873046875,-10.8386011123657,-79.2089920043945,112.996406555176,-7.97808265686035,-71.7332077026367,82.2189636230469,19.7613773345947,-94.8283462524414,106.508811950684,26.2981300354004,-92.8621597290039,112.432945251465,8.01422214508057,-79.9693756103516,115.771987915039,37.071403503418,-85.2933349609375,112.527267456055,59.173282623291,-88.1800079345703,48.4333267211914,31.5186958312988,-97.263671875,76.0761184692383,69.3741760253906,-102.043502807617,79.2149353027344,77.0696258544922,-102.256576538086,92.9105682373047,75.3572998046875,-94.4382934570313,84.816780090332,86.2482070922852,-95.5662155151367,70.2012176513672,83.1519393920898,-98.9018478393555,44.3173751831055,77.4804306030273,-99.6353759765625,49.9842338562012,83.171875,-96.4562759399414,16.2562503814697,71.8734817504883,-97.8660430908203,13.8893232345581,73.3545761108398,-95.8068695068359,20.0965824127197,78.3211975097656,-93.1297988891602,2.97788858413696,75.909797668457,-79.719367980957,6.46341991424561,31.8087997436523,-94.3783798217773,4.66232585906982,56.2855682373047,-93.0069122314453,1.36957025527954,31.6482563018799,-91.4887542724609,-6.29804801940918,63.6436462402344,-85.1160888671875,-5.75103998184204,74.5419616699219,-77.7471389770508,-30.2065296173096,77.7574691772461,-78.0690460205078,-63.9275054931641,80.9055938720703,-81.1772308349609,-111.488273620605,37.8906593322754,-84.6012573242188,
@@ -642,19 +642,19 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1879502746928, "Model::rock_boulder_b2_LOD3", "Mesh" {
+	Model: 2132603436368, "Model::rock_boulder_b1_LOD3", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "UDP3DSMAX", "KString", "", "U", "MapChannel:1 = UVmap_0&cr;&lf;MapChannel:2 = LightMapUV&cr;&lf;"
-			P: "MaxHandle", "int", "Integer", "UH",5
+			P: "MaxHandle", "int", "Integer", "UH",1
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1880154408976, "Material::boulder_b", "" {
+	Material: 2132575580608, "Material::boulder_b", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -676,17 +676,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 1880154423856, "Video::マップ #1", "Clip" {
+	Video: 2132575567648, "Video::マップ #1", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\rock-a_bsm.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "rock-a_bsm.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\T_rock-absm_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "T_rock-absm_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\rock-a_bsm.TGA"
-		RelativeFilename: "rock-a_bsm.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\T_rock-absm_BC.TGA"
+		RelativeFilename: "T_rock-absm_BC.TGA"
 	}
-	Texture: 1880154428656, "Texture::マップ #1", "" {
+	Texture: 2132575579648, "Texture::マップ #1", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::マップ #1"
@@ -695,20 +695,20 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::マップ #1"
-		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\rock-a_bsm.TGA"
-		RelativeFilename: "rock-a_bsm.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\T_rock-absm_BC.TGA"
+		RelativeFilename: "T_rock-absm_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 1880158378224, "AnimStack::Take 001", "" {
+	AnimationStack: 2132580092256, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 1879269115808, "AnimCurve::", "" {
+	AnimationCurve: 2134086953744, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -729,7 +729,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1879269117728, "AnimCurve::", "" {
+	AnimationCurve: 2134086955344, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -750,7 +750,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1879269111328, "AnimCurve::", "" {
+	AnimationCurve: 2134086954064, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -771,14 +771,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 1880158379472, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2132580093712, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 1881269119792, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2134493288688, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -787,38 +787,38 @@ Objects:  {
 
 Connections:  {
 	
-	;Model::rock_boulder_b2_LOD3, Model::RootNode
-	C: "OO",1879502746928,0
+	;Model::rock_boulder_b1_LOD3, Model::RootNode
+	C: "OO",2132603436368,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1881269119792,1880158378224
+	C: "OO",2134493288688,2132580092256
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",1880158379472,1881269119792
+	C: "OO",2132580093712,2134493288688
 	
-	;Geometry::, Model::rock_boulder_b2_LOD3
-	C: "OO",1881266483520,1879502746928
+	;Geometry::, Model::rock_boulder_b1_LOD3
+	C: "OO",2134080338752,2132603436368
 	
-	;Material::boulder_b, Model::rock_boulder_b2_LOD3
-	C: "OO",1880154408976,1879502746928
+	;Material::boulder_b, Model::rock_boulder_b1_LOD3
+	C: "OO",2132575580608,2132603436368
 	
-	;AnimCurveNode::R, Model::rock_boulder_b2_LOD3
-	C: "OP",1880158379472,1879502746928, "Lcl Rotation"
+	;AnimCurveNode::R, Model::rock_boulder_b1_LOD3
+	C: "OP",2132580093712,2132603436368, "Lcl Rotation"
 	
 	;Texture::マップ #1, Material::boulder_b
-	C: "OP",1880154428656,1880154408976, "DiffuseColor"
+	C: "OP",2132575579648,2132575580608, "DiffuseColor"
 	
 	;Video::マップ #1, Texture::マップ #1
-	C: "OO",1880154423856,1880154428656
+	C: "OO",2132575567648,2132575579648
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1879269115808,1880158379472, "d|X"
+	C: "OP",2134086953744,2132580093712, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1879269117728,1880158379472, "d|Y"
+	C: "OP",2134086955344,2132580093712, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1879269111328,1880158379472, "d|Z"
+	C: "OP",2134086954064,2132580093712, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

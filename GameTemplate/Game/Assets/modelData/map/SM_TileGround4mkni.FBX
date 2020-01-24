@@ -6,13 +6,13 @@ FBXHeaderExtension:  {
 	FBXVersion: 7400
 	CreationTimeStamp:  {
 		Version: 1000
-		Year: 2019
-		Month: 12
-		Day: 13
-		Hour: 11
-		Minute: 32
-		Second: 45
-		Millisecond: 781
+		Year: 2020
+		Month: 1
+		Day: 22
+		Hour: 13
+		Minute: 53
+		Second: 46
+		Millisecond: 273
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -28,19 +28,19 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_TileGround4m2kni.FBX"
-			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_TileGround4m2kni.FBX"
+			P: "DocumentUrl", "KString", "Url", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_TileGround4mkni.FBX"
+			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_TileGround4mkni.FBX"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "13/12/2019 02:32:45.780"
-			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_TileGround4m2kni.FBX"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "22/01/2020 04:53:46.273"
+			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_TileGround4mkni.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "13/12/2019 02:32:45.780"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "22/01/2020 04:53:46.273"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2257082113760, "", "Scene" {
+	Document: 2149328120592, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -206,6 +206,19 @@ Definitions:  {
 			}
 		}
 	}
+	ObjectType: "Geometry" {
+		Count: 1
+		PropertyTemplate: "FbxMesh" {
+			Properties70:  {
+				P: "Color", "ColorRGB", "Color", "",0.8,0.8,0.8
+				P: "BBoxMin", "Vector3D", "Vector", "",0,0,0
+				P: "BBoxMax", "Vector3D", "Vector", "",0,0,0
+				P: "Primary Visibility", "bool", "", "",1
+				P: "Casts Shadows", "bool", "", "",1
+				P: "Receive Shadows", "bool", "", "",1
+			}
+		}
+	}
 	ObjectType: "Material" {
 		Count: 1
 		PropertyTemplate: "FbxSurfacePhong" {
@@ -258,19 +271,6 @@ Definitions:  {
 			}
 		}
 	}
-	ObjectType: "Geometry" {
-		Count: 1
-		PropertyTemplate: "FbxMesh" {
-			Properties70:  {
-				P: "Color", "ColorRGB", "Color", "",0.8,0.8,0.8
-				P: "BBoxMin", "Vector3D", "Vector", "",0,0,0
-				P: "BBoxMax", "Vector3D", "Vector", "",0,0,0
-				P: "Primary Visibility", "bool", "", "",1
-				P: "Casts Shadows", "bool", "", "",1
-				P: "Receive Shadows", "bool", "", "",1
-			}
-		}
-	}
 	ObjectType: "AnimationCurve" {
 		Count: 3
 	}
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2256031159184, "Geometry::", "Mesh" {
+	Geometry: 2149768424544, "Geometry::", "Mesh" {
 		Vertices: *24 {
 			a: 400,400,0,400,-400,0,-400,-400,0,-400,400,0,-400,400,-25,400,400,-25,-400,-400,-25,400,-400,-25
 		} 
@@ -359,18 +359,18 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2257108861264, "Model::UCX_SM_TileGround4m2", "Mesh" {
+	Model: 2149776799072, "Model::UCX_SM_TileGround4m2", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "MaxHandle", "int", "Integer", "UH",2
+			P: "MaxHandle", "int", "Integer", "UH",1
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2257097394976, "Material::01 - Default", "" {
+	Material: 2149286888736, "Material::01 - Default", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -393,7 +393,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2257097391616, "Video::マップ #1", "Clip" {
+	Video: 2149286887296, "Video::マップ #1", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\Texture2D_90_BaseColor.TGA"
@@ -403,7 +403,7 @@ Objects:  {
 		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\Texture2D_90_BaseColor.TGA"
 		RelativeFilename: "tex\Texture2D_90_BaseColor.TGA"
 	}
-	Texture: 2257097387296, "Texture::マップ #1", "" {
+	Texture: 2149286893536, "Texture::マップ #1", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::マップ #1"
@@ -419,13 +419,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 2256276697840, "AnimStack::Take 001", "" {
+	AnimationStack: 2149377419360, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 2255203815568, "AnimCurve::", "" {
+	AnimationCurve: 2148458922928, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -446,7 +446,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2255203813488, "AnimCurve::", "" {
+	AnimationCurve: 2148458923568, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -467,7 +467,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 2255203814288, "AnimCurve::", "" {
+	AnimationCurve: 2148458918928, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -488,14 +488,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 2256276698048, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2149377419776, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 2257087995696, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2149768245216, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -505,37 +505,37 @@ Objects:  {
 Connections:  {
 	
 	;Model::UCX_SM_TileGround4m2, Model::RootNode
-	C: "OO",2257108861264,0
+	C: "OO",2149776799072,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2257087995696,2256276697840
+	C: "OO",2149768245216,2149377419360
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",2256276698048,2257087995696
-	
-	;Material::01 - Default, Model::UCX_SM_TileGround4m2
-	C: "OO",2257097394976,2257108861264
+	C: "OO",2149377419776,2149768245216
 	
 	;Geometry::, Model::UCX_SM_TileGround4m2
-	C: "OO",2256031159184,2257108861264
+	C: "OO",2149768424544,2149776799072
+	
+	;Material::01 - Default, Model::UCX_SM_TileGround4m2
+	C: "OO",2149286888736,2149776799072
 	
 	;AnimCurveNode::R, Model::UCX_SM_TileGround4m2
-	C: "OP",2256276698048,2257108861264, "Lcl Rotation"
+	C: "OP",2149377419776,2149776799072, "Lcl Rotation"
 	
 	;Texture::マップ #1, Material::01 - Default
-	C: "OP",2257097387296,2257097394976, "DiffuseColor"
+	C: "OP",2149286893536,2149286888736, "DiffuseColor"
 	
 	;Video::マップ #1, Texture::マップ #1
-	C: "OO",2257097391616,2257097387296
+	C: "OO",2149286887296,2149286893536
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2255203815568,2256276698048, "d|X"
+	C: "OP",2148458922928,2149377419776, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2255203813488,2256276698048, "d|Y"
+	C: "OP",2148458923568,2149377419776, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",2255203814288,2256276698048, "d|Z"
+	C: "OP",2148458918928,2149377419776, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

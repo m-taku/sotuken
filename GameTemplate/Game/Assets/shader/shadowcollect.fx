@@ -65,7 +65,7 @@ float4 PSMain(PSInput In) : SV_Target0
 		)
 	{
 		float mapZ = ShadowMap.Sample(Sampler, LUV.xy).x;
-		if (Z > mapZ + 0.00015f)
+		if (Z > mapZ + 0.0005f)
 		{
 			s.xyz *= 0.0f;
 		}

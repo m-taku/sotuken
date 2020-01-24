@@ -6,13 +6,13 @@ FBXHeaderExtension:  {
 	FBXVersion: 7400
 	CreationTimeStamp:  {
 		Version: 1000
-		Year: 2019
-		Month: 12
-		Day: 11
-		Hour: 9
-		Minute: 46
-		Second: 37
-		Millisecond: 962
+		Year: 2020
+		Month: 1
+		Day: 22
+		Hour: 15
+		Minute: 34
+		Second: 57
+		Millisecond: 554
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:46:37.959"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "22/01/2020 06:34:57.554"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_Cloverpatch01.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:46:37.959"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "22/01/2020 06:34:57.554"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1984579554416, "", "Scene" {
+	Document: 2132606790096, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1983088305968, "Geometry::", "Mesh" {
+	Geometry: 2132604209056, "Geometry::", "Mesh" {
 		Vertices: *27 {
 			a: -70,2.12437313962255e-07,3.10897970199585,0,70,3.10897970199585,-70,70,3.10897970199585,70,70,3.10897970199585,70,2.12437313962255e-07,3.10897970199585,0,-9.6641528557484e-08,10.1798791885376,-70,-70,3.10897970199585,70,-70,3.10897970199585,0,-70,3.10897970199585
 		} 
@@ -443,7 +443,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1984542499824, "Model::SM_Cloverpatch01", "Mesh" {
+	Model: 2132603414448, "Model::SM_Cloverpatch01", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -455,7 +455,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1983286215744, "Material::M_CloverPatch01", "" {
+	Material: 2132575561408, "Material::M_CloverPatch01", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -479,17 +479,17 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 1983286216704, "Video::EnvSamplerTex", "Clip" {
+	Video: 2132575550848, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_cloverpatch01.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "tex\t_cloverpatch01.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_cloverpatch01_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_cloverpatch01_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_cloverpatch01.TGA"
-		RelativeFilename: "tex\t_cloverpatch01.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_cloverpatch01_BC.TGA"
+		RelativeFilename: "tex\T_cloverpatch01_BC.TGA"
 	}
-	Video: 1983286217184, "Video::EnvSamplerTex", "Clip" {
+	Video: 2132575537888, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\gifts\grass01\t_grass01_normals.tga"
@@ -499,7 +499,7 @@ Objects:  {
 		Filename: "C:\gifts\grass01\t_grass01_normals.tga"
 		RelativeFilename: "..\..\..\..\..\..\..\..\..\..\gifts\grass01\t_grass01_normals.tga"
 	}
-	Texture: 1983286215264, "Texture::EnvSamplerTex", "" {
+	Texture: 2132575539808, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -508,14 +508,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_cloverpatch01.TGA"
-		RelativeFilename: "tex\t_cloverpatch01.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_cloverpatch01_BC.TGA"
+		RelativeFilename: "tex\T_cloverpatch01_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 1983286216224, "Texture::EnvSamplerTex", "" {
+	Texture: 2132575549888, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -531,13 +531,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 1984317266768, "AnimStack::Take 001", "" {
+	AnimationStack: 2132579839072, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 1984715947888, "AnimCurve::", "" {
+	AnimationCurve: 2132580445392, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -558,7 +558,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1984715941168, "AnimCurve::", "" {
+	AnimationCurve: 2132580444912, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -579,7 +579,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1984715947568, "AnimCurve::", "" {
+	AnimationCurve: 2132580444592, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -600,14 +600,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 1984317260528, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2132579839488, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 1984603169920, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2134528516800, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -617,43 +617,43 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_Cloverpatch01, Model::RootNode
-	C: "OO",1984542499824,0
+	C: "OO",2132603414448,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1984603169920,1984317266768
+	C: "OO",2134528516800,2132579839072
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",1984317260528,1984603169920
+	C: "OO",2132579839488,2134528516800
 	
 	;Geometry::, Model::SM_Cloverpatch01
-	C: "OO",1983088305968,1984542499824
+	C: "OO",2132604209056,2132603414448
 	
 	;Material::M_CloverPatch01, Model::SM_Cloverpatch01
-	C: "OO",1983286215744,1984542499824
+	C: "OO",2132575561408,2132603414448
 	
 	;AnimCurveNode::R, Model::SM_Cloverpatch01
-	C: "OP",1984317260528,1984542499824, "Lcl Rotation"
+	C: "OP",2132579839488,2132603414448, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::M_CloverPatch01
-	C: "OP",1983286215264,1983286215744, "DiffuseColor"
+	C: "OP",2132575539808,2132575561408, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::M_CloverPatch01
-	C: "OP",1983286216224,1983286215744, "NormalMap"
+	C: "OP",2132575549888,2132575561408, "NormalMap"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1983286216704,1983286215264
+	C: "OO",2132575550848,2132575539808
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1983286217184,1983286216224
+	C: "OO",2132575537888,2132575549888
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1984715947888,1984317260528, "d|X"
+	C: "OP",2132580445392,2132579839488, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1984715941168,1984317260528, "d|Y"
+	C: "OP",2132580444912,2132579839488, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1984715947568,1984317260528, "d|Z"
+	C: "OP",2132580444592,2132579839488, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

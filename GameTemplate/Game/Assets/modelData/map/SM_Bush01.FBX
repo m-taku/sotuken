@@ -6,13 +6,13 @@ FBXHeaderExtension:  {
 	FBXVersion: 7400
 	CreationTimeStamp:  {
 		Version: 1000
-		Year: 2019
-		Month: 12
-		Day: 11
-		Hour: 9
-		Minute: 43
-		Second: 58
-		Millisecond: 923
+		Year: 2020
+		Month: 1
+		Day: 22
+		Hour: 15
+		Minute: 29
+		Second: 57
+		Millisecond: 602
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:43:58.921"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "22/01/2020 06:29:57.600"
 			P: "Original|FileName", "KString", "", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\SM_Bush01.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "11/12/2019 00:43:58.921"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "22/01/2020 06:29:57.600"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\takuy\OneDrive\ドキュメント\3ds Max 2020"
 		}
 	}
@@ -76,7 +76,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1983087543072, "", "Scene" {
+	Document: 2132569889408, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,7 +315,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1984320698896, "Geometry::", "Mesh" {
+	Geometry: 2132605537280, "Geometry::", "Mesh" {
 		Properties70:  {
 		}
 		Vertices: *1041 {
@@ -610,7 +610,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1984542493248, "Model::SM_Bush01", "Mesh" {
+	Model: 2132603666528, "Model::SM_Bush01", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -622,7 +622,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1984655587296, "Material::M_Bushbark01", "" {
+	Material: 2132575529248, "Material::M_Bushbark01", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -644,7 +644,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1984655587776, "Material::M_Bush01", "" {
+	Material: 2132575507168, "Material::M_Bush01", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -668,27 +668,27 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 1984655585856, "Video::EnvSamplerTex", "Clip" {
+	Video: 2132575535008, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_treebark01.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "tex\t_treebark01.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_treebark01_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_treebark01_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_treebark01.TGA"
-		RelativeFilename: "tex\t_treebark01.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_treebark01_BC.TGA"
+		RelativeFilename: "tex\T_treebark01_BC.TGA"
 	}
-	Video: 1984655586336, "Video::マップ #1", "Clip" {
+	Video: 2132575535968, "Video::マップ #1", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_bush01.TGA"
-			P: "RelPath", "KString", "XRefUrl", "", "tex\t_bush01.TGA"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_bush01_BC.TGA"
+			P: "RelPath", "KString", "XRefUrl", "", "tex\T_bush01_BC.TGA"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_bush01.TGA"
-		RelativeFilename: "tex\t_bush01.TGA"
+		Filename: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_bush01_BC.TGA"
+		RelativeFilename: "tex\T_bush01_BC.TGA"
 	}
-	Video: 1983077758400, "Video::EnvSamplerTex", "Clip" {
+	Video: 2132575556608, "Video::EnvSamplerTex", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\gifts\BRANCHES\t_treeleaves01_normals.tga"
@@ -698,7 +698,7 @@ Objects:  {
 		Filename: "C:\gifts\BRANCHES\t_treeleaves01_normals.tga"
 		RelativeFilename: "..\..\..\..\..\..\..\..\..\..\gifts\BRANCHES\t_treeleaves01_normals.tga"
 	}
-	Texture: 1984655586816, "Texture::EnvSamplerTex", "" {
+	Texture: 2132575500928, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -707,14 +707,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::EnvSamplerTex"
-		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_treebark01.TGA"
-		RelativeFilename: "tex\t_treebark01.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_treebark01_BC.TGA"
+		RelativeFilename: "tex\T_treebark01_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 1984655588736, "Texture::マップ #1", "" {
+	Texture: 2132575548448, "Texture::マップ #1", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::マップ #1"
@@ -723,14 +723,14 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::マップ #1"
-		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\t_bush01.TGA"
-		RelativeFilename: "tex\t_bush01.TGA"
+		FileName: "C:\Users\takuy\Desktop\sotuken\sotuken\GameTemplate\Game\Assets\modelData\map\tex\T_bush01_BC.TGA"
+		RelativeFilename: "tex\T_bush01_BC.TGA"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
-		Texture_Alpha_Source: "Alpha_Black"
+		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 1984655585376, "Texture::EnvSamplerTex", "" {
+	Texture: 2132575536928, "Texture::EnvSamplerTex", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::EnvSamplerTex"
@@ -746,13 +746,13 @@ Objects:  {
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	AnimationStack: 1984317248880, "AnimStack::Take 001", "" {
+	AnimationStack: 2134528535232, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationCurve: 1984614484272, "AnimCurve::", "" {
+	AnimationCurve: 2132601148768, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -773,7 +773,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1984614491952, "AnimCurve::", "" {
+	AnimationCurve: 2132601151168, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -794,7 +794,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurve: 1984614493072, "AnimCurve::", "" {
+	AnimationCurve: 2132601151648, "AnimCurve::", "" {
 		Default: 0
 		KeyVer: 4009
 		KeyTime: *1 {
@@ -815,14 +815,14 @@ Objects:  {
 			a: 1
 		} 
 	}
-	AnimationCurveNode: 1984317250544, "AnimCurveNode::R", "" {
+	AnimationCurveNode: 2134528534608, "AnimCurveNode::R", "" {
 		Properties70:  {
 			P: "d|X", "Number", "", "A",0
 			P: "d|Y", "Number", "", "A",0
 			P: "d|Z", "Number", "", "A",0
 		}
 	}
-	AnimationLayer: 1984347145680, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2134532078336, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -832,52 +832,52 @@ Objects:  {
 Connections:  {
 	
 	;Model::SM_Bush01, Model::RootNode
-	C: "OO",1984542493248,0
+	C: "OO",2132603666528,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1984347145680,1984317248880
+	C: "OO",2134532078336,2134528535232
 	
 	;AnimCurveNode::R, AnimLayer::BaseLayer
-	C: "OO",1984317250544,1984347145680
+	C: "OO",2134528534608,2134532078336
 	
 	;Geometry::, Model::SM_Bush01
-	C: "OO",1984320698896,1984542493248
+	C: "OO",2132605537280,2132603666528
 	
 	;Material::M_Bushbark01, Model::SM_Bush01
-	C: "OO",1984655587296,1984542493248
+	C: "OO",2132575529248,2132603666528
 	
 	;Material::M_Bush01, Model::SM_Bush01
-	C: "OO",1984655587776,1984542493248
+	C: "OO",2132575507168,2132603666528
 	
 	;AnimCurveNode::R, Model::SM_Bush01
-	C: "OP",1984317250544,1984542493248, "Lcl Rotation"
+	C: "OP",2134528534608,2132603666528, "Lcl Rotation"
 	
 	;Texture::EnvSamplerTex, Material::M_Bushbark01
-	C: "OP",1984655586816,1984655587296, "DiffuseColor"
+	C: "OP",2132575500928,2132575529248, "DiffuseColor"
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1984655585856,1984655586816
+	C: "OO",2132575535008,2132575500928
 	
 	;Texture::マップ #1, Material::M_Bush01
-	C: "OP",1984655588736,1984655587776, "DiffuseColor"
+	C: "OP",2132575548448,2132575507168, "DiffuseColor"
 	
 	;Texture::EnvSamplerTex, Material::M_Bush01
-	C: "OP",1984655585376,1984655587776, "NormalMap"
+	C: "OP",2132575536928,2132575507168, "NormalMap"
 	
 	;Video::マップ #1, Texture::マップ #1
-	C: "OO",1984655586336,1984655588736
+	C: "OO",2132575535968,2132575548448
 	
 	;Video::EnvSamplerTex, Texture::EnvSamplerTex
-	C: "OO",1983077758400,1984655585376
+	C: "OO",2132575556608,2132575536928
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1984614484272,1984317250544, "d|X"
+	C: "OP",2132601148768,2134528534608, "d|X"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1984614491952,1984317250544, "d|Y"
+	C: "OP",2132601151168,2134528534608, "d|Y"
 	
 	;AnimCurve::, AnimCurveNode::R
-	C: "OP",1984614493072,1984317250544, "d|Z"
+	C: "OP",2132601151648,2134528534608, "d|Z"
 }
 ;Takes section
 ;----------------------------------------------------

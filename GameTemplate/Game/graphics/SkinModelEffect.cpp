@@ -25,6 +25,7 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 	{
 		m_pVSShader = &m_vsShaderInstancing;
 		m_pPSShader = &m_psTreeShader;
+		deviceContext->RSSetState(g_graphicsEngine->GetRasterizerState());
 		break;
 	}
 	case enShadow: {
@@ -69,6 +70,7 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 	default: break;
 	}
 	deviceContext->PSSetShaderResources(enSkinModelSRVReg_AlbedoTexture, 1, &m_albedoTex);
+	deviceContext->PSSetShaderResources(enSkinModelSRVReg_NomalTexture, 1, &m_normalTex);
 	deviceContext->VSSetShader((ID3D11VertexShader*)m_pVSShader->GetBody(), NULL, 0);
 	deviceContext->PSSetShader((ID3D11PixelShader*)m_pPSShader->GetBody(), NULL, 0);
 }

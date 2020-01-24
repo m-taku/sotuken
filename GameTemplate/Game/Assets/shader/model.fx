@@ -192,7 +192,20 @@ PSOutput PSMain(PSInput In)
 	psout.shadow = 1.0f;
 
 	psout.diffuse = albedoTexture.Sample(Sampler, In.TexCoord);
-	psout.normal = float4(In.Normal, 1.0f);
+	float3 normal;
+	//法線と接ベクトルの外積を計算して、従ベクトルを計算する。
+	float3 biNormal = cross(In.Normal, In.Tangent);
+	biNormal = normalize(biNormal);
+
+	normal = normalMap.Sample(Sampler, In.TexCoord).xyz;
+
+	//0.0～1.0の範囲になっているタンジェントスペース法線を
+	//-1.0～1.0の範囲に変換する。
+	normal = (normal * 2.0f) - 1.0f;
+	//法線をタンジェントスペースから、ワールドスペースに変換する。
+	normal = In.Tangent * normal.x + biNormal * normal.y + In.Normal * normal.z;
+	normal = normalize(normal);
+	psout.normal = float4(normal, 1.0f);
 	psout.world = float4(In.WorldPos.xyz, 1.0f);
 	psout.depth = In.Position.z;
 	return psout;
@@ -210,7 +223,7 @@ PSOutput PSTreeMain(PSInput In)
 	float3 biNormal = cross(In.Normal, In.Tangent);
 	biNormal = normalize(biNormal);
 
-	normal = float3(0.0f, 0.0f, 1.0f);//normalMap.Sample(Sampler, In.TexCoord).xyz;
+	normal = normalMap.Sample(Sampler, In.TexCoord).xyz;
 
 	//0.0～1.0の範囲になっているタンジェントスペース法線を
 	//-1.0～1.0の範囲に変換する。

@@ -31,66 +31,6 @@ bool Town::Init()
 		{
 			return true;
 		}
-		//result = wcscmp(L"SM_StoneWallBorder3m01", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_Fabric01", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_StreetLight02", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_House1stFloor03", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_Barrel03", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_Barrel04", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_WoodStairs03", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_WoodChunks01", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_CastleWindow02", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_CastleWindow03", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_Floor01", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
-		//result = wcscmp(L"SM_Floor02", objData.name);
-		//if (result == 0)
-		//{
-		//	return true;
-		//}
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
 		{
@@ -133,15 +73,11 @@ bool Town::Init()
 		{
 			return false;
 		}
-		result = wcscmp(L"SM_SeverPiece", objData.name);
-		if (result == 0)
-		{
-			return false; 
-		}
+
 		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori1.cmo", m_Name);
-	m_testmodel.Init(moveFilePath);
+	//m_testmodel.Init(moveFilePath);
 	/*m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
 	m_physicsStaticObject.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);*/
 

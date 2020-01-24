@@ -30,6 +30,12 @@ void Player::TransitionState(State m)
 	case StateWate:
 		m_state = new PlayerWait(this);
 		break;
+	case StateAttack:
+		m_state = new PlayerAttack(this);
+		break;
+	case StateAttackMode:
+		m_state = new PlayerAttackMode(this);
+		break;
 	case Statedeath:
 		m_state = new Playerdeath(this);
 		break;
@@ -62,7 +68,7 @@ bool Player::Start()
 	DirectionLight* plight = new DirectionLight;
 	float c = 1.0f;
 	plight->SetColor({ c,c,c,1.0f });
-	plight->SetDirection(CVector3::Down()+CVector3::Right());
+	plight->SetDirection(CVector3::Down()+CVector3::Right()+ CVector3::Front());
 	plight->ShadowEnable(true);
 	smLightManager().AddLight(plight);
 	GetHitObjict().Create(&m_position, 50,[&](float damage) {

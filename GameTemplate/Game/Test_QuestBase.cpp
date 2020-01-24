@@ -60,7 +60,7 @@ void Test_QuestBase::CreateQuest()
 
 	//クエストに関係する減算等あればここでする。
 	auto pla = FindGO<Player>("player");
-	pla->TransitionState(Player::StateTownMove);
+	pla->TransitionState(Player::StateQuestMove);
 	//DeleteGO(FindGO<Test_GuestManager>("tes"));
 }
 void Test_QuestBase::Update()
