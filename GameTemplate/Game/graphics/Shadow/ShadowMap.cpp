@@ -67,20 +67,25 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 	LightViewRot.m[2][3] = 0.0f;
 
 	float ShadowAreaTbl[enMapNum];
-	float LightHeight = smGameCamera().GetCameraTarget().y + g_lightHeight;
-	CVector3 GameCamPos = smGameCamera().GetCameraPosition();
-	CVector3 GameCamForward = smGameCamera().GetCameraFoward();
-	CVector3 GameCamRight = smGameCamera().GetCameraRight();
+	float LightHeight = g_camera3D.GetTarget().y + g_lightHeight;
+	CVector3 GameCamPos = g_camera3D.GetPosition();
+	CVector3 GameCamForward = g_camera3D.GetForward();
+	CVector3 GameCamRight = g_camera3D.GetRight();
 	CVector3 GameCamUp;
 	GameCamUp.Cross(GameCamForward, GameCamRight);
 	GameCamUp.Normalize();
 	float NearPlaneZ = 0.0f;
 	float FarPlaneZ;
-	float sub = 1.0f / enMapNum;
+	//float sub = 1.0f / enMapNum;
+	float sub[] = {
+		0.2f,
+		0.2f,
+		0.6f
+	};
 	float aspect = FRAME_BUFFER_W / FRAME_BUFFER_H;
 	for (int i = 0; i < enMapNum; i++)
 	{
-		ShadowAreaTbl[i] = AvailableLen * sub;
+		ShadowAreaTbl[i] = AvailableLen * sub[i];
 		FarPlaneZ = NearPlaneZ + ShadowAreaTbl[i];
 		CMatrix mLightView = CMatrix::Identity();
 		float HalfViewAngle = g_camera3D.GetViewAngle()*0.5f;
@@ -228,11 +233,12 @@ void ShadowMap::DrawToShadowCollector()
 		deviceContext->PSSetConstantBuffers(0, 1, &m_cb.GetBody());
 		ID3D11ShaderResourceView* precollectsrv[] = {
 			m_renderTarget[i].GetShaderResourceView(),
-			g_graphicsEngine->GetDeferredRender().GetWorldSRV(),
+			smLightManager().GetShadowRenderTarget().GetShaderResourceView(),
+			g_graphicsEngine->GetDeferredRender().GetWorldSRV()
 		};
 
-		deviceContext->VSSetShaderResources(0, 2, precollectsrv);
-		deviceContext->PSSetShaderResources(0, 2, precollectsrv);
+		deviceContext->VSSetShaderResources(0, 3, precollectsrv);
+		deviceContext->PSSetShaderResources(0, 3, precollectsrv);
 		m_postEffect.SetPS(&m_preCollectPS);
 		m_postEffect.Draw();
 
