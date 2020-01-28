@@ -168,6 +168,7 @@
     <ClCompile Include="Player\PlayerState.cpp" />
     <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="QuestSelect.cpp" />
+    <ClCompile Include="Rig.cpp" />
     <ClCompile Include="weapon\Smallsword.cpp" />
     <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="Stage\QuestStage.cpp" />
@@ -259,6 +260,7 @@
     <ClInclude Include="physics\PhysicsStaticObject.h" />
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="Rig.h" />
     <ClInclude Include="weapon\PlayerCombo.h" />
     <ClInclude Include="Player\PlayerAttackMode.h" />
     <ClInclude Include="Player\PlayerQuestMove.h" />

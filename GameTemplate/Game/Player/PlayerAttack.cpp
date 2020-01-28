@@ -5,7 +5,7 @@
 PlayerAttack::PlayerAttack(Player* player) :PlayerState(player)
 {
 
-	m_player->Getcombo()->changeY();
+	//m_player->Getcombo()->changeY();
 }
 
 

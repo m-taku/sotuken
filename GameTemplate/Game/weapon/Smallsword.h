@@ -21,5 +21,9 @@ public:
 	void SetAnimation(Player* player) override;
 	void changeY() override;
 	void changeB() override;
+	void Reset()override;
+private:
+	int m_combo = 0;
+	swordcombo nowcombo = combo1;
 };
 
