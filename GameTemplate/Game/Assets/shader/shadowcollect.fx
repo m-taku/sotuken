@@ -49,11 +49,6 @@ float4 PSInitMain(PSInput In) : SV_Target0
 
 float4 PSMain(PSInput In) : SV_Target0
 {
-	float colorX = MainColorTexture.Sample(Sampler, In.uv).x;
-	if (colorX < 0.5f)
-	{
-		return float4(1.0f, 1.0f, 1.0f, 1.0f);
-	}
 	float4 World = float4(WorldTexture.Sample(Sampler, In.uv).xyz,1.0f);
 	float4 LUV;
 	LUV = mul(LightViewMatrix, World);
