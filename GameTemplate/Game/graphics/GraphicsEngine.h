@@ -112,7 +112,7 @@ private:
 
 	DepthFogParam m_depthFogParam;
 	float m_shadowMapHight = 8000.0f;
-	float m_shadowAvailableLength = 4000.0f;
+	float m_shadowAvailableLength = 5000.0f;
 };
 
 extern GraphicsEngine* g_graphicsEngine;			//グラフィックスエンジン
