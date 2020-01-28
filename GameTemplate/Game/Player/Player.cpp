@@ -18,6 +18,7 @@ Player::Player()
 Player::~Player()
 {
 	delete m_state;
+	delete m_combo;
 }
 
 void Player::TransitionState(State m)
@@ -110,7 +111,6 @@ void  Player::PostUpdate()
 	m_anim.Update(GetFrameDeltaTime());
 
 }
-
 void Player::Draw()
 {
 	m_skinmodel.Draw(

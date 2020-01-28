@@ -21,6 +21,10 @@ public:
 	{
 
 	}
+	virtual void Reset()
+	{
+
+	}
 protected:
 	std::vector<AnimationClip> m_animClip;
 	Player* m_player = nullptr;

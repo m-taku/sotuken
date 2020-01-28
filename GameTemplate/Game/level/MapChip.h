@@ -31,10 +31,15 @@ public:
 	{
 		m_Shadow = furg;
 	}
+	void Setwww()
+	{
+		m_www = true;
+	}
 private:
 	SkinModel m_model;		//!<モデル。
 	wchar_t filePath[256];
 	bool m_Shadow = true;
+	bool m_www = false;
 	std::vector<LevelObjectData> m_LevelData;
 	std::vector<PhysicsStaticObject*> m_physicsStaticObject;	//!<静的物理オブジェクト。
 	

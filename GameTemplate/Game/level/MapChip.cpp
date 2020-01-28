@@ -64,11 +64,20 @@ void MapChip::State()
 void MapChip::Update()
 {
 	if (m_LevelData.size() <= 1) {
+
 		m_model.UpdateWorldMatrix(m_LevelData[0].position, m_LevelData[0].rotation, m_LevelData[0].scale);
 	}
 	else {
 		m_model.BeginUpdateInstancingData();
 		for (auto obj : m_LevelData) {
+			if (m_www)
+			{
+				auto len = obj.position - g_camera3D.GetPosition();
+				if (len.Length() >= 3000.0f)
+				{
+					continue;
+				}
+			}
 			m_model.UpdateInstancingData(obj.position, obj.rotation, obj.scale);
 		}
 	}
