@@ -5,7 +5,7 @@
 class GraphicsEngine
 {
 	struct DepthFogParam {
-		float depthPow = 2000.0f;
+		float depthPow = 3000.0f;
 	};
 public:
 	GraphicsEngine();
@@ -111,8 +111,8 @@ private:
 	DepthFog m_depthFog;
 
 	DepthFogParam m_depthFogParam;
-	float m_shadowMapHight = 5000.0f;
-	float m_shadowAvailableLength = 5000.0f;
+	float m_shadowMapHight = 8000.0f;
+	float m_shadowAvailableLength = 4000.0f;
 };
 
 extern GraphicsEngine* g_graphicsEngine;			//グラフィックスエンジン

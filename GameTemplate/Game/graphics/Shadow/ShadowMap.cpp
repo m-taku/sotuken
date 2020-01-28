@@ -28,6 +28,7 @@ void ShadowMap::Init(int w, int h)
 	m_vs.Load("Assets/shader/shadowcollect.fx", "VSMain", Shader::EnType::VS);
 	m_postEffect.SetVS(&m_vs);
 	m_cb.Create(NULL, sizeof(SShadowCollectCB));
+	m_drawCB.Create(NULL, sizeof(SDrawCB));
 }
 
 void ShadowMap::UpdateDirection(const CVector3 & Direction)
@@ -67,20 +68,25 @@ void ShadowMap::UpdateDirection(const CVector3 & Direction)
 	LightViewRot.m[2][3] = 0.0f;
 
 	float ShadowAreaTbl[enMapNum];
-	float LightHeight = smGameCamera().GetCameraTarget().y + g_lightHeight;
-	CVector3 GameCamPos = smGameCamera().GetCameraPosition();
-	CVector3 GameCamForward = smGameCamera().GetCameraFoward();
-	CVector3 GameCamRight = smGameCamera().GetCameraRight();
+	float LightHeight = g_camera3D.GetTarget().y + g_lightHeight;
+	CVector3 GameCamPos = g_camera3D.GetPosition();
+	CVector3 GameCamForward = g_camera3D.GetForward();
+	CVector3 GameCamRight = g_camera3D.GetRight();
 	CVector3 GameCamUp;
 	GameCamUp.Cross(GameCamForward, GameCamRight);
 	GameCamUp.Normalize();
 	float NearPlaneZ = 0.0f;
 	float FarPlaneZ;
-	float sub = 1.0f / enMapNum;
+	//float sub = 1.0f / enMapNum;
+	float sub[] = {
+		0.15f,
+		0.3f,
+		0.55f
+	};
 	float aspect = FRAME_BUFFER_W / FRAME_BUFFER_H;
 	for (int i = 0; i < enMapNum; i++)
 	{
-		ShadowAreaTbl[i] = AvailableLen * sub;
+		ShadowAreaTbl[i] = AvailableLen * sub[i];
 		FarPlaneZ = NearPlaneZ + ShadowAreaTbl[i];
 		CMatrix mLightView = CMatrix::Identity();
 		float HalfViewAngle = g_camera3D.GetViewAngle()*0.5f;
@@ -154,11 +160,23 @@ void ShadowMap::ShadowCasterDraw()
 	deviceContext->OMGetRenderTargets(1, &buckUpRTV, &buckUpDepth);
 	deviceContext->RSGetViewports(pnumViewPort, &buckUpViewPort);
 
+	SDrawCB cb;
 	for (int i = 0; i < enMapNum; i++)
 	{
+		cb.m_lightViewMatrix[i] = m_lightViewMatrix[i];
+		cb.m_lightProjectionMatrix[i] = m_lightProjectionMatrix[i];
+	}
+
+	for (int i = 0; i < enMapNum; i++)
+	{
+		cb.No = i;
+
 		ID3D11RenderTargetView* rtv[] = {
 			m_renderTarget[i].GetRenderTatgetView()
 		};
+		deviceContext->UpdateSubresource(m_drawCB.GetBody(), 0, NULL, &cb, 0, 0);
+		deviceContext->PSSetConstantBuffers(5, 1, &m_drawCB.GetBody());
+		deviceContext->VSSetConstantBuffers(5, 1, &m_drawCB.GetBody());
 		deviceContext->OMSetRenderTargets(1, rtv, m_renderTarget[i].GetDepthStencilView());
 		deviceContext->RSSetViewports(1, m_renderTarget[i].GetViewPort());
 		float color[] = { 1.0f,1.0f,1.0f,1.0f };
@@ -207,7 +225,6 @@ void ShadowMap::DrawToShadowCollector()
 	FinalCollectRT.Create(FRAME_BUFFER_W, FRAME_BUFFER_H, DXGI_FORMAT_R16G16B16A16_FLOAT);
 
 
-
 	for (int i = 0; i < enMapNum; i++)
 	{
 		FinalCollectRT.Clear(color);
@@ -228,11 +245,12 @@ void ShadowMap::DrawToShadowCollector()
 		deviceContext->PSSetConstantBuffers(0, 1, &m_cb.GetBody());
 		ID3D11ShaderResourceView* precollectsrv[] = {
 			m_renderTarget[i].GetShaderResourceView(),
-			g_graphicsEngine->GetDeferredRender().GetWorldSRV(),
+			smLightManager().GetShadowRenderTarget().GetShaderResourceView(),
+			g_graphicsEngine->GetDeferredRender().GetWorldSRV()
 		};
 
-		deviceContext->VSSetShaderResources(0, 2, precollectsrv);
-		deviceContext->PSSetShaderResources(0, 2, precollectsrv);
+		deviceContext->VSSetShaderResources(0, 3, precollectsrv);
+		deviceContext->PSSetShaderResources(0, 3, precollectsrv);
 		m_postEffect.SetPS(&m_preCollectPS);
 		m_postEffect.Draw();
 

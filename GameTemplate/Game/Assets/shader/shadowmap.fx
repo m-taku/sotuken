@@ -21,10 +21,10 @@ cbuffer VSPSCb : register(b0) {
 	float4x4 mView;
 	float4x4 mProj;
 };
-
-cbuffer ShadowCB:register(b0) {
-	float4x4 LightView;
-	float4x4 LightProj;
+cbuffer BeforeShadowCB : register(b5) {
+	float4x4 beforeLightView[3];
+	float4x4 beforeLightProj[3];
+	int No;
 }
 /////////////////////////////////////////////////////////////
 // ストラクチャードバッファー
@@ -64,6 +64,7 @@ struct VSInputNmTxWeights
 struct PSInput {
 	float4 Position 	: SV_POSITION;
 	float2 TexCoord : TEXCOORD0;			//UV座標。
+	float3 WorldPos		: TEXCOORD1;
 };
 /*!
  *@brief	スキン行列を計算。
@@ -89,6 +90,7 @@ PSInput VSMaincreate(VSInputNmTxVcTangent In, float4x4 worldMat)
 {
 	PSInput psInput = (PSInput)0;
 	float4 pos = mul(worldMat, In.Position);
+	psInput.WorldPos = pos.xyz;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
@@ -134,9 +136,10 @@ PSInput VSMainSkincreate(VSInputNmTxWeights In, float4x4 worldMat)
 		//頂点座標にスキン行列を乗算して、頂点をワールド空間に変換。
 		//mulは乗算命令。
 		//pos = mul(skinning, In.Position);
-	}	
+	}
 	pos = mul(skinning, In.Position);
 	pos = mul(worldMat, pos);
+	psInput.WorldPos = pos.xyz;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
 	psInput.Position = pos;
@@ -154,6 +157,74 @@ PSInput VSMainSkin(VSInputNmTxWeights In)
 
 float PSMain(PSInput In) : SV_Target0
 {
+	float min,max;
+	max = 0.9985f;
+	min = 0.0015f;
+	if (No == 0)
+	{
+		return In.Position.z;
+	}
+	if (No == 1)
+	{
+		float4 World = float4(In.WorldPos, 1.0f);
+		float4 LUV;
+		LUV = mul(beforeLightView[0], World);
+		LUV = mul(beforeLightProj[0], LUV);
+		LUV.xyz /= LUV.w;
+		LUV.xy *= float2(0.5f, -0.5f);
+		LUV.xy += 0.5f;
+		if (
+			LUV.x < max
+			&& LUV.x > min
+			&& LUV.y < max
+			&& LUV.y > min
+			&& LUV.z < max
+			&& LUV.z > min
+			)
+		{
+			return 1.0f;
+		}
+	}
+
+	if (No == 2)
+	{
+		float4 World = float4(In.WorldPos, 1.0f);
+		float4 LUV;
+		LUV = mul(beforeLightView[0], World);
+		LUV = mul(beforeLightProj[0], LUV);
+		LUV.xyz /= LUV.w;
+		LUV.xy *= float2(0.5f, -0.5f);
+		LUV.xy += 0.5f;
+		if (
+			LUV.x < max
+			&& LUV.x > min
+			&& LUV.y < max
+			&& LUV.y > min
+			&& LUV.z < max
+			&& LUV.z > min
+			)
+		{
+			return 1.0f;
+		}
+
+		LUV = mul(beforeLightView[1], World);
+		LUV = mul(beforeLightProj[1], LUV);
+		LUV.xyz /= LUV.w;
+		LUV.xy *= float2(0.5f, -0.5f);
+		LUV.xy += 0.5f;
+		if (
+			LUV.x < max
+			&& LUV.x > min
+			&& LUV.y < max
+			&& LUV.y > min
+			&& LUV.z < max
+			&& LUV.z > min
+			)
+		{
+			return 1.0f;
+		}
+	}
+
 	return In.Position.z;
 }
 
@@ -161,5 +232,73 @@ float PSTreeMain(PSInput In) : SV_Target0
 {
 	float a = albedoTexture.Sample(Sampler, In.TexCoord).w;
 	clip(a - 0.1f);
+	float min, max;
+	max = 0.9985f;
+	min = 0.0015f;
+	if (No == 0)
+	{
+		return In.Position.z;
+	}
+	if (No == 1)
+	{
+		float4 World = float4(In.WorldPos, 1.0f);
+		float4 LUV;
+		LUV = mul(beforeLightView[0], World);
+		LUV = mul(beforeLightProj[0], LUV);
+		LUV.xyz /= LUV.w;
+		LUV.xy *= float2(0.5f, -0.5f);
+		LUV.xy += 0.5f;
+		if (
+			LUV.x < max
+			&& LUV.x > min
+			&& LUV.y < max
+			&& LUV.y > min
+			&& LUV.z < max
+			&& LUV.z > min
+			)
+		{
+			return 1.0f;
+		}
+	}
+
+	if (No == 2)
+	{
+		float4 World = float4(In.WorldPos, 1.0f);
+		float4 LUV;
+		LUV = mul(beforeLightView[0], World);
+		LUV = mul(beforeLightProj[0], LUV);
+		LUV.xyz /= LUV.w;
+		LUV.xy *= float2(0.5f, -0.5f);
+		LUV.xy += 0.5f;
+		if (
+			LUV.x < max
+			&& LUV.x > min
+			&& LUV.y < max
+			&& LUV.y > min
+			&& LUV.z < max
+			&& LUV.z > min
+			)
+		{
+			return 1.0f;
+		}
+
+		LUV = mul(beforeLightView[1], World);
+		LUV = mul(beforeLightProj[1], LUV);
+		LUV.xyz /= LUV.w;
+		LUV.xy *= float2(0.5f, -0.5f);
+		LUV.xy += 0.5f;
+		if (
+			LUV.x < max
+			&& LUV.x > min
+			&& LUV.y < max
+			&& LUV.y > min
+			&& LUV.z < max
+			&& LUV.z > min
+			)
+		{
+			return 1.0f;
+		}
+	}
+
 	return In.Position.z;
 }

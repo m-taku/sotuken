@@ -23,7 +23,6 @@ float4 PSLuminanceMain(PSInput In) : SV_Target0
 {
 	float2 texSize;
 	float level;
-	//輝度テクスチャのサイズを取得する。
 	srcTexture.GetDimensions(0, texSize.x, texSize.y, level);
 	float pixSizeX = 1.0f / texSize.x;
 	float pixSizeY = 1.0f / texSize.y;
