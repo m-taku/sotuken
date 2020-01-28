@@ -2,6 +2,8 @@
 #include "PlayerMovement.h"
 #include"../Test_PlayerData.h"
 #include "CameraMovement.h"
+#include "weapon/PlayerCombo.h"
+
 #include"PlayerStateALL.h"
 #include "PlayerState.h"
 
@@ -21,9 +23,9 @@ public:
 		Statedeath
 	};
 	enum anim {
-		attack,
-		idel,
+		//attack,
 		walk,
+		idel,
 		run,
 		num
 	};
@@ -72,9 +74,21 @@ public:
 		m_position = pos;
 		m_characon.SetPosition(pos);
 	}
-	void Playanim(anim No)
+	void Playanim(int No)
 	{
 		m_anim.Play(No,0.2f);
+	}
+	void SetAnim(AnimationClip animation[],int numAnimClip)
+	{
+		m_anim.AddAnimation(animation, numAnimClip);
+	}
+	void Setweapon()
+	{
+		m_combo->SetAnimation(this);
+	}
+	PlayerCombo* Getcombo()
+	{
+		return m_combo;
 	}
 	int Hp = 1;
 private:
@@ -89,7 +103,10 @@ private:
 		m_right.Normalize();
 		m_up.Normalize();
 		m_forward.Normalize();
-	}	DirectionLight* plight = nullptr;
+	}	
+	DirectionLight* plight = nullptr;
+
+	PlayerCombo* m_combo = nullptr;
 
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度

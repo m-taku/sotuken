@@ -9,6 +9,7 @@ PlayerMovement::PlayerMovement()
 
 PlayerMovement::~PlayerMovement()
 {
+	m_player->m_movespeed = CVector3::Zero();
 }
 
 void PlayerMovement::DefaultMove()
@@ -18,10 +19,10 @@ void PlayerMovement::DefaultMove()
 	m_player->m_movespeed = CVector3::Zero();
 	float padinput_LX = g_pad[0].GetLStickXF()*500.0f;
 	float padinput_LY = g_pad[0].GetLStickYF()*500.0f;
-	if (g_pad[0].IsTrigger(enButtonRB1))
+	if (g_pad[0].IsPress(enButtonRB1))
 	{
-		padinput_LX *= 1.5f;
-		padinput_LY *= 1.5f;
+		padinput_LX *= 100.5f;
+		padinput_LY *= 100.5f;
 	}
 	m_addGravityTime += 1.0f*GetFrameDeltaTime();
 	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;

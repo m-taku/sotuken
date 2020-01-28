@@ -30,9 +30,7 @@ void Animation::Init(SkinModel& skinModel, AnimationClip animClipList[], int num
 	}
 	m_skeleton = &skinModel.GetSkeleton();
 
-	for (int i = 0; i < numAnimClip; i++) {
-		m_animationClips.push_back(&animClipList[i]);
-	}
+	AddAnimation(animClipList,numAnimClip);
 	for (auto& ctr : m_animationPlayController) {
 		ctr.Init(m_skeleton);
 	}
@@ -42,6 +40,18 @@ void Animation::Init(SkinModel& skinModel, AnimationClip animClipList[], int num
 /*!
 * @brief	ローカルポーズの更新。
 */
+void Animation::AddAnimation(AnimationClip animClipList[], int numAnimClip)
+{
+	for (int i = 0; i < numAnimClip; i++) {
+		m_animationClips.push_back(&animClipList[i]);
+		animClipList[i].SetAnimation(this);
+	}
+}
+void Animation::deleteAnimation(AnimationClip* animClip)
+{
+	auto deleteanim = std::find(m_animationClips.begin(), m_animationClips.end(), animClip);
+	m_animationClips.erase(deleteanim);
+}
 void Animation::UpdateLocalPose(float deltaTime)
 {
 	m_interpolateTime += deltaTime;

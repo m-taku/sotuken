@@ -19,7 +19,7 @@ bool QuestStage::Init() {
 #ifdef DenugWorld
 	//’n–Ê‚¾‚¯–¼‘O‚Ì‚Ý
 	wchar_t moveFilePath[256];
-	swprintf_s(moveFilePath, L"Assets/modelData/%s12.cmo", m_Name);
+	swprintf_s(moveFilePath, L"Assets/modelData/%s1.cmo", m_Name);
 	m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	m_poa.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
@@ -98,8 +98,8 @@ bool QuestStage::Init() {
 		}
 		return false;
 	});
-	swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
-	m_testmodel.Init(moveFilePath);
+	//swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
+	//m_testmodel.Init(moveFilePath);
 	//m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
 	m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
 	//m_physicsStaticObject.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);

@@ -43,6 +43,8 @@ struct KeyframeRow {
 /*!
 *@brief	アニメーションクリップ。
 */
+//#include"Animation.h"
+class Animation;
 class AnimationClip  {
 public:
 	//タイプ量が長ったらしくて、うざいのでstd::vector<KeyFrame*>の別名定義。
@@ -77,6 +79,10 @@ public:
 	{
 		m_isLoop = flag;
 	}
+	void SetAnimation(Animation* animation)
+	{
+		m_Animation = animation;
+	}
 	/*!
 	*@brief
 	*/
@@ -95,6 +101,7 @@ private:
 	std::vector<keyFramePtrList> m_keyFramePtrListArray;	//ボーンごとのキーフレームのリストを管理するための配列。
 															//例えば、m_keyFramePtrListArray[0]は0番目のボーンのキーフレームのリスト、
 															//m_keyFramePtrListArray[1]は1番目のボーンのキーフレームのリストといった感じ。
+	Animation* m_Animation = nullptr;
 	keyFramePtrList* m_topBoneKeyFramList = nullptr;
 };
 
