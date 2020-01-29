@@ -12,7 +12,7 @@ int ItemCallback(void* iteminfo, int size, char** data, char **ColName) {
 	ITEMINFO item;
 	item.ID = atoi(data[0]);	// ID
 	item.Name = data[1];		// Name
-	item.FilePath = data[2];		// FilePath
+	item.FilePath = data[2];	// FilePath
 	item.Type = atoi(data[3]);	// Type
 	pItemList->push_back(item);
 	return 0;
@@ -23,8 +23,8 @@ int StockCallback(void* iteminfo, int size, char** data, char **ColName) {
 	// 引数はリスト
 	std::list<ITEMSTOCK> *pItemList = (std::list< ITEMSTOCK >*)iteminfo;
 	ITEMSTOCK stock;
-	stock.ID = atoi(data[0]);	// ID
-	stock.Name = data[1];		// Name
+	stock.ID = atoi(data[0]);			// ID
+	stock.Name = data[1];				// Name
 	stock.Stocks = atoi(data[2]);		// Stock
 	pItemList->push_back(stock);
 	return 0;
@@ -37,6 +37,7 @@ ItemDataBase::ItemDataBase()
 	int rc = sqlite3_open("Item.db", &ItemDB);
 	if (rc != SQLITE_OK) {
 		//失敗
+
 	}
 	// アイテムテーブルとストックテーブルの作成
 	// アイテムテーブル生成SQL
@@ -68,6 +69,7 @@ ItemDataBase::ItemDataBase()
 	if (!ifs.is_open()) {
 		sqlite3_close(ItemDB);
 		//失敗
+
 	}
 	char dummy[100], zName[24], zFilePath[256], InsertItemSQL[512], InsertStockSQL[512];
 	int iID, iType;
@@ -92,8 +94,8 @@ ItemDataBase::ItemDataBase()
 	//SQLを実行
 	sqlite3_exec(ItemDB, "SELECT ID,Name,FilePath,Type FROM ItemTable", ItemCallback, &m_ItemList, &m_errMsg);
 
+	// データベースを閉じる
 	sqlite3_close(ItemDB);
-
 }
 
 ItemDataBase::~ItemDataBase()
@@ -152,12 +154,13 @@ void ItemDataBase::SetItemStock(int id, int stockSize)
 	//SQLを実行
 	sqlite3_exec(ItemDB, "SELECT ID,Name,Stock FROM StockTable", StockCallback, &m_StockList, &m_errMsg);
 
+	// データベースを閉じる
 	sqlite3_close(ItemDB);
 }
 
 int ItemDataBase::GetItemStocks(int id)
 {
-	int itemStocks = NULL;
+	int itemStocks = -1;
 
 	for (auto itr = m_StockList.begin(); itr != m_StockList.end(); ++itr)
 	{

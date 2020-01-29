@@ -6,6 +6,9 @@
 #include"QuestManager.h"
 GameManager::GameManager()
 {
+	m_Stage.changTown();
+	m_QuestManager = NewGO<QuestManager>(0, "QuestManager");
+	m_player = NewGO<Player>(0, "player");
 }
 
 
@@ -15,9 +18,7 @@ GameManager::~GameManager()
 
 bool GameManager::Start()
 {
-	m_Stage.changTown();
-	m_QuestManager = NewGO<QuestManager>(0, "QuestManager");
-	NewGO<Player>(0, "player");
+
 	//cheng(true);
 	return true;
 }
@@ -38,6 +39,8 @@ void  GameManager::cheng(bool furag)
 	{
 		m_QuestManager->CloseGuest();
 		m_Stage.changQuestStage();
+		m_player->TransitionState(Player::StateQuestMove);
+		m_player->Setweapon();
 	}
 
 }

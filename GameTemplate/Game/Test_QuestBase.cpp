@@ -59,8 +59,6 @@ void Test_QuestBase::CreateQuest()
 	m_nowtime = 0.0f;
 
 	//クエストに関係する減算等あればここでする。
-	auto pla = FindGO<Player>("player");
-	pla->TransitionState(Player::StateQuestMove);
 	//DeleteGO(FindGO<Test_GuestManager>("tes"));
 }
 void Test_QuestBase::Update()
@@ -84,7 +82,7 @@ void Test_QuestBase::Update()
 						//NewGO<Town>(0, "town");
 						//NewGO<Test_GuestManager>(0, "tes");
 						m_Quest = false;
-						SetActive(false);
+						SetActive(m_Quest);
 						m_GameManager->cheng(m_Quest);
 						//	DeleteGO(Stage);
 						//	DeleteGO(this);
@@ -92,7 +90,7 @@ void Test_QuestBase::Update()
 					else
 					{
 						auto pla = FindGO<Player>("player");
-						pla->TransitionState(Player::StateTownMove);
+						pla->TransitionState(Player::StateQuestMove);
 						pla->Hp = 1;
 
 					}

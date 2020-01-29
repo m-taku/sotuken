@@ -7,6 +7,7 @@ MapChip::MapChip(const LevelObjectData& objData)
 {
 	swprintf_s(filePath, objData.name);
 	m_LevelData.push_back(objData);
+
 	//m_model.Init(filePath);
 	//m_model.UpdateWorldMatrix(objData.position, objData.rotation, objData.scale);
 	//m_model.EnableShadowCaster(true);
@@ -41,7 +42,7 @@ void MapChip::State()
 		}
 	}
 	if (m_LevelData.size() <= 1) {
-		if (m_Shadow) {
+		if (m_LevelData[0].m_Physicsflag) {
 			m_physicsStaticObject.push_back(new PhysicsStaticObject);
 			m_physicsStaticObject[0]->CreateMeshObject(*ka, m_LevelData[0].position, m_LevelData[0].rotation, m_LevelData[0].scale);
 			m_physicsStaticObject[0]->GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
@@ -51,7 +52,7 @@ void MapChip::State()
 	else
 	{
 		for (int i = 0; i < m_LevelData.size();i++) {
-			if (m_Shadow) {
+			if (m_LevelData[0].m_Physicsflag) {
 				m_physicsStaticObject.push_back(new PhysicsStaticObject);
 				m_physicsStaticObject[i]->CreateMeshObject(*ka, m_LevelData[i].position, m_LevelData[i].rotation, m_LevelData[i].scale);
 				m_physicsStaticObject[i]->GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
@@ -59,7 +60,7 @@ void MapChip::State()
 			m_model.UpdateInstancingData(m_LevelData[i].position, m_LevelData[i].rotation, m_LevelData[i].scale);
 		}
 	}
-	m_model.EnableShadowCaster(m_Shadow);
+	m_model.EnableShadowCaster(m_LevelData[0].m_Shadowflag);
 }
 void MapChip::Update()
 {
@@ -69,6 +70,14 @@ void MapChip::Update()
 	else {
 		m_model.BeginUpdateInstancingData();
 		for (auto obj : m_LevelData) {
+			if (m_LevelData[0].m_www)
+			{
+				auto len = obj.position - g_camera3D.GetPosition();
+				if (len.Length() >= 5000.0f)
+				{
+					continue;
+				}
+			}
 			m_model.UpdateInstancingData(obj.position, obj.rotation, obj.scale);
 		}
 	}
@@ -76,7 +85,7 @@ void MapChip::Update()
 }
 void MapChip::Draw()
 {
-	if (m_LevelData[0].m_furag) {
+	if (m_LevelData[0].m_Transflag) {
 		m_model.Draw(enTree, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 	}
 	else {
