@@ -76,7 +76,8 @@ bool Player::Start()
 	GetHitObjict().Create(&m_position, 50,[&](float damage) {
 
 	},HitObject::enemy);
-
+	m_modelpos = m_position;
+	m_rig.SetBoon(m_skinmodel,L"mixamorig:Hips");
 	m_combo = new Smallsword();
 	Playanim(run);
 	return true;
@@ -89,10 +90,15 @@ void Player::Update()
 		TransitionState(Statedeath);
 	}
 	m_state->Update();
-
+}
+void  Player::PostUpdate()
+{
+	m_anim.Update(GetFrameDeltaTime());
+	if (!m_anim.IsPlaying()) {
+		m_modelpos = m_position;
+	}
+	//auto move12 = m_rig.Updete();
 	CVector3 move = m_position;
-	//m_movespeed.z += 10.0f;
-	//m_movespeed.y -= 0.001f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	//if (m_movespeed.Length() != 0.0f&&m_statenum != Statedeath)
 	//{
@@ -105,11 +111,6 @@ void Player::Update()
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
 	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
-}
-void  Player::PostUpdate()
-{
-	m_anim.Update(GetFrameDeltaTime());
-
 }
 void Player::Draw()
 {

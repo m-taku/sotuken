@@ -46,8 +46,8 @@ void AnimationPlayController::Update(float deltaTime, Animation* animation)
 			else {
 				//ワンショット再生。
 				m_currentKeyFrameNo--;
-				m_isPlaying = false;	//再生終わり。
 			}
+			m_isPlaying = false;	//再生終わり。
 			break;
 		}
 		if (topBoneKeyFrameList.at(m_currentKeyFrameNo)->time >= m_time) {

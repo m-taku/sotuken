@@ -6,7 +6,7 @@
 
 #include"PlayerStateALL.h"
 #include "PlayerState.h"
-
+#include"../Rig.h"
 class Player :public IGameObject
 {
 	friend PlayerMovement;
@@ -107,8 +107,9 @@ private:
 	DirectionLight* plight = nullptr;
 
 	PlayerCombo* m_combo = nullptr;
-
+	Rig m_rig;
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
+	CVector3 m_modelpos = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向
 	CVector3 m_right = CVector3::Right();		//右方向

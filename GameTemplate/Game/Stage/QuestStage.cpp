@@ -62,25 +62,25 @@ bool QuestStage::Init() {
 		result = wcscmp(L"SM_Tree01", objData.name);
 		if (result == 0)
 		{
-			objData.m_furag = true;
+			objData.m_Transflag = true;
 			return false;
 		}
 		result = wcscmp(L"SM_Tree02", objData.name);
 		if (result == 0)
 		{
-			objData.m_furag = true;
+			objData.m_Transflag = true;
 			return false;
 		}
 		result = wcscmp(L"SM_Tree03", objData.name);
 		if (result == 0)
 		{
-			objData.m_furag = true;
+			objData.m_Transflag = true;
 			return false;
 		}
 		result = wcscmp(L"SM_Tree04", objData.name);
 		if (result == 0)
 		{
-			objData.m_furag = true;
+			objData.m_Transflag = true;
 			return false;
 		}
 		return true;
@@ -88,14 +88,9 @@ bool QuestStage::Init() {
 	swprintf_s(moveFilePath, L"Assets/level/www.tkl", m_Name);
 	nra1.Init(moveFilePath, [&](LevelObjectData& objData) {
 
-		objData.m_furag = true;
-		int result = 1;
-		result = wcscmp(L"SM_Bush02", objData.name);
-		if (result == 0)
-		{
-			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
-			return false;
-		}
+		objData.m_Transflag = true;
+		objData.m_Physicsflag = false;
+		objData.m_www = true;
 		return false;
 	});
 	//swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
