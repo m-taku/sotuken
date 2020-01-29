@@ -64,9 +64,7 @@ void Level::Init(const wchar_t* levelDataFilePath, Level::HookWhenBuildObjectFun
 	}
 	for (int i = 0; i < m_mapChipArray.size(); i++)
 	{
-		//(*m_mapChipArray[i].get()).SetShadow(false);
 		(*m_mapChipArray[i].get()).State();
-		(*m_mapChipArray[i].get()).Setwww();
 	}
 }
 void Level::UEInit(const wchar_t* levelDataFilePath, Level::HookWhenBuildObjectFunc hookFunc)

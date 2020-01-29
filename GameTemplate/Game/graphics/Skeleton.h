@@ -118,7 +118,10 @@ public:
 	*@param[out]	scale		Šg‘å—¦‚ÌŠi”[æB
 	*/
 	void CalcWorldTRS(CVector3& trans, CQuaternion& rot, CVector3& scale);
-	
+	const CVector3& Getpos()
+	{
+		return m_positoin;
+	}
 private:
 
 	std::wstring	m_boneName;
