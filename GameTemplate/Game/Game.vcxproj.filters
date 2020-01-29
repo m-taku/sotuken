@@ -173,6 +173,7 @@
     <ClCompile Include="Player\PlayerQuestMove.cpp" />
     <ClCompile Include="graphics\TextureManager.cpp" />
     <ClCompile Include="Player\PlayerAttackMode.cpp" />
+    <ClCompile Include="ItemDataBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -332,6 +333,7 @@
     <ClInclude Include="Player\PlayerQuestMove.h" />
     <ClInclude Include="graphics\TextureManager.h" />
     <ClInclude Include="Player\PlayerAttackMode.h" />
+    <ClInclude Include="ItemDataBase.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
