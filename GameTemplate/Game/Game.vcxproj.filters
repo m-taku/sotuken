@@ -173,7 +173,8 @@
     <ClCompile Include="Player\PlayerQuestMove.cpp" />
     <ClCompile Include="graphics\TextureManager.cpp" />
     <ClCompile Include="Player\PlayerAttackMode.cpp" />
-    <ClCompile Include="ItemDataBase.cpp" />
+    <ClCompile Include="weapon\Smallsword.cpp" />
+    <ClCompile Include="Rig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -333,7 +334,9 @@
     <ClInclude Include="Player\PlayerQuestMove.h" />
     <ClInclude Include="graphics\TextureManager.h" />
     <ClInclude Include="Player\PlayerAttackMode.h" />
-    <ClInclude Include="ItemDataBase.h" />
+    <ClInclude Include="weapon\Smallsword.h" />
+    <ClInclude Include="weapon\PlayerCombo.h" />
+    <ClInclude Include="Rig.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -552,6 +555,7 @@
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_2.FBX" />
     <MeshContentTask Include="Assets\modelData\vectormodel.fbx" />
     <MeshContentTask Include="Assets\modelData\Player.fbx" />
+    <MeshContentTask Include="Assets\modelData\Ground1.fbx" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />

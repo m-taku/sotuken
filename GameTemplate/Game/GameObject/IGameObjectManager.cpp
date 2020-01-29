@@ -44,6 +44,8 @@ namespace smEngine {
 				Object->UpdateWrapper();
 			}
 		}
+		smLightManager().Update();
+
 		smGameCamera().Update();
 
 		for (auto ObjectList : m_gameObjectListArray) {
@@ -60,8 +62,7 @@ namespace smEngine {
 				break;
 			}
 		}
-		//g_physics.DebubDrawWorld();
-		smLightManager().Update();
+		//g_physics.DebubDrawWorld();	
 		smLightManager().SendBuffer();
 		smLightManager().ShadowRender();
 		g_graphicsEngine->GetDeferredRender().Draw();

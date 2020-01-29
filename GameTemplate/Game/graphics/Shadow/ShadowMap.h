@@ -12,7 +12,7 @@ public:
 		enMapNum
 	};
 
-	void Init(int w = 2048, int h = 2048);
+	void Init(int w = 1024, int h = 1024);
 
 	void UpdateDirection(const CVector3& Direction);
 	void ShadowCasterDraw();
@@ -36,6 +36,12 @@ private:
 		CMatrix m_lightViewMatrix;
 		CMatrix m_lightProjectionMatrix;
 	};
+	struct SDrawCB
+	{
+		CMatrix m_lightViewMatrix[enMapNum];
+		CMatrix m_lightProjectionMatrix[enMapNum];
+		int No;
+	};
 	struct camer
 	{
 		float width = 0.0f;
@@ -44,6 +50,7 @@ private:
 	};
 	camer m_Camera[enMapNum];
 	ConstantBuffer m_cb;
+	ConstantBuffer m_drawCB;
 	float m_cascadePerHigh = 0.1f;
 	float m_cascadePerMidle = 0.3f;
 	float m_cascadePerLow = 0.6f;

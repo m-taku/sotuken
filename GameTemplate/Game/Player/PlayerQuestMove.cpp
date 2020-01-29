@@ -15,7 +15,8 @@ PlayerQuestMove::~PlayerQuestMove()
 void PlayerQuestMove::Update()
 {
 	Movement.DefaultMove();
-	if (g_pad[0].IsTrigger(enButtonX)) {
+	if (g_pad[0].IsTrigger(enButtonY)) {
 		m_player->TransitionState(Player::StateAttackMode);
 	}
+
 }

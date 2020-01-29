@@ -1,6 +1,6 @@
 Texture2D<float4> ShadowMap : register(t0);
 
-Texture2D<float4> WorldTexture : register(t1);
+
 
 Texture2D<float4> PreCollectTexture : register(t0);
 
@@ -8,6 +8,7 @@ Texture2D<float4> FinalCollectTexture : register(t1);
 Texture2D<float4> CopyTexture : register(t0);
 Texture2D<float4> ShadowCollectTexture : register(t0);
 Texture2D<float4> MainColorTexture : register(t1);
+Texture2D<float4> WorldTexture : register(t2);
 
 
 
@@ -67,10 +68,10 @@ float4 PSMain(PSInput In) : SV_Target0
 		float mapZ = ShadowMap.Sample(Sampler, LUV.xy).x;
 		if (Z > mapZ + 0.0005f)
 		{
-			s.xyz *= 0.0f;
+			s.xyz = 0.0f;
 		}
 	}
-	
+
 	return s;
 }
 
@@ -84,7 +85,7 @@ float4 PSCollectMain(PSInput In) : SV_Target0
 
 float4 PSCopyMain(PSInput In) : SV_Target0
 {
-	float4 color =CopyTexture.Sample(Sampler, In.uv);
+	float4 color = CopyTexture.Sample(Sampler, In.uv);
 	return color;
 }
 

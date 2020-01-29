@@ -9,7 +9,7 @@ Playerdeath::Playerdeath(Player* player) :PlayerState(player)
 {
 	auto manager = FindGO<QuestManager>("QuestManager");
 	manager->Playerdoun();
-	m_player->Playanim(Player::attack);
+	//m_player->Playanim(Player::attack);
 }
 
 

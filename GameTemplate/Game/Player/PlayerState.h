@@ -22,7 +22,7 @@ public:
 	/// </summary>
 	virtual void Update() = 0;
 	/// <summary>
-	/// アップデート。
+	/// ドロー
 	/// </summary>
 	virtual void Draw()
 	{

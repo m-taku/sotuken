@@ -173,6 +173,8 @@
     <ClCompile Include="Player\PlayerState.cpp" />
     <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="QuestSelect.cpp" />
+    <ClCompile Include="Rig.cpp" />
+    <ClCompile Include="weapon\Smallsword.cpp" />
     <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="Stage\QuestStage.cpp" />
     <ClCompile Include="SaveData_Select.cpp" />
@@ -264,6 +266,8 @@
     <ClInclude Include="physics\PhysicsStaticObject.h" />
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="Rig.h" />
+    <ClInclude Include="weapon\PlayerCombo.h" />
     <ClInclude Include="Player\PlayerAttackMode.h" />
     <ClInclude Include="Player\PlayerQuestMove.h" />
     <ClInclude Include="Player\PlayerAttack.h" />
@@ -280,6 +284,7 @@
     <ClInclude Include="Player\PlayerState.h" />
     <ClInclude Include="QuestManager.h" />
     <ClInclude Include="QuestSelect.h" />
+    <ClInclude Include="weapon\Smallsword.h" />
     <ClInclude Include="StageManager.h" />
     <ClInclude Include="Stage\QuestStage.h" />
     <ClInclude Include="SaveData_Select.h" />
@@ -312,6 +317,7 @@
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_1.FBX" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_2.FBX" />
     <MeshContentTask Include="Assets\modelData\Ground.fbx" />
+    <MeshContentTask Include="Assets\modelData\Ground1.fbx" />
     <MeshContentTask Include="Assets\modelData\Ground12.fbx" />
     <MeshContentTask Include="Assets\modelData\jiman.FBX" />
     <MeshContentTask Include="Assets\modelData\map\Groundcori.FBX" />

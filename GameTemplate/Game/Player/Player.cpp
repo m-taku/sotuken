@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Player.h"
 #include"../HitManeger.h"
+#include"weapon/Smallsword.h"
 
 
 
@@ -17,6 +18,7 @@ Player::Player()
 Player::~Player()
 {
 	delete m_state;
+	delete m_combo;
 }
 
 void Player::TransitionState(State m)
@@ -51,8 +53,8 @@ bool Player::Start()
 {
 	smGameCamera().Init();
 	m_skinmodel.Init(L"Assets/modelData/Player.cmo");
-	m_animClip[attack].Load(L"Assets/animData/death.tka");
-	m_animClip[attack].SetLoopFlag(false); 
+	//m_animClip[attack].Load(L"Assets/animData/death.tka");
+	//m_animClip[attack].SetLoopFlag(false); 
 	m_animClip[idel].Load(L"Assets/animData/idel.tka");
 	m_animClip[idel].SetLoopFlag(true);
 	m_animClip[run].Load(L"Assets/animData/run.tka");
@@ -74,6 +76,10 @@ bool Player::Start()
 	GetHitObjict().Create(&m_position, 50,[&](float damage) {
 
 	},HitObject::enemy);
+	m_modelpos = m_position;
+	m_rig.SetBoon(m_skinmodel,L"mixamorig:Hips");
+	m_combo = new Smallsword();
+	Playanim(run);
 	return true;
 }
 
@@ -84,29 +90,28 @@ void Player::Update()
 		TransitionState(Statedeath);
 	}
 	m_state->Update();
-
+}
+void  Player::PostUpdate()
+{
+	m_anim.Update(GetFrameDeltaTime());
+	if (!m_anim.IsPlaying()) {
+		m_modelpos = m_position;
+	}
+	//auto move12 = m_rig.Updete();
 	CVector3 move = m_position;
-	//m_movespeed.z += 10.0f;
-	//m_movespeed.y -= 0.001f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
-	if (m_movespeed.Length() != 0.0f&&m_statenum != Statedeath)
-	{
-		Playanim(walk);
-	}
-	else if(m_statenum != Statedeath)
-	{
-		Playanim(walk);
-	}
+	//if (m_movespeed.Length() != 0.0f&&m_statenum != Statedeath)
+	//{
+	//	Playanim(run);
+	//}
+	//else if(m_statenum != Statedeath)
+	//{
+	//	Playanim(run);
+	//}
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
 	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
 }
-void  Player::PostUpdate()
-{
-	//m_anim.Update(GetFrameDeltaTime());
-
-}
-
 void Player::Draw()
 {
 	m_skinmodel.Draw(

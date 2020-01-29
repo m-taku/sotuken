@@ -28,7 +28,9 @@ public:
 		*/
 	void Init(SkinModel& skinModel, AnimationClip animClipList[], int numAnimClip);
 
-		
+	void AddAnimation(AnimationClip animClipList[], int numAnimClip);
+
+	void deleteAnimation(AnimationClip* animClip);
 	/*!
 	*@brief	アニメーションの再生。
 	*@param[in]	clipNo	アニメーションクリップの番号。Init関数に渡したanimClipListの並びとなる。

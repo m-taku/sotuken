@@ -71,7 +71,7 @@ void SaveData_Select::Update()
 	if (g_pad[0].IsTrigger(enButtonA))
 	{
 
-		NewGO<GameManager>(0, "GameManager");
+		NewGO<GameManager>(10, "GameManager");
 		DeleteGO(this);
 		for (auto k : m_text)
 		{

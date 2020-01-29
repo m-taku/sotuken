@@ -13,6 +13,7 @@ AnimationClip::~AnimationClip()
 	for (auto& keyFrame : m_keyframes) {
 		delete keyFrame;
 	}
+	m_Animation->deleteAnimation(this);
 }
 
 void AnimationClip::Load(const wchar_t* filePath)
