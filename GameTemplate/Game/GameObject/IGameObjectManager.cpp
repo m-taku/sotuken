@@ -84,6 +84,12 @@ namespace smEngine {
 		g_graphicsEngine->ChangeBuckBuffer();
 		g_graphicsEngine->PostEffectDraw();
 
+		for (auto ObjectList : m_gameObjectListArray) {
+			for (auto Object : ObjectList)
+			{
+				Object->UIDrawWrapper();
+			}
+		}
 
 
 		NewExecution();

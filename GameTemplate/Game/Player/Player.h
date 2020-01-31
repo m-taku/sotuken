@@ -90,7 +90,7 @@ public:
 	{
 		return m_combo;
 	}
-	int Hp = 1;
+	int Hp = 150;
 private:
 	void UpdateAxis()
 	{

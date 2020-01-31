@@ -140,7 +140,6 @@
     <ClCompile Include="GameObject\IGameObjectManager.cpp" />
     <ClCompile Include="graphics\IndexBuffer.cpp" />
     <ClCompile Include="HitObject.cpp" />
-    <ClCompile Include="ItemDataBase.cpp" />
     <ClCompile Include="level\Level.cpp" />
     <ClCompile Include="level\MapChip.cpp" />
     <ClCompile Include="graphics\Light\LightBase.cpp" />
@@ -174,6 +173,7 @@
     <ClCompile Include="QuestManager.cpp" />
     <ClCompile Include="QuestSelect.cpp" />
     <ClCompile Include="Rig.cpp" />
+    <ClCompile Include="UI\UI.cpp" />
     <ClCompile Include="weapon\Smallsword.cpp" />
     <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="Stage\QuestStage.cpp" />
@@ -245,7 +245,6 @@
     <ClInclude Include="graphics\IndexBuffer.h" />
     <ClInclude Include="HitManeger.h" />
     <ClInclude Include="HitObject.h" />
-    <ClInclude Include="ItemDataBase.h" />
     <ClInclude Include="level\Level.h" />
     <ClInclude Include="level\MapChip.h" />
     <ClInclude Include="graphics\Light\LightBase.h" />
@@ -267,6 +266,7 @@
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
     <ClInclude Include="Rig.h" />
+    <ClInclude Include="UI\UI.h" />
     <ClInclude Include="weapon\PlayerCombo.h" />
     <ClInclude Include="Player\PlayerAttackMode.h" />
     <ClInclude Include="Player\PlayerQuestMove.h" />

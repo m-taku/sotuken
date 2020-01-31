@@ -175,6 +175,7 @@
     <ClCompile Include="Player\PlayerAttackMode.cpp" />
     <ClCompile Include="weapon\Smallsword.cpp" />
     <ClCompile Include="Rig.cpp" />
+    <ClCompile Include="UI\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -337,6 +338,7 @@
     <ClInclude Include="weapon\Smallsword.h" />
     <ClInclude Include="weapon\PlayerCombo.h" />
     <ClInclude Include="Rig.h" />
+    <ClInclude Include="UI\UI.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

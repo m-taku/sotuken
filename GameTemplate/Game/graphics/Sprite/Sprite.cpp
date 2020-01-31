@@ -8,7 +8,7 @@ namespace smEngine {
 			CVector2 tex;
 		};
 	}
-	const CVector2	Sprite::DEFAULT_PIVOT = { 0.5f, 0.5f };
+	const CVector2	Sprite::DEFAULT_PIVOT = { 0.0f, 0.0f };
 	Sprite::Sprite()
 	{
 		m_viewMatrix.MakeLookAt(
@@ -25,7 +25,7 @@ namespace smEngine {
 	}
 	Sprite::~Sprite()
 	{
-		if (m_samplerState !=nullptr)
+		if (m_samplerState != nullptr)
 		{
 			m_samplerState->Release();
 		}
@@ -101,8 +101,8 @@ namespace smEngine {
 		//ピボットを考慮に入れた平行移動行列を作成。
 		//ピボットは真ん中が0.0, 0.0、左上が-1.0f, -1.0、右下が1.0、1.0になるようにする。
 		CVector2 localPivot = pivot;
-		localPivot.x -= 0.5f;
-		localPivot.y -= 0.5f;
+		localPivot.x *= FRAME_BUFFER_W / 2.0f;
+		localPivot.y *= FRAME_BUFFER_H / 2.0f;
 		localPivot.x *= -2.0f;
 		localPivot.y *= -2.0f;
 		//画像のハーフサイズを求める。

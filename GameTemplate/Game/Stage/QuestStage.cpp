@@ -4,6 +4,7 @@
 #include"../Enemyname/MonsterList.h"
 #include"Enemy/Enemy.h"
 
+
 QuestStage::QuestStage()
 {
 }
@@ -36,7 +37,7 @@ bool QuestStage::Init() {
 		if (result == 0)
 		{
 			return false;
-		}	
+		}
 		result = wcscmp(L"SM_Rock05", objData.name);
 		if (result == 0)
 		{
@@ -48,6 +49,9 @@ bool QuestStage::Init() {
 			auto pos = objData.position;
 			pos.y += 100.0f;
 			FindGO<Player>("player")->SetPosition(pos);
+			m_ui = NewGO<UI>(0, "ui");
+			m_ui->Init(150, 150, 50);
+			m_ui->SetHP(50);
 			pos.y += -150.0f;
 			new dorakomesu(pos);
 			//FindGO<Enemy>("dorakomesu")->SetPosition(pos);
@@ -58,7 +62,7 @@ bool QuestStage::Init() {
 		{
 			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return true;
-		}	
+		}
 		result = wcscmp(L"SM_Tree01", objData.name);
 		if (result == 0)
 		{
@@ -107,5 +111,5 @@ void QuestStage::DrawDebug()
 {
 	nra.Draw();
 	nra1.Draw();
-	m_model.Draw(enNormal,g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+	m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 }
