@@ -4,6 +4,7 @@
 #include"../Enemyname/MonsterList.h"
 #include"Enemy/Enemy.h"
 
+
 QuestStage::QuestStage()
 {
 }
@@ -26,7 +27,7 @@ bool QuestStage::Init() {
 	swprintf_s(moveFilePath, L"Assets/level/%s31.tkl", m_Name);
 	int count = 0;
 	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
-		int result = 1;	
+		int result = 1;
 		result = wcscmp(L"SM_ItemboxII10Closed", objData.name);
 		if (result == 0)
 		{
@@ -38,8 +39,9 @@ bool QuestStage::Init() {
 			auto pos = objData.position;
 			pos.y += 100.0f;
 			FindGO<Player>("player")->SetPosition(pos);
-			pos.y += -150.0f;
-
+			m_ui = NewGO<UI>(0, "ui");
+			m_ui->Init(150, 150, 50);
+			m_ui->SetHP(50);
 			//FindGO<Enemy>("dorakomesu")->SetPosition(pos);
 			return true;
 		}
@@ -47,10 +49,11 @@ bool QuestStage::Init() {
 		if (result == 0)
 		{
 			auto pos = objData.position;
-			pos.y += 100.0f;
+
 			new dorakomesu(pos);
+			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
 			return true;
-		}	
+		}
 		result = wcscmp(L"SM_Tree01", objData.name);
 		if (result == 0)
 		{
@@ -99,5 +102,5 @@ void QuestStage::DrawDebug()
 {
 	nra.Draw();
 	nra1.Draw();
-	m_model.Draw(enNormal,g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+	m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 }

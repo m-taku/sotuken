@@ -69,7 +69,7 @@ float4 PSFinalMain(PSInput In) : SV_Target0
 	float4 srcColor = srcTexture.Sample(Sampler, In.uv);
 	float ave = 1.0f / max(0.0001f,dot(luminance.xyz, float3(0.2125f, 0.7154f, 0.0721f)));
 	//float ave = 0.33333f / max(0.000001f, t);
-	float4 color = srcColor * ave*0.33333f;
+	float4 color = srcColor * ave*0.28f;
 	color.w = 1.0f;
 	return color;
 }

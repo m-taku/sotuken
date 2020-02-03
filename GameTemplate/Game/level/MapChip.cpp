@@ -73,7 +73,7 @@ void MapChip::Update()
 			if (m_LevelData[0].m_www)
 			{
 				auto len = obj.position - g_camera3D.GetPosition();
-				if (len.Length() >= 3000.0f)
+				if (len.Length() >= 5000.0f)
 				{
 					continue;
 				}
