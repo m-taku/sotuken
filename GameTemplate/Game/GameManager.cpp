@@ -18,6 +18,7 @@ GameManager::~GameManager()
 
 bool GameManager::Start()
 {
+	m_player->TransitionState(Player::StateTownMove);
 
 	//cheng(true);
 	return true;
@@ -32,13 +33,14 @@ void  GameManager::cheng(bool furag)
 	if (!furag)
 	{
 		auto m_target = FindGO<Enemy>("enemy");
+		m_player->TransitionState(Player::StateTownMove);
 		DeleteGO(m_target);
 		m_Stage.changTown();
 	}
 	else
 	{
-		m_QuestManager->CloseGuest();
 		m_Stage.changQuestStage();
+		m_QuestManager->CloseGuest();
 		m_player->TransitionState(Player::StateQuestMove);
 		m_player->Setweapon();
 	}

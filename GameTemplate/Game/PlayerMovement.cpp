@@ -69,3 +69,23 @@ void PlayerMovement::DefaultMove()
 		}
 	}
 }
+void PlayerMovement::AttackMove()
+{
+	m_player->m_movespeed = CVector3::Zero();	
+
+	if (m_player->m_isAnimMove)
+	{
+		m_player->m_movespeed = m_player->m_rig.Updete();
+		m_player->m_movespeed /= GetFrameDeltaTime();
+	}	
+
+	m_addGravityTime += 1.0f*GetFrameDeltaTime();
+	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
+	m_player->m_movespeed.y -= m_fallSpeed;
+	if (m_player->m_characon.IsOnGround())
+	{
+		m_addGravityTime = 0.0f;
+		m_fallSpeed = 0.0f;
+		m_player->m_movespeed.y = 0.0f;
+	}
+}

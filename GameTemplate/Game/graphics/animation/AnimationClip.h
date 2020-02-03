@@ -3,7 +3,6 @@
  */
 
 #pragma once
-
 //////////////////////////////////////////////////////////////////////
 // 各種構造体
 //////////////////////////////////////////////////////////////////////
@@ -39,7 +38,74 @@ struct KeyframeRow {
 	float time;					//!<時間。
 	CVector3 transform[4];		//!<トランスフォーム。
 };
+struct EventDate {
+	float	invokeTime;					//!<アニメーションイベントが発生する時間(単位:秒)
+	std::wstring eventNameLength;		//!<イベント名
+};
+/// <summary>
+/// アニメーションイベントクラス
+/// </summary>
+/// <remarks>
+/// キーとキーの間を取るためのデータです
+/// </remarks>
+class AnimationEvent : Noncopyable
+{
+public:
+	AnimationEvent()
+	{
 
+	}
+	~AnimationEvent()
+	{
+		for (auto date : m_date)
+		{
+			delete date;
+		}
+		m_date.clear();
+	}
+	/// <summary>
+	/// イベントのデータのセット
+	/// </summary>
+	/// <param name="date">
+	/// イベントデータ（EventDate*）
+	/// </param>
+	void SetEventDete(EventDate* date)
+	{
+		m_date.push_back(date);
+	}
+	/// <summary>
+	/// 発生しているイベントの名前の取得
+	/// </summary>
+	/// <returns>
+	/// 発生しているイベントの名前（wchar_t*）
+	/// </returns>
+	const wchar_t* GetEventname(int No) const
+	{
+		return m_date[No]->eventNameLength.c_str();
+	}
+	/// <summary>
+	/// イベントの発生させる時間のゲット
+	/// </summary>
+	/// <returns>
+	/// イベントの発生時間（秒）
+	/// </returns>
+	const float GetinvokeTime(int No)
+	{
+		return m_date[No]->invokeTime;
+	}
+	/// <summary>
+	/// イベントの総数
+	/// </summary>
+	/// <returns>
+	/// イベントデータの数
+	/// </returns>
+	const int GetDateSize()
+	{
+		return m_date.size();
+	}
+private:
+	std::vector<EventDate*> m_date;
+};
 /*!
 *@brief	アニメーションクリップ。
 */
@@ -94,6 +160,10 @@ public:
 	{
 		return *m_topBoneKeyFramList;
 	}
+	const std::vector<AnimationEvent*>& GetAnimationEventlist()const
+	{
+		return m_AnimationEventlist;
+	}
 private:
 	
 	bool m_isLoop = false;									//!<ループフラグ。
@@ -101,7 +171,7 @@ private:
 	std::vector<keyFramePtrList> m_keyFramePtrListArray;	//ボーンごとのキーフレームのリストを管理するための配列。
 															//例えば、m_keyFramePtrListArray[0]は0番目のボーンのキーフレームのリスト、
 															//m_keyFramePtrListArray[1]は1番目のボーンのキーフレームのリストといった感じ。
+	std::vector<AnimationEvent*> m_AnimationEventlist;		//アニメーションイベントの配列
 	Animation* m_Animation = nullptr;
 	keyFramePtrList* m_topBoneKeyFramList = nullptr;
 };
-

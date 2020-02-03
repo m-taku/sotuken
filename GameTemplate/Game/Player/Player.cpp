@@ -36,6 +36,7 @@ void Player::TransitionState(State m)
 		m_state = new PlayerAttack(this);
 		break;
 	case StateAttackMode:
+
 		m_state = new PlayerAttackMode(this);
 		break;
 	case Statedeath:
@@ -51,6 +52,7 @@ void Player::TransitionState(State m)
 }
 bool Player::Start()
 {
+
 	smGameCamera().Init();
 	m_skinmodel.Init(L"Assets/modelData/Player.cmo");
 	//m_animClip[attack].Load(L"Assets/animData/death.tka");
@@ -73,44 +75,44 @@ bool Player::Start()
 	plight->SetDirection(CVector3::Down()+CVector3::Right()+ CVector3::Front());
 	plight->ShadowEnable(true);
 	smLightManager().AddLight(plight);
-	GetHitObjict().Create(&m_position, 50,[&](float damage) {
 
-	},HitObject::enemy);
+	m_combo = new Smallsword(this);
 	m_modelpos = m_position;
 	m_rig.SetBoon(m_skinmodel,L"mixamorig:Hips");
-	m_combo = new Smallsword();
 	Playanim(run);
 	return true;
 }
 
 void Player::Update()
 {
-	if (Hp <= 0&& m_statenum != Statedeath)
-	{
-		TransitionState(Statedeath);
-	}
-	m_state->Update();
-}
-void  Player::PostUpdate()
-{
-	m_anim.Update(GetFrameDeltaTime());
-	if (!m_anim.IsPlaying()) {
-		m_modelpos = m_position;
-	}
-	//auto move12 = m_rig.Updete();
+	//if (Hp <= 0&& m_statenum != Statedeath)
+	//{
+	//	TransitionState(Statedeath);
+	//}
+	m_state->Update();	
 	CVector3 move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
-	//if (m_movespeed.Length() != 0.0f&&m_statenum != Statedeath)
-	//{
-	//	Playanim(run);
-	//}
-	//else if(m_statenum != Statedeath)
-	//{
-	//	Playanim(run);
-	//}
+	if (m_anim.IsPlaying()) {
+		if (!m_isAnimMove) {
+			m_modelpos = m_position;
+		}
+		else
+		{
+			m_modelpos += m_characon.GetOffset();
+		}
+	}
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
-	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, m_scale);
+	m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
+}
+void Player::PostUpdate()
+{
+	m_anim.Update(GetFrameDeltaTime());
+}
+void Player::InMovemAnim()
+{
+	m_isAnimMove = true;
+	m_rig.StateRig();
 }
 void Player::Draw()
 {

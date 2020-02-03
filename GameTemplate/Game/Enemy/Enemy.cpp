@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "Enemy.h"
 #include "EnemyStateList.h"
-#include"Player.h"
 #include"VectorDraw.h"
-
+#include"../HitManeger.h"
 Enemy::Enemy()
 {
 	m_characon.Init(
@@ -53,22 +52,18 @@ bool Enemy::Start()
 	{
 		m_VectorDraw.push_back(new VectorDraw(CVector3::Zero()));
 	}
+	GetHitObjict().Create(&m_position, 500, [&](float damage) {
+		HitAction(damage);
+	}, HitObject::enemy);
 	TransitionState(m_statenum);
 	return true;
 }
 void Enemy::Update()
 {
-	if (g_pad[0].IsTrigger(enButtonRB2))
-	{
-		FindGO<Player>("player")->Hp--;
-	}
-	debugtaim += GetFrameDeltaTime();
-	if (debugtaim >= 30.0f)
-	{
-		debugtaim = -FLT_MAX;
-		TransitionState(StateAttack);
-	}
-
+	//if (g_pad[0].IsTrigger(enButtonRB2))
+	//{
+	//	FindGO<Player>("player")->Hp--;
+	//}
 	for (int i = 0; i < m_VectorDraw.size(); i++) {
 		auto n = m_skinmodel.GetSkeleton().GetBone(i);
 		auto mamma = n->GetWorldMatrix();
@@ -107,5 +102,12 @@ void Enemy::PostUpdate()
 	if (g_pad[0].IsPress(enButtonDown))
 	{
 		m_anim.Update(GetFrameDeltaTime());
+	}
+}
+void Enemy::HitAction(float damage)
+{
+	HP -= damage;
+	if (HP <= 0&&m_statenum != StateDead) {
+		TransitionState(StateDead);
 	}
 }

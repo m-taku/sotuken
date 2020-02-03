@@ -5,7 +5,7 @@
 
 EnemyStateDead::EnemyStateDead(Enemy* enemypoint):EnemyState(enemypoint)
 {
-	m_player = FindGO<Player>("player");
+
 }
 
 

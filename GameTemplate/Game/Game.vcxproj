@@ -153,6 +153,8 @@
     <ClCompile Include="physics\PhysicsStaticObject.cpp" />
     <ClCompile Include="graphics\ShaderResourceView.cpp" />
     <ClCompile Include="graphics\Primitive.cpp" />
+    <ClCompile Include="QuestResult.cpp" />
+    <ClCompile Include="weapon\PlayerCombo.cpp" />
     <ClCompile Include="Player\PlayerAttackMode.cpp" />
     <ClCompile Include="Player\PlayerQuestMove.cpp" />
     <ClCompile Include="Player\PlayerAttack.cpp" />
@@ -260,6 +262,7 @@
     <ClInclude Include="physics\PhysicsStaticObject.h" />
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="QuestResult.h" />
     <ClInclude Include="Rig.h" />
     <ClInclude Include="weapon\PlayerCombo.h" />
     <ClInclude Include="Player\PlayerAttackMode.h" />
@@ -516,6 +519,8 @@
     <MeshContentTask Include="Assets\modelData\map\SM_WoodStairs03.fbx" />
     <MeshContentTask Include="Assets\modelData\map\SM_WoodStairs03kni.FBX" />
     <MeshContentTask Include="Assets\modelData\Player.fbx" />
+    <MeshContentTask Include="Assets\modelData\Smallsword1.fbx" />
+    <MeshContentTask Include="Assets\modelData\Smallsword2.fbx" />
     <MeshContentTask Include="Assets\modelData\Towncori.fbx" />
     <MeshContentTask Include="Assets\modelData\Towncori1.fbx" />
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -622,11 +627,9 @@
     <ImageContentTask Include="Assets\modelData\map\tex\T_rocks01_N.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\T_treebark01_N.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\T_treeleaves01_N.TGA" />
+    <ImageContentTask Include="Assets\modelData\map\tex\T_dirttile01_N.tga" />
     <Image Include="Assets\sprite\Title1.png" />
     <Image Include="Assets\sprite\Title2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\modelData\StarSparrow.cmo" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

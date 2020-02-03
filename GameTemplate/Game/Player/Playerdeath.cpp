@@ -21,9 +21,8 @@ Playerdeath::~Playerdeath()
 
 void Playerdeath::Update()
 {
-	//CVector3 pos = CVector3::Zero();
-	//CQuaternion pol;
-	//pol.SetRotationDeg(CVector3::AxisX(), 2.0f);
-	//rod.Multiply(pol);
-	//m_player->SetRotation(rod);
+	CQuaternion pol;
+	pol.SetRotationDeg(CVector3::AxisX(), 2.0f);
+	rod.Multiply(pol);
+	m_player->SetRotation(rod);
 }

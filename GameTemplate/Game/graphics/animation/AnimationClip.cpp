@@ -13,6 +13,10 @@ AnimationClip::~AnimationClip()
 	for (auto& keyFrame : m_keyframes) {
 		delete keyFrame;
 	}
+	for (auto Event : m_AnimationEventlist)
+	{
+		delete Event;
+	}
 	m_Animation->deleteAnimation(this);
 }
 
@@ -36,9 +40,32 @@ void AnimationClip::Load(const wchar_t* filePath)
 	fread(&header, sizeof(header), 1, fp);
 		
 	if (header.numAnimationEvent > 0) {
-		//アニメーションイベントは未対応。
-		//就職作品でチャレンジしてみよう。
-		std::abort();
+		for (int i = 0; i < header.numAnimationEvent; i++) {
+			std::uint32_t eventnum = 0;
+			fread(&eventnum, sizeof(eventnum), 1, fp);
+			AnimationEvent* Event = new AnimationEvent;
+			for (int j = 0; j < eventnum; j++)
+			{
+				AnimationEventData eventdata;
+				//ここでファイルからデータを抽出
+				//発生時間と文字の長さのみ
+				fread(&eventdata, sizeof(eventdata), 1, fp);
+				static char name[255];
+				static wchar_t neme_t[255];
+				//ここでファイルからデータを抽出
+				//文字自体のデータ
+				fread(&name, eventdata.eventNameLength + 1, 1, fp);
+				//ここでもらったデータをcharをwchar_tに変換を変える
+				mbstowcs(neme_t, name, 255);
+				//できたデータをまとめる
+				auto dete = new EventDate;
+				dete->eventNameLength = neme_t;
+				dete->invokeTime = eventdata.invokeTime;
+				Event->SetEventDete(dete);
+				//出来上がったデータをリストに積む
+			}
+			m_AnimationEventlist.push_back(Event);
+		}
 	}
 
 

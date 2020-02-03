@@ -38,8 +38,6 @@ bool Town::Init()
 			pos.y += 1000.0f;
 			auto player = FindGO<Player>("player");
 			player->SetPosition(pos);
-			player->Hp = 1;
-			player->TransitionState(Player::StateTownMove);
 			//pos.y += 100.0f;
 			//FindGO<Player>("player")->SetPosition(pos);
 			pos.y = 150.0f;

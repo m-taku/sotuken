@@ -55,8 +55,7 @@ private:
 	Sprite m_sprite[2];
 	ShaderResourceView m_srv[2];
 	void* monsu = nullptr;
-	
-	GameManager* m_GameManager = nullptr;
+	void ChengResult(bool flag);
 	bool m_Quest = false;
 	bool m_nowdoun = false;
 	int m_doun = 0;

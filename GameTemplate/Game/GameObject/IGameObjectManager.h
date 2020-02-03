@@ -84,6 +84,8 @@ namespace smEngine {
 			return nullptr;
 		}
 		void DeleteExecution();
+		//すべてのアクティブを変更
+		void ChengAllActive(bool flag);
 	private:
 		typedef std::list<IGameObject*>	GameObjectList;						//ゲームオブジェクトのリスト
 		std::vector<GameObjectList> m_gameObjectListArray;					//優先度付きのゲームオブジェクトのリスト
@@ -109,7 +111,11 @@ namespace smEngine {
 	}
 	static inline void DeleteGO(IGameObject* object)
 	{
-		return GameObjectManager().DeleteGameObject(object);
+		GameObjectManager().DeleteGameObject(object);
+	}
+	static inline void ChengAllActive(bool flag)
+	{
+		GameObjectManager().ChengAllActive(flag);
 	}
 }
 

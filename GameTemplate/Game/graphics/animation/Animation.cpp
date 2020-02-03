@@ -37,9 +37,7 @@ void Animation::Init(SkinModel& skinModel, AnimationClip animClipList[], int num
 		
 	Play(0);
 }
-/*!
-* @brief	ローカルポーズの更新。
-*/
+
 void Animation::AddAnimation(AnimationClip animClipList[], int numAnimClip)
 {
 	for (int i = 0; i < numAnimClip; i++) {
@@ -52,6 +50,9 @@ void Animation::deleteAnimation(AnimationClip* animClip)
 	auto deleteanim = std::find(m_animationClips.begin(), m_animationClips.end(), animClip);
 	m_animationClips.erase(deleteanim);
 }
+/*!
+* @brief	ローカルポーズの更新。
+*/
 void Animation::UpdateLocalPose(float deltaTime)
 {
 	m_interpolateTime += deltaTime;
@@ -130,6 +131,8 @@ void Animation::UpdateGlobalPose()
 			qGlobalPose[boneNo].Slerp(intepolateRate, qGlobalPose[boneNo], qBone);
 		}
 	}
+
+	//
 	//グローバルポーズをスケルトンに反映させていく。
 	for (int boneNo = 0; boneNo < numBone; boneNo++) {
 		

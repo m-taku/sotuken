@@ -9,6 +9,10 @@ public:
 	~GameManager();
 	bool Start();
 	void Update();
+	void SetActive(bool Active)
+	{
+
+	}
 	void cheng(bool furag);
 	Player* m_player = nullptr;
  	StageManager m_Stage;

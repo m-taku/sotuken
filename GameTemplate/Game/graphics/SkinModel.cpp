@@ -103,6 +103,7 @@ void SkinModel::Init(const wchar_t* filePath, int maxInstance, EnFbxUpAxis enFbx
 	smLightManager().AddSkinModel(this);
 	//}
 }
+
 bool SkinModel::init(const wchar_t* filePath)
 {
 	m_modelDx = g_skinModelDataManager.Load(filePath);
@@ -336,7 +337,33 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 			nullptr,
 			m_drawData[0].size() > 1 ? m_drawData[0].size() : 1
 		);
-
+		if (m_weapon)
+		{
+			for (auto& modelMeshs : m_modelDxweapon->meshes) {
+				for (std::unique_ptr<DirectX::ModelMeshPart>& mesh : modelMeshs->meshParts) {
+					ModelEffect* effect = (ModelEffect*)mesh->effect.get();
+					effect->SetDrawMode(drawMode);
+					if (m_numInstance > 1)
+					{
+						effect->SetDrawMode(enInstancingShadow);
+					}
+					if (m_Mode[delayNo] == enTree)
+					{
+						effect->SetDrawMode(enTreeShadow);
+					}
+				}
+			}
+			m_modelDxweapon->Draw(
+				d3dDeviceContext,
+				state,
+				m_vsSCb[delayNo].mWorld,
+				m_vsSCb[No].mView,
+				m_vsSCb[No].mProj,
+				false,
+				nullptr,
+				m_drawData[0].size() > 1 ? m_drawData[0].size() : 1
+			);
+		}
 	}
 	else
 	{
@@ -417,6 +444,25 @@ void SkinModel::Draw(int No)
 		nullptr,
 		num > 1 ? num : 1
 	);
+	if (m_weapon)
+	{
+		for (auto& modelMeshs : m_modelDxweapon->meshes) {
+			for (std::unique_ptr<DirectX::ModelMeshPart>& mesh : modelMeshs->meshParts) {
+				ModelEffect* effect = (ModelEffect*)mesh->effect.get();
+				effect->SetDrawMode(m_Mode[No]);
+			}
+		}
+		m_modelDxweapon->Draw(
+			d3dDeviceContext,
+			state,
+			m_vsCb[No].mWorld,
+			m_vsCb[No].mView,
+			m_vsCb[No].mProj,
+			false,
+			nullptr,
+			num > 1 ? num : 1
+		);
+	}
 }
 void SkinModel::BeginUpdateInstancingData(){
 	m_numInstance = 0;

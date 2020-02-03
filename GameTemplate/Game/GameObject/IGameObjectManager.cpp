@@ -109,4 +109,13 @@ namespace smEngine {
 		}
 		//m_DeleteList[nowNo].clear();
 	}
+	void IGameObjectManager::ChengAllActive(bool flag)
+	{
+		for (auto ObjectList : m_gameObjectListArray) {
+			for (auto Object : ObjectList)
+			{
+				Object->SetActive(flag);
+			}
+		}
+	}
 }

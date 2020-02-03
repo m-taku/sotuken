@@ -14,5 +14,5 @@ EnemyStateLoitering::~EnemyStateLoitering()
 }
 void EnemyStateLoitering::Update()
 {
-	//m_enemy->SetMovespeed({ 0.0f,10.0f,0.0f });
+	m_enemy->SetMovespeed({ 0.0f,-10.0f,0.0f });
 }

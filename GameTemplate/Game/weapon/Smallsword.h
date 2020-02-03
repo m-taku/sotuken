@@ -3,10 +3,14 @@
 class Smallsword : public PlayerCombo
 {
 public:
-	Smallsword();
+	Smallsword(Player* player);
 	~Smallsword();
 	enum swordcombo
 	{
+		pull1,
+		pull2,
+		push1,
+		push2,
 		combo1,
 		combo2,
 		combo3,
@@ -21,6 +25,8 @@ public:
 	void SetAnimation(Player* player) override;
 	void changeY() override;
 	void changeB() override;
+	void pullweapon()override;
+	void pushweapon()override;
 	void Reset()override;
 private:
 	int m_combo = 0;

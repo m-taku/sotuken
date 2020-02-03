@@ -1,6 +1,7 @@
 #pragma once
 class Player;
 
+#include "PlayerMovement.h"
 #include"PlayerState.h"
 class PlayerAttack : public PlayerState
 {
@@ -17,5 +18,6 @@ private:
 	};
 	combo m_combo;
 	float hoge = 0.0f;
+	PlayerMovement Movement;
 };
 

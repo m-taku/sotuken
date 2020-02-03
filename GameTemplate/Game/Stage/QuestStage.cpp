@@ -23,24 +23,14 @@ bool QuestStage::Init() {
 	m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	m_poa.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
-	swprintf_s(moveFilePath, L"Assets/level/%s3.tkl", m_Name);
+	swprintf_s(moveFilePath, L"Assets/level/%s31.tkl", m_Name);
 	int count = 0;
 	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
-		int result = 1;
-		result = wcscmp(L"rock_boulder_b1", objData.name);
+		int result = 1;	
+		result = wcscmp(L"SM_ItemboxII10Closed", objData.name);
 		if (result == 0)
 		{
-			return false;
-		}
-		result = wcscmp(L"rock_boulder_b2", objData.name);
-		if (result == 0)
-		{
-			return false;
-		}	
-		result = wcscmp(L"SM_Rock05", objData.name);
-		if (result == 0)
-		{
-			return false;
+			return true;
 		}
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
@@ -49,14 +39,16 @@ bool QuestStage::Init() {
 			pos.y += 100.0f;
 			FindGO<Player>("player")->SetPosition(pos);
 			pos.y += -150.0f;
-			new dorakomesu(pos);
+
 			//FindGO<Enemy>("dorakomesu")->SetPosition(pos);
 			return true;
 		}
-		result = wcscmp(L"unityChan", objData.name);
+		result = wcscmp(L"Cube1", objData.name);
 		if (result == 0)
 		{
-			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			auto pos = objData.position;
+			pos.y += 100.0f;
+			new dorakomesu(pos);
 			return true;
 		}	
 		result = wcscmp(L"SM_Tree01", objData.name);
@@ -83,7 +75,7 @@ bool QuestStage::Init() {
 			objData.m_Transflag = true;
 			return false;
 		}
-		return true;
+		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/level/www.tkl", m_Name);
 	nra1.Init(moveFilePath, [&](LevelObjectData& objData) {

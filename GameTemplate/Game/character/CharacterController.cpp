@@ -141,6 +141,8 @@ const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpee
 	CVector3 originalXZDir = addPos;
 	originalXZDir.y = 0.0f;
 	originalXZDir.Normalize();
+	m_OffsetVector = CVector3::Zero();
+
 	//XZ平面での衝突検出と衝突解決を行う。
 	{
 		int loopCount = 0;
@@ -185,6 +187,8 @@ const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpee
 				nextPosition.x += callback.hitNormal.x * m_radius;
 				nextPosition.z += callback.hitNormal.z * m_radius;
 #else
+
+				//m_OffsetVector += addPosXZ * -1.0f;
 				CVector3 vT0, vT1;
 				//XZ平面上での移動後の座標をvT0に、交点の座標をvT1に設定する。
 				vT0.Set(nextPosition.x, 0.0f, nextPosition.z);
@@ -203,6 +207,7 @@ const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpee
 				CVector3 vOffset;
 				vOffset = hitNormalXZ;
 				vOffset *= -fT0 + m_radius;
+				//m_OffsetVector += vOffset;
 				nextPosition += vOffset;
 				CVector3 currentDir;
 				currentDir = nextPosition - m_position;
@@ -219,6 +224,8 @@ const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpee
 			}
 			else {
 				//どことも当たらないので終わり。
+
+				//m_OffsetVector = CVector3::Zero();
 				break;
 			}
 			loopCount++;
@@ -228,6 +235,8 @@ const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpee
 		}
 	}
 	//XZの移動は確定。
+	//m_OffsetVector = nextPosition + ((m_position + addPos)*-1.0f);
+	//m_OffsetVector.y = 0.0f;
 	m_position.x = nextPosition.x;
 	m_position.z = nextPosition.z;
 	//下方向を調べる。
@@ -283,6 +292,8 @@ const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpee
 		}
 	}
 	//移動確定。
+	m_OffsetVector = m_position - nextPosition;
+
 	m_position = nextPosition;
 	btRigidBody* btBody = m_rigidBody.GetBody();
 	//剛体を動かす。

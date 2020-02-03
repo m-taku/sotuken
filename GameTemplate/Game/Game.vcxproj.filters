@@ -175,6 +175,8 @@
     <ClCompile Include="Player\PlayerAttackMode.cpp" />
     <ClCompile Include="weapon\Smallsword.cpp" />
     <ClCompile Include="Rig.cpp" />
+    <ClCompile Include="weapon\PlayerCombo.cpp" />
+    <ClCompile Include="QuestResult.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -337,6 +339,7 @@
     <ClInclude Include="weapon\Smallsword.h" />
     <ClInclude Include="weapon\PlayerCombo.h" />
     <ClInclude Include="Rig.h" />
+    <ClInclude Include="QuestResult.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -556,6 +559,8 @@
     <MeshContentTask Include="Assets\modelData\vectormodel.fbx" />
     <MeshContentTask Include="Assets\modelData\Player.fbx" />
     <MeshContentTask Include="Assets\modelData\Ground1.fbx" />
+    <MeshContentTask Include="Assets\modelData\Smallsword1.fbx" />
+    <MeshContentTask Include="Assets\modelData\Smallsword2.fbx" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />
@@ -652,8 +657,6 @@
     <ImageContentTask Include="Assets\modelData\map\tex\T_rocks01_N.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\T_treebark01_N.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\T_treeleaves01_N.TGA" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\modelData\StarSparrow.cmo" />
+    <ImageContentTask Include="Assets\modelData\map\tex\T_dirttile01_N.tga" />
   </ItemGroup>
 </Project>

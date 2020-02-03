@@ -48,7 +48,28 @@ public:
 		int lastIndex = GetLastAnimationControllerIndex();
 		return m_animationPlayController[lastIndex].IsPlaying();
 	}
-	
+	/// <summary>
+/// 現在のアニメーションでイベントの区間内かどうか
+/// </summary>
+/// <returns>
+/// trueで区間内
+/// </returns>
+	bool IsEvent(int No = 0) const
+	{
+		int lastIndex = GetLastAnimationControllerIndex();
+		return m_animationPlayController[lastIndex].IsEvent(No);
+	}
+	/// <summary>
+	/// イベントの名前を取得します
+	/// </summary>
+	/// <returns>
+	/// イベント名（NULLだとイベント外）
+	/// </returns>
+	const wchar_t* GetEventName(int No = 0)
+	{
+		int lastIndex = GetLastAnimationControllerIndex();
+		return m_animationPlayController[lastIndex].GetEventName(No);
+	}
 	/*!
 	* @brief	アニメーションを進める。
 	*@details

@@ -13,4 +13,5 @@ monster::monster(CVector3 pos)
 
 monster::~monster()
 {
+
 }

@@ -63,6 +63,11 @@ public:
 		m_position = pos;
 		m_characon.SetPosition(pos);
 	}
+	StateEnemy GetState()
+	{
+		return m_statenum;
+	}
+	void HitAction(float damage);
 protected:
 	monster* m_monster = nullptr;
 	EnemyStatus* m_status = nullptr;
@@ -84,7 +89,7 @@ private:
 	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン
 
-
+	float HP = 10.0f;
 	//デバック用変数
 	Carving hagihagi;
 	float debugtaim = 0.0f;

@@ -7,6 +7,7 @@ public:
 	PlayerMovement();
 	~PlayerMovement();
 	void DefaultMove();		//デフォルトの移動処理
+	void AttackMove();
 	/*!
 	*@brief プレイヤーのポインターをセット
 	*/

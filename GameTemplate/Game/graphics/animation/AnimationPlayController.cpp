@@ -27,9 +27,9 @@ void AnimationPlayController::StartLoop()
 }
 void AnimationPlayController::Update(float deltaTime, Animation* animation)
 {
-	if(m_animationClip == nullptr){
-		
-		return ;
+	if (m_animationClip == nullptr) {
+
+		return;
 	}
 	const auto& topBoneKeyFrameList = m_animationClip->GetTopBoneKeyFrameList();
 	m_time += deltaTime;
@@ -46,8 +46,8 @@ void AnimationPlayController::Update(float deltaTime, Animation* animation)
 			else {
 				//ワンショット再生。
 				m_currentKeyFrameNo--;
+				m_isPlaying = false;	//再生終わり。
 			}
-			m_isPlaying = false;	//再生終わり。
 			break;
 		}
 		if (topBoneKeyFrameList.at(m_currentKeyFrameNo)->time >= m_time) {
@@ -56,6 +56,24 @@ void AnimationPlayController::Update(float deltaTime, Animation* animation)
 		}
 		//次へ。
 		m_currentKeyFrameNo++;
+	}
+	//ここからアニメーションイベントの判定処理
+	auto Eventlist = m_animationClip->GetAnimationEventlist();
+	//アニメーションイベントが1つ以上あれば
+	if (Eventlist.size() > 0) {
+		for (int No = 0; No < Eventlist.size(); No++) {
+			m_Event[No] = false;
+			m_eventname[No] = L"NULL";
+			for (int i = 0; i < Eventlist[No]->GetDateSize(); i++) {
+				//今の時間がアニメーションイベントの時間を過ぎていれば
+				if (topBoneKeyFrameList.at(m_currentKeyFrameNo)->time >= Eventlist.at(No)->GetinvokeTime(i))
+				{
+					m_eventname[No] = Eventlist.at(No)->GetEventname(i);
+					//イベント状態を反転させる
+					m_Event[No] = !m_Event[No];
+				}
+			}
+		}
 	}
 	//ボーン行列を計算していく。
 	const auto& keyFramePtrListArray = m_animationClip->GetKeyFramePtrListArray();
@@ -79,4 +97,3 @@ void AnimationPlayController::Update(float deltaTime, Animation* animation)
 		}
 	}
 }
-

@@ -10,6 +10,7 @@
 class Player :public IGameObject
 {
 	friend PlayerMovement;
+	friend PlayerCombo;
 public:
 /// <summary>
 /// 状態のEnum
@@ -74,9 +75,25 @@ public:
 		m_position = pos;
 		m_characon.SetPosition(pos);
 	}
-	void Playanim(int No)
+	void Playanim(int No,bool furag = false)
 	{
-		m_anim.Play(No,0.2f);
+		m_anim.Play(No,0.0f);
+		m_modelpos = m_characon.GetPosition();
+		if (furag) {
+			InMovemAnim();
+		}
+		else
+		{
+			m_isAnimMove = false;
+		}
+	}
+	bool IsPlayinganim()
+	{
+		return m_anim.IsPlaying();
+	}
+	bool IsAnimEvent(int No = 0)
+	{
+		return m_anim.IsEvent(No);
 	}
 	void SetAnim(AnimationClip animation[],int numAnimClip)
 	{
@@ -90,7 +107,19 @@ public:
 	{
 		return m_combo;
 	}
-	int Hp = 1;
+	const Bone& GetBone(const wchar_t* name)
+	{
+		return *m_skinmodel.FindBone(name);
+	}
+	Skeleton& GetSkeleton()
+	{
+		return m_skinmodel.GetSkeleton();
+	}
+	void InMovemAnim();
+	float GetAttack()
+	{
+		return m_Palyer_Data.attackPower;
+	}
 private:
 	void UpdateAxis()
 	{
@@ -106,8 +135,7 @@ private:
 	}	
 	DirectionLight* plight = nullptr;
 
-	PlayerCombo* m_combo = nullptr;
-	Rig m_rig;
+
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_modelpos = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
@@ -117,6 +145,10 @@ private:
 	CVector3 m_scale = CVector3::One();			//スケール
 	CQuaternion m_rotation = CQuaternion::Identity();		//回転
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列
+	bool m_isAnimMove = false;
+	
+	PlayerCombo* m_combo = nullptr;
+	Rig m_rig;
 	State m_statenum = StateTownMove;
 	Animation m_anim;
 	Palyer_Data_Test m_Palyer_Data;

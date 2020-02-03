@@ -6,9 +6,7 @@
 #include"Enemy/Enemy.h"
 #include"Stage/Town.h"
 #include"QuestManager.h"
-#include"GameManager.h"
-
-
+#include"QuestResult.h"
 Test_QuestBase::Test_QuestBase()
 {
 
@@ -41,14 +39,13 @@ bool Test_QuestBase::Start()
 	m_sprite[1].Update({ 0.0f,150.0f,0.0f }, CQuaternion::Identity(), CVector3::One());
 	m_sprite[1].SetMulColor({ 1.0f,1.0f,2.0f,1.0f });
 	m_isStart = true;
-	m_GameManager = FindGO<GameManager>("GameManager");
 	m_time *= 60.0f;
 	return true;
 }
 void Test_QuestBase::CreateQuest()
 {
+	//ダウン数設定
 	m_doun = m_Maxdoun;
-	//小型はどっちでもいいかな～～
 	for (auto na : m_text)
 	{
 		if (na != nullptr) {
@@ -57,49 +54,61 @@ void Test_QuestBase::CreateQuest()
 	}
 	m_Quest = true;
 	m_nowtime = 0.0f;
-
+	m_target = FindGO<Enemy>("Enemy");
 	//クエストに関係する減算等あればここでする。
-	//DeleteGO(FindGO<Test_GuestManager>("tes"));
 }
 void Test_QuestBase::Update()
 {
 	if (m_Quest) {
-		m_nowtime += GetFrameDeltaTime();
-		if (m_time <= m_nowtime)
+		//クエスト失敗関係
 		{
-			//NewGO<Test_GuestManager>(0, "tes");
-			m_Quest = false;
-			SetActive(false);
-			m_GameManager->cheng(m_Quest);
-			//DeleteGO(this);
+			//クエスト時間関係
+			m_nowtime += GetFrameDeltaTime();
+			if (m_time <= m_nowtime)
+			{
+				ChengResult(false);
+			}
+			else {
+				//ダウン関係
+				if (m_nowdoun) {
+					debugtime++;
+					if (debugtime >= 120) {
+						m_doun--;
+						if (m_doun <= 0) {
+							ChengResult(false);
+						}
+						else
+						{
+							auto pla = FindGO<Player>("player");
+							pla->TransitionState(Player::StateQuestMove);
+						}
+						debugtime = 0;
+						m_nowdoun = false;
+					}
+				}
+			}
 		}
-		else {
-			if (m_nowdoun) {
-				debugtime++;
-				if (debugtime >= 120) {
-					m_doun--;
-					if (m_doun <= 0) {
-						//NewGO<Town>(0, "town");
-						//NewGO<Test_GuestManager>(0, "tes");
-						m_Quest = false;
-						SetActive(m_Quest);
-						m_GameManager->cheng(m_Quest);
-						//	DeleteGO(Stage);
-						//	DeleteGO(this);
-					}
-					else
-					{
-						auto pla = FindGO<Player>("player");
-						pla->TransitionState(Player::StateQuestMove);
-						pla->Hp = 1;
+		//クエスト成功判定
+		{
+			if (m_target ==nullptr)
+			{
 
-					}
-					debugtime = 0;
-					m_nowdoun = false;
+				m_target = FindGO<Enemy>("enemy");
+			}
+			else {
+				//倒されたら
+				if (m_target->GetState() == Enemy::StateDead) {
+					ChengResult(true);
 				}
 			}
 		}
 	}
+}
+void Test_QuestBase::ChengResult(bool flag)
+{
+	m_Quest = false;
+	SetActive(m_Quest);
+	NewGO<QuestResult>(0,"Result")->SetClear(flag);
 }
 void Test_QuestBase::PostDraw()
 {

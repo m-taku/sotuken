@@ -46,6 +46,7 @@ public:
 	*@param[in] enFbxUpAxis		fbxの上軸。デフォルトはenFbxUpAxisZ。
 	*/
 	void Init(const wchar_t* filePath, int maxInstance = 1, EnFbxUpAxis enFbxUpAxis = enFbxUpAxisZ);
+
 	/*!
 	*@brief	初期化。
 	*@param[in]	filePath		ロードするcmoファイルのファイルパス。
@@ -136,6 +137,11 @@ public:
 	{
 		return m_cameralen;
 	}
+	void Setweapon(DirectX::Model* modeldata)
+	{
+		m_modelDxweapon = modeldata;
+		m_weapon = true;
+	}
 private:
 	/*!
 	*@brief	サンプラステートの初期化。
@@ -169,7 +175,9 @@ private:
 	Skeleton			m_skeleton;						//!<スケルトン。
 	CMatrix				m_worldMatrix;					//!<ワールド行列。
 	DirectX::Model*		m_modelDx;						//!<DirectXTKが提供するモデルクラス。
-
+	//武器用の変数
+	DirectX::Model*		m_modelDxweapon = nullptr;						//!<DirectXTKが提供するモデルクラス。
+	bool				m_weapon = false;
 	
 	
 	CVector3 Maxpos = CVector3::Zero();
