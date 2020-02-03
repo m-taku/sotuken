@@ -177,6 +177,8 @@
     <ClCompile Include="Rig.cpp" />
     <ClCompile Include="weapon\PlayerCombo.cpp" />
     <ClCompile Include="QuestResult.cpp" />
+    <ClCompile Include="UI\UI.cpp" />
+    <ClCompile Include="graphics\SkyCube.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -340,6 +342,8 @@
     <ClInclude Include="weapon\PlayerCombo.h" />
     <ClInclude Include="Rig.h" />
     <ClInclude Include="QuestResult.h" />
+    <ClInclude Include="UI\UI.h" />
+    <ClInclude Include="graphics\SkyCube.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

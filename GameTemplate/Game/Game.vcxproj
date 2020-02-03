@@ -158,6 +158,7 @@
     <ClCompile Include="graphics\ShaderResourceView.cpp" />
     <ClCompile Include="graphics\Primitive.cpp" />
     <ClCompile Include="QuestResult.cpp" />
+    <ClCompile Include="graphics\SkyCube.cpp" />
     <ClCompile Include="weapon\PlayerCombo.cpp" />
     <ClCompile Include="Player\PlayerAttackMode.cpp" />
     <ClCompile Include="Player\PlayerQuestMove.cpp" />
@@ -269,6 +270,7 @@
     <ClInclude Include="graphics\Primitive.h" />
     <ClInclude Include="QuestResult.h" />
     <ClInclude Include="Rig.h" />
+    <ClInclude Include="graphics\SkyCube.h" />
     <ClInclude Include="UI\UI.h" />
     <ClInclude Include="weapon\PlayerCombo.h" />
     <ClInclude Include="Player\PlayerAttackMode.h" />
