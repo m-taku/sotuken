@@ -7,6 +7,8 @@
 #include"Stage/Town.h"
 #include"QuestManager.h"
 #include"QuestResult.h"
+#include"../Enemyname/MonsterList.h"
+
 Test_QuestBase::Test_QuestBase()
 {
 
@@ -46,16 +48,36 @@ void Test_QuestBase::CreateQuest()
 {
 	//ダウン数設定
 	m_doun = m_Maxdoun;
+	m_Quest = true;
+	m_nowtime = 0.0f;
 	for (auto na : m_text)
 	{
 		if (na != nullptr) {
 			na->SetActive(false);
 		}
 	}
-	m_Quest = true;
-	m_nowtime = 0.0f;
-	m_target = FindGO<Enemy>("Enemy");
-	//クエストに関係する減算等あればここでする。
+	monster* monnsu;
+	switch (MonsterNo)
+	{
+	case Test_QuestBase::monnsu:
+		monnsu =new dorakomesu({ 0.0f,0.0f,0.0f });
+		break;
+	case Test_QuestBase::monnsu2:
+		monnsu = new dorakomesu({ 0.0f,0.0f,0.0f });
+		break;
+	case Test_QuestBase::monnsu3:
+		monnsu = new dorakomesu({ 0.0f,0.0f,0.0f });
+		break;
+	default:
+		break;
+	}
+	m_target = monnsu->GetEnemy();
+	//エネミー沸かし
+
+	//ステージに通知すれば2個以上できるよ
+
+
+	//クエストに関係する減算等あればここでする(金とか)。
 }
 void Test_QuestBase::Update()
 {

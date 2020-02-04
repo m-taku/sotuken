@@ -36,7 +36,6 @@ void Player::TransitionState(State m)
 		m_state = new PlayerAttack(this);
 		break;
 	case StateAttackMode:
-
 		m_state = new PlayerAttackMode(this);
 		break;
 	case Statedeath:
@@ -72,14 +71,16 @@ bool Player::Start()
 	DirectionLight* plight = new DirectionLight;
 	float c = 1.0f;
 	plight->SetColor({ c,c,c,1.0f });
-	plight->SetDirection(CVector3::Down()+CVector3::Right()+ CVector3::Front());
+	plight->SetDirection(CVector3::Down() + CVector3::Right() + CVector3::Front());
 	plight->ShadowEnable(true);
 	smLightManager().AddLight(plight);
-
+	GetHitObjict().Create(&m_position, 500, [&](float damage) {
+		HitAction(damage);
+	}, HitObject::player);
 	m_combo = new Smallsword(this);
 	m_modelpos = m_position;
-	m_rig.SetBoon(m_skinmodel,L"mixamorig:Hips");
-	Playanim(run);
+	m_rig.SetBoon(m_skinmodel, L"mixamorig:Hips");
+	//Playanim(run);
 	return true;
 }
 
@@ -121,4 +122,8 @@ void Player::Draw()
 		smGameCamera().GetCameraViewMatrix(),
 		smGameCamera().GetCameraProjectionMatrix()
 	);
+}
+void Player::HitAction(float damage)
+{
+	m_playerData.hp -= damage;
 }

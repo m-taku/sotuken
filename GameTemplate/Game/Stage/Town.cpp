@@ -24,7 +24,7 @@ bool Town::Init()
 	m_model.Init(L"Assets/modelData/unityChan.cmo");
 	m_poa.CreateMeshObject(m_model, {10000.0f,1000000.0f,0.0f}, CQuaternion::Identity());
 	swprintf_s(moveFilePath, L"Assets/level/%s1.tkl", m_Name);
-	nra.UEInit(moveFilePath, [&](LevelObjectData objData) {
+	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
 		int result = 1;
 		result = wcscmp(L"Sphere", objData.name);
 		if (result == 0)
@@ -54,24 +54,27 @@ bool Town::Init()
 		result = wcscmp(L"SM_Grass01", objData.name);
 		if (result == 0)
 		{
-			return true;
+			objData.m_Transflag = true;
+			objData.m_Physicsflag = false;
+			objData.m_www = true;
+			return false;
 		}
 		result = wcscmp(L"SM_Grass02", objData.name);
 		if (result == 0)
 		{
-			return true;
+			objData.m_Transflag = true;
+			objData.m_Physicsflag = false;
+			objData.m_www = true;
+			return false;
 		}
 		result = wcscmp(L"SM_Grass03", objData.name);
 		if (result == 0)
 		{
-			return true;
-		}
-		result = wcscmp(L"SM_TileGround4m", objData.name);
-		if (result == 0)
-		{
+			objData.m_Transflag = true;
+			objData.m_Physicsflag = false;
+			objData.m_www = true;
 			return false;
 		}
-
 		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori1.cmo", m_Name);

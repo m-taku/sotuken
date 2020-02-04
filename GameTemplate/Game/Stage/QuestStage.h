@@ -7,6 +7,7 @@ public:
 	QuestStage();
 	~QuestStage();
 	bool Init();
+	void Update();
 	void DrawDebug();
 private:
 	UI* m_ui = nullptr;

@@ -5,6 +5,7 @@
 #include"GameManager.h"
 #include"Stage/QuestStage.h"
 #include"Enemy/Enemy.h"
+#include "GameManager.h"
 
 
 QuestManager::QuestManager()
@@ -37,6 +38,7 @@ bool QuestManager::Start()
 	Quest->ChangePaper();
 	m_Quest.push_back(Quest);
 	m_isActive = false;
+	m_GameManager = FindGO<GameManager>("GameManager");
 	return true;
 	//Stage = NewGO<QuestStage>(0, "kouya");
 	//m_player = FindGO<Player>("player");
@@ -44,23 +46,76 @@ bool QuestManager::Start()
 }
 void QuestManager::Update()
 {
-	if (g_pad[0].IsTrigger(enButtonUp))
+	switch (m_mode)
 	{
-		if (m_Quest.size() != min(m_No + 1, m_Quest.size())) {
-			m_Quest[m_No++]->ChangePaper();
-			m_Quest[m_No]->ChangePaper();
+	case Decision:
+		if (g_pad[0].IsTrigger(enButtonUp))
+		{
+			if (m_Quest.size() != min(m_No + 1, m_Quest.size())) {
+				m_Quest[m_No++]->ChangePaper();
+				m_Quest[m_No]->ChangePaper();
+			}
 		}
-	}
-	if (g_pad[0].IsTrigger(enButtonDown))
-	{
-		if (-1 != max(m_No - 1, -1)) {
-			m_Quest[m_No--]->ChangePaper();
-			m_Quest[m_No]->ChangePaper();
+		if (g_pad[0].IsTrigger(enButtonDown))
+		{
+			if (-1 != max(m_No - 1, -1)) {
+				m_Quest[m_No--]->ChangePaper();
+				m_Quest[m_No]->ChangePaper();
+			}
 		}
+		if (g_pad[0].IsTrigger(enButtonA))
+		{
+			m_Quest[m_No]->ChangePaper();
+			m_GameManager->ChangeNotify(GameManager::QuestOrder);
+		}
+		if (g_pad[0].IsTrigger(enButtonB))
+		{
+			m_isActive = false;
+			m_Quest[m_No]->ChangePaper();
+			m_GameManager->ChangeNotify(GameManager::NonQuestOrder);
+		}
+		break;
+	case holdQuest:
+		if (g_pad[0].IsTrigger(enButtonSelect))
+		{
+			m_Quest[m_No]->ChangePaper();
+			m_GameManager->GetPlayer()->TransitionState(Player::StateWate);
+			m_mode = WaitQuest;
+		}
+		break;
+	case WaitQuest:
+		if (g_pad[0].IsTrigger(enButtonSelect)|| g_pad[0].IsTrigger(enButtonB))
+		{
+			m_Quest[m_No]->ChangePaper();
+			m_GameManager->GetPlayer()->TransitionState(Player::StateTownMove);
+			m_mode = holdQuest;
+		}
+		else
+		{
+			if (g_pad[0].IsTrigger(enButtonY))
+			{
+				m_GameManager->ChangeNotify(GameManager::QuestStart);
+			}
+		}
+		break;
+	case Cancel:
+		if (g_pad[0].IsTrigger(enButtonA))
+		{
+			m_isActive = false;
+			m_Quest[m_No]->ChangePaper();
+			m_GameManager->ChangeNotify(GameManager::QuestOrder);
+		}
+		if (g_pad[0].IsTrigger(enButtonB))
+		{
+			m_isActive = false;
+			m_Quest[m_No]->ChangePaper();
+			m_No = 0;
+			m_GameManager->ChangeNotify(GameManager::NonQuestOrder);
+		}
+		break;
+	default:
+		break;
 	}
-	if (g_pad[0].IsTrigger(EnButton::enButtonRB3))
-	{
-		FindGO<GameManager>("GameManager")->cheng(true);
-	}
+
 
 }

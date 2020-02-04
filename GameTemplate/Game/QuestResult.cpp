@@ -48,7 +48,7 @@ void QuestResult::Update()
 	m_nowtime += GetFrameDeltaTime();
 	if (10.0f <= m_nowtime)
 	{
-		FindGO<GameManager>("GameManager")->cheng(false);
+		FindGO<GameManager>("GameManager")->Change(false);
 		DeleteGO(this);
 	}
 }

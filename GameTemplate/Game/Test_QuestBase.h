@@ -50,7 +50,7 @@ protected:
 	float m_time = FLT_MAX;
 	Moster MonsterNo = mosternum;
 	wchar_t EnglishMosterName[mosternum][256] = {L"monnsu",L"monnsu2", L"monnsu3"};
-	char JapanMosterName[mosternum][256] = { "モンスター1", "モンスター2","モンスター3" };
+	char JapanMosterName[mosternum][256] = { "ドラゴメス", "モンスター2","モンスター3" };
 private:
 	Sprite m_sprite[2];
 	ShaderResourceView m_srv[2];

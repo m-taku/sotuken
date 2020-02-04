@@ -3,12 +3,9 @@
 #include"Enemy/Enemy.h"
 #include "Player.h"
 #include"QuestManager.h"
-#include"QuestManager.h"
 GameManager::GameManager()
 {
-	m_Stage.changTown();
-	m_QuestManager = NewGO<QuestManager>(0, "QuestManager");
-	m_player = NewGO<Player>(0, "player");
+
 }
 
 
@@ -17,32 +14,72 @@ GameManager::~GameManager()
 }
 
 bool GameManager::Start()
-{
-	m_player->TransitionState(Player::StateTownMove);
+{	
+	m_Stage.changTown();
+	m_QuestManager = NewGO<QuestManager>(0, "QuestManager");
+	m_player = NewGO<Player>(0, "player");
+	//m_player->TransitionState(Player::StateTownMove);
 
 	//cheng(true);
 	return true;
 }
 void GameManager::Update()
 {
+
+	switch (m_gameNotify)
+	{
+	case NonQuestOrder:
+		if (m_ChangeNotify)
+		{
+			m_QuestManager->ChangeOrderMode(QuestManager::Decision);
+			m_player->TransitionState(Player::StateTownMove);
+			break;
+		}
+	case QuestOrder:
+		if (m_ChangeNotify)
+		{
+			m_QuestManager->ChangeOrderMode(QuestManager::holdQuest);
+			m_player->TransitionState(Player::StateTownMove);
+		}
+		break;
+	case QuestStart:
+		if (m_ChangeNotify)
+		{
+			m_QuestManager->CloseGuest();
+			m_Stage.changQuestStage();
+			m_player->TransitionState(Player::StateQuestMove);
+			m_player->Setweapon();
+			m_gameNotify = InQuest;
+		}
+		break;
+	case InQuest:
+
+		break;
+	default:
+		break;
+	}
+	m_ChangeNotify = false;
+
 	//auto pul = FindGO<Player>("player");
 	//pul->TransitionState(Player::StateTownMove);
 }
-void  GameManager::cheng(bool furag)
+void  GameManager::Change(bool furag)
 {
 	if (!furag)
 	{
 		auto m_target = FindGO<Enemy>("enemy");
-		m_player->TransitionState(Player::StateTownMove);
 		DeleteGO(m_target);
+
+		m_QuestManager->ChangeOrderMode(QuestManager::Decision);
+		m_player->TransitionState(Player::StateTownMove);
 		m_Stage.changTown();
 	}
 	else
 	{
-		m_Stage.changQuestStage();
-		m_QuestManager->CloseGuest();
-		m_player->TransitionState(Player::StateQuestMove);
-		m_player->Setweapon();
+		//m_QuestManager->CloseGuest();
+		//m_Stage.changQuestStage();
+		//m_player->TransitionState(Player::StateQuestMove);
+		//m_player->Setweapon();
 	}
 
 }

@@ -23,8 +23,8 @@ struct Vs
 struct Palyer_Data_Test
 {
 	char name[10] = "ŠÔ”²‚¯";
-	int hp = 10;
-	int stamina = 150;
+	int hp = 100;
+	int stamina = 100;
 	int ranku = 1;
 	int attackPower = 1;				//UŒ‚—Í
 	int defense = 1;					//–hŒä—Í

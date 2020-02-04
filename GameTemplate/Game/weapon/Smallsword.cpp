@@ -6,7 +6,7 @@ Smallsword::Smallsword(Player* player) : PlayerCombo(player)
 {
 	m_modelDxweapon[0] = g_skinModelDataManager.Load(L"Assets/modelData/Smallsword2.cmo",player->GetSkeleton());
 	m_modelDxweapon[1] = g_skinModelDataManager.Load(L"Assets/modelData/Smallsword1.cmo",player->GetSkeleton());
-	changeweapon();
+	changeweapon(0);
 }
 
 

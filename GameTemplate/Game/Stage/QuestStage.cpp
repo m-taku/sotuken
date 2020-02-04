@@ -12,7 +12,7 @@ QuestStage::QuestStage()
 
 QuestStage::~QuestStage()
 {
-
+	DeleteGO(m_ui);
 }
 bool QuestStage::Init() {
 
@@ -38,7 +38,8 @@ bool QuestStage::Init() {
 		{
 			auto pos = objData.position;
 			pos.y += 100.0f;
-			FindGO<Player>("player")->SetPosition(pos);
+			Player*  player = FindGO<Player>("player");
+			player->SetPosition(pos);
 			m_ui = NewGO<UI>(0, "ui");
 			m_ui->Init(150, 150, 50);
 			m_ui->SetHP(50);
@@ -50,8 +51,8 @@ bool QuestStage::Init() {
 		{
 			auto pos = objData.position;
 
-			new dorakomesu(pos);
-			//NewGO<Enemy>(0, "enemy")->SetPosition(objData.position);
+			//new dorakomesu(pos);
+			FindGO<Enemy>("enemy")->SetPosition(objData.position);
 			return true;
 		}
 		result = wcscmp(L"SM_Tree01", objData.name);
@@ -97,6 +98,11 @@ bool QuestStage::Init() {
 
 #endif // DEBUG
 	return true;
+}
+void QuestStage::Update()
+{
+	nra.Updata();
+	nra1.Updata();
 }
 void QuestStage::DrawDebug()
 {

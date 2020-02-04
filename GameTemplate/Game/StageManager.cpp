@@ -20,6 +20,7 @@ void StageManager::changTown()
 
 void StageManager::changQuestStage()
 {
+	//ステージ分岐させたければ文字列追加
 	DeleteGO(m_Stage);
 	m_Stage = NewGO<QuestStage>(0, "QuestStage");
 }

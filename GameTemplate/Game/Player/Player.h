@@ -118,8 +118,13 @@ public:
 	void InMovemAnim();
 	float GetAttack()
 	{
-		return m_Palyer_Data.attackPower;
+		return m_playerData.attackPower;
 	}
+	const Palyer_Data_Test& GetPlayer()
+	{
+		return m_playerData;
+	}
+	void HitAction(float damage);
 private:
 	void UpdateAxis()
 	{
@@ -151,7 +156,7 @@ private:
 	Rig m_rig;
 	State m_statenum = StateTownMove;
 	Animation m_anim;
-	Palyer_Data_Test m_Palyer_Data;
+	Palyer_Data_Test m_playerData;
 	AnimationClip m_animClip[num];
 	PlayerState* m_state = nullptr;
 	SkinModel m_skinmodel;		//ƒXƒLƒ“ƒ‚ƒfƒ‹

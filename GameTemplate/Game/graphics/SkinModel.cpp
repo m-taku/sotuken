@@ -526,9 +526,9 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku
 
 			}
 		}
-		if (count >= 5) {
+		//if (count >= 5) {
 			m_drawData[hoge].push_back(mWorld);
-		}
+		//}
 		data++;						//‚»‚êˆÈŠO‚ÍŸ‚ÖB
 		countNo++;
 	}

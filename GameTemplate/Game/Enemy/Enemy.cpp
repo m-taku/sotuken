@@ -3,6 +3,7 @@
 #include "EnemyStateList.h"
 #include"VectorDraw.h"
 #include"../HitManeger.h"
+#include"Player.h"
 Enemy::Enemy()
 {
 	m_characon.Init(
@@ -60,10 +61,6 @@ bool Enemy::Start()
 }
 void Enemy::Update()
 {
-	//if (g_pad[0].IsTrigger(enButtonRB2))
-	//{
-	//	FindGO<Player>("player")->Hp--;
-	//}
 	for (int i = 0; i < m_VectorDraw.size(); i++) {
 		auto n = m_skinmodel.GetSkeleton().GetBone(i);
 		auto mamma = n->GetWorldMatrix();
