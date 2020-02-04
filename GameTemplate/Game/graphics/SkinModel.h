@@ -16,7 +16,8 @@ enum EnDrawMode {
 	enInstancing,
 	enShadow, 
 	enTreeShadow,
-	enInstancingShadow
+	enInstancingShadow,
+	enCubeMap
 };
 
 struct OBB
