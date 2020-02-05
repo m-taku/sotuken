@@ -101,7 +101,6 @@ void QuestManager::Update()
 	case Cancel:
 		if (g_pad[0].IsTrigger(enButtonA))
 		{
-			m_isActive = false;
 			m_Quest[m_No]->ChangePaper();
 			m_GameManager->ChangeNotify(GameManager::QuestOrder);
 		}
