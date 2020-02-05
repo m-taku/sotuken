@@ -26,32 +26,32 @@ bool Quest_NPC::Init()
 }
 void Quest_NPC::Talk()
 {
-
+	isupdate = true;
 	switch (m_TalkChange)
 	{
 	case Quest_NPC::TalkStart:
-
-		if (g_pad[0].IsTrigger(enButtonB)) {
+		if (g_pad[0].IsTrigger(enButtonA)&& m_Text[0] == NULL) {
 			m_Text[0] = NewGO<Text_Box>(10, "Text_box");
 			m_Text[0]->SetText("クエストを受けますか？");
 			m_Text[0]->SetSpeed(2);
-			m_player->TransitionState(Player::StateWate);
+			m_player->TransitionState(StateWate);
 		}	
-		else if (m_Text[0]!=NULL &&m_Text[0]->Getend())
+		else if (m_Text[0]!=NULL)
 		{
-			m_Text[1] = NewGO<Text_Box>(10, "Text_box");
-			m_Text[1]->SetPos({ -500.0f, -130.0f });
-			m_Text[1]->SetText("はい　いいえ");
-			m_Text[1]->SetSpeed(0);
-			m_TalkChange = PrintQuest;
+			if (m_Text[0]->Getend()) {
+				m_Text[1] = NewGO<Text_Box>(10, "Text_box");
+				m_Text[1]->SetPos({ -500.0f, -130.0f });
+				m_Text[1]->SetText("はい　いいえ");
+				m_Text[1]->SetSpeed(0);
+				m_TalkChange = PrintQuest;
+			}
 		}
 		else
 		{
-			m_bikkuri.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 		}
 		break;
 	case PrintQuest:
-		if (g_pad[0].IsTrigger(enButtonB))
+		if (g_pad[0].IsTrigger(enButtonA))
 		{
 			m_QuestManager->SetActive(true);
 			m_QuestManager->Printkami();
@@ -64,7 +64,6 @@ void Quest_NPC::Talk()
 			switch (m_TalkState)
 			{
 			case QuestSelect:
-
 				break;
 			case QuestCancel:
 				m_QuestManager->ChangeOrderMode(QuestManager::Cancel);
@@ -74,7 +73,7 @@ void Quest_NPC::Talk()
 			}
 			m_TalkChange = TalkWate;
 		}
-		else if (g_pad[0].IsTrigger(enButtonX))
+		else if (g_pad[0].IsTrigger(enButtonB))
 		{
 			for (int j = 0; j < 2; j++) {
 				if (m_Text[j] != NULL) {
@@ -82,7 +81,7 @@ void Quest_NPC::Talk()
 					m_Text[j] = NULL;
 				}
 			}
-			m_player->TransitionState(Player::StateTownMove);
+			m_player->TransitionState(StateTownMove);
 			m_TalkChange = TalkStart;
 		}
 	case TalkWate:
@@ -98,6 +97,10 @@ void Quest_NPC::Talk()
 }
 void Quest_NPC::Draw()
 {
+	if (m_Text[0] == NULL && isupdate == true)
+	{
+		m_bikkuri.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+	}
 	m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
-
+	isupdate = false;
 }

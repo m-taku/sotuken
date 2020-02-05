@@ -182,6 +182,7 @@
     <ClCompile Include="Quest_NPC.cpp" />
     <ClCompile Include="NPCBase.cpp" />
     <ClCompile Include="NPCManager.cpp" />
+    <ClCompile Include="Player\PlayerAvoid.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -350,6 +351,7 @@
     <ClInclude Include="Quest_NPC.h" />
     <ClInclude Include="NPCBase.h" />
     <ClInclude Include="NPCManager.h" />
+    <ClInclude Include="Player\PlayerAvoid.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

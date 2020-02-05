@@ -22,14 +22,11 @@ bool SaveData_Select::Start()
 	auto text = NewGO<Text_Box>(10, "Text_box");
 	m_text.push_back(text);
 	TestSeve_Player data1(1);
-	data1.Seve();
-	auto ma = data1.GetData<Palyer_Data_Test>();
+	auto ma = data1.GetData<PalyerData>();
 	TestSeve_Player data2(2);
-	data2.Seve();
-	auto max = data2.GetData<Palyer_Data_Test>();
+	auto max = data2.GetData<PalyerData>();
 	TestSeve_Player data3(3);
-	data3.Seve();
-	auto maa = data3.GetData<Palyer_Data_Test>();
+	auto maa = data3.GetData<PalyerData>();
 	text->Init(ma->name, { -400.0f,100.0f }, CVector4::White(), 0.0f, { 0.0f,0.5f });
 	text = NewGO<Text_Box>(10, "Text_box");
 	m_text.push_back(text);

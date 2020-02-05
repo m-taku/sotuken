@@ -41,6 +41,7 @@ void Smallsword::SetAnimation(Player* player)
 	m_animClip[combo7].SetLoopFlag(false);
 	m_animClip[gerd].Load(L"Assets/animData/idel.tka");
 	m_animClip[gerd].SetLoopFlag(true);
+	m_Weight = 1.2f;
 	m_player->SetAnim(&(*(m_animClip.begin())),num);
 }
 void Smallsword::changeY()

@@ -6,5 +6,6 @@ public:
 	PlayerWait(Player* player);
 	~PlayerWait();
 	void Update();
+	void DamageAction(float damage);
 };
 

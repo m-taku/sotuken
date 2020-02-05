@@ -29,6 +29,7 @@ public:
 		m_isActive = false;
 		m_Quest[m_No]->CreateQuest();
 		m_nowQuest = m_Quest[m_No];
+		m_No = 0;
 	}
 	void Playerdoun()
 	{

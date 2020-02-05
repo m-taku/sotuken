@@ -3,6 +3,7 @@ class QuestManager;
 #include"StageManager.h"
 class NPCManager;
 class Player;
+class UI;
 class GameManager : public IGameObject
 {
 public:
@@ -14,6 +15,7 @@ public:
 		QuestOrder,
 		QuestStart,
 		InQuest,
+		EndQuest,
 		num
 	};
 	bool Start();
@@ -34,6 +36,7 @@ public:
 	void Change(bool furag);
 private:
 	StageManager m_Stage;
+	UI* m_ui = nullptr;
 	Player* m_player = nullptr;
 	NPCManager* m_NPCManager = nullptr;
 	QuestManager*  m_QuestManager = nullptr;

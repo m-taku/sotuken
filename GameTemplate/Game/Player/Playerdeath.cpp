@@ -9,20 +9,21 @@ Playerdeath::Playerdeath(Player* player) :PlayerState(player)
 {
 	auto manager = FindGO<QuestManager>("QuestManager");
 	manager->Playerdoun();
-	//m_player->Playanim(Player::attack);
+	m_player->Playanim(Player::death);
 }
 
 
 
 Playerdeath::~Playerdeath()
 {
-	m_player->SetRotation(CQuaternion::Identity());
+	m_player->GetPlayerParam().hp = m_player->GetPlayerData().hp;
+	m_player->SetPosition(m_player->GetReturnPos());
 }
 
 void Playerdeath::Update()
 {
-	CQuaternion pol;
-	pol.SetRotationDeg(CVector3::AxisX(), 2.0f);
-	rod.Multiply(pol);
-	m_player->SetRotation(rod);
+}
+void Playerdeath::DamageAction(float damage)
+{
+
 }

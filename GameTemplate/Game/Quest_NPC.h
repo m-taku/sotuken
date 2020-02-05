@@ -31,7 +31,7 @@ private:
 		PrintQuest,
 		TalkEnd
 	};
-
+	bool isupdate = false;
 	SkinModel m_model;
 	SkinModel m_bikkuri;
 	Text_Box* m_Text[2] = { nullptr };

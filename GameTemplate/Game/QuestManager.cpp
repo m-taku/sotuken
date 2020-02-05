@@ -79,7 +79,7 @@ void QuestManager::Update()
 		if (g_pad[0].IsTrigger(enButtonSelect))
 		{
 			m_Quest[m_No]->ChangePaper();
-			m_GameManager->GetPlayer()->TransitionState(Player::StateWate);
+			m_GameManager->GetPlayer()->TransitionState(StateWate);
 			m_mode = WaitQuest;
 		}
 		break;
@@ -87,7 +87,7 @@ void QuestManager::Update()
 		if (g_pad[0].IsTrigger(enButtonSelect)|| g_pad[0].IsTrigger(enButtonB))
 		{
 			m_Quest[m_No]->ChangePaper();
-			m_GameManager->GetPlayer()->TransitionState(Player::StateTownMove);
+			m_GameManager->GetPlayer()->TransitionState(StateTownMove);
 			m_mode = holdQuest;
 		}
 		else

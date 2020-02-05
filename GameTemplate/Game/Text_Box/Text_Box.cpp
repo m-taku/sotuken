@@ -29,7 +29,7 @@ void Text_Box::Update()
 		}
 	}
 }
-void Text_Box::PostDraw()
+void Text_Box::UIDraw()
 {
 	m_font.BeginDraw();
 	//swprintf_s(m_text_now, L"%s",  m_Text.c_str());

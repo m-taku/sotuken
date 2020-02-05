@@ -34,12 +34,17 @@ public:
 	{
 
 	}
+	const float GetWeight()
+	{
+		return m_Weight;
+	}
 	void changeweapon();
 	void changeweapon(int No);
 protected:
 	std::vector<AnimationClip> m_animClip;
 	Player* m_player = nullptr;
 	int NowWeapon = 0;
+	float m_Weight = 1.0f;
 	DirectX::Model*		m_modelDxweapon[2];
 };
 

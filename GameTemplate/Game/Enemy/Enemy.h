@@ -4,6 +4,7 @@
 #include"EnemyStateList.h"
 #include"enemyname/monster.h"
 #include"Carving.h"
+class HitObject;
 class VectorDraw;
 class Enemy : public IGameObject
 {
@@ -88,7 +89,7 @@ private:
 	EnemyState* m_state = nullptr;
 	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン
-
+	const HitObject* m_HitObject = nullptr;
 	float HP = 10.0f;
 	//デバック用変数
 	Carving hagihagi;

@@ -22,6 +22,7 @@ Enemy::~Enemy()
 	{
 		delete na;
 	}
+	GetHitObjict().Deleteobjict(m_HitObject);
 }
 void Enemy::TransitionState(StateEnemy m)
 {
@@ -53,7 +54,7 @@ bool Enemy::Start()
 	{
 		m_VectorDraw.push_back(new VectorDraw(CVector3::Zero()));
 	}
-	GetHitObjict().Create(&m_position, 500, [&](float damage) {
+	m_HitObject = GetHitObjict().Create(&m_position, 500, [&](float damage) {
 		HitAction(damage);
 	}, HitObject::enemy);
 	TransitionState(m_statenum);
@@ -61,6 +62,7 @@ bool Enemy::Start()
 }
 void Enemy::Update()
 {
+	GetHitObjict().HitTest(m_position, 100.0f,1, HitObject::player);
 	for (int i = 0; i < m_VectorDraw.size(); i++) {
 		auto n = m_skinmodel.GetSkeleton().GetBone(i);
 		auto mamma = n->GetWorldMatrix();

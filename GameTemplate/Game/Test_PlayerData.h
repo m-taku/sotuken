@@ -20,17 +20,28 @@ struct Vs
 	int VsIce = 0;						//氷属性
 	int VsDragon = 0;					//龍属性
 };
-struct Palyer_Data_Test
-{
-	char name[10] = "間抜け";
-	int hp = 100;
-	int stamina = 100;
-	int ranku = 1;
-	int attackPower = 1;				//攻撃力
-	int defense = 1;					//防御力
-	int sharpness = NULL;				//切れ味
-	int affinity = 0;					//会心率
+struct PalyerData
+{	
+	char name[10] = "間抜け";			//名前
+	int ranku = 1;						//ランク
 	EnElement element = enNon_Elemental;	//武器属性
 	int elementValue = 0;				//属性値
 	Vs vs;								//耐性
+	
+    //クエスト中に変更される者たち
+	int hp = 100;						//ＨＰ
+	float stamina = 100;					//スタミナ
+	int sharpness = NULL;				//切れ味
+	int affinity = 0;					//会心率
+	int attackPower = 1;				//攻撃力
+	int defense = 1;					//防御力
+};
+struct PalyerExecuteParam
+{
+	int hp = 100;						//ＨＰ
+	float stamina = 100;					//スタミナ
+	int sharpness = NULL;				//切れ味
+	int affinity = 0;					//会心率
+	int attackPower = 1;				//攻撃力
+	int defense = 1;					//防御力
 };

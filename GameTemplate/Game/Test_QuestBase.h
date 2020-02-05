@@ -43,6 +43,14 @@ public:
 	{
 		m_nowdoun = true;
 	}
+	float GetMAXTime()
+	{
+		return m_time;
+	}
+	float GetNowTime()
+	{
+		return m_nowtime;
+	}
 protected:
 	char  name[num][256] = { NULL };
 	Text_Box* m_text[num] = { nullptr };

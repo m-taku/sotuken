@@ -7,6 +7,7 @@ public:
 	PlayerTownMove(Player* player);
 	~PlayerTownMove();
 	void Update();
+	void DamageAction(float damage);
 private:
 	PlayerMovement Movement;
 };

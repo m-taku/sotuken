@@ -10,23 +10,18 @@
 class Player :public IGameObject
 {
 	friend PlayerMovement;
+	friend PlayerState;
 	friend PlayerCombo;
 public:
 /// <summary>
 /// 状態のEnum
 /// </summary>
-	enum State {
-		StateTownMove,			//移動中
-		StateQuestMove,
-		StateAttack, 
-		StateAttackMode,
-		StateWate,
-		Statedeath
-	};
+
 	enum anim {
-		//attack,
-		walk,
+		walk, 
+		death,
 		idel,
+		avoid,
 		run,
 		num
 	};
@@ -41,6 +36,10 @@ public:
 	const CVector3& GetPosition() const
 	{
 		return m_position;
+	}
+	const CVector3& GetReturnPos() const
+	{
+		return m_returnpos;
 	}
 	const CVector3& GetForward() const
 	{
@@ -75,6 +74,10 @@ public:
 		m_position = pos;
 		m_characon.SetPosition(pos);
 	}
+	void SetReturnPos(const CVector3& pos)
+	{
+		m_returnpos = pos;
+	}
 	void Playanim(int No,bool furag = false)
 	{
 		m_anim.Play(No,0.0f);
@@ -101,11 +104,11 @@ public:
 	}
 	void Setweapon()
 	{
-		m_combo->SetAnimation(this);
+		m_weapon->SetAnimation(this);
 	}
 	PlayerCombo* Getcombo()
 	{
-		return m_combo;
+		return m_weapon;
 	}
 	const Bone& GetBone(const wchar_t* name)
 	{
@@ -120,10 +123,27 @@ public:
 	{
 		return m_playerData.attackPower;
 	}
-	const Palyer_Data_Test& GetPlayer()
+	const PalyerData& GetPlayerData()
 	{
 		return m_playerData;
 	}
+	State& NowState()
+	{
+		return m_statenum;
+	}
+
+	//ステータス確認
+	const PalyerExecuteParam& GetPlayerNowParam()
+	{
+		return m_playerParam;
+	}
+	//ステータス変更用
+	PalyerExecuteParam& GetPlayerParam()
+	{
+		return m_playerParam;
+	}
+protected:
+
 	void HitAction(float damage);
 private:
 	void UpdateAxis()
@@ -142,6 +162,7 @@ private:
 
 
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
+	CVector3 m_returnpos = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_modelpos = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向
@@ -152,11 +173,12 @@ private:
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列
 	bool m_isAnimMove = false;
 	
-	PlayerCombo* m_combo = nullptr;
+	PlayerCombo* m_weapon = nullptr;
 	Rig m_rig;
 	State m_statenum = StateTownMove;
 	Animation m_anim;
-	Palyer_Data_Test m_playerData;
+	PalyerData m_playerData;
+	PalyerExecuteParam m_playerParam;
 	AnimationClip m_animClip[num];
 	PlayerState* m_state = nullptr;
 	SkinModel m_skinmodel;		//スキンモデル

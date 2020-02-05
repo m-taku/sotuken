@@ -74,7 +74,7 @@ public:
 	{
 		return m_pos;
 	}
-	void PostDraw();
+	void UIDraw();
 private:
 	GameFont m_font;							//文字の表示機構
 	CVector4 m_Coler = CVector4::White();		//文字の色

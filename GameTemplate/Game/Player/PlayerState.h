@@ -3,6 +3,15 @@
 /// プレイヤーステートの基底クラス
 /// </summary>
 class Player;
+enum State {
+	StateTownMove,			//移動中
+	StateQuestMove,
+	StateAvoid,
+	StateAttack,
+	StateAttackMode,
+	StateWate,
+	Statedeath
+};
 class PlayerState :public Noncopyable
 {
 public:
@@ -28,6 +37,10 @@ public:
 	{
 
 	}
+	virtual void DamageAction(float damage) {
+
+	}
+	int DownHp(int Damage);
 protected:
 	Player* m_player = nullptr;				//プレイヤーのインスタンス
 };

@@ -41,7 +41,7 @@ bool Test_QuestBase::Start()
 	m_sprite[1].Update({ 0.0f,150.0f,0.0f }, CQuaternion::Identity(), CVector3::One());
 	m_sprite[1].SetMulColor({ 1.0f,1.0f,2.0f,1.0f });
 	m_isStart = true;
-	m_time *= 60.0f;
+	//m_time *= 60.0f;
 	return true;
 }
 void Test_QuestBase::CreateQuest()
@@ -102,7 +102,7 @@ void Test_QuestBase::Update()
 						else
 						{
 							auto pla = FindGO<Player>("player");
-							pla->TransitionState(Player::StateQuestMove);
+							pla->TransitionState(StateQuestMove);
 						}
 						debugtime = 0;
 						m_nowdoun = false;

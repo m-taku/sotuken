@@ -8,6 +8,7 @@ public:
 	~PlayerQuestMove();
 
 	void Update();
+	void DamageAction(float damage);
 private:
 	enum weapon
 	{

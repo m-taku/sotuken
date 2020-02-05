@@ -18,7 +18,7 @@ Player::Player()
 Player::~Player()
 {
 	delete m_state;
-	delete m_combo;
+	delete m_weapon;
 }
 
 void Player::TransitionState(State m)
@@ -31,6 +31,9 @@ void Player::TransitionState(State m)
 		break;
 	case StateWate:
 		m_state = new PlayerWait(this);
+		break;
+	case StateAvoid:
+		m_state = new PlayerAvoid(this);
 		break;
 	case StateAttack:
 		m_state = new PlayerAttack(this);
@@ -56,8 +59,12 @@ bool Player::Start()
 	m_skinmodel.Init(L"Assets/modelData/Player.cmo");
 	//m_animClip[attack].Load(L"Assets/animData/death.tka");
 	//m_animClip[attack].SetLoopFlag(false); 
+	m_animClip[death].Load(L"Assets/animData/death.tka");
+	m_animClip[death].SetLoopFlag(false);
 	m_animClip[idel].Load(L"Assets/animData/idel.tka");
-	m_animClip[idel].SetLoopFlag(true);
+	m_animClip[idel].SetLoopFlag(true); 
+	m_animClip[avoid].Load(L"Assets/animData/avoid.tka");
+	m_animClip[avoid].SetLoopFlag(false);
 	m_animClip[run].Load(L"Assets/animData/run.tka");
 	m_animClip[run].SetLoopFlag(true);
 	m_animClip[walk].Load(L"Assets/animData/walk.tka");
@@ -77,7 +84,7 @@ bool Player::Start()
 	GetHitObjict().Create(&m_position, 500, [&](float damage) {
 		HitAction(damage);
 	}, HitObject::player);
-	m_combo = new Smallsword(this);
+	m_weapon = new Smallsword(this);
 	m_modelpos = m_position;
 	m_rig.SetBoon(m_skinmodel, L"mixamorig:Hips");
 	//Playanim(run);
@@ -125,5 +132,13 @@ void Player::Draw()
 }
 void Player::HitAction(float damage)
 {
-	m_playerData.hp -= damage;
+	if (m_statenum != Statedeath)
+	{
+		m_state->DamageAction(damage);
+		if (m_playerParam.hp <= 0)
+		{
+			TransitionState(Statedeath);
+
+		}
+	}
 }

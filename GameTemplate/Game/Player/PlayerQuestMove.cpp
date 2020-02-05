@@ -27,19 +27,26 @@ void PlayerQuestMove::Update()
 	case pull2:
 		if (!m_player->IsPlayinganim())
 		{
-			m_player->TransitionState(Player::StateAttackMode);
+			m_player->TransitionState(StateAttackMode);
 		}
 		break;
 	case move:
-		Movement.DefaultMove();
+		Movement.QuestMove();
 		if (g_pad[0].IsTrigger(enButtonY)) {
 			m_weapon = pull1;
 			m_player->Getcombo()->pullweapon();
 			//m_player->TransitionState(Player::StateAttackMode);
+		}
+		else if (g_pad[0].IsTrigger(enButtonA)) {
+			m_player->TransitionState(StateAvoid);
 		}
 	default:
 		break;
 	}
 	
 
+}
+void PlayerQuestMove::DamageAction(float damage)
+{
+	DownHp(damage);
 }

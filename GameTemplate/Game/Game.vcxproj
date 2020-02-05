@@ -159,6 +159,7 @@
     <ClCompile Include="physics\PhysicsStaticObject.cpp" />
     <ClCompile Include="graphics\ShaderResourceView.cpp" />
     <ClCompile Include="graphics\Primitive.cpp" />
+    <ClCompile Include="Player\PlayerAvoid.cpp" />
     <ClCompile Include="QuestResult.cpp" />
     <ClCompile Include="graphics\SkyCube.cpp" />
     <ClCompile Include="Quest_NPC.cpp" />
@@ -273,6 +274,7 @@
     <ClInclude Include="physics\PhysicsStaticObject.h" />
     <ClInclude Include="graphics\ShaderResourceView.h" />
     <ClInclude Include="graphics\Primitive.h" />
+    <ClInclude Include="Player\PlayerAvoid.h" />
     <ClInclude Include="QuestResult.h" />
     <ClInclude Include="Quest_NPC.h" />
     <ClInclude Include="Rig.h" />

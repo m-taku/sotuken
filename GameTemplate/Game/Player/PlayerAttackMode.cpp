@@ -6,6 +6,7 @@
 PlayerAttackMode::PlayerAttackMode(Player* player) :PlayerState(player)
 {
 
+	Movement.SetPlayer(player);
 	m_player->Playanim(Player::walk);
 }
 
@@ -27,19 +28,23 @@ void PlayerAttackMode::Update()
 	case push2:
 		if (!m_player->IsPlayinganim())
 		{
-			m_player->TransitionState(Player::StateQuestMove);
+			m_player->TransitionState(StateQuestMove);
 		}
 		break;
 	case move:
+		Movement.QuestWeaponMove();
 		if (g_pad[0].IsTrigger(enButtonY)) {
 			m_player->Getcombo()->Reset();
 			m_player->Getcombo()->changeY();
-			m_player->TransitionState(Player::StateAttack);
+			m_player->TransitionState(StateAttack);
 		}
 		else if (g_pad[0].IsTrigger(enButtonB)) {
 			m_player->Getcombo()->Reset();
 			m_player->Getcombo()->changeB();
-			m_player->TransitionState(Player::StateAttack);
+			m_player->TransitionState(StateAttack);
+		}
+		else if (g_pad[0].IsTrigger(enButtonA)) {
+			m_player->TransitionState(StateAvoid);
 		}
 		else if (g_pad[0].IsTrigger(enButtonX)) {
 			m_weapon = push1;
@@ -48,4 +53,8 @@ void PlayerAttackMode::Update()
 	default:
 		break;
 	}
+}
+void PlayerAttackMode::DamageAction(float damage)
+{
+	DownHp(damage);
 }
