@@ -47,7 +47,6 @@ void DeferredRender::Init()
 	m_ps.Load("Assets/shader/diferredRender.fx", "PSMain", Shader::EnType::PS);
 	m_postEffect.SetPS(&m_ps);
 	m_postEffect.SetVS(&m_vs);
-	m_tonemap.Init(g_graphicsEngine->GetMainRenderTarget().GetShaderResourceView());
 }
 
 void DeferredRender::Update()
@@ -99,7 +98,6 @@ void DeferredRender::Draw()
 	deviceContext->PSSetShaderResources(0, enGBuffer_Num, srv);
 	deviceContext->VSSetShaderResources(0, enGBuffer_Num, srv);
 	m_postEffect.Draw();
-	m_tonemap.Draw();
 }
 
 void DeferredRender::Release()

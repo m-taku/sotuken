@@ -19,6 +19,8 @@ public:
 	}
 	void Release();
 private:
+	CVector4 m_mulColor = CVector4::White();
+	ConstantBuffer m_cb;
 	Shader*					m_ps;							//!<ピクセルシェーダー。
 	Shader*					m_vs;							//!<頂点シェーダー。
 	Primitive				m_primitive;					//!<プリミティブ。

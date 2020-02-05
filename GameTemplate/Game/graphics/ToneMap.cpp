@@ -40,7 +40,7 @@ void ToneMap::Init(ID3D11ShaderResourceView* srv)
 
 void ToneMap::Draw()
 {
-	m_blur.Execute(8.0f);
+	m_blur.Execute(32.0f);
 	ID3D11DeviceContext* deviceContext = g_graphicsEngine->GetD3DDeviceContext();
 	//レンダーターゲットのバックアップ
 	ID3D11RenderTargetView* buckUpRTV;

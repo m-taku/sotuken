@@ -209,4 +209,5 @@ void GraphicsEngine::Init(HWND hWnd)
 	m_deferredRender.Init();
 	m_bloom.Init(m_mainRenderTarget.GetShaderResourceView());
 	m_depthFog.Init();
+	m_tonemap.Init(m_mainRenderTarget.GetShaderResourceView());
 }

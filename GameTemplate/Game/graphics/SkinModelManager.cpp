@@ -164,7 +164,7 @@ void SkinModelManager::CalculateFrustumPlanes()
 		m_Plane[i].m_centerPos = popopop;
 		if (i == 4)
 		{
-			m_Plane[i].m_centerPos += front * g_camera3D.GatNear();
+			m_Plane[i].m_centerPos += front * g_camera3D.GetNear();
 		}
 		if (i == 5)
 		{

@@ -106,7 +106,7 @@ public:
 	/*!
 	 * @brief	‹ß•½–Ê‚ğİ’èB
 	 */
-	float GatNear()
+	float GetNear()
 	{
 		return m_near;
 	}

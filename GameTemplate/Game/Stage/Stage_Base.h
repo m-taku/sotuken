@@ -27,7 +27,8 @@ public:
 #else
 	
 #endif
-		m_SkyCube.Init();
+		m_SkyCube = NewGO<SkyCube>(1, "sky");
+		m_SkyCube->Init();
 		return true;
 	}
 	void Update()
@@ -38,7 +39,7 @@ public:
 #else
 		m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One()); #endif
 #endif
-			m_SkyCube.Update(CVector3::Zero(), CVector3::One()*30000.0f);
+			m_SkyCube->Update(CVector3::Zero(), CVector3::One()*30000.0f);
 	}
 	void Draw()
 	{
@@ -52,13 +53,12 @@ public:
 	}
 	void PostDraw()
 	{
-		m_SkyCube.Draw();
 	}
 protected:
 	SkinModel m_model;
 	SkinModel m_testmodel;
 	PhysicsStaticObject m_poa;
-	SkyCube m_SkyCube;
+	SkyCube* m_SkyCube = nullptr;
 	//PhysicsStaticObject m_physicsStaticObject;	//!<静的物理オブジェクト。
 	wchar_t* m_Name;
 	Level nra;

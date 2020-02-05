@@ -37,12 +37,26 @@ void SkyCube::Init(const wchar_t* modelFilePath, const wchar_t* cubeMapFilePath)
 void SkyCube::Update(const CVector3& position, const CVector3& scale)
 {
 	m_skinModel.UpdateWorldMatrix(position, CQuaternion::Identity(), scale);
-	ViewMatrix = g_camera3D.GetViewMatrix();
-	ProjectionMatrix = g_camera3D.GetProjectionMatrix();
+	CMatrix view;
+	CMatrix proj;
+	view.MakeLookAt(
+		g_camera3D.GetPosition(),
+		g_camera3D.GetTarget(),
+		g_camera3D.GetUp()
+	);
+	proj.MakeProjectionMatrix(
+		g_camera3D.GetViewAngle(),
+		FRAME_BUFFER_W / FRAME_BUFFER_H,
+		g_camera3D.GetNear(),
+		scale.x*2.0f
+	);
+	ViewMatrix = view;
+	ProjectionMatrix = proj;
 }
 
-void SkyCube::Draw()
+void SkyCube::PostDraw()
 {
+
 	ID3D11DeviceContext* devicecontext = g_graphicsEngine->GetD3DDeviceContext();
 	ID3D11RenderTargetView* buckUpRTV = nullptr;
 	ID3D11DepthStencilView* buckUpDepth = nullptr;
