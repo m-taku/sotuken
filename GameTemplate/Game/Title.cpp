@@ -34,7 +34,7 @@ void Title::Update()
 	}
 
 }
-void Title::PostDraw()
+void Title::TextureDraw()
 {
 	ID3D11DeviceContext* d3dDeviceContext = g_graphicsEngine->GetD3DDeviceContext();
 	m_sprite.Draw(d3dDeviceContext);

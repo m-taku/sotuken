@@ -8,7 +8,7 @@ public:
 	bool Start();
 	void Update();
 	void Draw();
-	void PostDraw();
+	void TextureDraw();
 private:
 	//ShaderResourceView m_data;
 	//Sprite m_sprite;

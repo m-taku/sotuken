@@ -27,7 +27,7 @@ public:
 	};
 	bool Start();
 	void Update();
-	void PostDraw();
+	void TextureDraw();
 	void CreateQuest();
 	void ChangePaper()
 	{

@@ -87,7 +87,7 @@ namespace smEngine {
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
-				Object->TextureDraw();
+				Object->TextureDrawWrapper();
 			}
 		}
 

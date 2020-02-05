@@ -132,7 +132,7 @@ void Test_QuestBase::ChengResult(bool flag)
 	SetActive(m_Quest);
 	NewGO<QuestResult>(0,"Result")->SetClear(flag);
 }
-void Test_QuestBase::PostDraw()
+void Test_QuestBase::TextureDraw()
 {
 	if (!m_Quest) {
 		for (int i = 0; i < 2; i++) {
