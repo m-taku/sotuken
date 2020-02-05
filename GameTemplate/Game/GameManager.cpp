@@ -3,6 +3,8 @@
 #include"Enemy/Enemy.h"
 #include "Player.h"
 #include"QuestManager.h"
+#include"NPCManager.h"
+#include"Quest_NPC.h"
 GameManager::GameManager()
 {
 
@@ -14,8 +16,10 @@ GameManager::~GameManager()
 }
 
 bool GameManager::Start()
-{	
+{
+	//m_NPCManager = NewGO<NPCManager>(0, "NPCManager");
 	m_Stage.changTown();
+	
 	m_QuestManager = NewGO<QuestManager>(0, "QuestManager");
 	m_player = NewGO<Player>(0, "player");
 	//m_player->TransitionState(Player::StateTownMove);
@@ -33,6 +37,7 @@ void GameManager::Update()
 		{
 			m_QuestManager->ChangeOrderMode(QuestManager::Decision);
 			m_player->TransitionState(Player::StateTownMove);
+			FindGO<Quest_NPC>("受付ジョー")->SetTalkState(Quest_NPC::QuestSelect);
 			break;
 		}
 	case QuestOrder:
@@ -40,6 +45,7 @@ void GameManager::Update()
 		{
 			m_QuestManager->ChangeOrderMode(QuestManager::holdQuest);
 			m_player->TransitionState(Player::StateTownMove);
+			FindGO<Quest_NPC>("受付ジョー")->SetTalkState(Quest_NPC::QuestCancel);
 		}
 		break;
 	case QuestStart:

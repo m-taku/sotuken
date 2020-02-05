@@ -2,7 +2,7 @@
 #include"StageManager.h"
 #include"Stage/QuestStage.h"
 #include "Stage/Town.h"
-
+#include"NPCManager.h"
 
 StageManager::StageManager()
 {

@@ -6,6 +6,7 @@ class DeferredRender
 		enGBuffer_Normal,				//法線。
 		enGBuffer_World,
 		enGBuffer_Depth,
+		enGBuffer_Silhouette,
 		enGBuffer_Num,					//Gバッファの数。
 	};
 public:
@@ -22,6 +23,10 @@ public:
 	ID3D11ShaderResourceView* GetDepthSRV()
 	{
 		return m_renderTarget[enGBuffer_Depth].GetShaderResourceView();
+	}
+	ID3D11ShaderResourceView* GetSilhouetteSRV()
+	{
+		return m_renderTarget[enGBuffer_Silhouette].GetShaderResourceView();
 	}
 private:
 	RenderTarget m_renderTarget[enGBuffer_Num];

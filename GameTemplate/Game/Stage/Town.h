@@ -1,5 +1,5 @@
 #pragma once
-class TEstNPC;
+class Quest_NPC;
 #include"Stage_Base.h"
 class Town : public Stage_Base
 {
@@ -9,6 +9,6 @@ public:
 	bool Init();
 	void DrawDebug();
 public:
-	TEstNPC* TestNPC = nullptr;
+	Quest_NPC* TestNPC = nullptr;
 };
 

@@ -105,7 +105,7 @@ void QuestManager::Update()
 			m_Quest[m_No]->ChangePaper();
 			m_GameManager->ChangeNotify(GameManager::QuestOrder);
 		}
-		if (g_pad[0].IsTrigger(enButtonB))
+		else if (g_pad[0].IsTrigger(enButtonB))
 		{
 			m_isActive = false;
 			m_Quest[m_No]->ChangePaper();

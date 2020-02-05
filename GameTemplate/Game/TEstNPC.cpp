@@ -3,10 +3,7 @@
 #include"Test.h"
 #include "Text_Box/Text_Box.h"
 #include "Player.h"
-#include"QuestSelect.h"
 #include"graphics/SkinModel.h"
-#include"QuestManager.h"
-
 
 TEstNPC::TEstNPC()
 {
@@ -21,12 +18,13 @@ bool TEstNPC::Start()
 	//cmoファイルの読み込み。
 	m_model.Init(L"Assets/modelData/unityChan.cmo"); 
 	m_model.EnableShadowCaster(true);
-	test =FindGO<Player>("player");
+	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());	
 	m_bikkuri.Init(L"Assets/modelData/bikkuri.cmo");
-	m_collider.Init(10.0f, 30.0f, pos);
-	m_model.UpdateWorldMatrix(pos, CQuaternion::Identity(), CVector3::One());
 	CVector3 posa = { pos.x,pos.y + 100.0f,pos.z };
 	m_bikkuri.UpdateWorldMatrix(posa, CQuaternion::Identity(), CVector3::One());
+	test =FindGO<Player>("player");
+	m_collider.Init(10.0f, 30.0f, pos);
+
 	return true;
 }
 void TEstNPC::Update()
@@ -74,9 +72,9 @@ void TEstNPC::Update()
 		{
 			if (g_pad[0].IsTrigger(enButtonB))
 			{
-				auto quest = FindGO<QuestManager>("QuestManager");
-				quest->SetActive(true);
-				quest->Printkami();
+				//auto quest = FindGO<QuestManager>("QuestManager");
+			//	quest->SetActive(true);
+				//quest->Printkami();
 				for (int j = 0; j < 2; j++) {
 					if (m_Text[j] != NULL) {
 						DeleteGO(m_Text[j]);

@@ -45,7 +45,6 @@ namespace smEngine {
 			}
 		}
 		smLightManager().Update();
-
 		smGameCamera().Update();
 
 		for (auto ObjectList : m_gameObjectListArray) {
@@ -68,6 +67,7 @@ namespace smEngine {
 		g_graphicsEngine->GetDeferredRender().Draw();
 		g_graphicsEngine->BloomDraw();
 		g_graphicsEngine->DepthFogDraw();
+
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
@@ -80,7 +80,6 @@ namespace smEngine {
 				Object->PostDrawWrapper();
 			}
 		}
-
 		g_graphicsEngine->ChangeBuckBuffer();
 		g_graphicsEngine->PostEffectDraw();
 

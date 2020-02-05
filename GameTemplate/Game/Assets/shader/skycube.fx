@@ -1,8 +1,11 @@
 
 TextureCube<float4> skyCubeMap : register(t0);	//スカイキューブマップ。
-Texture2D<float4> depthTexture : register(t1);
 sampler Sampler : register(s0);
-
+cbuffer VSPSCb : register(b0) {
+	float4x4 mWorld;
+	float4x4 mView;
+	float4x4 mProj;
+};
 struct PSInput {
 	float4 Position 	: SV_POSITION;
 	float3 Normal		: NORMAL;
@@ -40,8 +43,6 @@ PSInput VSMain(VSInputNmTxVcTangent In)
 
 float4 PSCubeMain(PSInput In) : SV_Target0
 {
-	float d = depthTexture.Sample(Sampler,In.TexCoord).x - (In.Position.z / In.Position.w);
-	clip(d);
-	float4 color = skyCubeMap.Sample(Sampler, In.Normal*-1.0f);
+	float4 color = skyCubeMap.Sample(Sampler, In.Normal);
 	return color;
 }

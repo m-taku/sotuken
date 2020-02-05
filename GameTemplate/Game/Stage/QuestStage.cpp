@@ -103,6 +103,7 @@ void QuestStage::Update()
 {
 	nra.Updata();
 	nra1.Updata();
+	m_SkyCube.Update(CVector3::Zero(), CVector3::One()*30000.0f);
 }
 void QuestStage::DrawDebug()
 {

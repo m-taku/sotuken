@@ -84,6 +84,7 @@ struct PSOutput {
 	float4 world   : SV_Target2;
 	float4 depth   : SV_Target3;
 	float4 shadow  : SV_Target4;
+	float4 silhouette:SV_Target5;
 };
 /*!
  *@brief	スキン行列を計算。
@@ -190,6 +191,8 @@ PSOutput PSMain(PSInput In)
 	psout.world = 0.0f;
 	psout.depth = 1.0f;
 	psout.shadow = 1.0f;
+	psout.silhouette = 0.0f;
+
 
 	psout.diffuse = albedoTexture.Sample(Sampler, In.TexCoord);
 	float3 normal;
@@ -208,12 +211,19 @@ PSOutput PSMain(PSInput In)
 	psout.normal = float4(normal, 1.0f);
 	psout.world = float4(In.WorldPos.xyz, 1.0f);
 	psout.depth = In.Position.z;
+	psout.silhouette = float4(1.0f, 1.0f, 1.0f, 1.0f);
 	return psout;
 }
 
 PSOutput PSTreeMain(PSInput In)
 {
 	PSOutput psout;
+	psout.diffuse = 0.0f;
+	psout.normal = 0.0f;
+	psout.world = 0.0f;
+	psout.depth = 1.0f;
+	psout.shadow = 1.0f;
+	psout.silhouette = 0.0f;
 
 	psout.diffuse = albedoTexture.Sample(Sampler, In.TexCoord);
 	clip(psout.diffuse.w - 0.1f);
@@ -234,5 +244,6 @@ PSOutput PSTreeMain(PSInput In)
 	psout.normal = float4(normal, 1.0f);
 	psout.world = float4(In.WorldPos.xyz, 1.0f);
 	psout.depth = In.Position.z;
-	return psout;
+	psout.silhouette = float4(1.0f, 1.0f, 1.0f, 1.0f);
+	return  psout;
 }

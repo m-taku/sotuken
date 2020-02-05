@@ -179,6 +179,9 @@
     <ClCompile Include="QuestResult.cpp" />
     <ClCompile Include="UI\UI.cpp" />
     <ClCompile Include="graphics\SkyCube.cpp" />
+    <ClCompile Include="Quest_NPC.cpp" />
+    <ClCompile Include="NPCBase.cpp" />
+    <ClCompile Include="NPCManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -344,6 +347,9 @@
     <ClInclude Include="QuestResult.h" />
     <ClInclude Include="UI\UI.h" />
     <ClInclude Include="graphics\SkyCube.h" />
+    <ClInclude Include="Quest_NPC.h" />
+    <ClInclude Include="NPCBase.h" />
+    <ClInclude Include="NPCManager.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -662,5 +668,11 @@
     <ImageContentTask Include="Assets\modelData\map\tex\T_treebark01_N.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\T_treeleaves01_N.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\T_dirttile01_N.tga" />
+    <ImageContentTask Include="Assets\sprite\HPVer_Naka.png" />
+    <ImageContentTask Include="Assets\sprite\HPVer_Waku.png" />
+    <ImageContentTask Include="Assets\sprite\StaminaVer_Naka.png" />
+    <ImageContentTask Include="Assets\sprite\StaminaVer_Waku.png" />
+    <ImageContentTask Include="Assets\sprite\Timer_Waku.png" />
+    <ImageContentTask Include="Assets\sprite\Timer_Hari.png" />
   </ItemGroup>
 </Project>

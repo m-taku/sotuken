@@ -250,7 +250,7 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 {
 
 	auto No = GetSkinModelManager().GetNo();
-	if (drawMode == enShadow) {
+	if (drawMode == enShadow|| drawMode == enCubeMap) {
 		m_vsSCb[No].mWorld = m_worldMatrix;
 		m_vsSCb[No].mProj = projMatrix;
 		m_vsSCb[No].mView = viewMatrix;

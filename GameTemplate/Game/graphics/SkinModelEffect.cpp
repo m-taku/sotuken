@@ -21,6 +21,10 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 		//deviceContext->PSSetShaderResources(enSkinModelSRVReg_AlbedoTexture, 1, &m_albedoTex);
 		break;
 	}
+	case enCubeMap:
+		m_pVSShader = &m_vsSkyShader;
+		m_pPSShader = &m_psSkyShader;
+		break;
 	case enTree:
 	{
 		m_pVSShader = &m_vsShaderInstancing;
@@ -69,6 +73,7 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 	}
 	default: break;
 	}
+
 	deviceContext->PSSetShaderResources(enSkinModelSRVReg_AlbedoTexture, 1, &m_albedoTex);
 	deviceContext->PSSetShaderResources(enSkinModelSRVReg_NomalTexture, 1, &m_normalTex);
 	deviceContext->VSSetShader((ID3D11VertexShader*)m_pVSShader->GetBody(), NULL, 0);

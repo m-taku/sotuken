@@ -58,6 +58,7 @@ void DeferredRender::Update()
 		m_renderTarget[enGBuffer_Normal].GetRenderTatgetView(),
 		m_renderTarget[enGBuffer_World].GetRenderTatgetView(),
 		m_renderTarget[enGBuffer_Depth].GetRenderTatgetView(),
+		m_renderTarget[enGBuffer_Silhouette].GetRenderTatgetView()
 	};
 	deviceContext->OMSetRenderTargets(enGBuffer_Num, renderTargetView, m_renderTarget[enGBuffer_DiffuseTexture].GetDepthStencilView());
 	deviceContext->RSSetViewports(1, m_renderTarget[enGBuffer_DiffuseTexture].GetViewPort());
@@ -95,8 +96,8 @@ void DeferredRender::Draw()
 		m_renderTarget[enGBuffer_Depth].GetShaderResourceView(),
 		smLightManager().GetShadowSRV()
 	};
-	deviceContext->PSSetShaderResources(0, enGBuffer_Num+1, srv);
-	deviceContext->VSSetShaderResources(0, enGBuffer_Num+1, srv);
+	deviceContext->PSSetShaderResources(0, enGBuffer_Num, srv);
+	deviceContext->VSSetShaderResources(0, enGBuffer_Num, srv);
 	m_postEffect.Draw();
 	m_tonemap.Draw();
 }

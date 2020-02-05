@@ -9,4 +9,5 @@ Stage_Base::Stage_Base()
 
 Stage_Base::~Stage_Base()
 {
+
 }

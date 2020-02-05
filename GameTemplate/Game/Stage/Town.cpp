@@ -3,6 +3,8 @@
 #include"TEstNPC.h"
 #include"../Enemyname/MonsterList.h"
 #include"Player.h"
+#include"Quest_NPC.h"
+#include"../Quest_NPC.h"
 
 
 Town::Town()
@@ -47,8 +49,8 @@ bool Town::Init()
 		result = wcscmp(L"unityChan", objData.name);
 		if (result == 0)
 		{
-			TestNPC = NewGO<TEstNPC>(0, "dnea");
-			TestNPC->SetPos(objData.position);
+			TestNPC = NewGO<Quest_NPC>(0, "Žó•tƒWƒ‡[");
+			TestNPC->Setposition(objData.position);
 			return true;
 		}
 		result = wcscmp(L"SM_Grass01", objData.name);

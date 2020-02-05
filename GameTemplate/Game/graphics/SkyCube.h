@@ -11,5 +11,17 @@ public:
 private:
 	SkinModel m_skinModel;
 	ShaderResourceView m_cubeMapSRV;
+	RenderTarget m_renderTarget;
+	RenderTarget m_addRenderTarget;
+	Shader m_copyPS;
+	Shader m_copyVS;
+
+	Shader m_addPS;
+	Shader m_addVS;
+
+	PostEffect m_fullScreenDraw;
+
+	CMatrix ViewMatrix;
+	CMatrix ProjectionMatrix;
 };
 
