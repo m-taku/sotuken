@@ -74,11 +74,16 @@ void PostEffect::Init()
 	desc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
 	desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 	g_graphicsEngine->GetD3DDevice()->CreateSamplerState(&desc, &m_samplerState);
+	m_cb.Create(nullptr, sizeof(CVector4));
 }
 
 void PostEffect::Draw()
 {
 	ID3D11DeviceContext* DeviceContext = g_graphicsEngine->GetD3DDeviceContext();
+	DeviceContext->UpdateSubresource(m_cb.GetBody(), 0, NULL, &m_mulColor, 0, 0);
+	DeviceContext->VSSetConstantBuffers(10, 1, &m_cb.GetBody());
+	DeviceContext->PSSetConstantBuffers(10, 1, &m_cb.GetBody());
+	
 	DeviceContext->PSSetShader((ID3D11PixelShader*)m_ps->GetBody(), NULL, 0);
 	DeviceContext->VSSetShader((ID3D11VertexShader*)m_vs->GetBody(), NULL, 0);
 	DeviceContext->IASetInputLayout(m_vs->GetInputLayout());

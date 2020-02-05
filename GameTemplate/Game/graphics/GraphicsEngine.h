@@ -5,7 +5,7 @@
 class GraphicsEngine
 {
 	struct DepthFogParam {
-		float depthPow = 5000.0f;
+		float depthPow = 3000.0f;
 	};
 public:
 	GraphicsEngine();
@@ -93,6 +93,10 @@ public:
 	{
 		return m_depthFogParam;
 	}
+	ToneMap& GetToneMap()
+	{
+		return m_tonemap;
+	}
 private:
 	D3D_FEATURE_LEVEL		m_featureLevel;				//Direct3D デバイスのターゲットとなる機能セット。
 	ID3D11Device*			m_pd3dDevice = NULL;		//D3D11デバイス。
@@ -109,6 +113,7 @@ private:
 	DeferredRender m_deferredRender;
 	Bloom m_bloom;
 	DepthFog m_depthFog;
+	ToneMap m_tonemap;
 
 	DepthFogParam m_depthFogParam;
 	float m_shadowMapHight = 8000.0f;

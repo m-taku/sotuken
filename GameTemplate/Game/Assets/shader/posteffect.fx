@@ -8,6 +8,10 @@ struct PSInput {
 	float4 pos : SV_POSITION;
 	float2 uv : TEXCOORD0;
 };
+
+cbuffer cb : register(b10) {
+	float4 mulColor;	//乗算カラー。
+};
 sampler Sampler : register(s0);
 Texture2D<float4> colorTexture : register(t0);	//カラーテクスチャ。
 
@@ -21,6 +25,6 @@ PSInput VSMain(VSInput In)
 
 float4 PSMain(PSInput In) : SV_Target0
 {
-	float4 color = colorTexture.Sample(Sampler, In.uv);
+	float4 color = colorTexture.Sample(Sampler, In.uv)*mulColor;
 	return color;
 }

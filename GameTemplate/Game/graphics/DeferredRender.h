@@ -31,7 +31,6 @@ public:
 private:
 	RenderTarget m_renderTarget[enGBuffer_Num];
 	PostEffect m_postEffect;
-	ToneMap m_tonemap;
 	Shader m_ps;
 	Shader m_vs;
 };

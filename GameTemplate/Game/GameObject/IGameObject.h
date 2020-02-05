@@ -72,11 +72,19 @@ namespace smEngine {
 				Draw();
 			}
 		}
+		void TextureDrawWrapper()
+		{
+			if (m_isStart&&m_isActive && !m_isDead)
+			{
+				TextureDraw();
+			}
+		}
 		virtual bool Start() { return true; };
 		virtual void Update() {};
 		virtual void Draw() {};
 		virtual void PostUpdate() {};
 		virtual void UIDraw() {};
+		virtual void TextureDraw() {};
 		virtual void PostDraw() {};
 		virtual void OnDestroy() {};
 		void SetActive(bool Active)

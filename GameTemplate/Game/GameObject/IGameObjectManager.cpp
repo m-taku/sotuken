@@ -65,6 +65,7 @@ namespace smEngine {
 		smLightManager().SendBuffer();
 		smLightManager().ShadowRender();
 		g_graphicsEngine->GetDeferredRender().Draw();
+		g_graphicsEngine->GetToneMap().Draw();
 		g_graphicsEngine->BloomDraw();
 		g_graphicsEngine->DepthFogDraw();
 
@@ -80,6 +81,16 @@ namespace smEngine {
 				Object->PostDrawWrapper();
 			}
 		}
+		
+		
+
+		for (auto ObjectList : m_gameObjectListArray) {
+			for (auto Object : ObjectList)
+			{
+				Object->TextureDraw();
+			}
+		}
+
 		g_graphicsEngine->ChangeBuckBuffer();
 		g_graphicsEngine->PostEffectDraw();
 

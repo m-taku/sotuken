@@ -9,5 +9,5 @@ Stage_Base::Stage_Base()
 
 Stage_Base::~Stage_Base()
 {
-
+	DeleteGO(m_SkyCube);
 }

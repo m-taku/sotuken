@@ -31,11 +31,12 @@
 #include "graphics/Shader.h"
 #include "graphics/VertexBuffer.h"
 #include "graphics/IndexBuffer.h"
+#include "graphics/ConstantBuffer.h"
+#include "graphics/StructuredBuffer.h"
 #include "graphics/Primitive.h"
 #include "graphics/RenderTarget.h"
 #include "graphics/PostEffect/PostEffect.h"
-#include "graphics/ConstantBuffer.h"
-#include "graphics/StructuredBuffer.h"
+
 
 #include "graphics/SkinModel.h"
 #include "graphics/Skeleton.h"
