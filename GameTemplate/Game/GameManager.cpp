@@ -40,6 +40,7 @@ void GameManager::Update()
 		if (m_ChangeNotify)
 		{
 			m_QuestManager->ChangeOrderMode(QuestManager::Decision);
+			m_QuestManager->SetActive(false);
 			m_player->TransitionState(StateTownMove);
 			m_ui->SetHaveQuest(UI::NothaveQuest);
 			FindGO<Quest_NPC>("受付ジョー")->SetTalkState(Quest_NPC::QuestSelect);
@@ -49,6 +50,7 @@ void GameManager::Update()
 		if (m_ChangeNotify)
 		{
 			m_QuestManager->ChangeOrderMode(QuestManager::holdQuest);
+			m_QuestManager->SetActive(true);
 			m_ui->SetHaveQuest(UI::haveQuest);
 			m_player->TransitionState(StateTownMove);
 			FindGO<Quest_NPC>("受付ジョー")->SetTalkState(Quest_NPC::QuestCancel);

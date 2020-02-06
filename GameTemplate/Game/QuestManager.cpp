@@ -98,6 +98,9 @@ void QuestManager::Update()
 			}
 		}
 		break;
+	case Wait:
+
+		break;
 	case Cancel:
 		if (g_pad[0].IsTrigger(enButtonA))
 		{

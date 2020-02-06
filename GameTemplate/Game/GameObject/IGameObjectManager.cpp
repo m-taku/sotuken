@@ -44,9 +44,9 @@ namespace smEngine {
 				Object->UpdateWrapper();
 			}
 		}
-		smLightManager().Update();
-		smGameCamera().Update();
 
+		smGameCamera().Update();
+		smLightManager().Update();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{

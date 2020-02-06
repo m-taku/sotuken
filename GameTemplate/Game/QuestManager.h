@@ -13,6 +13,7 @@ public:
 		Decision,
 		holdQuest,
 		WaitQuest,
+		Wait,
 		Cancel
 
 	};

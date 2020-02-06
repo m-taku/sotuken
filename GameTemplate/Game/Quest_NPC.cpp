@@ -32,9 +32,23 @@ void Quest_NPC::Talk()
 	case Quest_NPC::TalkStart:
 		if (g_pad[0].IsTrigger(enButtonA)&& m_Text[0] == NULL) {
 			m_Text[0] = NewGO<Text_Box>(10, "Text_box");
-			m_Text[0]->SetText("クエストを受けますか？");
-			m_Text[0]->SetSpeed(2);
+			switch (m_TalkState)
+			{
+			case QuestSelect:	
+				m_Text[0]->SetText("クエストを受けますか？");
+				m_Text[0]->SetSpeed(0);
+				break;
+			case QuestCancel:			
+				m_Text[0]->SetText("クエストをキャンセルする？");
+				m_Text[0]->SetSpeed(0);
+				m_QuestManager->ChangeOrderMode(QuestManager::Wait);
+				m_TalkChange = PrintQuest;
+				break;
+			default:
+				break;
+			}
 			m_player->TransitionState(StateWate);
+
 		}	
 		else if (m_Text[0]!=NULL)
 		{
@@ -46,43 +60,53 @@ void Quest_NPC::Talk()
 				m_TalkChange = PrintQuest;
 			}
 		}
-		else
-		{
-		}
 		break;
 	case PrintQuest:
-		if (g_pad[0].IsTrigger(enButtonA))
+		switch (m_TalkState)
 		{
-			m_QuestManager->SetActive(true);
-			m_QuestManager->Printkami();
-			for (int j = 0; j < 2; j++) {
-				if (m_Text[j] != NULL) {
-					DeleteGO(m_Text[j]);
-					m_Text[j] = NULL;
-				}
-			}
-			switch (m_TalkState)
+		case QuestSelect:	
+			if (g_pad[0].IsTrigger(enButtonA))
 			{
-			case QuestSelect:
-				break;
-			case QuestCancel:
-				m_QuestManager->ChangeOrderMode(QuestManager::Cancel);
-				break;
-			default:
-				break;
-			}
-			m_TalkChange = TalkWate;
-		}
-		else if (g_pad[0].IsTrigger(enButtonB))
-		{
-			for (int j = 0; j < 2; j++) {
-				if (m_Text[j] != NULL) {
-					DeleteGO(m_Text[j]);
-					m_Text[j] = NULL;
+				m_QuestManager->SetActive(true);
+				m_QuestManager->Printkami();
+				for (int j = 0; j < 2; j++) {
+					if (m_Text[j] != NULL) {
+						DeleteGO(m_Text[j]);
+						m_Text[j] = NULL;
+					}
 				}
+
+				m_TalkChange = TalkWate;
+			}	
+			else if (g_pad[0].IsTrigger(enButtonB))
+			{
+				for (int j = 0; j < 2; j++) {
+					if (m_Text[j] != NULL) {
+						DeleteGO(m_Text[j]);
+						m_Text[j] = NULL;
+					}
+				}
+				m_player->TransitionState(StateTownMove);
+				m_TalkChange = TalkStart;
 			}
-			m_player->TransitionState(StateTownMove);
-			m_TalkChange = TalkStart;
+			break;
+		case QuestCancel:
+			if (g_pad[0].IsTrigger(enButtonA)|| g_pad[0].IsTrigger(enButtonB))
+			{
+				m_QuestManager->SetActive(true);
+				m_QuestManager->Printkami();
+				for (int j = 0; j < 2; j++) {
+					if (m_Text[j] != NULL) {
+						DeleteGO(m_Text[j]);
+						m_Text[j] = NULL;
+					}
+				}
+				m_QuestManager->ChangeOrderMode(QuestManager::Cancel);
+				m_TalkChange = TalkWate;
+			}
+			break;
+		default:
+			break;
 		}
 	case TalkWate:
 

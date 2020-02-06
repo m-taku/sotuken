@@ -8,18 +8,20 @@ namespace smEngine {
 		~GameCamera();
 		void Init();		//初期化
 		void Update();		//カメラの更新
+
 		/*!
 		*@brief	見たいものをセット
 		*/
 		void SetTarget(CVector3& target) {
-			g_camera3D.SetTarget(target);
+			m_target = target;
+			//g_camera3D.SetTarget(target);
 		}
 		/*!
 		*@brief	視点をセット
 		*/
 		void SetPosition(CVector3& position) {
-
-			g_camera3D.SetPosition(position);
+			m_position = position;
+			//g_camera3D.SetPosition(position);
 		}
 		/*!
 		*@brief	視点をセット
@@ -113,6 +115,7 @@ namespace smEngine {
 		const float MAXDIST = 1000.0f;					//カメラの最大距離
 		CVector3 m_position = CVector3::Back()*MAXDIST;			//視点
 		CVector3 m_target = CVector3::Zero();	//注視点
+
 		puriCamara m_piricamera;
 	};
 	static GameCamera& smGameCamera()
