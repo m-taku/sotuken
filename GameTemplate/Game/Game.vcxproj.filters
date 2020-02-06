@@ -183,6 +183,10 @@
     <ClCompile Include="NPCBase.cpp" />
     <ClCompile Include="NPCManager.cpp" />
     <ClCompile Include="Player\PlayerAvoid.cpp" />
+    <ClCompile Include="sound\SoundEngine.cpp" />
+    <ClCompile Include="sound\SoundSource.cpp" />
+    <ClCompile Include="sound\WaveFile.cpp" />
+    <ClCompile Include="sound\WaveFileBank.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -352,6 +356,10 @@
     <ClInclude Include="NPCBase.h" />
     <ClInclude Include="NPCManager.h" />
     <ClInclude Include="Player\PlayerAvoid.h" />
+    <ClInclude Include="sound\SoundEngine.h" />
+    <ClInclude Include="sound\SoundSource.h" />
+    <ClInclude Include="sound\WaveFile.h" />
+    <ClInclude Include="sound\WaveFileBank.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
