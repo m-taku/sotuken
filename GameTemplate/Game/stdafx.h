@@ -75,6 +75,7 @@ enum EBufferSlot
 {
 	enLightParam_Slot_No = 1,
 	enDepthFogParam_Slot_No,
+	enFullScreenDrawMulColor_Slot_No=10,
 	enDerectionLightSB_Slot_No = 100,
 	enPointLightSB_Slot_No,
 	enSpotLightSB_Slot_No
