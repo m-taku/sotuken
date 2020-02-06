@@ -20,8 +20,10 @@ CSoundSource::~CSoundSource()
 void CSoundSource::InitCommon()
 {
 }
-void CSoundSource::Init(wchar_t* filePath)
+void CSoundSource::Init(wchar_t* filePath, const char* name)
 {
+	m_nameHash = Util::MakeHash(name);
+
 	m_isAvailable = false;
 	m_waveFile = g_soundEngine->GetWaveFileBank().FindWaveFile(0, filePath);
 	if (!m_waveFile) {

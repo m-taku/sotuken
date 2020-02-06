@@ -39,7 +39,7 @@ public:
 	/// <param name="filePath">
 	/// ファイルパス。対応しているファイルフォーマット(*.wave)
 	/// </param>
-	void Init(wchar_t* filePath);
+	void Init(wchar_t* filePath, const char* name);
 	/// <summary>
 	/// 初期化(ストリーミング再生)
 	/// </summary>
@@ -158,6 +158,11 @@ public:
 		return m_matrixCoefficients;
 	}
 
+	unsigned int GetNameHash()
+	{
+		return m_nameHash;
+	}
+
 	/// <summary>
 	/// 更新
 	/// </summary>
@@ -192,5 +197,6 @@ private:
 	FLOAT32 m_emitterAzimuths[INPUTCHANNELS];
 	FLOAT32 m_matrixCoefficients[INPUTCHANNELS * OUTPUTCHANNELS];
 	bool m_isAvailable = false;			//!<インスタンスが利用可能？
+	unsigned int m_nameHash;
 };
 

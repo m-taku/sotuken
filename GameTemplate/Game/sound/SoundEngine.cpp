@@ -69,7 +69,6 @@ namespace {
 	*/
 CSoundEngine::CSoundEngine()
 {
-	g_soundEngine = this;
 }
 /*!
 	* @brief	デストラクタ。
@@ -83,7 +82,7 @@ CSoundEngine::~CSoundEngine()
 	*/
 void CSoundEngine::Init()
 {
-	CoInitializeEx( NULL, COINIT_MULTITHREADED );
+	CoInitializeEx(NULL, COINIT_MULTITHREADED);
 	unsigned int flags = 0;
 
 	//XAUDIO2を初期化。
@@ -102,7 +101,7 @@ void CSoundEngine::Init()
 	XAUDIO2_VOICE_DETAILS voiceDetails;
 	m_masteringVoice->GetVoiceDetails(&voiceDetails);
 	m_masteringVoice->GetChannelMask(&m_channelMask);
-		
+
 	m_nChannels = voiceDetails.InputChannels;
 
 	//リバーブエフェクトを作成。
@@ -121,13 +120,13 @@ void CSoundEngine::Init()
 		NULL, &effectChain)))
 	{
 		Release();
-		return ;
+		return;
 	}
 	//デフォルトのFXパラメータを設定。
 	XAUDIO2FX_REVERB_PARAMETERS native;
 	ReverbConvertI3DL2ToNative(&PRESET_PARAMS[0], &native);
 	m_submixVoice->SetEffectParameters(0, &native, sizeof(native));
-		
+
 
 	//初期化完了。
 	m_isInited = true;
@@ -163,6 +162,18 @@ void CSoundEngine::Release()
 /*!
 * @brief	XAudio2のソースボイスを作成。
 */
+CSoundSource * CSoundEngine::FindSoundSource(const char * name)
+{
+	unsigned int hash = Util::MakeHash(name);
+	for (const auto& sound : m_soundSources)
+	{
+		if (hash == sound->GetNameHash())
+		{
+			return sound;
+		}
+	}
+	return nullptr;
+}
 IXAudio2SourceVoice* CSoundEngine::CreateXAudio2SourceVoice(CWaveFile* waveFile, bool is3DSound)
 {
 	IXAudio2SourceVoice* pSourceVoice;
@@ -175,16 +186,16 @@ IXAudio2SourceVoice* CSoundEngine::CreateXAudio2SourceVoice(CWaveFile* waveFile,
 	return pSourceVoice;
 }
 
-void CSoundEngine::Update( )
+void CSoundEngine::Update()
 {
 	if (!m_isInited) {
 		return;
 	}
-	
+
 	//サウンドソースの更新。
 	auto it = m_soundSources.begin();
-	while( it != m_soundSources.end()){
-	
+	while (it != m_soundSources.end()) {
+
 		auto soundSource = *it;
 		soundSource->Update();
 		if (soundSource->IsPlaying() == false) {

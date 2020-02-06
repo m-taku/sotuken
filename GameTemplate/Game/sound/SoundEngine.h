@@ -1,6 +1,7 @@
 
 
 #pragma once
+#include"util/Util.h"
 #include "sound/WaveFileBank.h"
 
 #define INPUTCHANNELS 2  // number of source channels
@@ -64,6 +65,8 @@ public:
 		return it;
 	
 	}
+
+	CSoundSource* FindSoundSource(const char* name);
 	/// <summary>
 	/// XAudio2のソースボイスの作成。
 	/// </summary>

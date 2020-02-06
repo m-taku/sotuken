@@ -73,7 +73,7 @@ float4 DirectionLight(NWD nwd)
 	{
 		float3 direction = DirectionLightSB[i].direction;
 		float t = max(0.0f, dot(refrectdir, -direction));
-		float4 color = DirectionLightSB[i].color + DirectionLightSB[i].color*pow(t, specPow);
+		float4 color = DirectionLightSB[i].color + DirectionLightSB[i].color*(pow(t, specPow)*1.0f);
 
 		float dotResult = max(0.0f, dot(-direction, nwd.Normal));
 		color *= dotResult;
