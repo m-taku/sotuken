@@ -59,6 +59,7 @@
 
 #include "graphics/GraphicsEngine.h"
 #include "sound/SoundEngine.h"
+#include "sound/SoundSource.h"
 
 #include "graphics/animation/Animation.h"
 #include "graphics/animation/AnimationClip.h"

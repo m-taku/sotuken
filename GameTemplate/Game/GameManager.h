@@ -35,6 +35,7 @@ public:
 	}	
 	void Change(bool furag);
 private:
+	CSoundSource m_bgm;
 	StageManager m_Stage;
 	UI* m_ui = nullptr;
 	Player* m_player = nullptr;

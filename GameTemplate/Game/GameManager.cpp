@@ -18,6 +18,7 @@ GameManager::~GameManager()
 
 bool GameManager::Start()
 {
+	m_bgm.Init(L"Assets/sound/Op.wav");
 	//m_NPCManager = NewGO<NPCManager>(0, "NPCManager");
 	m_Stage.changTown();
 	
@@ -29,6 +30,7 @@ bool GameManager::Start()
 	//m_player->TransitionState(Player::StateTownMove);
 
 	//cheng(true);
+	m_bgm.Play(true);
 	return true;
 }
 void GameManager::Update()
