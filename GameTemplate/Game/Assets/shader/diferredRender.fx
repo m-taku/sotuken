@@ -120,7 +120,7 @@ float4 PSMain(PSInput In) : SV_Target0
 	nwd.World = WorldTexture.Sample(Sampler, In.uv).xyz;
 	nwd.Depth = min(1.0f,max(0.0f,DepthTexture.Sample(Sampler, In.uv).x));
 	float4 shadow = ShadowTexture.Sample(Sampler, In.uv);
-	color *= max(0.2f,DirectionLight(nwd)*shadow);
+	color *= max(0.15f,DirectionLight(nwd)*shadow);
 	color += buckUpColor * PointLight(nwd);
 	color.w = 1.0f;
 	return color;

@@ -17,6 +17,9 @@ public:
 	{
 		m_vs = VS;
 	}
+	void SetMulColor(float color) {
+		m_mulColor = { color ,color ,color ,1.0f };
+	}
 	void Release();
 private:
 	CVector4 m_mulColor = CVector4::White();

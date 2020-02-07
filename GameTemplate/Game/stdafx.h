@@ -56,7 +56,7 @@
 #include "graphics/DeferredRender.h"
 #include "graphics/DepthFog.h"
 
-
+#include "Fade.h"
 #include "graphics/GraphicsEngine.h"
 #include "sound/SoundEngine.h"
 #include "sound/SoundSource.h"
