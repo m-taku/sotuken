@@ -14,13 +14,13 @@ PlayerAttack::~PlayerAttack()
 }
 void PlayerAttack::Update()
 {
-	if (m_player->IsAnimEvent(1)) {
+	if (m_player->IsAnimEvent(1)&& isHit !=true) {
 		auto Mat = m_player->GetBone(L"mixamorig:RightHand").GetWorldMatrix();
 		CVector3 pos;
 		pos.x = Mat.v[3].x;
 		pos.y = Mat.v[3].y;
 		pos.z = Mat.v[3].z;
-		GetHitObjict().HitTest(pos,pos, 80.0f, m_player->GetAttack(), HitObject::enemy);
+		isHit = GetHitObjict().HitTest(pos,pos, 80.0f, m_player->GetAttack(), HitObject::enemy);
 	}
 	if (!m_player->IsPlayinganim()) {
 		m_player->TransitionState(StateAttackMode);

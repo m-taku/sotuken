@@ -33,15 +33,7 @@ public:
 	}
 	void Update()
 	{
-		bool f = g_graphicsEngine->GetFade()->IsInFade();
-		if (g_pad[0].IsTrigger(enButtonA))
-		{
-			g_graphicsEngine->GetFade()->FadeInStart();
-		}
-		if (g_pad[0].IsTrigger(enButtonB))
-		{
-			g_graphicsEngine->GetFade()->FadeOutStart();
-		}
+
 #ifdef DenugWorld
 		nra.Updata();
 		nra1.Updata();

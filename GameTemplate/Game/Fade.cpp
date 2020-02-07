@@ -16,21 +16,21 @@ void Fade::Update()
 	switch (m_fadeState)
 	{
 	case enFadeIn:
+		m_MulColor = min(1.0f, m_time / m_inTime);
 		if (m_time >= m_inTime)
 		{
 			Init();
 			break;
 		}
-		m_MulColor = min(1.0f, m_time / m_inTime);
 		m_time += 1.0f*GetGameTime().GetFrameTime();
 		break;
 	case enFadeOut:
+		m_MulColor = 1.0f - min(1.0f, m_time / m_inTime);
 		if (m_time >= m_outTime)
 		{
 			Init();
 			break;
 		}
-		m_MulColor = 1.0f - min(1.0f, m_time / m_inTime);
 		m_time += 1.0f*GetGameTime().GetFrameTime();
 		break;
 	case enFadeNone:

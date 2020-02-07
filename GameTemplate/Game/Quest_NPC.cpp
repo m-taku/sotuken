@@ -30,34 +30,35 @@ void Quest_NPC::Talk()
 	switch (m_TalkChange)
 	{
 	case Quest_NPC::TalkStart:
-		if (g_pad[0].IsTrigger(enButtonA)&& m_Text[0] == NULL) {
-			m_Text[0] = NewGO<Text_Box>(10, "Text_box");
-			switch (m_TalkState)
-			{
-			case QuestSelect:	
-				m_Text[0]->SetText("クエストを受けますか？");
-				m_Text[0]->SetSpeed(0);
-				break;
-			case QuestCancel:			
-				m_Text[0]->SetText("クエストをキャンセルする？");
-				m_Text[0]->SetSpeed(0);
-				m_QuestManager->ChangeOrderMode(QuestManager::Wait);
-				m_TalkChange = PrintQuest;
-				break;
-			default:
-				break;
+		if (QuestManager::WaitQuest != m_QuestManager->GetOrderMode()) {
+			if (g_pad[0].IsTrigger(enButtonA) && m_Text[0] == NULL) {
+				m_Text[0] = NewGO<Text_Box>(10, "Text_box");
+				switch (m_TalkState)
+				{
+				case QuestSelect:
+					m_Text[0]->SetText("クエストを受けますか？");
+					m_Text[0]->SetSpeed(0);
+					break;
+				case QuestCancel:
+					m_Text[0]->SetText("クエストをキャンセルする？");
+					m_Text[0]->SetSpeed(0);
+					m_QuestManager->ChangeOrderMode(QuestManager::Wait);
+					m_TalkChange = PrintQuest;
+					break;
+				default:
+					break;
+				}
+				m_player->TransitionState(StateWate);
 			}
-			m_player->TransitionState(StateWate);
-
-		}	
-		else if (m_Text[0]!=NULL)
-		{
-			if (m_Text[0]->Getend()) {
-				m_Text[1] = NewGO<Text_Box>(10, "Text_box");
-				m_Text[1]->SetPos({ -500.0f, -130.0f });
-				m_Text[1]->SetText("はい　いいえ");
-				m_Text[1]->SetSpeed(0);
-				m_TalkChange = PrintQuest;
+			else if (m_Text[0] != NULL)
+			{
+				if (m_Text[0]->Getend()) {
+					m_Text[1] = NewGO<Text_Box>(10, "Text_box");
+					m_Text[1]->SetPos({ -500.0f, -130.0f });
+					m_Text[1]->SetText("はい　いいえ");
+					m_Text[1]->SetSpeed(0);
+					m_TalkChange = PrintQuest;
+				}
 			}
 		}
 		break;

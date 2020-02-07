@@ -40,6 +40,10 @@ public:
 	{
 		m_mode = Mode;
 	}
+	OrderMode GetOrderMode()
+	{
+		return m_mode;
+	}
 	Test_Quest* GetQuestDate()
 	{
 		return m_nowQuest;

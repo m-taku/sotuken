@@ -82,7 +82,7 @@ public:
 	}
 	void Playanim(int No,bool furag = false)
 	{
-		m_anim.Play(No, 0.4f);
+		m_anim.Play(No, 0.2f);
 		m_modelpos = m_position;
 		if (furag) {
 			InMovemAnim();
