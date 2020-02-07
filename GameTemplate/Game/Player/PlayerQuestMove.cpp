@@ -18,6 +18,7 @@ void PlayerQuestMove::Update()
 	switch (m_weapon)
 	{
 	case pull1:
+		Movement.QuestWeaponMove();
 		if (!m_player->IsPlayinganim())
 		{
 			m_player->Getcombo()->pullweapon();
@@ -25,6 +26,7 @@ void PlayerQuestMove::Update()
 		}
 		break;
 	case pull2:
+		Movement.QuestWeaponMove();
 		if (!m_player->IsPlayinganim())
 		{
 			m_player->TransitionState(StateAttackMode);
@@ -46,7 +48,7 @@ void PlayerQuestMove::Update()
 	
 
 }
-void PlayerQuestMove::DamageAction(float damage)
+bool PlayerQuestMove::DamageAction(float damage)
 {
-	DownHp(damage);
+	return DownHp(damage);
 }

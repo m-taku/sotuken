@@ -9,7 +9,7 @@ public:
 	PlayerAttack(Player* player);
 	~PlayerAttack();
 	void Update();
-	void DamageAction(float damage);
+	bool DamageAction(float damage);
 private:
 	enum combo
 	{

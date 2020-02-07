@@ -23,7 +23,7 @@ Playerdeath::~Playerdeath()
 void Playerdeath::Update()
 {
 }
-void Playerdeath::DamageAction(float damage)
+bool Playerdeath::DamageAction(float damage)
 {
-
+	return false;
 }

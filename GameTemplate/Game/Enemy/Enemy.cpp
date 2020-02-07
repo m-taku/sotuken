@@ -22,6 +22,9 @@ Enemy::~Enemy()
 	{
 		delete na;
 	}
+}
+void Enemy::OnDestroy()
+{
 	GetHitObjict().Deleteobjict(m_HitObject);
 }
 void Enemy::TransitionState(StateEnemy m)
@@ -44,19 +47,9 @@ void Enemy::TransitionState(StateEnemy m)
 }
 bool Enemy::Start()
 {
-	m_skinmodel.Init(L"Assets/modelData/Dragon_3.cmo");
-	m_animClip[attack].Load(L"Assets/animData/dorakomesu_attackjac.tka");
-	m_animClip[attack].SetLoopFlag(true);
-	m_anim.Init(m_skinmodel, m_animClip, num);
-	m_skinmodel.EnableShadowCaster(true);
-	m_anim.Play(attack);
 	m_monster->Init();
 	m_player = FindGO<Player>("player");
-	for (int i = 0; i < m_skinmodel.GetSkeleton().GetNumBones(); i++)
-	{
-		m_VectorDraw.push_back(new VectorDraw(CVector3::Zero()));
-	}
-	m_HitObject = GetHitObjict().Create(&m_position, 500, [&](float damage) {
+	m_HitObject = GetHitObjict().Create(&m_position, 500, [&](float damage, CVector3 date) {
 		HitAction(damage);
 	}, HitObject::enemy);
 	TransitionState(m_statenum);
@@ -64,42 +57,22 @@ bool Enemy::Start()
 }
 void Enemy::Update()
 {
-	for (int i = 0; i < m_VectorDraw.size(); i++) {
-		auto n = m_skinmodel.GetSkeleton().GetBone(i);
-		auto mamma = n->GetWorldMatrix();
-		CVector3 pos = CVector3::Zero();
-		pos.x = mamma.m[3][0];
-		pos.y = mamma.m[3][1];
-		pos.z = mamma.m[3][2];
-		CVector3 m_papa;
-		m_papa.x = mamma.m[2][0];
-		m_papa.y = mamma.m[2][1];
-		m_papa.z = mamma.m[2][2];
-		m_VectorDraw[i]->Update(pos, m_papa, 50.0f);
-	}
 	m_state->Update();
-	//m_movespeed.y -= 9.8f;
+	m_movespeed.y -= 9.8f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
-	m_skinmodel.UpdateWorldMatrix(m_position, m_rotation, CVector3::One());
+	m_monster->GetSkinModel()->UpdateWorldMatrix(m_position, m_rotation, CVector3::One());
 }
 void Enemy::Draw()
 {
-	m_skinmodel.Draw(
-		enNormal,
+	m_monster->GetSkinModel()->Draw(enNormal,
 		smGameCamera().GetCameraViewMatrix(),
-		smGameCamera().GetCameraProjectionMatrix()
-	);
+		smGameCamera().GetCameraProjectionMatrix());
 	m_state->Draw();
 }
 void Enemy::PostUpdate()
 {
-	auto jra = m_skinmodel.FindBone(L"R Elbow");
-	jra->GetNo();
-	m_VectorDraw[jra->GetNo()]->Draw();
-	/*for (const auto& Vector : m_VectorDraw) {
-		Vector->Draw();
-	}*/
 	m_anim.Update(GetFrameDeltaTime());
+	m_anim.Update();
 }
 void Enemy::HitAction(float damage)
 {

@@ -54,7 +54,7 @@ void PlayerAttackMode::Update()
 		break;
 	}
 }
-void PlayerAttackMode::DamageAction(float damage)
+bool PlayerAttackMode::DamageAction(float damage)
 {
-	DownHp(damage);
+	return DownHp(damage);
 }

@@ -8,7 +8,7 @@ public:
 	PlayerAttackMode(Player* player);
 	~PlayerAttackMode();
 	void Update();
-	void DamageAction(float damage);
+	bool DamageAction(float damage);
 private:
 	enum weapon
 	{

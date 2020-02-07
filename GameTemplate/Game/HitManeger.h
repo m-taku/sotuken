@@ -32,7 +32,7 @@ namespace smEngine {
 			static HitManager t;
 			return t;
 		}
-		const HitObject* Create(const CVector3* pos, float radius, std::function<void(float damage)> objict, HitObject::objict_Name name)
+		const HitObject* Create(const CVector3* pos, float radius, std::function<void(float damage, CVector3 ObjDate)> objict, HitObject::objict_Name name)
 		{
 			auto Object = new HitObject;
 			Object->Create(pos, radius, objict, name);
@@ -57,7 +57,7 @@ namespace smEngine {
 		/// <returns>
 		/// “–‚½‚Á‚½‚çtrue
 		/// </returns>
-		bool HitTest(CVector3 pos, float Circle, float damage, HitObject::objict_Name name)
+		bool HitTest(CVector3 originpos, CVector3 pos, float Circle, float damage, HitObject::objict_Name name)
 		{
 			bool furag = false;
 			for (auto hit : m_objict)
@@ -65,7 +65,7 @@ namespace smEngine {
 				//“–‚Ä‚½‚¢•¨‘Ì‚ðŒŸõ‚·‚é
 				if (hit->Getobjict_Name() == name) {
 					//“–‚½‚è”»’è‚ðs‚¤B
-					if (hit->HitTest(pos, Circle, damage)) {
+					if (hit->HitTest(originpos,pos, Circle, damage)) {
 						furag = true;
 					}
 				}
@@ -75,7 +75,9 @@ namespace smEngine {
 		void Deleteobjict(const HitObject* objict)
 		{
 			m_objict.erase(std::find(m_objict.begin(), m_objict.end(), objict));
-			delete objict;
+			if (objict != nullptr) {
+				delete objict;
+			}
 		}
 		void Release()
 		{

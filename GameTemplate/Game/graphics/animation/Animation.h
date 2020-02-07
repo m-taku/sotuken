@@ -23,10 +23,8 @@ public:
 	/*!
 		*@brief	初期化。
 		*@param[in]	skinModel		アニメーションさせるスキンモデル。
-		*@param[in]	animeClipList	アニメーションクリップの配列。
-		*@param[in]	numAnimClip		アニメーションクリップの数。
 		*/
-	void Init(SkinModel& skinModel, AnimationClip animClipList[], int numAnimClip);
+	void Init(SkinModel& skinModel);
 
 	void AddAnimation(AnimationClip animClipList[], int numAnimClip);
 
@@ -39,6 +37,7 @@ public:
 	void Play(int clipNo, float interpolateTime = 0.0f)
 	{
 		PlayCommon(m_animationClips[clipNo], interpolateTime);
+		
 	}
 	/*!
 	* @brief	アニメーションの再生中？
@@ -90,9 +89,11 @@ private:
 		if (interpolateTime == 0.0f) {
 			//補完なし。
 			m_numAnimationPlayController = 1;
+			m_isInterpolate = false;
 		}
 		else {
 			//補完あり。
+			m_isInterpolate = true;
 			m_numAnimationPlayController++;
 		}
 		index = GetLastAnimationControllerIndex();

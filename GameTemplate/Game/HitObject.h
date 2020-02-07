@@ -38,7 +38,7 @@ public:
 	/// <param name="name">
 	/// オブジェクトの名前
 	/// </param>
-	void Create(const CVector3* pos, float radius, std::function<void(float damage)>  objict, objict_Name name);
+	void Create(const CVector3* pos, float radius, std::function<void(float damage, CVector3 ObjDate)>  objict, objict_Name name);
 	/// <summary>
 	/// オブジェクト同士の当たり判定
 	/// </summary>
@@ -55,7 +55,7 @@ public:
 	/// <returns>
 	/// 当たればtrue
 	/// </returns>
-	bool HitTest(CVector3 pos, float Circle, float damage);
+	bool HitTest(CVector3 originpos,CVector3 pos, float Circle, float damage);
 	/// <summary>
 	/// オブジェクトの名前（タグ）のゲット
 	/// </summary>
@@ -66,9 +66,19 @@ public:
 	{
 		return m_name;
 	}
+	const CVector3 Getpos()
+	{
+		if (m_pos != nullptr) {
+			return *m_pos;
+		}
+		else
+		{
+			return CVector3::Zero();
+		}
+	}
 private:
 	const CVector3* m_pos = nullptr;						//オブジェクトのポジション
 	float m_radius = 0.0f;									//オブジェクトの半径
 	objict_Name m_name = name_num;							//オブジェクトの名前（タグ）
-	std::function<void(float damage)>  m_fuk;				//当たった場合に呼びたい関数
+	std::function<void(float damage, CVector3 ObjDate)>  m_fuk;				//当たった場合に呼びたい関数
 };

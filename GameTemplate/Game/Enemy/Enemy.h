@@ -15,10 +15,6 @@ public:
 	friend monster;
 	Enemy();
 	~Enemy();	
-	enum anim {
-		attack,
-		num
-	};
 /// <summary>
 /// 状態のEnum
 /// </summary>
@@ -32,6 +28,7 @@ public:
 	void TransitionState(StateEnemy m);
 	void Draw();
 	void PostUpdate();
+	void OnDestroy();
 	const CVector3& GetPosition() const
 	{
 		return m_position;
@@ -70,7 +67,7 @@ public:
 	}
 	void Playanim(int No)
 	{
-		m_anim.Play(No, 0.0f);
+		m_anim.Play(No, 0.2f);
 	}
 	void SetAnim(AnimationClip animation[], int numAnimClip)
 	{
@@ -84,14 +81,16 @@ public:
 	{
 		return m_statenum;
 	}
+	void SetAnimdate(SkinModel& ka)
+	{
+		m_anim.Init(ka);
+	}
 	void HitAction(float damage);
 protected:
 	monster* m_monster = nullptr;
 	EnemyStatus* m_status = nullptr;
 
 private:
-	Animation m_anim;
-	AnimationClip m_animClip[num];
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向
@@ -99,11 +98,11 @@ private:
 	CVector3 m_up = CVector3::Up();				//上方向
 	CVector3 m_scale = CVector3::One();			//スケール
 
+	Animation m_anim;
 	CQuaternion m_rotation = CQuaternion::Identity();		//回転
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列
 	StateEnemy m_statenum = StateLoitering;
 	EnemyState* m_state = nullptr;
-	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン
 	Player* m_player = nullptr;
 	const HitObject* m_HitObject = nullptr;

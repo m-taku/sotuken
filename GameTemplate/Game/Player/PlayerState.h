@@ -38,10 +38,10 @@ public:
 	{
 
 	}
-	virtual void DamageAction(float damage) {
-
+	virtual bool DamageAction(float damage) {
+		return true;
 	}
-	int DownHp(int Damage);
+	bool DownHp(int Damage);
 protected:
 	Player* m_player = nullptr;				//プレイヤーのインスタンス
 };

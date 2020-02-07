@@ -27,9 +27,10 @@ void PlayerAvoid::Update()
 		m_player->TransitionState(m_statenum);
 	}
 }
-void PlayerAvoid::DamageAction(float damage)
+bool PlayerAvoid::DamageAction(float damage)
 {
 	if (!m_invincible) {
-		DownHp(damage);
+		return DownHp(damage);
 	}
+	return false;
 }

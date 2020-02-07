@@ -21,7 +21,7 @@ void PlayerTownMove::Update()
 
 	Movement.DefaultMove();
 }
-void PlayerTownMove::DamageAction(float damage)
+bool PlayerTownMove::DamageAction(float damage)
 {
-
+	return false;
 }

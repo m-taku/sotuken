@@ -16,7 +16,19 @@ Animation::~Animation()
 	
 }
 	
-void Animation::Init(SkinModel& skinModel, AnimationClip animClipList[], int numAnimClip)
+void Animation::Init(SkinModel& skinModel)
+{
+
+	m_skeleton = &skinModel.GetSkeleton();
+
+	for (auto& ctr : m_animationPlayController) {
+		ctr.Init(m_skeleton);
+	}
+		
+	//Play(0);
+}
+
+void Animation::AddAnimation(AnimationClip animClipList[], int numAnimClip)
 {
 	if (animClipList == nullptr) {
 #ifdef _DEBUG
@@ -26,24 +38,13 @@ void Animation::Init(SkinModel& skinModel, AnimationClip animClipList[], int num
 		//止める。
 		std::abort();
 #endif
-		
-	}
-	m_skeleton = &skinModel.GetSkeleton();
 
-	AddAnimation(animClipList,numAnimClip);
-	for (auto& ctr : m_animationPlayController) {
-		ctr.Init(m_skeleton);
 	}
-		
-	Play(0);
-}
-
-void Animation::AddAnimation(AnimationClip animClipList[], int numAnimClip)
-{
 	for (int i = 0; i < numAnimClip; i++) {
 		m_animationClips.push_back(&animClipList[i]);
 		animClipList[i].SetAnimation(this);
 	}
+	Play(0);
 }
 void Animation::deleteAnimation(AnimationClip* animClip)
 {
@@ -62,6 +63,7 @@ void Animation::UpdateLocalPose(float deltaTime)
 		m_startAnimationPlayController = GetLastAnimationControllerIndex();
 		m_numAnimationPlayController = 1;
 		m_interpolateTime = 1.0f;
+		m_isInterpolate = false;
 	}
 	//AnimationPlayController::Update関数を実行していく。
 	for (int i = 0; i < m_numAnimationPlayController; i++) {
@@ -97,7 +99,7 @@ void Animation::UpdateGlobalPose()
 				*(CVector3*)m.m[3]
 			);
 			//ここのコメントアウトを外せば動か
-			if (!m_animationPlayController[index].IsPlaying())
+			if (m_isInterpolate&& i < (m_numAnimationPlayController-1))
 			{
 				vGlobalPose[boneNo] += m_animationPlayController[index].GetAnimClip()->GetDifferencetransform(boneNo);
 			}
@@ -170,6 +172,7 @@ void Animation::UpdateGlobalPose()
 			//補間が終わっているのでアニメーションの開始位置を前にする。
 			m_startAnimationPlayController = index;
 			numAnimationPlayController = m_numAnimationPlayController - i;
+			m_isInterpolate = false;
 		}
 	}
 	m_numAnimationPlayController = numAnimationPlayController;
@@ -188,5 +191,8 @@ void Animation::Update(float deltaTime)
 }
 void Animation::Update() {
 	//グローバルポーズを計算していく。
+	if (m_numAnimationPlayController == 0) {
+		return;
+	}
 	UpdateGlobalPose();
 }

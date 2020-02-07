@@ -8,7 +8,7 @@ public:
 	~Playerdeath();
 
 	void Update();
-	void DamageAction(float damage);
+	bool DamageAction(float damage);
 private:
 	CQuaternion rod = CQuaternion::Identity();
 };

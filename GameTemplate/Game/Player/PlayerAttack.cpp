@@ -20,7 +20,7 @@ void PlayerAttack::Update()
 		pos.x = Mat.v[3].x;
 		pos.y = Mat.v[3].y;
 		pos.z = Mat.v[3].z;
-		GetHitObjict().HitTest(pos, 80.0f, m_player->GetAttack(), HitObject::enemy);
+		GetHitObjict().HitTest(pos,pos, 80.0f, m_player->GetAttack(), HitObject::enemy);
 	}
 	if (!m_player->IsPlayinganim()) {
 		m_player->TransitionState(StateAttackMode);
@@ -43,7 +43,7 @@ void PlayerAttack::Update()
 
 	}
 }
-void PlayerAttack::DamageAction(float damage)
+bool PlayerAttack::DamageAction(float damage)
 {
-	DownHp(damage);
+	return DownHp(damage);
 }

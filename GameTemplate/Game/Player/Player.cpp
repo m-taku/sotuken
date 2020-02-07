@@ -68,14 +68,15 @@ bool Player::Start()
 	m_animClip[Hit].Load(L"Assets/animData/HardHit.tka");
 	m_animClip[Hit].SetLoopFlag(false);
 	m_animClip[idel].Load(L"Assets/animData/idel.tka");
-	m_animClip[idel].SetLoopFlag(true); 
+	m_animClip[idel].SetLoopFlag(true);
 	m_animClip[avoid].Load(L"Assets/animData/avoid.tka");
 	m_animClip[avoid].SetLoopFlag(false);
 	m_animClip[run].Load(L"Assets/animData/run.tka");
 	m_animClip[run].SetLoopFlag(true);
-	m_animClip[walk].Load(L"Assets/animData/avoid.tka");
-	m_animClip[walk].SetLoopFlag(false);
-	m_anim.Init(m_skinmodel, m_animClip, num);
+	m_animClip[walk].Load(L"Assets/animData/walk.tka");
+	m_animClip[walk].SetLoopFlag(true);
+	m_anim.Init(m_skinmodel);
+	SetAnim(m_animClip, num);
 	m_skinmodel.EnableShadowCaster(true);
 	CVector3 position = m_position + (m_forward * -500.0f + m_up * 100.0f);
 	smGameCamera().SetPosition(position);
@@ -87,8 +88,8 @@ bool Player::Start()
 	plight->SetDirection(CVector3::Down() + CVector3::Right() + CVector3::Front());
 	plight->ShadowEnable(true);
 	smLightManager().AddLight(plight);
-	GetHitObjict().Create(&m_position, 500, [&](float damage) {
-		HitAction(damage);
+	GetHitObjict().Create(&m_position, 80, [&](float damage, CVector3 date) {
+		HitAction(damage, date);
 	}, HitObject::player);
 	m_weapon = new Smallsword(this);
 	m_modelpos = m_position;
@@ -142,11 +143,9 @@ void Player::Draw()
 		smGameCamera().GetCameraProjectionMatrix()
 	);
 }
-void Player::HitAction(float damage)
+void Player::HitAction(float damage, CVector3 date)
 {
-	if (m_statenum != Statedeath)
-	{
-		m_state->DamageAction(damage);
+	if (m_state->DamageAction(damage)) {
 		if (m_playerParam.hp <= 0)
 		{
 			TransitionState(Statedeath);
@@ -154,8 +153,34 @@ void Player::HitAction(float damage)
 		}
 		else
 		{
-
 			TransitionState(StateHit);
+			CVector3 mougaku = m_position - date;
+			mougaku.y = 0.0f;
+			mougaku.Normalize();
+			CVector3 la = CVector3::AxisZ()*-1.0f;
+			la.Normalize();
+			float dotresult = la.Dot(mougaku);
+			float ja = CMath::Acos(dotresult);
+			if (dotresult < 0.9999f)
+			{
+				CVector3 jiku;
+				jiku.Cross(la,mougaku);
+				jiku.Normalize();
+				m_rotation.SetRotation(jiku, ja);
+				UpdateAxis();
+			}
+
+
+			/*if (jiku.y >= 0)
+			{
+
+
+			}
+			else
+			{
+				m_rotation.SetRotation(CVector3::AxisY()*-1, ja);
+
+			}*/
 		}
 	}
 }

@@ -8,7 +8,7 @@ public:
 	PlayerAvoid(Player* player);
 	~PlayerAvoid();
 	void Update();
-	void DamageAction(float damage);
+	bool DamageAction(float damage);
 private:
 	State m_statenum;
 	bool m_invincible = false;

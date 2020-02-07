@@ -15,7 +15,7 @@ PlayerWait::~PlayerWait()
 void PlayerWait::Update()
 {
 }
-void PlayerWait::DamageAction(float damage)
+bool PlayerWait::DamageAction(float damage)
 {
-
+	return false;
 }

@@ -7,7 +7,7 @@ public:
 	PlayerTownMove(Player* player);
 	~PlayerTownMove();
 	void Update();
-	void DamageAction(float damage);
+	bool DamageAction(float damage);
 private:
 	PlayerMovement Movement;
 };

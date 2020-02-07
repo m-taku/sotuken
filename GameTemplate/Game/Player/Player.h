@@ -7,6 +7,7 @@
 #include"PlayerStateALL.h"
 #include "PlayerState.h"
 #include"../Rig.h"
+class HitObject;
 class Player :public IGameObject
 {
 	friend PlayerMovement;
@@ -81,7 +82,7 @@ public:
 	}
 	void Playanim(int No,bool furag = false)
 	{
-		m_anim.Play(No);
+		m_anim.Play(No, 0.4f);
 		m_modelpos = m_position;
 		if (furag) {
 			InMovemAnim();
@@ -145,7 +146,7 @@ public:
 	}
 protected:
 
-	void HitAction(float damage);
+	void HitAction(float damage,CVector3 date);
 private:
 	void UpdateAxis()
 	{
