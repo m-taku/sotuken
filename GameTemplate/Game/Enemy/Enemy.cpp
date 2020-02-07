@@ -30,13 +30,13 @@ void Enemy::TransitionState(StateEnemy m)
 	switch (m)
 	{
 	case StateLoitering:
-		m_state = new EnemyStateLoitering(this);
+		m_state = new EnemyStateLoitering(this, m_player);
 		break;
 	case StateDead:
-		m_state = new EnemyStateDead(this);
+		m_state = new EnemyStateDead(this, m_player);
 		break;
 	case StateAttack:
-		m_state = new EnemyStateAttack(this);
+		m_state = new EnemyStateAttack(this,m_player);
 	default:
 		break;
 	}
@@ -44,12 +44,14 @@ void Enemy::TransitionState(StateEnemy m)
 }
 bool Enemy::Start()
 {
-	m_skinmodel.Init(L"Assets/modelData/Dragon_2.cmo");
-	m_animClip[attack].Load(L"Assets/animData/dragonattack.tka");
+	m_skinmodel.Init(L"Assets/modelData/Dragon_3.cmo");
+	m_animClip[attack].Load(L"Assets/animData/dorakomesu_attackjac.tka");
 	m_animClip[attack].SetLoopFlag(true);
 	m_anim.Init(m_skinmodel, m_animClip, num);
 	m_skinmodel.EnableShadowCaster(true);
-	m_anim.Play(attack); 
+	m_anim.Play(attack);
+	m_monster->Init();
+	m_player = FindGO<Player>("player");
 	for (int i = 0; i < m_skinmodel.GetSkeleton().GetNumBones(); i++)
 	{
 		m_VectorDraw.push_back(new VectorDraw(CVector3::Zero()));
@@ -62,7 +64,6 @@ bool Enemy::Start()
 }
 void Enemy::Update()
 {
-	GetHitObjict().HitTest(m_position, 100.0f,1, HitObject::player);
 	for (int i = 0; i < m_VectorDraw.size(); i++) {
 		auto n = m_skinmodel.GetSkeleton().GetBone(i);
 		auto mamma = n->GetWorldMatrix();
@@ -98,10 +99,7 @@ void Enemy::PostUpdate()
 	/*for (const auto& Vector : m_VectorDraw) {
 		Vector->Draw();
 	}*/
-	if (g_pad[0].IsPress(enButtonDown))
-	{
-		m_anim.Update(GetFrameDeltaTime());
-	}
+	m_anim.Update(GetFrameDeltaTime());
 }
 void Enemy::HitAction(float damage)
 {

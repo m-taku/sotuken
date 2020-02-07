@@ -3,9 +3,10 @@
 #include"Enemy/Enemy.h"
 
 
-EnemyState::EnemyState(Enemy* enemypoint)
+EnemyState::EnemyState(Enemy* enemypoint,Player* player)
 {
 	m_enemy = enemypoint;
+	m_player = player;
 }
 
 

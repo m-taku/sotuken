@@ -10,7 +10,7 @@ public:
 		tikai,
 		tooi
 	};
-	EnemyStateDead(Enemy* enemypoint);
+	EnemyStateDead(Enemy* enemypoint, Player* player);
 	~EnemyStateDead();
 	void Update();
 private:

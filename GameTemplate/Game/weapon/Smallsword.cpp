@@ -16,6 +16,7 @@ Smallsword::~Smallsword()
 }
 void Smallsword::SetAnimation(Player* player)
 {
+	m_animClip.resize(0);
 	m_animClip.resize(num); 
 	m_animClip[pull1].Load(L"Assets/animData/Smallsword_pull1.tka"); 
 	m_animClip[pull1].SetLoopFlag(false);

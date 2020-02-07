@@ -1,12 +1,13 @@
 #pragma once
 class Enemy; 
+class Player;
 class EnemyState : public Noncopyable
 {
 public:
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>
-	EnemyState(Enemy* enemypoint);
+	EnemyState(Enemy* enemypoint,Player* player);
 	~EnemyState();
 	/// <summary>
 	/// アップデート。
@@ -21,5 +22,6 @@ public:
 	}
 protected:
 	Enemy* m_enemy = nullptr;
+	Player* m_player = nullptr;
 };
 

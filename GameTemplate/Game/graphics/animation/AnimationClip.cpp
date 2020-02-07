@@ -105,5 +105,19 @@ void AnimationClip::Load(const wchar_t* filePath)
 			m_topBoneKeyFramList = &m_keyFramePtrListArray[keyframe->boneIndex];
 		}
 	}
+	//最初のボーンと最後のボーンの差を調べる
+	Differencetransform.resize(MAX_BONE);
+	for (int i = 0; i < m_keyFramePtrListArray.size(); i++) {
+		if (m_keyFramePtrListArray[i].size() != 0) {
+			for (int j = 0; j < m_keyFramePtrListArray[i].size(); j++) {
+				auto nfa = m_keyFramePtrListArray[i][0]->transform.v[3] - m_keyFramePtrListArray[i][j]->transform.v[3];
+				CVector3 length = CVector3::Zero();
+				length.x = nfa.x;
+				length.y = nfa.y;
+				//length.z = nfa.z;
+				Differencetransform[i].push_back(length);
+			}
+		}
+	}
 }
 

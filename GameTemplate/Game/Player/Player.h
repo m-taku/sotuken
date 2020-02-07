@@ -21,6 +21,7 @@ public:
 		walk, 
 		death,
 		idel,
+		Hit,
 		avoid,
 		run,
 		num
@@ -80,8 +81,8 @@ public:
 	}
 	void Playanim(int No,bool furag = false)
 	{
-		m_anim.Play(No,0.0f);
-		m_modelpos = m_characon.GetPosition();
+		m_anim.Play(No);
+		m_modelpos = m_position;
 		if (furag) {
 			InMovemAnim();
 		}
@@ -159,8 +160,8 @@ private:
 		m_forward.Normalize();
 	}	
 	DirectionLight* plight = nullptr;
-
-
+	CVector3 move;
+	int animNo = 0;
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_returnpos = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_modelpos = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
@@ -184,5 +185,10 @@ private:
 	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン
 	CameraMovement cameraMovement;
+	//dededede
+	//Carving hagihagi;
+	float debugtaim = 0.0f;
+//	std::vector<VectorDraw*> m_VectorDraw;
+
 };
 

@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "EnemyStateLoitering.h"
 #include"Enemy/Enemy.h"
+#include"Player.h"
 
-
-EnemyStateLoitering::EnemyStateLoitering(Enemy* enemypoint):EnemyState(enemypoint)
+EnemyStateLoitering::EnemyStateLoitering(Enemy* enemypoint, Player* player) : EnemyState(enemypoint,player)
 {
 
+	m_enemy->Playanim(Enemy::attack);
 }
 
 
@@ -14,5 +15,10 @@ EnemyStateLoitering::~EnemyStateLoitering()
 }
 void EnemyStateLoitering::Update()
 {
-	m_enemy->SetMovespeed({ 0.0f,-10.0f,0.0f });
+	//イッツ探索！！！！（かもねーーーー）
+	if ((m_enemy->GetPosition() - m_player->GetPosition()).Length() <= 1000.0f)
+	{
+		m_enemy->TransitionState(Enemy::StateAttack);
+	}
+
 }

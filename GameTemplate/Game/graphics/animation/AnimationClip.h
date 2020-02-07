@@ -160,9 +160,21 @@ public:
 	{
 		return *m_topBoneKeyFramList;
 	}
+	const CVector3 GetDifferencetransform(int No)const
+	{
+		return Differencetransform[No][m_nowtaim];
+	}
 	const std::vector<AnimationEvent*>& GetAnimationEventlist()const
 	{
 		return m_AnimationEventlist;
+	}
+	void Settime(int time)
+	{
+		m_nowtaim = time;
+	}
+	int Gettime()
+	{
+		return m_nowtaim;
 	}
 private:
 	
@@ -172,6 +184,8 @@ private:
 															//例えば、m_keyFramePtrListArray[0]は0番目のボーンのキーフレームのリスト、
 															//m_keyFramePtrListArray[1]は1番目のボーンのキーフレームのリストといった感じ。
 	std::vector<AnimationEvent*> m_AnimationEventlist;		//アニメーションイベントの配列
+	std::vector< std::vector<CVector3>> Differencetransform;			    //!<最初と最後のボーンの差分。
+	int m_nowtaim = 0;
 	Animation* m_Animation = nullptr;
 	keyFramePtrList* m_topBoneKeyFramList = nullptr;
 };

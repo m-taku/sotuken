@@ -4,7 +4,7 @@ class Enemy;
 class EnemyStateLoitering:public EnemyState
 {
 public:
-	EnemyStateLoitering(Enemy* enemypoint);
+	EnemyStateLoitering(Enemy* enemypoint, Player* player);
 	~EnemyStateLoitering();
 	void Update();
 private:

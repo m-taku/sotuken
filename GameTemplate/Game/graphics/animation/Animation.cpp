@@ -96,6 +96,11 @@ void Animation::UpdateGlobalPose()
 				vGlobalPose[boneNo], 
 				*(CVector3*)m.m[3]
 			);
+			//ここのコメントアウトを外せば動か
+			if (!m_animationPlayController[index].IsPlaying())
+			{
+				vGlobalPose[boneNo] += m_animationPlayController[index].GetAnimClip()->GetDifferencetransform(boneNo);
+			}
 			//平行移動成分を削除。
 			m.m[3][0] = 0.0f;
 			m.m[3][1] = 0.0f;
@@ -179,7 +184,9 @@ void Animation::Update(float deltaTime)
 	}
 	//ローカルポーズの更新をやっていく。
 	UpdateLocalPose(deltaTime);
-		
+
+}
+void Animation::Update() {
 	//グローバルポーズを計算していく。
 	UpdateGlobalPose();
 }

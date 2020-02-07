@@ -57,6 +57,7 @@ void AnimationPlayController::Update(float deltaTime, Animation* animation)
 		//次へ。
 		m_currentKeyFrameNo++;
 	}
+	m_animationClip->Settime(m_currentKeyFrameNo);
 	//ここからアニメーションイベントの判定処理
 	auto Eventlist = m_animationClip->GetAnimationEventlist();
 	//アニメーションイベントが1つ以上あれば

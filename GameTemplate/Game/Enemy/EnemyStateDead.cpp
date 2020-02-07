@@ -3,7 +3,7 @@
 #include"Enemy/Enemy.h"
 #include"Player.h"
 
-EnemyStateDead::EnemyStateDead(Enemy* enemypoint):EnemyState(enemypoint)
+EnemyStateDead::EnemyStateDead(Enemy* enemypoint, Player* player) : EnemyState(enemypoint,player)
 {
 
 }

@@ -45,8 +45,9 @@ namespace smEngine {
 			}
 		}
 
-		smGameCamera().Update();
 		smLightManager().Update();
+
+		smGameCamera().Update();
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
 			{
@@ -100,7 +101,6 @@ namespace smEngine {
 				Object->UIDrawWrapper();
 			}
 		}
-
 
 		NewExecution();
 		DeleteExecution();

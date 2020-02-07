@@ -7,3 +7,4 @@
 #include "PlayerAttackMode.h"
 #include "PlayerAvoid.h"
 #include "PlayerAttack.h"
+#include "PlayerHit.h"

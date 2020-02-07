@@ -10,6 +10,7 @@ enum State {
 	StateAttack,
 	StateAttackMode,
 	StateWate,
+	StateHit,
 	Statedeath
 };
 class PlayerState :public Noncopyable

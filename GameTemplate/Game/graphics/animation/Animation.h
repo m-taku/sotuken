@@ -54,7 +54,7 @@ public:
 /// <returns>
 /// trueで区間内
 /// </returns>
-	bool IsEvent(int No = 0) const
+	bool IsEvent(int No = 1) const
 	{
 		int lastIndex = GetLastAnimationControllerIndex();
 		return m_animationPlayController[lastIndex].IsEvent(No);
@@ -78,6 +78,7 @@ public:
 	*@param[in]	deltaTime		アニメーションを進める時間(単位：秒)。
 	*/
 	void Update(float deltaTime);
+	void Update();
 	
 private:
 	void PlayCommon(AnimationClip* nextClip, float interpolateTime)

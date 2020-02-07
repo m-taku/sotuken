@@ -5,7 +5,7 @@ class Player;
 class EnemyStateAttack:public EnemyState
 {
 public:
-	EnemyStateAttack(Enemy* enemypoint);
+	EnemyStateAttack(Enemy* enemypoint, Player* player);
 	~EnemyStateAttack();
 	void Update();
 };

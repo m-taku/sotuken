@@ -2,6 +2,7 @@
 #include "Player.h"
 #include"../HitManeger.h"
 #include"weapon/Smallsword.h"
+#include"VectorDraw.h"
 
 
 
@@ -44,6 +45,9 @@ void Player::TransitionState(State m)
 	case Statedeath:
 		m_state = new Playerdeath(this);
 		break;
+	case StateHit:
+		m_state = new PlayerHit(this);
+		break;
 	case StateQuestMove:
 		m_state = new PlayerQuestMove(this);
 		break;
@@ -61,14 +65,16 @@ bool Player::Start()
 	//m_animClip[attack].SetLoopFlag(false); 
 	m_animClip[death].Load(L"Assets/animData/death.tka");
 	m_animClip[death].SetLoopFlag(false);
+	m_animClip[Hit].Load(L"Assets/animData/HardHit.tka");
+	m_animClip[Hit].SetLoopFlag(false);
 	m_animClip[idel].Load(L"Assets/animData/idel.tka");
 	m_animClip[idel].SetLoopFlag(true); 
 	m_animClip[avoid].Load(L"Assets/animData/avoid.tka");
 	m_animClip[avoid].SetLoopFlag(false);
 	m_animClip[run].Load(L"Assets/animData/run.tka");
 	m_animClip[run].SetLoopFlag(true);
-	m_animClip[walk].Load(L"Assets/animData/walk.tka");
-	m_animClip[walk].SetLoopFlag(true);
+	m_animClip[walk].Load(L"Assets/animData/avoid.tka");
+	m_animClip[walk].SetLoopFlag(false);
 	m_anim.Init(m_skinmodel, m_animClip, num);
 	m_skinmodel.EnableShadowCaster(true);
 	CVector3 position = m_position + (m_forward * -500.0f + m_up * 100.0f);
@@ -88,34 +94,40 @@ bool Player::Start()
 	m_modelpos = m_position;
 	m_rig.SetBoon(m_skinmodel, L"mixamorig:Hips");
 	//Playanim(run);
+	move = m_position;
+
+	//m_VectorDraw.push_back(new VectorDraw(CVector3::Zero()));
 	return true;
 }
 
 void Player::Update()
 {
+
 	//if (Hp <= 0&& m_statenum != Statedeath)
 	//{
 	//	TransitionState(Statedeath);
 	//}
-	m_state->Update();	
-	CVector3 move = m_position;
+
+	m_anim.Update(GetFrameDeltaTime());
+	m_state->Update();
+	move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
-	if (m_anim.IsPlaying()) {
-		if (!m_isAnimMove) {
-			m_modelpos = m_position;
-		}
-		else
-		{
-			m_modelpos += m_characon.GetOffset();
-		}
+	//if (m_anim.IsPlaying()) {
+	if (!m_isAnimMove) {
+		m_modelpos = m_position;
 	}
+	else
+	{
+		///m_modelpos += m_characon.GetOffset();
+	}
+
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
 	m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
 }
 void Player::PostUpdate()
 {
-	m_anim.Update(GetFrameDeltaTime());
+	m_anim.Update();
 }
 void Player::InMovemAnim()
 {
@@ -139,6 +151,11 @@ void Player::HitAction(float damage)
 		{
 			TransitionState(Statedeath);
 
+		}
+		else
+		{
+
+			TransitionState(StateHit);
 		}
 	}
 }

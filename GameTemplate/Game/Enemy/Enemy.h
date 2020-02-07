@@ -64,6 +64,22 @@ public:
 		m_position = pos;
 		m_characon.SetPosition(pos);
 	}
+	bool IsPlayinganim()
+	{
+		return m_anim.IsPlaying();
+	}
+	void Playanim(int No)
+	{
+		m_anim.Play(No, 0.0f);
+	}
+	void SetAnim(AnimationClip animation[], int numAnimClip)
+	{
+		m_anim.AddAnimation(animation, numAnimClip);
+	}
+	bool IsAnimEvent(int No = 1)
+	{
+		return m_anim.IsEvent(No);
+	}
 	StateEnemy GetState()
 	{
 		return m_statenum;
@@ -89,6 +105,7 @@ private:
 	EnemyState* m_state = nullptr;
 	SkinModel m_skinmodel;		//スキンモデル
 	CharacterController m_characon;		//キャラコン
+	Player* m_player = nullptr;
 	const HitObject* m_HitObject = nullptr;
 	float HP = 10.0f;
 	//デバック用変数

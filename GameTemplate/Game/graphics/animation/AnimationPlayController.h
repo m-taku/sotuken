@@ -91,7 +91,7 @@ public:
 /// <returns>
 /// true‚Å‹æŠÔ“à
 /// </returns>
-	bool IsEvent(int No = 0)const
+	bool IsEvent(int No = 1)const
 	{
 		if (No <= (int)(m_Event.size()))
 		{

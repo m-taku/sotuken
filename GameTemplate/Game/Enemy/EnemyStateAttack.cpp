@@ -4,9 +4,9 @@
 #include"Player.h"
 
 
-EnemyStateAttack::EnemyStateAttack(Enemy* enemypoint) :EnemyState(enemypoint)
+EnemyStateAttack::EnemyStateAttack(Enemy* enemypoint, Player* player) : EnemyState(enemypoint, player)
 {
-	
+	m_enemy->m_monster->attackStart();
 }
 
 
@@ -17,5 +17,8 @@ EnemyStateAttack::~EnemyStateAttack()
 
 void EnemyStateAttack::Update()
 {
-	m_enemy->m_monster->attack();
+	if (m_enemy->m_monster->attack())
+	{
+		m_enemy->TransitionState(Enemy::StateLoitering);
+	}
 }
