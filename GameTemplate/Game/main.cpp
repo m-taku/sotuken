@@ -38,6 +38,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		}
 		//物理エンジンの更新。
 		g_physics.Update();
+		g_soundEngine->Update();
 		GameObjectManager().Execute();
 		//描画終了。
 		FPS.BeginDraw();

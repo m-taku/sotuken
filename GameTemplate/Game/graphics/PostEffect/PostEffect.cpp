@@ -81,8 +81,8 @@ void PostEffect::Draw()
 {
 	ID3D11DeviceContext* DeviceContext = g_graphicsEngine->GetD3DDeviceContext();
 	DeviceContext->UpdateSubresource(m_cb.GetBody(), 0, NULL, &m_mulColor, 0, 0);
-	DeviceContext->VSSetConstantBuffers(10, 1, &m_cb.GetBody());
-	DeviceContext->PSSetConstantBuffers(10, 1, &m_cb.GetBody());
+	DeviceContext->VSSetConstantBuffers(enFullScreenDrawMulColor_Slot_No, 1, &m_cb.GetBody());
+	DeviceContext->PSSetConstantBuffers(enFullScreenDrawMulColor_Slot_No, 1, &m_cb.GetBody());
 	
 	DeviceContext->PSSetShader((ID3D11PixelShader*)m_ps->GetBody(), NULL, 0);
 	DeviceContext->VSSetShader((ID3D11VertexShader*)m_vs->GetBody(), NULL, 0);

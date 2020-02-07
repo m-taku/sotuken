@@ -130,7 +130,7 @@ namespace smEngine
 
 		if (enableShadow)
 		{
-			m_blur.Execute(0.3625f, 1.0f);
+			m_blur.Execute(0.4f, 1.0f);
 
 			ID3D11RenderTargetView* buckUpRTV = nullptr;
 			ID3D11DepthStencilView* buckUpDepth = nullptr;

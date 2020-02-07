@@ -12,6 +12,9 @@
 #include <map>
 #include <functional>
 #include <algorithm>
+#include <xaudio2.h>
+#include <x3daudio.h>
+#include <xaudio2fx.h>
 
 #include "btBulletDynamicsCommon.h"
 #include "BulletCollision\CollisionDispatch\btGhostObject.h"
@@ -53,8 +56,10 @@
 #include "graphics/DeferredRender.h"
 #include "graphics/DepthFog.h"
 
-
+#include "Fade.h"
 #include "graphics/GraphicsEngine.h"
+#include "sound/SoundEngine.h"
+#include "sound/SoundSource.h"
 
 #include "graphics/animation/Animation.h"
 #include "graphics/animation/AnimationClip.h"
@@ -75,6 +80,7 @@ enum EBufferSlot
 {
 	enLightParam_Slot_No = 1,
 	enDepthFogParam_Slot_No,
+	enFullScreenDrawMulColor_Slot_No=10,
 	enDerectionLightSB_Slot_No = 100,
 	enPointLightSB_Slot_No,
 	enSpotLightSB_Slot_No

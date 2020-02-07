@@ -25,7 +25,7 @@ public:
 		Init();
 
 #else
-	
+
 #endif
 		m_SkyCube = NewGO<SkyCube>(1, "sky");
 		m_SkyCube->Init();
@@ -33,6 +33,15 @@ public:
 	}
 	void Update()
 	{
+		bool f = g_graphicsEngine->GetFade()->IsInFade();
+		if (g_pad[0].IsTrigger(enButtonA))
+		{
+			g_graphicsEngine->GetFade()->FadeInStart();
+		}
+		if (g_pad[0].IsTrigger(enButtonB))
+		{
+			g_graphicsEngine->GetFade()->FadeOutStart();
+		}
 #ifdef DenugWorld
 		nra.Updata();
 		nra1.Updata();

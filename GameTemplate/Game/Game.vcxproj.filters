@@ -183,7 +183,11 @@
     <ClCompile Include="NPCBase.cpp" />
     <ClCompile Include="NPCManager.cpp" />
     <ClCompile Include="Player\PlayerAvoid.cpp" />
-    <ClCompile Include="Player\PlayerHit.cpp" />
+    <ClCompile Include="sound\SoundEngine.cpp" />
+    <ClCompile Include="sound\SoundSource.cpp" />
+    <ClCompile Include="sound\WaveFile.cpp" />
+    <ClCompile Include="sound\WaveFileBank.cpp" />
+    <ClCompile Include="Fade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -353,7 +357,11 @@
     <ClInclude Include="NPCBase.h" />
     <ClInclude Include="NPCManager.h" />
     <ClInclude Include="Player\PlayerAvoid.h" />
-    <ClInclude Include="Player\PlayerHit.h" />
+    <ClInclude Include="sound\SoundEngine.h" />
+    <ClInclude Include="sound\SoundSource.h" />
+    <ClInclude Include="sound\WaveFile.h" />
+    <ClInclude Include="sound\WaveFileBank.h" />
+    <ClInclude Include="Fade.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -575,7 +583,6 @@
     <MeshContentTask Include="Assets\modelData\Ground1.fbx" />
     <MeshContentTask Include="Assets\modelData\Smallsword1.fbx" />
     <MeshContentTask Include="Assets\modelData\Smallsword2.fbx" />
-    <MeshContentTask Include="Assets\modelData\Dragon\Dragon_3.FBX" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />
@@ -655,12 +662,14 @@
     <ImageContentTask Include="Assets\modelData\T_paladinclothColor_BC.png" />
     <ImageContentTask Include="Assets\modelData\T_paladinbodyColor_BC.png" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_Eye_BC.TGA" />
+    <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_Irval_The_Wyven_Albedo_Brown_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_Irval_The_Wyven_Albedo_Concrete_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_Irval_The_Wyven_Albedo_Grey_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_Irval_The_Wyven_Albedo_Red_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_Irval_The_Wyven_Albedo_Yellowish_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_Irval_The_Wyven_Albedo_Yellow_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_WD_PA_Black_SM_BC.TGA" />
+    <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_WD_PA_Rock_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\T_bush01_N.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\T_bush02_N.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\T_cloverpatch01_N.TGA" />
@@ -677,8 +686,5 @@
     <ImageContentTask Include="Assets\sprite\StaminaVer_Waku.png" />
     <ImageContentTask Include="Assets\sprite\Timer_Waku.png" />
     <ImageContentTask Include="Assets\sprite\Timer_Hari.png" />
-    <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_IrvalTheWyven_BC.TGA" />
-    <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_IrvalTheWyven_N.TGA" />
-    <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_WDPARock_BC.TGA" />
   </ItemGroup>
 </Project>

@@ -59,6 +59,7 @@ void GraphicsEngine::ChangeMainRenderTarget(bool clearcolor)
 }
 void GraphicsEngine::PostEffectDraw()
 {
+	m_fade.Update();
 	ID3D11ShaderResourceView* srv[] = {
 		m_mainRenderTarget.GetShaderResourceView()
 	};

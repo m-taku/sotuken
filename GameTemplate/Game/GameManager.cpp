@@ -20,7 +20,7 @@ bool GameManager::Start()
 {
 	//m_NPCManager = NewGO<NPCManager>(0, "NPCManager");
 	m_Stage.changTown();
-	
+
 	m_QuestManager = NewGO<QuestManager>(0, "QuestManager");
 	m_player = NewGO<Player>(0, "player");
 	m_ui = NewGO<UI>(0, "ui");

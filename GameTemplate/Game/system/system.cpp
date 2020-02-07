@@ -3,6 +3,7 @@
 
 HWND			g_hWnd = NULL;				//ウィンドウハンドル。
 GraphicsEngine* g_graphicsEngine = NULL;	//グラフィックスエンジン。
+CSoundEngine* g_soundEngine = NULL;
 
 ///////////////////////////////////////////////////////////////////
 // DirectXの終了処理。
@@ -88,6 +89,8 @@ void InitGame(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, in
 	//DirectXの初期化。
 	g_graphicsEngine = new GraphicsEngine();
 	g_graphicsEngine->Init(g_hWnd);
+	g_soundEngine = new CSoundEngine;
+	g_soundEngine->Init();
 
 	//ゲームパッドの初期化。
 	//最大４つのコントローラーを接続できるようにしましょう。

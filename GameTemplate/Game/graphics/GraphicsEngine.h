@@ -97,6 +97,16 @@ public:
 	{
 		return m_tonemap;
 	}
+	PostEffect* GetPostEffect()
+	{
+		return &m_posteffect;
+	}
+
+	Fade* GetFade()
+	{
+		return &m_fade;
+	}
+
 private:
 	D3D_FEATURE_LEVEL		m_featureLevel;				//Direct3D デバイスのターゲットとなる機能セット。
 	ID3D11Device*			m_pd3dDevice = NULL;		//D3D11デバイス。
@@ -118,6 +128,8 @@ private:
 	DepthFogParam m_depthFogParam;
 	float m_shadowMapHight = 8000.0f;
 	float m_shadowAvailableLength = 5000.0f;
+
+	Fade m_fade;
 };
 
 extern GraphicsEngine* g_graphicsEngine;			//グラフィックスエンジン
