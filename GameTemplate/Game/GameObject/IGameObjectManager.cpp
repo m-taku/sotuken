@@ -65,7 +65,9 @@ namespace smEngine {
 		smLightManager().SendBuffer();
 		smLightManager().ShadowRender();
 		g_graphicsEngine->GetDeferredRender().Draw();
-		
+		g_graphicsEngine->GetToneMap().Draw();
+		g_graphicsEngine->BloomDraw();
+		g_graphicsEngine->DepthFogDraw();
 
 		for (auto ObjectList : m_gameObjectListArray) {
 			for (auto Object : ObjectList)
