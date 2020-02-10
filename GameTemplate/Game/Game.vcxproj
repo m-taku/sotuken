@@ -165,6 +165,8 @@
     <ClCompile Include="QuestResult.cpp" />
     <ClCompile Include="graphics\SkyCube.cpp" />
     <ClCompile Include="Quest_NPC.cpp" />
+    <ClCompile Include="Route search\Navimake.cpp" />
+    <ClCompile Include="Route search\Path.cpp" />
     <ClCompile Include="sound\SoundEngine.cpp" />
     <ClCompile Include="sound\SoundSource.cpp" />
     <ClCompile Include="sound\WaveFile.cpp" />
@@ -287,6 +289,8 @@
     <ClInclude Include="Quest_NPC.h" />
     <ClInclude Include="Rig.h" />
     <ClInclude Include="graphics\SkyCube.h" />
+    <ClInclude Include="Route search\Navimake.h" />
+    <ClInclude Include="Route search\Path.h" />
     <ClInclude Include="sound\SoundEngine.h" />
     <ClInclude Include="sound\SoundSource.h" />
     <ClInclude Include="sound\WaveFile.h" />

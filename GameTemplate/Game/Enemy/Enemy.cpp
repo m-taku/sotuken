@@ -18,10 +18,6 @@ Enemy::~Enemy()
 {
 	delete m_monster;
 	delete m_state;
-	for (auto na : m_VectorDraw)
-	{
-		delete na;
-	}
 }
 void Enemy::OnDestroy()
 {
@@ -60,6 +56,7 @@ void Enemy::Update()
 	m_state->Update();
 	m_movespeed.y -= 9.8f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
+	UpdateAxis();
 	m_monster->GetSkinModel()->UpdateWorldMatrix(m_position, m_rotation, CVector3::One());
 }
 void Enemy::Draw()

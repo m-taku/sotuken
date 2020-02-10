@@ -6,6 +6,7 @@
 #include"NPCManager.h"
 #include"Quest_NPC.h"
 #include "UI/UI.h";
+#include"../Enemyname/MonsterList.h"
 GameManager::GameManager()
 {
 
@@ -27,7 +28,6 @@ bool GameManager::Start()
 	m_ui->Init(150, 150, 50);
 	m_ui->SetHP(50);
 	//m_player->TransitionState(Player::StateTownMove);
-
 	//cheng(true);
 	return true;
 }

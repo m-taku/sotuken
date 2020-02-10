@@ -53,4 +53,5 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		GetGameTime().Stop();
 	}
 	delete g_graphicsEngine;
+	delete g_soundEngine;
 }

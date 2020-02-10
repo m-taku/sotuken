@@ -5,7 +5,7 @@
 
 EnemyStateLoitering::EnemyStateLoitering(Enemy* enemypoint, Player* player) : EnemyState(enemypoint,player)
 {
-	m_enemy->Playanim(monster::walk);
+	m_enemy->Playanim(monster::idel);
 }
 
 

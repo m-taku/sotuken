@@ -8,13 +8,14 @@ public:
 	{
 		attack123,
 		attack12,
+		attack13,
 		num
 	};
 	dorakomesu(CVector3 pos);
 	virtual ~dorakomesu();
 	void attackStart();
 	bool attack();
-	void HitAction(CVector3 originpos, CVector3 pos);
+	void HitAction(CVector3 originpos, CVector3 pos,float attack);
 	void Init();
 private:
 	std::vector<std::vector<Bone*>> Bones;

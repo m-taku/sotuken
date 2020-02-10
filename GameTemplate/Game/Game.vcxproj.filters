@@ -189,6 +189,8 @@
     <ClCompile Include="sound\WaveFileBank.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="Player\PlayerHit.cpp" />
+    <ClCompile Include="Route search\Navimake.cpp" />
+    <ClCompile Include="Route search\Path.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -364,6 +366,8 @@
     <ClInclude Include="sound\WaveFileBank.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="Player\PlayerHit.h" />
+    <ClInclude Include="Route search\Navimake.h" />
+    <ClInclude Include="Route search\Path.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">

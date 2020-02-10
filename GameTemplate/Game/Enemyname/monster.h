@@ -5,12 +5,16 @@ class monster : public Noncopyable
 {
 public:
 	monster(CVector3 pos);
-	~monster();
+	virtual ~monster()
+	{
+
+	}
 	//確実に作らなければならないもの
 	enum Defortoanim
 	{
 		idel,
 		walk,
+		Dead,
 		num
 	};
 	Enemy* GetEnemy()
@@ -30,10 +34,25 @@ public:
 
 	}
 	virtual void Init() {};
+	//軸合わせ
+	bool Alignment();	
+	enum jiku1
+	{
+		strat,
+		kaiten,
+		wait
+	};
 protected:
+
 	Enemy* m_enemy = nullptr;
 	Player* m_player = nullptr;
 	std::vector<AnimationClip> m_animClip;
 	SkinModel m_skinmodel;		//スキンモデル
+	//試し
+	//軸合わせ用（使わないで！！）
+	float angle = 360.0f;
+	int m_count = 0;
+	float kaitennkaku = 00.0f;
+	jiku1 m_jikuawase = strat;
 };
 
