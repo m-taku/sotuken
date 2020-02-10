@@ -16,6 +16,8 @@ PlayerAttackMode::~PlayerAttackMode()
 }
 void PlayerAttackMode::Update()
 {
+
+
 	switch (m_weapon)
 	{
 	case push1:
@@ -43,12 +45,12 @@ void PlayerAttackMode::Update()
 			m_player->Getcombo()->changeB();
 			m_player->TransitionState(StateAttack);
 		}
-		else if (g_pad[0].IsTrigger(enButtonA)) {
-			m_player->TransitionState(StateAvoid);
-		}
 		else if (g_pad[0].IsTrigger(enButtonX)) {
 			m_weapon = push1;
 			m_player->Getcombo()->pushweapon();
+		}	
+		else if (g_pad[0].IsTrigger(enButtonA)) {
+			m_player->TransitionState(StateAvoid);
 		}
 	default:
 		break;

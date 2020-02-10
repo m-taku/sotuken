@@ -80,10 +80,11 @@ public:
 	{
 		m_returnpos = pos;
 	}
-	void Playanim(int No,bool furag = false)
+	void Playanim(int No,bool furag = false,float time =0.2f)
 	{
-		m_anim.Play(No, 0.2f);
+		m_anim.Play(No, time);
 		m_modelpos = m_position;
+		m_isAnimtaime = 0.0f;
 		if (furag) {
 			InMovemAnim();
 		}
@@ -91,6 +92,10 @@ public:
 		{
 			m_isAnimMove = false;
 		}
+	}
+	bool Isfokan()
+	{
+		return m_anim.IsInterpolate();
 	}
 	bool IsPlayinganim()
 	{
@@ -174,7 +179,7 @@ private:
 	CQuaternion m_rotation = CQuaternion::Identity();		//‰ñ“]
 	CMatrix m_mRot = CMatrix::Identity();					//‰ñ“]Œã‚Ì‘O‰EŒã‚ğæ“¾‚·‚é‚½‚ß‚Ìs—ñ
 	bool m_isAnimMove = false;
-	
+	float m_isAnimtaime = 0.0f;
 	PlayerCombo* m_weapon = nullptr;
 	Rig m_rig;
 	State m_statenum = StateTownMove;

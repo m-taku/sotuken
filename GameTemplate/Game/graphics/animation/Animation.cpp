@@ -99,7 +99,7 @@ void Animation::UpdateGlobalPose()
 				*(CVector3*)m.m[3]
 			);
 			//ここのコメントアウトを外せば動か
-			if (m_isInterpolate&& i < (m_numAnimationPlayController-1))
+			if ( i < (m_numAnimationPlayController-1))
 			{
 				vGlobalPose[boneNo] += m_animationPlayController[index].GetAnimClip()->GetDifferencetransform(boneNo);
 			}
@@ -172,7 +172,7 @@ void Animation::UpdateGlobalPose()
 			//補間が終わっているのでアニメーションの開始位置を前にする。
 			m_startAnimationPlayController = index;
 			numAnimationPlayController = m_numAnimationPlayController - i;
-			m_isInterpolate = false;
+			//m_isInterpolate = false;
 		}
 	}
 	m_numAnimationPlayController = numAnimationPlayController;

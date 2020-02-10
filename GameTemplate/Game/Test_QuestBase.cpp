@@ -63,10 +63,10 @@ void Test_QuestBase::CreateQuest()
 		monnsu =new dorakomesu({ 0.0f,0.0f,0.0f });
 		break;
 	case Test_QuestBase::monnsu2:
-		monnsu = new dorakomesu({ 0.0f,0.0f,0.0f });
+		monnsu = new MIZUKI({ 0.0f,0.0f,0.0f });
 		break;
 	case Test_QuestBase::monnsu3:
-		monnsu = new dorakomesu({ 0.0f,0.0f,0.0f });
+		monnsu = new MIZUKI({ 0.0f,0.0f,0.0f });
 		break;
 	default:
 		break;

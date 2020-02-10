@@ -12,6 +12,8 @@ public:
 private:
 	State m_statenum;
 	bool m_invincible = false;
+	int i = 0;
+	bool m_fueit = true;
 	PlayerMovement Movement;
 };
 
