@@ -89,7 +89,7 @@ void GameManager::Update()
 		{
 			static int i = 0;
 			i++;
-			if (i >= 10) {
+			if (i >= 1) {
 				g_graphicsEngine->GetFade()->FadeInStart();
 				//g_graphicsEngine->GetFade()->SetFadeInSpeed(3.0f);
 				//}
