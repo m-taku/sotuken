@@ -68,8 +68,7 @@ float4 PSFinalMain(PSInput In) : SV_Target0
 	float4 luminance = AveLumiTexture.Sample(Sampler, float2(0.5f,0.5f));
 	float4 srcColor = srcTexture.Sample(Sampler, In.uv);
 	float ave = 1.0f / max(0.01f,dot(luminance.xyz, float3(0.2125f, 0.7154f, 0.0721f)));
-	//float ave = 0.33333f / max(0.000001f, t);
-	float4 color = srcColor * ave*0.3f;
+	float4 color = srcColor * ave*0.33333f;
 	color.w = 1.0f;
 	return color;
 }
