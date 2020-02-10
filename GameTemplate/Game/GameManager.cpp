@@ -62,7 +62,7 @@ void GameManager::Update()
 		if (m_ChangeNotify)
 		{
 
-			g_graphicsEngine->GetFade()->FadeOutStart();
+			//g_graphicsEngine->GetFade()->FadeOutStart();
 			//}
 			//if (g_pad[0].IsTrigger(enButtonB))
 			//{
@@ -72,7 +72,7 @@ void GameManager::Update()
 			m_ChangeNotify = false;
 
 		}
-		if (!g_graphicsEngine->GetFade()->IsInFade())
+		//if (!g_graphicsEngine->GetFade()->IsInFade())
 		{
 			m_QuestManager->CloseGuest();
 			m_Stage.changQuestStage();

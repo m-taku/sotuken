@@ -47,6 +47,10 @@ public:
 		int lastIndex = GetLastAnimationControllerIndex();
 		return m_animationPlayController[lastIndex].IsPlaying();
 	}
+	bool IsInterpolate()
+	{
+		return m_isInterpolate;
+	}
 	/// <summary>
 /// 現在のアニメーションでイベントの区間内かどうか
 /// </summary>
@@ -93,14 +97,17 @@ private:
 		}
 		else {
 			//補完あり。
-			m_isInterpolate = true;
+
 			m_numAnimationPlayController++;
+			m_isInterpolate = true;
 		}
 		index = GetLastAnimationControllerIndex();
 		m_animationPlayController[index].ChangeAnimationClip(nextClip);
 		m_animationPlayController[index].SetInterpolateTime(interpolateTime);
+
 		m_interpolateTime = 0.0f;
 		m_interpolateTimeEnd = interpolateTime;
+		m_animationPlayController[index].Update(0.0f, this);
 	}
 	/*!
 		* @brief	ローカルポーズの更新。
@@ -138,6 +145,5 @@ private:
 	int m_startAnimationPlayController = 0;		//!<アニメーションコントローラの開始インデックス。
 	float m_interpolateTime = 0.0f;
 	float m_interpolateTimeEnd = 0.0f;
-	bool m_isInterpolate = false;				//!<補間中？
-
+	bool m_isInterpolate = false;
 };

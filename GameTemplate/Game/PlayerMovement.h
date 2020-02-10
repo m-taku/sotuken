@@ -6,7 +6,7 @@ class PlayerMovement : public Noncopyable
 public:
 	PlayerMovement();
 	~PlayerMovement();
-	void DefaultMove();		//デフォルトの移動処理
+	void TounMove();		//デフォルトの移動処理
 	void QuestMove();
 	void QuestWeaponMove();
 	void AttackMove();

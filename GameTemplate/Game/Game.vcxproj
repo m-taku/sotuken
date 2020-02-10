@@ -150,6 +150,7 @@
     <ClCompile Include="math\Matrix.cpp" />
     <ClCompile Include="math\Vector.cpp" />
     <ClCompile Include="Enemyname\monster.cpp" />
+    <ClCompile Include="Enemyname\MIZUKI.cpp" />
     <ClCompile Include="NPCBase.cpp" />
     <ClCompile Include="NPCManager.cpp" />
     <ClCompile Include="physics\MeshCollider.cpp" />
@@ -271,6 +272,7 @@
     <ClInclude Include="math\Vector.h" />
     <ClInclude Include="Enemyname\monster.h" />
     <ClInclude Include="Enemyname\MonsterList.h" />
+    <ClInclude Include="Enemyname\MIZUKI.h" />
     <ClInclude Include="NPCBase.h" />
     <ClInclude Include="NPCManager.h" />
     <ClInclude Include="physics\PhysicsDebugDraw.h" />
@@ -346,6 +348,7 @@
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_1.FBX" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_2.FBX" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_3.FBX" />
+    <MeshContentTask Include="Assets\modelData\Dragon\MIZUKI.fbx" />
     <MeshContentTask Include="Assets\modelData\Ground.fbx" />
     <MeshContentTask Include="Assets\modelData\Ground1.fbx" />
     <MeshContentTask Include="Assets\modelData\Ground12.fbx" />
@@ -668,6 +671,8 @@
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_IrvalTheWyven_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_IrvalTheWyven_N.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_WDPARock_BC.TGA" />
+    <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_MOUNTAINDRAGON_BC.TGA" />
+    <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_MOUNTAINDRAGON_N.TGA" />
     <Image Include="Assets\sprite\Title1.png" />
     <Image Include="Assets\sprite\Title2.png" />
   </ItemGroup>

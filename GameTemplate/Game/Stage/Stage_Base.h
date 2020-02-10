@@ -7,7 +7,7 @@ class Stage_Base : public IGameObject
 {
 public:
 	Stage_Base();
-	~Stage_Base();
+	virtual	~Stage_Base();
 	virtual bool Init()
 	{
 		return true;

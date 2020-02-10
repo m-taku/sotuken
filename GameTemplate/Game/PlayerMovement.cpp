@@ -12,10 +12,9 @@ PlayerMovement::~PlayerMovement()
 	m_player->m_movespeed = CVector3::Zero();
 }
 
-void PlayerMovement::DefaultMove()
+void PlayerMovement::TounMove()
 {
 	m_player->UpdateAxis();
-
 	m_player->m_movespeed = CVector3::Zero();
 	float padinput_LX = g_pad[0].GetLStickXF()*500.0f;
 	float padinput_LY = g_pad[0].GetLStickYF()*500.0f;
@@ -137,7 +136,7 @@ void PlayerMovement::QuestMove()
 	if (g_pad[0].IsPress(enButtonRB1)&& m_player->m_playerParam.stamina > 0)
 	{
 		camera_XZ *= 1.3f;
-		m_player->m_playerParam.stamina = max(m_player->m_playerParam.stamina - 10.0*GetFrameDeltaTime(), 0.0f);
+		m_player->m_playerParam.stamina = max(m_player->m_playerParam.stamina - 20.0*GetFrameDeltaTime(), 0.0f);
 	}
 	m_player->m_movespeed.x = camera_XZ.x;
 	m_player->m_movespeed.z = camera_XZ.z;
@@ -224,7 +223,7 @@ void PlayerMovement::AttackMove()
 
 	m_addGravityTime += 1.0f*GetFrameDeltaTime();
 	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
-	m_player->m_movespeed.y -= m_fallSpeed;
+	//m_player->m_movespeed.y -= m_fallSpeed;
 	if (m_player->m_characon.IsOnGround())
 	{
 		m_addGravityTime = 0.0f;

@@ -24,31 +24,44 @@ Player::~Player()
 
 void Player::TransitionState(State m)
 {
-	delete m_state;
 	switch (m)
 	{
 	case StateTownMove:
+		delete m_state;
 		m_state = new PlayerTownMove(this);
 		break;
 	case StateWate:
+		delete m_state;
 		m_state = new PlayerWait(this);
 		break;
 	case StateAvoid:
-		m_state = new PlayerAvoid(this);
+		if (GetPlayerNowParam().stamina >= 25&& m_isAnimtaime>=0.2f) {
+			delete m_state;
+			m_state = new PlayerAvoid(this);
+		}
+		else
+		{
+			m = NowState();
+		}
 		break;
 	case StateAttack:
+		delete m_state;
 		m_state = new PlayerAttack(this);
 		break;
 	case StateAttackMode:
+		delete m_state;
 		m_state = new PlayerAttackMode(this);
 		break;
 	case Statedeath:
+		delete m_state;
 		m_state = new Playerdeath(this);
 		break;
 	case StateHit:
+		delete m_state;
 		m_state = new PlayerHit(this);
 		break;
 	case StateQuestMove:
+		delete m_state;
 		m_state = new PlayerQuestMove(this);
 		break;
 	default:
@@ -103,12 +116,12 @@ bool Player::Start()
 
 void Player::Update()
 {
-
+	m_isAnimtaime += GetFrameDeltaTime();
+	GetPlayerParam().stamina = max(0, min(GetPlayerParam().stamina + 10.0*GetFrameDeltaTime(), m_playerData.stamina));
 	//if (Hp <= 0&& m_statenum != Statedeath)
 	//{
 	//	TransitionState(Statedeath);
 	//}
-
 	m_anim.Update(GetFrameDeltaTime());
 	m_state->Update();
 	move = m_position;
