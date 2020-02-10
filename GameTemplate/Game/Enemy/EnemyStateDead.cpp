@@ -6,6 +6,7 @@
 EnemyStateDead::EnemyStateDead(Enemy* enemypoint, Player* player) : EnemyState(enemypoint,player)
 {
 
+	m_enemy->Playanim(monster::Dead);
 }
 
 

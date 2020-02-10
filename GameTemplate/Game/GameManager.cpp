@@ -6,6 +6,7 @@
 #include"NPCManager.h"
 #include"Quest_NPC.h"
 #include "UI/UI.h";
+#include"../Enemyname/MonsterList.h"
 GameManager::GameManager()
 {
 
@@ -27,7 +28,6 @@ bool GameManager::Start()
 	m_ui->Init(150, 150, 50);
 	m_ui->SetHP(50);
 	//m_player->TransitionState(Player::StateTownMove);
-
 	//cheng(true);
 	return true;
 }
@@ -44,6 +44,7 @@ void GameManager::Update()
 			m_player->TransitionState(StateTownMove);
 			m_ui->SetHaveQuest(UI::NothaveQuest);
 			FindGO<Quest_NPC>("受付ジョー")->SetTalkState(Quest_NPC::QuestSelect);
+			m_ChangeNotify = false;
 			break;
 		}
 	case QuestOrder:
@@ -54,10 +55,24 @@ void GameManager::Update()
 			m_ui->SetHaveQuest(UI::haveQuest);
 			m_player->TransitionState(StateTownMove);
 			FindGO<Quest_NPC>("受付ジョー")->SetTalkState(Quest_NPC::QuestCancel);
+			m_ChangeNotify = false;
 		}
 		break;
 	case QuestStart:
 		if (m_ChangeNotify)
+		{
+
+			g_graphicsEngine->GetFade()->FadeOutStart();
+			//}
+			//if (g_pad[0].IsTrigger(enButtonB))
+			//{
+			//	g_graphicsEngine->GetFade()->FadeOutStart();
+			//}
+
+			m_ChangeNotify = false;
+
+		}
+		if (!g_graphicsEngine->GetFade()->IsInFade())
 		{
 			m_QuestManager->CloseGuest();
 			m_Stage.changQuestStage();
@@ -65,10 +80,28 @@ void GameManager::Update()
 			m_player->Setweapon();
 			m_ui->SetIsMap(UI::IsQuest);
 			m_ui->Init(m_player->GetPlayerData().hp, m_player->GetPlayerData().stamina, m_QuestManager->GetQuestDate()->GetMAXTime());
-			m_gameNotify = InQuest;
+
+			ChangeNotify(InQuest);
 		}
 		break;
-	case InQuest:
+	case InQuest:	
+		if (m_ChangeNotify)
+		{
+			static int i = 0;
+			i++;
+			if (i >= 10) {
+				g_graphicsEngine->GetFade()->FadeInStart();
+				//g_graphicsEngine->GetFade()->SetFadeInSpeed(3.0f);
+				//}
+				//if (g_pad[0].IsTrigger(enButtonB))
+				//{
+				//	g_graphicsEngine->GetFade()->FadeOutStart();
+				//}
+
+				m_ChangeNotify = false;
+			}
+		}
+		//g_graphicsEngine->GetFade()->FadeInStart();
 		m_ui->SetHP(m_player->GetPlayerNowParam().hp);
 		m_ui->SetStamina(m_player->GetPlayerNowParam().stamina);
 		m_ui->SetTimer(m_QuestManager->GetQuestDate()->GetNowTime());
@@ -83,12 +116,12 @@ void GameManager::Update()
 			m_player->TransitionState(StateTownMove);
 			m_ui->SetIsMap(UI::IsTown);
 			m_gameNotify = NonQuestOrder;
+			m_ChangeNotify = false;
 		}
 		break;
 	default:
 		break;
 	}
-	m_ChangeNotify = false;
 
 	//auto pul = FindGO<Player>("player");
 	//pul->TransitionState(Player::StateTownMove);

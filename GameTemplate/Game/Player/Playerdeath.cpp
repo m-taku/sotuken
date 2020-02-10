@@ -18,6 +18,7 @@ Playerdeath::~Playerdeath()
 {
 	m_player->GetPlayerParam().hp = m_player->GetPlayerData().hp;
 	m_player->SetPosition(m_player->GetReturnPos());
+	m_player->Getcombo()->changeweapon(0);
 }
 
 void Playerdeath::Update()

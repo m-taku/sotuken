@@ -17,6 +17,7 @@ private:
 		combo2,
 		combo3
 	};
+	bool isHit = false;
 	combo m_combo;
 	float hoge = 0.0f;
 	PlayerMovement Movement;

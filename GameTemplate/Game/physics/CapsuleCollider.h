@@ -19,6 +19,11 @@ public:
 	*@param[in] radius	カプセルの半径。
 	*@param[in]	height	カプセルの高さ。
 	*/
+	void Release()
+	{
+		delete shape;
+		shape = nullptr;
+	}
 	void Create(float radius, float height)
 	{
 		shape = new btCapsuleShape(radius, height);
