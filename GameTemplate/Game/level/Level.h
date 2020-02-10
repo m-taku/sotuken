@@ -13,6 +13,7 @@ struct LevelObjectData {
 	bool m_Shadowflag = true;
 	bool m_Transflag = false;
 	bool m_Physicsflag = true;
+	bool m_Tree = false;
 	bool m_www = false;
 	const wchar_t* name;	//!<–¼‘OB
 };

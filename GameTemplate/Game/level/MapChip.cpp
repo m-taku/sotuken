@@ -78,6 +78,14 @@ void MapChip::Update()
 					continue;
 				}
 			}
+			if (m_LevelData[0].m_Tree)
+			{
+				auto len = obj.position - g_camera3D.GetPosition();
+				if (len.Length() >= 8000.0f)
+				{
+					continue;
+				}
+			}
 			m_model.UpdateInstancingData(obj.position, obj.rotation, obj.scale);
 		}
 	}

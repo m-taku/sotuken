@@ -56,24 +56,28 @@ bool QuestStage::Init() {
 		if (result == 0)
 		{
 			objData.m_Transflag = true;
+			objData.m_Tree = true;
 			return false;
 		}
 		result = wcscmp(L"SM_Tree02", objData.name);
 		if (result == 0)
 		{
 			objData.m_Transflag = true;
+			objData.m_Tree = true;
 			return false;
 		}
 		result = wcscmp(L"SM_Tree03", objData.name);
 		if (result == 0)
 		{
 			objData.m_Transflag = true;
+			objData.m_Tree = true;
 			return false;
 		}
 		result = wcscmp(L"SM_Tree04", objData.name);
 		if (result == 0)
 		{
 			objData.m_Transflag = true;
+			objData.m_Tree = true;
 			return false;
 		}
 		return false;
