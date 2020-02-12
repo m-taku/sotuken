@@ -4,7 +4,6 @@
 
 Path::Path()
 {
-	m_pathdata = FindGO<Navimake>("Navimake");
 }
 
 
@@ -12,8 +11,14 @@ Path::~Path()
 {
 
 }
-void Path::Course(CVector3 sturt, CVector3 end)
+bool Path::Course(CVector3 sturt, CVector3 end)
 {
+	m_stop = false;
+	m_pathdata = FindGO<Navimake>("Navimake");
+	if (m_pathdata == nullptr)
+	{
+		return false;
+	}
 	m_nowNo = 0;
 	m_coursepasu.clear();
 	//もらったポジションを使ってパス番号を取得
@@ -32,6 +37,10 @@ void Path::Course(CVector3 sturt, CVector3 end)
 	//データの番号が最後の番号になるまで続ける
 	while (NextPas->No != endNo)
 	{
+		if (m_stop)
+		{
+			return false;
+		}
 		//リンクデータを探す
 		auto LincPas = m_pathdata->FindLinc(*NextPas, endNo, CurrentCost);
 		//探し終わったのでクローズする。
@@ -150,6 +159,8 @@ void Path::Course(CVector3 sturt, CVector3 end)
 	for (auto ereas : close) {
 		delete ereas;
 	}
+
+	return true;
 }
 void Path::Smoothing(std::vector<int>* pasu)
 {
@@ -158,14 +169,25 @@ void Path::Smoothing(std::vector<int>* pasu)
 	int start = (*pasu)[0];
 	pa.push_back(start);
 	int Next;
+	int wait = 0;
 	//1つ飛ばした2番目から検索を開始にする。
 	for (int i = 2; i < pasu->size(); i++) 
 	{
 		Next = (*pasu)[i];
 		if (m_pathdata->CollisionTest(start, Next))
 		{
-			start = (*pasu)[i-1];
-			pa.push_back(start);
+			if (wait == 0) {
+				start = (*pasu)[i - 1];
+				wait++;
+				pa.push_back(start);
+			}
+		}
+		else
+		{
+			if (wait != 0) {
+				pa.push_back(Next);
+				wait = 0;
+			}
 		}
 	}
 	pa.push_back(Next);

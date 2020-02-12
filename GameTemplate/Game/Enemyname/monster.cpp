@@ -12,7 +12,7 @@ monster::monster(CVector3 pos)
 	m_player = FindGO<Player>("player");
 }
 
-bool monster::Alignment()
+bool monster::Alignment(CVector3 pos)
 {
 	if (m_enemy->IsAnimEvent(1))
 	{
@@ -26,7 +26,7 @@ bool monster::Alignment()
 	switch (m_jikuawase)
 	{
 	case monster::strat: 
-		vector = m_player->GetPosition() - m_enemy->GetPosition();
+		vector = pos - m_enemy->GetPosition();
 		vector.y = 0.0f;
 		vector.Normalize();
 		enemyForwaed.y = 0.0f;

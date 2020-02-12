@@ -35,13 +35,17 @@ public:
 	}
 	virtual void Init() {};
 	//é≤çáÇÌÇπ
-	bool Alignment();	
 	enum jiku1
 	{
 		strat,
 		kaiten,
 		wait
 	};
+	bool Alignment(CVector3 pos);
+	void Setjiku1(jiku1 ks)
+	{
+		m_jikuawase = ks;
+	}
 protected:
 
 	Enemy* m_enemy = nullptr;

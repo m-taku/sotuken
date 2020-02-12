@@ -8,7 +8,7 @@ public:
 	/// コンストラクタ
 	/// </summary>
 	EnemyState(Enemy* enemypoint,Player* player);
-	~EnemyState();
+	virtual ~EnemyState();
 	/// <summary>
 	/// アップデート。
 	/// </summary>

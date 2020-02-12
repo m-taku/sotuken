@@ -1,7 +1,7 @@
 #pragma once
 #include"Stage_Base.h"
 #include "UI/UI.h";
-//#include"Route search/Navimake.h"
+#include"Route search/Navimake.h"
 class QuestStage : public Stage_Base
 {
 public:
@@ -12,6 +12,6 @@ public:
 	void DrawDebug();
 private:
 	UI* m_ui = nullptr;
-//	Navimake* m_navimake = nullptr;				//ナビゲーションメッシュ作成処理。
+	Navimake* m_navimake = nullptr;				//ナビゲーションメッシュ作成処理。
 };
 

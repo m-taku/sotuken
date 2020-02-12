@@ -121,6 +121,6 @@ private:
 	SkinModel m_model;								//モデルデータ
 	std::vector<SData*> m_seru;						//三角形１つのデータ
 	RigidBody m_rigidBody;			               	//剛体。
-	static const int hight = 20;					//CollisionTest用のカプセルの幅
-	static const int ballsize = 60;				//CollisionTest用のカプセルの高さ
+	static const int hight = 80;					//CollisionTest用のカプセルの幅
+	static const int ballsize = 500;				//CollisionTest用のカプセルの高さ
 };

@@ -56,9 +56,9 @@ public:
 	{
 	}
 protected:
-	SkinModel m_model;
+	//SkinModel m_model;
 	SkinModel m_testmodel;
-	PhysicsStaticObject m_poa;
+	//PhysicsStaticObject m_poa;
 	SkyCube* m_SkyCube = nullptr;
 	//PhysicsStaticObject m_physicsStaticObject;	//!<静的物理オブジェクト。
 	wchar_t* m_Name;

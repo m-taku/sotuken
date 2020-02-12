@@ -37,7 +37,7 @@ bool MIZUKI::attack()
 	{
 	case MIZUKI::attack123:
 		//Ž²‡‚í‚¹‚µ‚Ü‚µ‚å‚¤iŒÜ‚Â“›“›‚©j
-		if (Alignment()) {
+		if (Alignment(m_player->GetPosition())) {
 			m_enemy->Playanim(m_attackcombo + monster::num);
 			//CVector3 tailpos1;
 			tailpos1.Set(Bones[attack123][0]->GetWorldMatrix().v[3]);

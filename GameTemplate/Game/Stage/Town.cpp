@@ -23,8 +23,8 @@ bool Town::Init()
 	//’n–Ê‚¾‚¯–¼‘O‚Ì‚Ý
 	wchar_t moveFilePath[256];
 	swprintf_s(moveFilePath, L"Assets/modelData/%s.cmo", m_Name);
-	m_model.Init(L"Assets/modelData/unityChan.cmo");
-	m_poa.CreateMeshObject(m_model, {10000.0f,1000000.0f,0.0f}, CQuaternion::Identity());
+	/*m_model.Init(L"Assets/modelData/unityChan.cmo");
+	m_poa.CreateMeshObject(m_model, {10000.0f,1000000.0f,0.0f}, CQuaternion::Identity());*/
 	swprintf_s(moveFilePath, L"Assets/level/%s1.tkl", m_Name);
 	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
 		int result = 1;

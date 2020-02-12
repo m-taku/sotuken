@@ -2,13 +2,14 @@
 #include "Enemy.h"
 #include "EnemyStateList.h"
 #include"VectorDraw.h"
+#include"Route search/Path.h"
 #include"../HitManeger.h"
 #include"Player.h"
 Enemy::Enemy()
 {
 	m_characon.Init(
 		50.0f,
-		80.0f,
+		40.0f,
 		m_position
 	);
 }
@@ -48,6 +49,7 @@ bool Enemy::Start()
 	m_HitObject = GetHitObjict().Create(&m_position, 500, [&](float damage, CVector3 date) {
 		HitAction(damage);
 	}, HitObject::enemy);
+
 	TransitionState(m_statenum);
 	return true;
 }
@@ -57,6 +59,7 @@ void Enemy::Update()
 	m_movespeed.y -= 9.8f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	UpdateAxis();
+
 	m_monster->GetSkinModel()->UpdateWorldMatrix(m_position, m_rotation, CVector3::One());
 }
 void Enemy::Draw()

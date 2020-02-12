@@ -23,7 +23,7 @@ public:
 	/// <param name="end">
 	/// 　目標ポジション。（CVector3）
 	/// </param>
-	void Course(CVector3 sturt, CVector3 end);
+	bool Course(CVector3 sturt, CVector3 end);
 	/// <summary>
 	/// メンバ変数を使って次に動く目標位置を取得。(引数なし)
 	/// </summary>
@@ -31,6 +31,10 @@ public:
 	/// 目標位置。（CVector3）
 	/// </returns>
 	const CVector3 PathPos();
+	void stop()
+	{
+		m_stop = true;
+	}
 	//パスのデータ形式
 	struct PasDate
 	{
@@ -65,5 +69,6 @@ private:
 	std::vector<int> m_coursepasu;							//経路探査の結果（スムージング処理済み）
 	Navimake* m_pathdata = nullptr;							//セル（ポリゴン）のデータ
 	int m_nowNo = 0;										//今何番目のポイントに向かっているか
+	bool m_stop = false;
 };
 

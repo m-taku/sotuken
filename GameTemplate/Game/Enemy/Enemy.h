@@ -5,6 +5,7 @@
 #include"enemyname/monster.h"
 #include"Carving.h"
 class HitObject;
+class Path;
 class VectorDraw;
 class Enemy : public IGameObject
 {
@@ -81,6 +82,10 @@ public:
 	{
 		return m_statenum;
 	}
+	Path* CopyPath()
+	{
+		return &m_Path;
+	}
 	void SetAnimdate(SkinModel& ka)
 	{
 		m_anim.Init(ka);
@@ -110,6 +115,8 @@ private:
 	CVector3 m_up = CVector3::Up();				//上方向
 	CVector3 m_scale = CVector3::One();			//スケール
 
+
+	Path m_Path;
 	Animation m_anim;
 	CQuaternion m_rotation = CQuaternion::Identity();		//回転
 	CMatrix m_mRot = CMatrix::Identity();					//回転後の前右後を取得するための行列

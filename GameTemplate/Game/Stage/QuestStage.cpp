@@ -12,6 +12,7 @@ QuestStage::QuestStage()
 
 QuestStage::~QuestStage()
 {
+	DeleteGO(m_navimake);
 }
 bool QuestStage::Init() {
 
@@ -19,10 +20,11 @@ bool QuestStage::Init() {
 #ifdef DenugWorld
 	//’n–Ê‚¾‚¯–¼‘O‚Ì‚Ý
 	wchar_t moveFilePath[256];
-	swprintf_s(moveFilePath, L"Assets/modelData/%s1.cmo", m_Name);
-	m_model.Init(moveFilePath);
+	//swprintf_s(moveFilePath, L"Assets/modelData/%s1.cmo", m_Name);
+	/*m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
-	m_poa.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
+	m_poa.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);*/
+	m_navimake = NewGO<Navimake>(0,"Navimake");
 	swprintf_s(moveFilePath, L"Assets/level/%s31.tkl", m_Name);
 	int count = 0;
 	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
@@ -93,7 +95,7 @@ bool QuestStage::Init() {
 	//swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
 	//m_testmodel.Init(moveFilePath);
 	//m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
-	m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
+	//m_model.UpdateWorldMatrix(CVector3::Zero(), CQuaternion::Identity(), CVector3::One());
 	//m_physicsStaticObject.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);
 #else
 
@@ -110,5 +112,5 @@ void QuestStage::DrawDebug()
 {
 	nra.Draw();
 	//nra1.Draw();
-	m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+	//m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 }
