@@ -22,7 +22,7 @@ EnemyStateLoitering::~EnemyStateLoitering()
 void EnemyStateLoitering::Update()
 {
 	Navimake += GetFrameDeltaTime();
-	if (Navimake >= 3.0f)
+	if (Navimake >= 2.0f)
 	{
 		Navimake = 0.0f;
 		Stop();
@@ -30,8 +30,6 @@ void EnemyStateLoitering::Update()
 
 	}
 	if (ispath) {
-
-		
 		m_enemy->Playanim(monster::walk);
 		auto speed = m_nextpos - m_enemy->GetPosition();
 		speed.y = 0.0f;
@@ -69,7 +67,7 @@ void EnemyStateLoitering::Update()
 	{
 		m_enemy->Playanim(monster::idel);
 	}	
-	if ((m_enemy->GetPosition() - m_player->GetPosition()).Length() <= 1000.0f)
+	if ((m_enemy->GetPosition() - m_player->GetPosition()).Length() <= 500.0f)
 	{
 		m_enemy->TransitionState(Enemy::StateAttack);
 	}

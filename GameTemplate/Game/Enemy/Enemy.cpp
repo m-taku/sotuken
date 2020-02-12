@@ -44,6 +44,7 @@ void Enemy::TransitionState(StateEnemy m)
 }
 bool Enemy::Start()
 {
+	m_Path;
 	m_monster->Init();
 	m_player = FindGO<Player>("player");
 	m_HitObject = GetHitObjict().Create(&m_position, 500, [&](float damage, CVector3 date) {
@@ -55,12 +56,17 @@ bool Enemy::Start()
 }
 void Enemy::Update()
 {
+	SetMovespeed(CVector3::Zero());
+	m_anim.Update(GetFrameDeltaTime());
 	m_state->Update();
 	m_movespeed.y -= 9.8f;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	UpdateAxis();
-
-	m_monster->GetSkinModel()->UpdateWorldMatrix(m_position, m_rotation, CVector3::One());
+	if (!m_furag)
+	{
+		m_modelpos = m_position;
+	}
+	m_monster->GetSkinModel()->UpdateWorldMatrix(m_modelpos, m_rotation, CVector3::One());
 }
 void Enemy::Draw()
 {
@@ -71,7 +77,6 @@ void Enemy::Draw()
 }
 void Enemy::PostUpdate()
 {
-	m_anim.Update(GetFrameDeltaTime());
 	m_anim.Update();
 }
 void Enemy::HitAction(float damage)

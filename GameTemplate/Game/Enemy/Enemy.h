@@ -66,9 +66,16 @@ public:
 	{
 		return m_anim.IsPlaying();
 	}
-	void Playanim(int No)
+	void Playanim(int No,bool furag = false)
 	{
 		m_anim.Play(No, 0.2f);
+		m_furag = furag;
+		if (!m_furag)
+		{
+			m_modelpos = m_position;
+		}
+
+		//m_modelpos = m_position;
 	}
 	void SetAnim(AnimationClip animation[], int numAnimClip)
 	{
@@ -109,6 +116,7 @@ private:
 		m_forward.Normalize();
 	}
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
+	CVector3 m_modelpos = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向
 	CVector3 m_right = CVector3::Right();		//右方向
@@ -126,6 +134,7 @@ private:
 	Player* m_player = nullptr;
 	const HitObject* m_HitObject = nullptr;
 	float HP = 10.0f;
+	bool m_furag = false;
 	//デバック用変数
 	Carving hagihagi;
 	float debugtaim = 0.0f;

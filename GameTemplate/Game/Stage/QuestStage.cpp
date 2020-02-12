@@ -24,7 +24,7 @@ bool QuestStage::Init() {
 	/*m_model.Init(moveFilePath);
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	m_poa.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);*/
-	m_navimake = NewGO<Navimake>(0,"Navimake");
+
 	swprintf_s(moveFilePath, L"Assets/level/%s31.tkl", m_Name);
 	int count = 0;
 	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
@@ -92,6 +92,7 @@ bool QuestStage::Init() {
 	//	objData.m_www = true;
 	//	return false;
 	//});
+	m_navimake = NewGO<Navimake>(0, "Navimake");
 	//swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
 	//m_testmodel.Init(moveFilePath);
 	//m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());

@@ -21,14 +21,15 @@ void MIZUKI::attackStart()
 
 	std::random_device rnd;     // 非決定的な乱数生成器を生成
 	std::mt19937 mt(rnd());     //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
-	std::uniform_int_distribution<> rand100(0, 0);        // [0, 99] 範囲の一様乱数
+	std::uniform_int_distribution<> rand100(0, 1);        // [0, 99] 範囲の一様乱数
 	int combo[3];
 	combo[0] = rand100(mt);
 	combo[1] = rand100(mt);
 	combo[2] = rand100(mt);
-	m_attackcombo = (attackcombo)combo[rand100(mt)];
+	m_attackcombo = attack12;// (attackcombo)combo[rand100(mt)];
 	m_jikuawase = monster::strat;
 	m_enemy->Playanim(monster::walk);
+	m_rig.StateRig();
 }
 bool MIZUKI::attack()
 {
@@ -37,6 +38,7 @@ bool MIZUKI::attack()
 	{
 	case MIZUKI::attack123:
 		//軸合わせしましょう（五つ筒筒か）
+
 		if (Alignment(m_player->GetPosition())) {
 			m_enemy->Playanim(m_attackcombo + monster::num);
 			//CVector3 tailpos1;
@@ -48,31 +50,32 @@ bool MIZUKI::attack()
 			}
 		}
 		break;
-	//case dorakomesu::attack12:
-	//	m_enemy->Playanim(m_attackcombo + monster::num);
-	//	for (int i = 0; i < Bones[attack12].size() - 1; i++) {
+	case MIZUKI::attack12:
+		if (Alignment(m_player->GetPosition())) {
+			m_enemy->Playanim(m_attackcombo + monster::num,true);
+			CVector3 move = CVector3::Zero();
+			move = m_rig.Updete();
+			move /= GetFrameDeltaTime();
+			move.y = 0.0f;
+			m_enemy->SetMovespeed(move);
+			if (m_enemy->IsAnimEvent(2)) {
+				tailpos1.Set(Bones[attack12][1]->GetWorldMatrix().v[3]);
+			}
+			else
+			{
+				tailpos1.Set(Bones[attack12][0]->GetWorldMatrix().v[3]);
+			}
+			HitAction(tailpos1, tailpos1, 2000.0f);
+			//軸合わせしましょう（五つ筒筒か）
+			if (!m_enemy->IsPlayinganim())
+			{
 
-	//		tailpos1.Set(Bones[attack12][i]->GetWorldMatrix().v[3]);
-	//		tailpos2.Set(Bones[attack12][i + 1]->GetWorldMatrix().v[3]);
-	//		auto houkou = tailpos2 - tailpos1;
-	//		CVector3 taillen = houkou;
-	//		houkou.Normalize();
-	//		auto toPlayer = m_player->GetPosition() - tailpos1;
-	//		float len = houkou.Dot(toPlayer);
+				m_enemy->Playanim(m_attackcombo + monster::num, false);
+				return true;
+			}
+		}
 
-	//		if (len <= taillen.Length() && len > 0.0f) {
-	//			CVector3 pos = tailpos1 + houkou * len;
-	//			float hitlen = CVector3(m_player->GetPosition() - pos).Length();
-	//			HitAction(tailpos1, tailpos1 + taillen, 5.0f);
-	//			break;
-	//		}
-	//	}
-	//	//軸合わせしましょう（五つ筒筒か）
-	//	if (!m_enemy->IsPlayinganim())
-	//	{
-	//		return true;
-	//	}
-	//	break;
+		break;
 	//case dorakomesu::attack13:
 	//	//軸合わせしましょう（五つ筒筒か）
 	//	if (Alignment()) {
@@ -120,9 +123,12 @@ void MIZUKI::Init()
 	m_animClip[attack123 + monster::num].SetLoopFlag(false);
 	Bones[attack123].push_back(m_skinmodel.FindBone(L"MOUNTAIN_DRAGON_ R Hand"));
 
-	//m_animClip[attack12 + monster::num].Load(L"Assets/animData/dorakomesu_attacksip.tka");
-	//m_animClip[attack12 + monster::num].SetLoopFlag(false);
+	m_animClip[attack12 + monster::num].Load(L"Assets/animData/MIZUKI_attackneil2.tka");
+	m_animClip[attack12 + monster::num].SetLoopFlag(false);
 
+	Bones[attack12].push_back(m_skinmodel.FindBone(L"MOUNTAIN_DRAGON_ R Hand"));
+	Bones[attack12].push_back(m_skinmodel.FindBone(L"MOUNTAIN_DRAGON_ L Hand"));
+	
 
 	//for (int i = 1; i <= 10; i++)
 	//{
@@ -132,6 +138,6 @@ void MIZUKI::Init()
 	//}
 	//m_animClip[attack13 + monster::num].Load(L"Assets/animData/dorakomesu_attackmeil.tka");
 	//m_animClip[attack13 + monster::num].SetLoopFlag(false);
-	//Bones[attack13].push_back(m_skinmodel.FindBone(L"L Hand"));
 	m_enemy->SetAnim(&(*(m_animClip.begin())),monster::num + num);
+	m_rig.SetBoon(m_skinmodel, L"MOUNTAIN_DRAGON_");
 }

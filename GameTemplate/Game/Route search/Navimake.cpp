@@ -68,7 +68,7 @@ Navimake::Navimake()
 						}
 					}
 					//ƒ|ƒŠƒSƒ“‚ð“à•ï‚·‚éƒRƒŠƒWƒ‡ƒ“¶¬
-					CreateRigidBody(80.0f, 5000.0f, data->centerposition);
+					CreateRigidBody(80.0f, 100.0f, data->centerposition);
 					g_physics.ContactTest(m_rigidBody, [&](const btCollisionObject& contactObject)
 					{
 						frag = true;
