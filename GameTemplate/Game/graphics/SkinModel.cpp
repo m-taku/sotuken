@@ -323,7 +323,13 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 			}
 			if (m_Mode[delayNo] == enTree)
 			{
-				effect->SetDrawMode(enTreeShadow);
+				if (m_numInstance > 1)
+				{
+					effect->SetDrawMode(enTreeShadowInstancing);
+				}
+				else {
+					effect->SetDrawMode(enTreeShadow);
+				}
 			}
 		});
 		//ï`âÊÅB
@@ -472,10 +478,10 @@ void SkinModel::BeginUpdateInstancingData(){
 }
 void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku[6])
 {
-	int hoge = 0;
-	if (drawMode != enShadow)
+	int hoge = 1;
+	if (drawMode == enShadow)
 	{
-		hoge = 1;
+		hoge = 0;
 	}
 	m_drawData[hoge].clear();
 	auto data = m_instancingData[No].begin();
@@ -518,6 +524,8 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku
 		Minposa -= m_box.direction[2] * (m_box.directionLen.z * m_instancingScale[No][countNo].z);
 		//CalculateFrustumPlanes(m_vsCb[No].mProj, No);
 		m_cameralen = (ni - m_kaku[0].m_centerPos).Length();
+
+		m_drawData[hoge].push_back(mWorld);
 		int count = 0;
 		for (count = 0; count < 6; count++) {
 			if (GetPositivePoint(count, Minposa, m_kaku,No, countNo))
@@ -526,9 +534,9 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku
 
 			}
 		}
-		//if (count >= 5) {
-			m_drawData[hoge].push_back(mWorld);
-		//}
+		if (count >= 5) {
+			//m_drawData[hoge].push_back(mWorld);
+		}
 		data++;						//ÇªÇÍà»äOÇÕéüÇ÷ÅB
 		countNo++;
 	}

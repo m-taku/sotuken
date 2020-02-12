@@ -83,13 +83,13 @@ bool QuestStage::Init() {
 		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/level/www.tkl", m_Name);
-	nra1.Init(moveFilePath, [&](LevelObjectData& objData) {
+	//nra1.Init(moveFilePath, [&](LevelObjectData& objData) {
 
-		objData.m_Transflag = true;
-		objData.m_Physicsflag = false;
-		objData.m_www = true;
-		return false;
-	});
+	//	objData.m_Transflag = true;
+	//	objData.m_Physicsflag = false;
+	//	objData.m_www = true;
+	//	return false;
+	//});
 	//swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
 	//m_testmodel.Init(moveFilePath);
 	//m_physicsStaticObject.CreateMeshObject(m_testmodel, CVector3::Zero(), CQuaternion::Identity());
@@ -103,12 +103,12 @@ bool QuestStage::Init() {
 void QuestStage::Update()
 {
 	nra.Updata();
-	nra1.Updata();
+	//nra1.Updata();
 	m_SkyCube->Update(CVector3::Zero(), CVector3::One()*30000.0f);
 }
 void QuestStage::DrawDebug()
 {
 	nra.Draw();
-	nra1.Draw();
+	//nra1.Draw();
 	m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 }

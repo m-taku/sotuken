@@ -62,6 +62,12 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 	}
 	case enTreeShadow:
 	{
+		m_pVSShader = &m_vsShaderShadow;
+		m_pPSShader = &m_psTreeShaderShadow; 
+		break;
+	}
+	case enTreeShadowInstancing:
+	{	
 		m_pVSShader = &m_vsShaderInstancingShadow;
 		m_pPSShader = &m_psTreeShaderShadow;
 		break;

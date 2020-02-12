@@ -16,6 +16,7 @@ enum EnDrawMode {
 	enInstancing,
 	enShadow, 
 	enTreeShadow,
+	enTreeShadowInstancing,
 	enInstancingShadow,
 	enCubeMap
 };
