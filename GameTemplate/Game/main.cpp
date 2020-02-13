@@ -41,11 +41,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 		g_soundEngine->Update();
 		GameObjectManager().Execute();
 		//•`‰æI—¹B
-		FPS.BeginDraw();
-		wchar_t fps[256];
-		swprintf_s(fps, L"FPS = %2f", 1.0/ GetFrameDeltaTime());
-		FPS.Draw(fps, { -FRAME_BUFFER_W /2.0f, FRAME_BUFFER_H/2.0f }, CVector4::White(), 0.0f, 1.0f, {0.0f,1.0f});
-		FPS.EndDraw();
+		//FPS.BeginDraw();
+		//wchar_t fps[256];
+		//swprintf_s(fps, L"FPS = %2f", 1.0/ GetFrameDeltaTime());
+		//FPS.Draw(fps, { -FRAME_BUFFER_W /2.0f, FRAME_BUFFER_H/2.0f }, CVector4::White(), 0.0f, 1.0f, {0.0f,1.0f});
+		//FPS.EndDraw();
 		g_graphicsEngine->EndRender();
 		innn++;
 		innn %= 2;

@@ -208,7 +208,7 @@ PSOutput PSMain(PSInput In)
 	//法線をタンジェントスペースから、ワールドスペースに変換する。
 	normal = In.Tangent * normal.x + biNormal * normal.y + In.Normal * normal.z;
 	normal = normalize(normal);
-	psout.normal = float4(normal, 1.0f);
+	psout.normal =float4(normal, 1.0f);
 	psout.world = float4(In.WorldPos.xyz, 1.0f);
 	psout.depth = In.Position.z;
 	psout.silhouette = float4(1.0f, 1.0f, 1.0f, 1.0f);
