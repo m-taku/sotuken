@@ -15,6 +15,7 @@ namespace smEngine {
 				delete Object;
 			}
 		}
+		delete g_soundEngine;
 		int i = 0;
 	}
 	void IGameObjectManager::Init(int gameObjectPrioMax) {
