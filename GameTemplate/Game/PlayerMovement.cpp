@@ -28,6 +28,11 @@ void PlayerMovement::TounMove()
 		m_player->m_movespeed.y = 0.0f;
 
 	}
+
+
+	//
+
+
 	//m_player->m_movespeed.y *= 0.5f;
 	CVector3 camera_z = smGameCamera().GetCameraFoward();
 	camera_z.y = 0.0f;
@@ -40,6 +45,23 @@ void PlayerMovement::TounMove()
 	m_player->m_movespeed.x = camera_XZ.x;
 	m_player->m_movespeed.z = camera_XZ.z;
 
+
+	if (m_player->m_movespeed.Length() <= 0.0f)
+	{
+		m_player->Playanim(Player::idel, 0.1f);
+		m_player->AnimSpeed = 1.0f;
+
+	}
+	else if (m_player->m_movespeed.Length() >= 300.0f)
+	{
+		m_player->Playanim(Player::run, 0.1f);
+		m_player->AnimSpeed = (min(500.0f*0.85f,m_player->m_movespeed.Length())) / 440.0f;
+	}
+	else
+	{
+		m_player->Playanim(Player::walk, 0.1f);
+		m_player->AnimSpeed = m_player->m_movespeed.Length() / 150.0f;
+	}
 	//プレイヤーの回転処理
 	CVector3 vec = camera_XZ;
 
@@ -131,16 +153,32 @@ void PlayerMovement::QuestMove()
 	CVector3 camera_x = smGameCamera().GetCameraRight();
 	camera_x.y = 0.0f;
 	camera_x.Normalize();
-
+	float AnimMaxSpeed = 0.85f;
 	CVector3 camera_XZ = camera_z * padinput_LY + camera_x * padinput_LX;
 	if (g_pad[0].IsPress(enButtonRB1)&& m_player->m_playerParam.stamina > 0)
 	{
 		camera_XZ *= 1.3f;
+		AnimMaxSpeed = 1.2f;
 		m_player->m_playerParam.stamina = max(m_player->m_playerParam.stamina - 20.0*GetFrameDeltaTime(), 0.0f);
 	}
 	m_player->m_movespeed.x = camera_XZ.x;
 	m_player->m_movespeed.z = camera_XZ.z;
+	if (m_player->m_movespeed.Length() <= 0.0f)
+	{
+		m_player->Playanim(Player::idel, 0.1f);
+		m_player->AnimSpeed = 1.0f;
 
+	}
+	else if (m_player->m_movespeed.Length() >= 300.0f)
+	{
+		m_player->Playanim(Player::run, 0.1f);
+		m_player->AnimSpeed = (min(500.0f*AnimMaxSpeed, m_player->m_movespeed.Length())) / 440.0f;
+	}
+	else
+	{
+		m_player->Playanim(Player::walk, 0.1f);
+		m_player->AnimSpeed = m_player->m_movespeed.Length() / 150.0f;
+	}
 	//プレイヤーの回転処理
 	CVector3 vec = camera_XZ;
 

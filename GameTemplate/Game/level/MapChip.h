@@ -29,6 +29,7 @@ public:
 	void Draw();
 private:
 	SkinModel m_model;		//!<モデル。
+	int count = 0;
 	wchar_t filePath[256];
 	std::vector<LevelObjectData> m_LevelData;
 	std::vector<PhysicsStaticObject*> m_physicsStaticObject;	//!<静的物理オブジェクト。

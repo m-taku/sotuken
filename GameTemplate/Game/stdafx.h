@@ -91,3 +91,4 @@ const float FRAME_BUFFER_H = 1080.0f;				//フレームバッファの高さ。
 using namespace smEngine;
 static int momomomo = 0;
 static const int MAX_BONE = 512;	//!<ボーンの最大数。
+const float GRAVITY_PARAM = 980.0f; //重力加速度

@@ -17,7 +17,7 @@ Title::~Title()
 
 bool Title::Start()
 {
-	m_srv.CreateFromDDSTextureFromFile(L"Assets/sprite/Title.dds");	
+	m_srv.CreateFromDDSTextureFromFile(L"Assets/sprite/Title5.dds");	
 	m_sprite.Init(m_srv, FRAME_BUFFER_W, FRAME_BUFFER_H);
 	text = NewGO<Text_Box>(10, "Text_box");
 	text->Init("‚o‚’‚…‚“‚“@‚`@‚a‚•‚”‚”‚‚", { 0.0f,-300.0f }, CVector4::White(), 0.0f, { 0.5f,0.5f });

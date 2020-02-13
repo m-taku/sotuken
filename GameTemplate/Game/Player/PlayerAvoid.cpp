@@ -16,6 +16,7 @@ PlayerAvoid::PlayerAvoid(Player* player) :PlayerState(player)
 PlayerAvoid::~PlayerAvoid()
 {
 	m_player->NowState() = m_statenum;
+	m_player->resetAnimtaime();
 }
 void PlayerAvoid::Update()
 {

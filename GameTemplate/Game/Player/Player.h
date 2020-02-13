@@ -84,8 +84,8 @@ public:
 	{
 		m_anim.Play(No, time);
 		m_modelpos = m_position;
-		m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
-		m_isAnimtaime = 0.0f;
+		//m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
+		
 		if (furag) {
 			InMovemAnim();
 		}
@@ -93,6 +93,10 @@ public:
 		{
 			m_isAnimMove = false;
 		}
+	}
+	void resetAnimtaime()
+	{
+		m_isAnimtaime = 0.0f;
 	}
 	bool Isfokan()
 	{
@@ -181,6 +185,7 @@ private:
 	CMatrix m_mRot = CMatrix::Identity();					//‰ñ“]Œã‚Ì‘O‰EŒã‚ğæ“¾‚·‚é‚½‚ß‚Ìs—ñ
 	bool m_isAnimMove = false;
 	float m_isAnimtaime = 0.0f;
+
 	PlayerCombo* m_weapon = nullptr;
 	Rig m_rig;
 	State m_statenum = StateTownMove;
@@ -194,7 +199,7 @@ private:
 	CameraMovement cameraMovement;
 	//dededede
 	//Carving hagihagi;
-	float debugtaim = 0.0f;
+	float AnimSpeed = 1.0f;
 //	std::vector<VectorDraw*> m_VectorDraw;
 
 };

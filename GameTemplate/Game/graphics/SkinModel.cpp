@@ -277,7 +277,7 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 				desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
 				desc.StructureByteStride = sizeof(CMatrix);
 				m_instancingDataSB[delayNo].Create(m_drawData[0].data(), desc);
-				d3dDeviceContext->UpdateSubresource(m_instancingDataSB[delayNo].GetBody(), 0, NULL, m_instancingData[delayNo].data(), 0, 0);
+				d3dDeviceContext->UpdateSubresource(m_instancingDataSB[delayNo].GetBody(), 0, NULL, m_drawData[0].data(), 0, 0);
 				d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[delayNo].GetSRV()).GetBody());
 			}
 			else
@@ -321,7 +321,7 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 			{
 				effect->SetDrawMode(enInstancingShadow);
 			}
-			if (m_Mode[delayNo] == enTree)
+			if (m_Mode[delayNo] == enTree || m_Mode[delayNo] == enTreeInstancing)
 			{
 				if (m_numInstance > 1)
 				{
@@ -355,7 +355,13 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 					}
 					if (m_Mode[delayNo] == enTree)
 					{
-						effect->SetDrawMode(enTreeShadow);
+						if (m_numInstance > 1)
+						{
+							effect->SetDrawMode(enTreeShadowInstancing);
+						}
+						else {
+							effect->SetDrawMode(enTreeShadow);
+						}
 					}
 				}
 			}
@@ -402,7 +408,7 @@ void SkinModel::Draw(int No)
 			desc.MiscFlags = D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
 			desc.StructureByteStride = sizeof(CMatrix);
 			m_instancingDataSB[No].Create(m_drawData[1].data(), desc);
-			d3dDeviceContext->UpdateSubresource(m_instancingDataSB[No].GetBody(), 0, NULL, m_instancingData[No].data(), 0, 0);
+			d3dDeviceContext->UpdateSubresource(m_instancingDataSB[No].GetBody(), 0, NULL, m_drawData[1].data(), 0, 0);
 			d3dDeviceContext->VSSetShaderResources(100, 1, &(m_instancingDataSB[No].GetSRV()).GetBody());
 		}
 		else
@@ -438,7 +444,7 @@ void SkinModel::Draw(int No)
 		ModelEffect* effect = (ModelEffect*)ef->effect.get();
 		effect->SetDrawMode(m_Mode[No]);
 	});
-	auto num = m_instancingData[1].size();
+	auto num = m_drawData[1].size();
 	//描画。
 	m_modelDx->Draw(
 		d3dDeviceContext,
@@ -549,7 +555,7 @@ void SkinModel::CullingInstancing(EnDrawMode drawMode, int No,const Plane m_kaku
 }
 bool SkinModel::Culling(EnDrawMode drawMode, int No,const Plane m_kaku[6])
 {
-	if (m_instancingData[No].size() < 1){
+	if (m_maxInstance <= 1){
 		auto mWorld = m_vsCb[No].mWorld;
 		CMatrix transMatrix;
 		//平行移動行列を作成する。
@@ -590,7 +596,7 @@ bool SkinModel::Culling(EnDrawMode drawMode, int No,const Plane m_kaku[6])
 		m_cameralen = (ni - m_kaku[0].m_centerPos).Length();
 		for (int i = 0; i < 6; i++) {
 			if(GetPositivePoint(i, Minposa, m_kaku)) {
-					//return false;
+					return false;
 			}
 		}
 		return true;

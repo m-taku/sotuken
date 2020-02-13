@@ -77,7 +77,7 @@ void SkinModelManager::NormalCulling()
 		m_cullingModels[delayNo].clear();
 		m_finisi = true;
 	});
-	Culling.join();
+	Culling.detach();
 }
 const Plane* SkinModelManager::SCalculateFrustumPlanes(CMatrix mView,float height,float width,float farZ)
 {

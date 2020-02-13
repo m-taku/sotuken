@@ -25,7 +25,7 @@ bool Town::Init()
 	swprintf_s(moveFilePath, L"Assets/modelData/%s.cmo", m_Name);
 	/*m_model.Init(L"Assets/modelData/unityChan.cmo");
 	m_poa.CreateMeshObject(m_model, {10000.0f,1000000.0f,0.0f}, CQuaternion::Identity());*/
-	swprintf_s(moveFilePath, L"Assets/level/%s1.tkl", m_Name);
+	swprintf_s(moveFilePath, L"Assets/level/%s.tkl", m_Name);
 	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
 		int result = 1;
 		result = wcscmp(L"Sphere", objData.name);
@@ -33,22 +33,12 @@ bool Town::Init()
 		{
 			return true;
 		}
-		result = wcscmp(L"SM_TileGround4m", objData.name);
-		if (result == 0)
-		{
-			return false;
-		}
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
 		{
 			auto pos = objData.position;
-			pos.y += 1000.0f;
 			auto player = FindGO<Player>("player");
 			player->SetPosition(pos);
-			//pos.y += 100.0f;
-			//FindGO<Player>("player")->SetPosition(pos);
-			pos.y = 150.0f;
-			//new dorakomesu(pos);
 			return true;
 		}
 		result = wcscmp(L"unityChan", objData.name);

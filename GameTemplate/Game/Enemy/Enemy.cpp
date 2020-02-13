@@ -59,7 +59,16 @@ void Enemy::Update()
 	SetMovespeed(CVector3::Zero());
 	m_anim.Update(GetFrameDeltaTime());
 	m_state->Update();
-	m_movespeed.y -= 9.8f;
+
+	m_addGravityTime += 1.0f*GetFrameDeltaTime();
+	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
+	m_movespeed.y -= m_fallSpeed;
+	if (m_characon.IsOnGround())
+	{
+		m_addGravityTime = 0.0f;
+		m_fallSpeed = 0.0f;
+		m_movespeed.y = 0.0f;
+	}
 	CVector3 move;
 	move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);

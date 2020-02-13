@@ -19,6 +19,7 @@ PlayerTownMove::~PlayerTownMove()
 void PlayerTownMove::Update()
 {
 	Movement.TounMove();
+
 	//m_player->Playanim(Player::run, false, 1.0f - (Length.Length() / 500.0f));
 	//m_player->Playanim(Player::walk, false, (Length.Length() / 500.0f));
 }

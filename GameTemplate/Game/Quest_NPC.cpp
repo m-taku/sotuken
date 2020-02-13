@@ -21,6 +21,10 @@ bool Quest_NPC::Init()
 	m_bikkuri.Init(L"Assets/modelData/bikkuri.cmo");
 	CVector3 posa = { m_position.x,m_position.y + 100.0f,m_position.z };
 	m_bikkuri.UpdateWorldMatrix(posa, CQuaternion::Identity(), CVector3::One());
+	m_characon.Init(
+		20.0f,
+		100.0f,
+		m_position);
 	return true;
 
 }
@@ -126,6 +130,17 @@ void Quest_NPC::Draw()
 	{
 		m_bikkuri.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 	}
+	m_addGravityTime += 1.0f*GetFrameDeltaTime();
+	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
+	m_movespeed.y -= m_fallSpeed;
+	if (m_characon.IsOnGround())
+	{
+		m_addGravityTime = 0.0f;
+		m_fallSpeed = 0.0f;
+		m_movespeed.y = 0.0f;
+	}
+	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
+	m_model.UpdateWorldMatrix(m_position, CQuaternion::Identity(), CVector3::One());
 	m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 	isupdate = false;
 }

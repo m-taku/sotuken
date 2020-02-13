@@ -56,14 +56,14 @@ namespace smEngine {
 		*/
 		const CVector3& GetCameraPosition() const
 		{
-			return g_camera3D.GetPosition();
+			return m_position;// g_camera3D.GetPosition();
 		}
 		/*!
 		*@brief	カメラのターゲット
 		*/
 		const CVector3& GetCameraTarget() const
 		{
-			return g_camera3D.GetTarget();
+			return m_target;//g_camera3D.GetTarget();
 		}
 		/*!
 		*@brief ビュー行列

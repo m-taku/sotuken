@@ -61,7 +61,6 @@ namespace smEngine {
 				break;
 			}
 		}
-		g_physics.DebubDrawWorld();	
 		smLightManager().SendBuffer();
 		smLightManager().ShadowRender();
 		g_graphicsEngine->GetDeferredRender().Draw();
@@ -100,6 +99,7 @@ namespace smEngine {
 				Object->UIDrawWrapper();
 			}
 		}
+	//	g_physics.DebubDrawWorld();
 
 
 		g_graphicsEngine->ChangeBuckBuffer();

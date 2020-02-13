@@ -137,6 +137,9 @@ private:
 	float HP = 10.0f;
 	bool m_furag = false;
 	//デバック用変数
+
+	float m_fallSpeed = 0.0f;
+	float m_addGravityTime = 0.0f;
 	Carving hagihagi;
 	float debugtaim = 0.0f;
 };

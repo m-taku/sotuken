@@ -567,6 +567,7 @@
     <MeshContentTask Include="Assets\modelData\vectormodel.fbx" />
   </ItemGroup>
   <ItemGroup>
+    <ImageContentTask Include="Assets\sprite\Title5.png" />
     <ImageContentTask Include="Assets\sprite\QuestForm.png" />
     <ImageContentTask Include="Assets\sprite\Title.png" />
     <ImageContentTask Include="Assets\sprite\Monster\monnsu.png">

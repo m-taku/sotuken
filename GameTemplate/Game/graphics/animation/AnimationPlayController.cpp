@@ -23,7 +23,7 @@ void AnimationPlayController::Init(Skeleton* skeleton)
 void AnimationPlayController::StartLoop()
 {
 	m_currentKeyFrameNo = 0;
-	m_time = 0.0f;
+	//m_time = 0.0f;
 }
 void AnimationPlayController::Update(float deltaTime, Animation* animation)
 {
@@ -41,14 +41,15 @@ void AnimationPlayController::Update(float deltaTime, Animation* animation)
 			//終端まで行った。
 			if (m_animationClip->IsLoop()) {
 				//ループ。
+				m_time -= topBoneKeyFrameList.at(m_currentKeyFrameNo-1)->time;
 				StartLoop();
 			}
 			else {
 				//ワンショット再生。
 				m_currentKeyFrameNo--;
 				m_isPlaying = false;	//再生終わり。
+				break;
 			}
-			break;
 		}
 		if (topBoneKeyFrameList.at(m_currentKeyFrameNo)->time >= m_time) {
 			//終わり。

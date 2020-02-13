@@ -597,6 +597,7 @@
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />
     <Image Include="Assets\sprite\Title1.png" />
+    <Image Include="Assets\sprite\Title5.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\Title.png" />

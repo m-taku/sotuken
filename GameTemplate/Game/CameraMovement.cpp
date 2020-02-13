@@ -88,17 +88,23 @@ CVector3 CameraMovement::SpringExecute(const CVector3& toCameraPos, const CVecto
 		CVector3 vec = toCameraVec;
 		vec.Normalize();
 		CVector3 v = toCameraVec - (vec * callback.dist);
-		CVector3 aX = ((callback.hitNormal*-1.0f)*(callback.hitNormal*-1.0f).Dot(v)) - v;
-		aX.Normalize();
-		CVector3 aY = callback.hitNormal;
-		v *= -1.0f;
-		v.Normalize();
-		float a = aY.Dot(v)*(1.0f / aX.Dot(v));
-		float x = (1.0f - 0.0f) / (a - 0.0f);
-		float y = ((a*1.0f) - (0.0f*0.0f)) / (a - 0.0f);
-		float len = CVector3{ x,y,0.0f }.Length();
-		CVector3 toHitPos = callback.hitPos- cameraTarget;
-		toCameraVec = toHitPos + v * (len*1.0f);
+		float dotres = (callback.hitNormal*-1.0f).Dot(v);
+		float len = 1.0f;
+		if (dotres != v.Length())
+		{
+			CVector3 aX = ((callback.hitNormal*-1.0f)*(callback.hitNormal*-1.0f).Dot(v)) - v;
+			aX.Normalize();
+			CVector3 aY = callback.hitNormal;
+			v *= -1.0f;
+			v.Normalize();
+			float a = aY.Dot(v)*(1.0f / aX.Dot(v));
+			float x = (1.0f - 0.0f) / (a - 0.0f);
+			float y = ((a*1.0f) - (0.0f*0.0f)) / (a - 0.0f);
+			len = CVector3{ x,y,0.0f }.Length();
+		}
+
+		CVector3 toHitPos = callback.hitPos - cameraTarget;
+		toCameraVec = toHitPos + v * len;
 		cameraPosition = cameraTarget + toCameraVec;
 	}
 	return cameraPosition;

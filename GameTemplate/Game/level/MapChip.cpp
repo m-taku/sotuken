@@ -69,6 +69,7 @@ void MapChip::Update()
 	}
 	else {
 		m_model.BeginUpdateInstancingData();
+		count = 0;
 		for (auto obj : m_LevelData) {
 			if (m_LevelData[0].m_www)
 			{
@@ -86,6 +87,7 @@ void MapChip::Update()
 					continue;
 				}
 			}*/
+			count++;
 			m_model.UpdateInstancingData(obj.position, obj.rotation, obj.scale);
 		}
 	}
@@ -94,10 +96,16 @@ void MapChip::Update()
 void MapChip::Draw()
 {
 	if (m_LevelData[0].m_Transflag) {
-		m_model.Draw(enTree, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+		if (count <= 1) {
+			m_model.Draw(enTree, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+		}
+		else
+		{
+			m_model.Draw(enTreeInstancing, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
+		}
 	}
 	else {
-		if (m_LevelData.size() <= 1) {
+		if (count <= 1) {
 			m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 		}
 		else

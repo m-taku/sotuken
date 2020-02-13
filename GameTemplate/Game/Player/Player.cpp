@@ -9,8 +9,8 @@
 Player::Player()
 {
 	m_characon.Init(
-		50.0f,
 		80.0f,
+		100.0f,
 		m_position
 	);
 }
@@ -123,8 +123,9 @@ void Player::Update()
 	//{
 	//	TransitionState(Statedeath);
 	//}
-	m_anim.Update(GetFrameDeltaTime());
+	m_anim.Update(GetFrameDeltaTime() * AnimSpeed);
 	m_state->Update();
+
 	move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	//if (m_anim.IsPlaying()) {
