@@ -45,6 +45,7 @@ namespace {
 
 				btVector3	hitPointWorld;
 				hitPointWorld.setInterpolate3(m_rayFromWorld, m_rayToWorld, rayResult.m_hitFraction);
+				CVector3 buckUpPos = hitPos;
 				hitPos.Set(hitPointWorld);
 				//交点との距離を調べる。
 				CVector3 vDist;
@@ -52,8 +53,13 @@ namespace {
 				float distTmp = vDist.Length();
 				if (distTmp < dist) {
 					//この衝突点の方が近いので、最近傍の衝突点を更新する。
+
 					dist = distTmp;
 					hitNormal = hitNormalTmp;
+					hitNormal.Normalize();
+				}
+				else {
+					hitPos = buckUpPos;
 				}
 			}
 			return 0.0f;
@@ -79,9 +85,20 @@ CVector3 CameraMovement::SpringExecute(const CVector3& toCameraPos, const CVecto
 	g_physics.GetDynamicWorld()->rayTest(start.getOrigin(), end.getOrigin(), callback);
 	if (callback.isHit)
 	{
-		m_dist= callback.dist-1.0f;
-		toCameraVec.Normalize();
-		toCameraVec *= m_dist;
+		CVector3 vec = toCameraVec;
+		vec.Normalize();
+		CVector3 v = toCameraVec - (vec * callback.dist);
+		CVector3 aX = ((callback.hitNormal*-1.0f)*(callback.hitNormal*-1.0f).Dot(v)) - v;
+		aX.Normalize();
+		CVector3 aY = callback.hitNormal;
+		v *= -1.0f;
+		v.Normalize();
+		float a = aY.Dot(v)*(1.0f / aX.Dot(v));
+		float x = (1.0f - 0.0f) / (a - 0.0f);
+		float y = ((a*1.0f) - (0.0f*0.0f)) / (a - 0.0f);
+		float len = CVector3{ x,y,0.0f }.Length();
+		CVector3 toHitPos = callback.hitPos- cameraTarget;
+		toCameraVec = toHitPos + v * (len*1.0f);
 		cameraPosition = cameraTarget + toCameraVec;
 	}
 	return cameraPosition;
@@ -103,13 +120,16 @@ void CameraMovement::DefaultMove(const CVector3 & target, const CVector3& move, 
 	qRot.Multiply(toCameraPos);
 	CVector3 buckupVec = toCameraPos;
 	qRot.SetRotationDeg(smGameCamera().GetCameraRight(), Input_RY);
-	qRot.Multiply(buckupVec);
-	float angle = smGameCamera().GetCameraUp().Dot(buckupVec);
-	if (angle < 0.9f && angle > -0.9f)
-	{
-		toCameraPos = buckupVec;
-	}
-
+	qRot.Multiply(toCameraPos);
+	float angle = smGameCamera().GetCameraUp().Dot(toCameraPos);
+	float absAngle = fabsf(angle);
+	float maxA = 0.8f;
+	float mini = 0.0002f;
+	float n = (angle + mini) / (absAngle + mini);
+	float sub = (max(absAngle, maxA) - maxA) * -n;
+	qRot.SetRotation(smGameCamera().GetCameraRight(), sub);
+	qRot.Multiply(toCameraPos);
+	//ifなんか使わないぜ！！！！！！！！！！！！！！
 	smGameCamera().SetPosition(SpringExecute(toCameraPos, cameraTarget));
 
 }
