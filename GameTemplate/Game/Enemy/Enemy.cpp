@@ -8,8 +8,8 @@
 Enemy::Enemy()
 {
 	m_characon.Init(
-		80.0f,
-		40.0f,
+		200.0f,
+		100.0f,
 		m_position
 	);
 }
@@ -59,7 +59,7 @@ void Enemy::Update()
 	SetMovespeed(CVector3::Zero());
 	m_anim.Update(GetFrameDeltaTime());
 	m_state->Update();
-	m_movespeed.y -= 9.8f;
+	m_movespeed.y -= 980.0f;
 	CVector3 move;
 	move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
