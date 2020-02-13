@@ -2,7 +2,7 @@
 #include"EnemyState.h"
 class Enemy;
 class Player;
-class EnemyStateAttack:public EnemyState
+class EnemyStateAttack : public EnemyState
 {
 public:
 	EnemyStateAttack(Enemy* enemypoint, Player* player);

@@ -11,5 +11,6 @@ public:
 	bool DamageAction(float damage);
 private:
 	CQuaternion rod = CQuaternion::Identity();
+	bool m_fura = true;
 };
 

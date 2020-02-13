@@ -13,6 +13,7 @@ class Enemy : public IGameObject
 public:
 	friend EnemyStateAttack;
 	friend EnemyStateDead;
+	friend EnemyStateChase;
 	friend EnemyStateLoitering;
 	friend monster;
 	Enemy();
@@ -23,6 +24,7 @@ public:
 	enum StateEnemy {
 		StateLoitering,			//移動中
 		StateAttack,
+		StateChase,
 		StateDead
 	};
 	bool Start();
@@ -61,6 +63,7 @@ public:
 	void SetPosition(const CVector3& pos)
 	{
 		m_position = pos;
+		m_returnpos = pos;
 		m_characon.SetPosition(pos);
 	}
 	bool IsPlayinganim()
@@ -85,6 +88,10 @@ public:
 	bool IsAnimEvent(int No = 1)
 	{
 		return m_anim.IsEvent(No);
+	}
+	CVector3 GetReturnpos()
+	{
+		return m_returnpos;
 	}
 	StateEnemy GetState()
 	{
@@ -117,6 +124,7 @@ private:
 		m_forward.Normalize();
 	}
 	CVector3 m_position = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
+	CVector3 m_returnpos = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_modelpos = { 0.0f,100.0f,100.0f };		//プレイヤーのポジション
 	CVector3 m_movespeed = CVector3::Zero();	//移動速度
 	CVector3 m_forward = CVector3::Front();		//前方向

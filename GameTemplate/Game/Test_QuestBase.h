@@ -41,6 +41,7 @@ public:
 	}
 	void Playerdoun()
 	{
+		g_graphicsEngine->GetFade()->FadeOutStart();
 		m_nowdoun = true;
 	}
 	float GetMAXTime()
@@ -70,7 +71,7 @@ private:
 	
 	float m_nowtime = 0.0f;
 	Enemy* m_target = nullptr;
-	int debugtime = 0;
+	float debugtime = 0.0f;
 
 	CVector2 m_Textpos[num] = {
 		{0.0f,400.0f},

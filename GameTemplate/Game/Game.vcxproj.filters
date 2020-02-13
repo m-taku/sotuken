@@ -192,6 +192,7 @@
     <ClCompile Include="Route search\Navimake.cpp" />
     <ClCompile Include="Route search\Path.cpp" />
     <ClCompile Include="Enemyname\MIZUKI.cpp" />
+    <ClCompile Include="Enemy\EnemyStateChase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\Vector.h">
@@ -370,6 +371,7 @@
     <ClInclude Include="Route search\Navimake.h" />
     <ClInclude Include="Route search\Path.h" />
     <ClInclude Include="Enemyname\MIZUKI.h" />
+    <ClInclude Include="Enemy\EnemyStateChase.h" />
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\unityChan.fbx">
@@ -593,11 +595,11 @@
     <MeshContentTask Include="Assets\modelData\Smallsword2.fbx" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_3.FBX" />
     <MeshContentTask Include="Assets\modelData\Dragon\MIZUKI.fbx" />
+    <MeshContentTask Include="Assets\modelData\Cube2.FBX" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\sprite\Title2.png" />
     <Image Include="Assets\sprite\Title1.png" />
-    <Image Include="Assets\sprite\Title5.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageContentTask Include="Assets\sprite\Title.png" />
@@ -700,5 +702,6 @@
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_WDPARock_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_MOUNTAINDRAGON_BC.TGA" />
     <ImageContentTask Include="Assets\modelData\map\tex\Dragon\T_MOUNTAINDRAGON_N.TGA" />
+    <ImageContentTask Include="Assets\sprite\Title5.png" />
   </ItemGroup>
 </Project>

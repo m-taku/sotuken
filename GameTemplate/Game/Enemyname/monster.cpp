@@ -4,10 +4,9 @@
 #include"Player.h"
 
 
-monster::monster(CVector3 pos)
+monster::monster(const char* name)
 {
-	m_enemy = NewGO<Enemy>(0,"enemy");
-	m_enemy->SetPosition(pos);
+	m_enemy = NewGO<Enemy>(0, name);
 	m_enemy->m_monster = this;
 	m_player = FindGO<Player>("player");
 }
@@ -32,6 +31,9 @@ bool monster::Alignment(CVector3 pos)
 		angle = acos(angle);
 		if (CMath::RadToDeg(angle) <= 10.0f|| m_count>=3)
 		{
+			kaitennkaku = min(CMath::RadToDeg(angle), 90.0f);
+			kaku.SetRotationDeg(jiku, kaitennkaku);		
+			m_enemy->m_rotation.Multiply(kaku);
 			m_count = 0;
 			return true;
 		}	

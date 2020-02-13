@@ -25,7 +25,7 @@ bool QuestStage::Init() {
 	m_poa.CreateMeshObject(m_model, CVector3::Zero(), CQuaternion::Identity());
 	m_poa.GetRigidBody()->GetBody()->setUserIndex(enCollisionAttr_Object);*/
 
-	swprintf_s(moveFilePath, L"Assets/level/%s31.tkl", m_Name);
+	swprintf_s(moveFilePath, L"Assets/level/%s.tkl", m_Name);
 	int count = 0;
 	nra.UEInit(moveFilePath, [&](LevelObjectData& objData) {
 		int result = 1;
@@ -38,7 +38,7 @@ bool QuestStage::Init() {
 		if (result == 0)
 		{
 			auto pos = objData.position;
-			pos.y += 100.0f;
+			pos.y = 500.0f;
 			Player*  player = FindGO<Player>("player");
 			player->SetPosition(pos);
 			player->SetReturnPos(pos);
@@ -48,10 +48,22 @@ bool QuestStage::Init() {
 		result = wcscmp(L"Cube1", objData.name);
 		if (result == 0)
 		{
-			auto pos = objData.position;
-
-			//new dorakomesu(pos);
-			FindGO<Enemy>("enemy")->SetPosition(objData.position);
+			if (count < 1) {
+				char enemyPath[256];
+				sprintf(enemyPath, "enemy%d", count);
+				auto pos = objData.position;
+				count++;
+				//new dorakomesu(pos);
+				FindGO<Enemy>(enemyPath)->SetPosition(objData.position);
+			}
+			return true;
+		}
+		result = wcscmp(L"Cube2", objData.name);
+		if (result == 0)
+		{
+			//auto pos = objData.position;
+			////new dorakomesu(pos);
+			//FindGO<Enemy>("enemy")->SetPosition(objData.position);
 			return true;
 		}
 		result = wcscmp(L"SM_Tree01", objData.name);
@@ -85,13 +97,13 @@ bool QuestStage::Init() {
 		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/level/www.tkl", m_Name);
-	nra1.Init(moveFilePath, [&](LevelObjectData& objData) {
+	//nra1.Init(moveFilePath, [&](LevelObjectData& objData) {
 
-		objData.m_Transflag = true;
-		objData.m_Physicsflag = false;
-		objData.m_www = true;
-		return false;
-	});
+	//	objData.m_Transflag = true;
+	//	objData.m_Physicsflag = false;
+	//	objData.m_www = true;
+	//	return false;
+	//});
 	m_navimake = NewGO<Navimake>(0, "Navimake");
 	//swprintf_s(moveFilePath, L"Assets/modelData/%scori.cmo", m_Name);
 	//m_testmodel.Init(moveFilePath);
@@ -106,12 +118,12 @@ bool QuestStage::Init() {
 void QuestStage::Update()
 {
 	nra.Updata();
-	nra1.Updata();
+	//nra1.Updata();
 	m_SkyCube->Update(CVector3::Zero(), CVector3::One()*30000.0f);
 }
 void QuestStage::DrawDebug()
 {
 	nra.Draw();
-	nra1.Draw();
+	//nra1.Draw();
 	//m_model.Draw(enNormal, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 }

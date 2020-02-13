@@ -7,8 +7,7 @@
 
 Playerdeath::Playerdeath(Player* player) :PlayerState(player)
 {
-	auto manager = FindGO<QuestManager>("QuestManager");
-	manager->Playerdoun();
+
 	m_player->Playanim(Player::death);
 }
 
@@ -16,6 +15,7 @@ Playerdeath::Playerdeath(Player* player) :PlayerState(player)
 
 Playerdeath::~Playerdeath()
 {
+
 	m_player->GetPlayerParam().hp = m_player->GetPlayerData().hp;
 	m_player->SetPosition(m_player->GetReturnPos());
 	m_player->Getcombo()->changeweapon(0);
@@ -23,6 +23,12 @@ Playerdeath::~Playerdeath()
 
 void Playerdeath::Update()
 {
+	if (!m_player->IsPlayinganim() && m_fura)
+	{
+		auto manager = FindGO<QuestManager>("QuestManager");
+		manager->Playerdoun();
+		m_fura = false;
+	}
 }
 bool Playerdeath::DamageAction(float damage)
 {

@@ -4,7 +4,7 @@
 #include"Enemy/Enemy.h"
 #include<random>
 #include"../HitManeger.h"
-dorakomesu::dorakomesu(CVector3 position) : monster(position)
+dorakomesu::dorakomesu(const char* name) : monster(name)
 {
 
 }
@@ -139,4 +139,5 @@ void dorakomesu::Init()
 	m_animClip[attack13 + monster::num].SetLoopFlag(false);
 	Bones[attack13].push_back(m_skinmodel.FindBone(L"L Hand"));
 	m_enemy->SetAnim(&(*(m_animClip.begin())), num + monster::num);
+
 }

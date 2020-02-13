@@ -11,7 +11,7 @@ public:
 		attack13,
 		num
 	};
-	dorakomesu(CVector3 pos);
+	dorakomesu(const char* name);
 	virtual ~dorakomesu();
 	void attackStart();
 	bool attack();

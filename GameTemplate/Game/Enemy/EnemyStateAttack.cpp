@@ -19,6 +19,6 @@ void EnemyStateAttack::Update()
 {
 	if (m_enemy->m_monster->attack())
 	{
-		m_enemy->TransitionState(Enemy::StateLoitering);
+		m_enemy->TransitionState(Enemy::StateChase);
 	}
 }

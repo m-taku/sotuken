@@ -4,7 +4,7 @@ class Player;
 class monster : public Noncopyable
 {
 public:
-	monster(CVector3 pos);
+	monster(const char* name);
 	virtual ~monster()
 	{
 

@@ -57,19 +57,27 @@ void Test_QuestBase::CreateQuest()
 		}
 	}
 	monster* monnsu;
-	switch (MonsterNo)
-	{
-	case Test_QuestBase::monnsu:
-		monnsu =new dorakomesu({ 0.0f,0.0f,0.0f });
-		break;
-	case Test_QuestBase::monnsu2:
-		monnsu = new MIZUKI({ 0.0f,0.0f,0.0f });
-		break;
-	case Test_QuestBase::monnsu3:
-		monnsu = new MIZUKI({ 0.0f,0.0f,0.0f });
-		break;
-	default:
-		break;
+
+	for (int i = 0; i < 1; i++) {
+
+			char moveFilePath[256];
+		switch (MonsterNo)
+		{
+		case Test_QuestBase::monnsu:
+			sprintf(moveFilePath, "enemy%d", i);
+			monnsu = new dorakomesu(moveFilePath);
+			break;
+		case Test_QuestBase::monnsu2:
+			sprintf(moveFilePath, "enemy%d", i);
+			monnsu = new MIZUKI(moveFilePath);
+			break;
+		case Test_QuestBase::monnsu3:
+			sprintf(moveFilePath, "enemy%d", i);
+			monnsu = new MIZUKI(moveFilePath);
+			break;
+		default:
+			break;
+		}
 	}
 	m_target = monnsu->GetEnemy();
 	//エネミー沸かし
@@ -93,8 +101,7 @@ void Test_QuestBase::Update()
 			else {
 				//ダウン関係
 				if (m_nowdoun) {
-					debugtime++;
-					if (debugtime >= 120) {
+					if (!g_graphicsEngine->GetFade()->IsInFade()) {
 						m_doun--;
 						if (m_doun <= 0) {
 							ChengResult(false);
@@ -104,6 +111,8 @@ void Test_QuestBase::Update()
 							auto pla = FindGO<Player>("player");
 							pla->TransitionState(StateQuestMove);
 						}
+						g_graphicsEngine->GetFade()->SetFadeInSpeed(3.0f);
+						g_graphicsEngine->GetFade()->FadeInStart();
 						debugtime = 0;
 						m_nowdoun = false;
 					}

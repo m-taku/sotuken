@@ -136,7 +136,6 @@ void Player::Update()
 	{
 		m_modelpos +=  m_characon.GetOffset();
 	}
-
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
 	m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
@@ -149,14 +148,15 @@ void Player::PostUpdate()
 void Player::InMovemAnim()
 {
 	m_isAnimMove = true;
+	m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
 	m_rig.StateRig(m_skinmodel.GetworldMatrix());
 }
 void Player::Draw()
 {
 	m_skinmodel.Draw(
 		enNormal,
-		smGameCamera().GetCameraViewMatrix(),
-		smGameCamera().GetCameraProjectionMatrix()
+		g_camera3D.GetViewMatrix(),
+		g_camera3D.GetProjectionMatrix()
 	);
 }
 void Player::HitAction(float damage, CVector3 date)

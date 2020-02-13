@@ -48,18 +48,18 @@ void PlayerMovement::TounMove()
 
 	if (m_player->m_movespeed.Length() <= 0.0f)
 	{
-		m_player->Playanim(Player::idel, 0.1f);
+		m_player->Playanim(Player::idel, false, 0.1f);
 		m_player->AnimSpeed = 1.0f;
 
 	}
 	else if (m_player->m_movespeed.Length() >= 300.0f)
 	{
-		m_player->Playanim(Player::run, 0.1f);
+		m_player->Playanim(Player::run, false, 0.1f);
 		m_player->AnimSpeed = (min(500.0f*0.85f,m_player->m_movespeed.Length())) / 440.0f;
 	}
 	else
 	{
-		m_player->Playanim(Player::walk, 0.1f);
+		m_player->Playanim(Player::walk, false, 0.1f);
 		m_player->AnimSpeed = m_player->m_movespeed.Length() / 150.0f;
 	}
 	//プレイヤーの回転処理
@@ -165,18 +165,18 @@ void PlayerMovement::QuestMove()
 	m_player->m_movespeed.z = camera_XZ.z;
 	if (m_player->m_movespeed.Length() <= 0.0f)
 	{
-		m_player->Playanim(Player::idel, 0.1f);
+		m_player->Playanim(Player::idel,false ,0.1f);
 		m_player->AnimSpeed = 1.0f;
 
 	}
 	else if (m_player->m_movespeed.Length() >= 300.0f)
 	{
-		m_player->Playanim(Player::run, 0.1f);
+		m_player->Playanim(Player::run, false , 0.1f);
 		m_player->AnimSpeed = (min(500.0f*AnimMaxSpeed, m_player->m_movespeed.Length())) / 440.0f;
 	}
 	else
 	{
-		m_player->Playanim(Player::walk, 0.1f);
+		m_player->Playanim(Player::walk, false, 0.1f);
 		m_player->AnimSpeed = m_player->m_movespeed.Length() / 150.0f;
 	}
 	//プレイヤーの回転処理
@@ -228,7 +228,22 @@ void PlayerMovement::QuestWeaponMove()
 	m_player->m_movespeed.x = camera_XZ.x;
 	m_player->m_movespeed.z = camera_XZ.z;
 
-	
+	if (m_player->m_movespeed.Length() <= 0.0f)
+	{
+		m_player->Playanim(Player::idel, false, 0.1f);
+		m_player->AnimSpeed = 1.0f;
+
+	}
+	else if (m_player->m_movespeed.Length() >= 300.0f)
+	{
+		m_player->Playanim(Player::run, false, 0.1f);
+		m_player->AnimSpeed = (min(500.0f*0.85f, m_player->m_movespeed.Length())) / 440.0f;
+	}
+	else
+	{
+		m_player->Playanim(Player::walk, false, 0.1f);
+		m_player->AnimSpeed = m_player->m_movespeed.Length() / 150.0f;
+	}
 	//プレイヤーの回転処理
 	CVector3 vec = camera_XZ;
 

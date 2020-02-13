@@ -11,7 +11,7 @@ public:
 		//attack13,
 		num
 	};
-	MIZUKI(CVector3 pos);
+	MIZUKI(const char* name);
 	virtual ~MIZUKI();
 	void attackStart();
 	bool attack();

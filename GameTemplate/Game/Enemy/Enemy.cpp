@@ -35,6 +35,9 @@ void Enemy::TransitionState(StateEnemy m)
 	case StateDead:
 		m_state = new EnemyStateDead(this, m_player);
 		break;
+	case StateChase:
+		m_state = new EnemyStateChase(this, m_player);
+		break;
 	case StateAttack:
 		m_state = new EnemyStateAttack(this,m_player);
 	default:
@@ -50,7 +53,7 @@ bool Enemy::Start()
 	m_HitObject = GetHitObjict().Create(&m_position, 500, [&](float damage, CVector3 date) {
 		HitAction(damage);
 	}, HitObject::enemy);
-
+	m_monster->GetSkinModel()->EnableShadowCaster(true);
 	TransitionState(m_statenum);
 	return true;
 }
@@ -59,7 +62,6 @@ void Enemy::Update()
 	SetMovespeed(CVector3::Zero());
 	m_anim.Update(GetFrameDeltaTime());
 	m_state->Update();
-
 	m_addGravityTime += 1.0f*GetFrameDeltaTime();
 	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
 	m_movespeed.y -= m_fallSpeed;

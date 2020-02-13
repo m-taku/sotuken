@@ -104,6 +104,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Enemyname\dorakomesu.cpp" />
+    <ClCompile Include="Enemy\EnemyStateChase.cpp" />
     <ClCompile Include="Enemy\EnemyStateAttack.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -220,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemyname\dorakomesu.h" />
+    <ClInclude Include="Enemy\EnemyStateChase.h" />
     <ClInclude Include="Enemy\EnemyStateList.h" />
     <ClInclude Include="Enemy\EnemyStateAttack.h" />
     <ClInclude Include="Fade.h" />
@@ -344,6 +346,7 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\modelData\bikkuri.FBX" />
+    <MeshContentTask Include="Assets\modelData\Cube2.FBX" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_0.FBX" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_1.FBX" />
     <MeshContentTask Include="Assets\modelData\Dragon\Dragon_2.FBX" />

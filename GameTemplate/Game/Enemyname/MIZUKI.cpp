@@ -6,7 +6,7 @@
 #include"../HitManeger.h"
 
 
-MIZUKI::MIZUKI(CVector3 position) : monster(position)
+MIZUKI::MIZUKI(const char* name) : monster(name)
 {
 }
 

@@ -9,7 +9,7 @@ public:
 	EnemyStateLoitering(Enemy* enemypoint, Player* player);
 	~EnemyStateLoitering();
 	void Update();
-	void rans();
+	void rans(CVector3 pos);
 	void Stop();
 private:
 	CVector3 m_MoveSpeed = CVector3::Zero();
@@ -17,7 +17,7 @@ private:
 	CVector3 m_nextpos = CVector3::Zero();						//経路探査で出た次のポジション
 	Path* m_path = nullptr;
 	bool ispath = false;
-	float Navimake = 0.0f;
 	std::thread Culling;
+	float Navimake = 0.0f;
 };
 
