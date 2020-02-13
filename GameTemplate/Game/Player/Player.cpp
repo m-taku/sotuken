@@ -116,6 +116,7 @@ bool Player::Start()
 
 void Player::Update()
 {
+	m_movespeed = CVector3::Zero();
 	m_isAnimtaime += GetFrameDeltaTime();
 	GetPlayerParam().stamina = max(0, min(GetPlayerParam().stamina + 10.0*GetFrameDeltaTime(), m_playerData.stamina));
 	//if (Hp <= 0&& m_statenum != Statedeath)
@@ -132,12 +133,13 @@ void Player::Update()
 	}
 	else
 	{
-		///m_modelpos += m_characon.GetOffset();
+		m_modelpos +=  m_characon.GetOffset();
 	}
 
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
 	m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
+
 }
 void Player::PostUpdate()
 {
@@ -146,7 +148,7 @@ void Player::PostUpdate()
 void Player::InMovemAnim()
 {
 	m_isAnimMove = true;
-	m_rig.StateRig();
+	m_rig.StateRig(m_skinmodel.GetworldMatrix());
 }
 void Player::Draw()
 {

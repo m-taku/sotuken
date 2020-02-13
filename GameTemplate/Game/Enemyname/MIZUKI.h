@@ -19,6 +19,7 @@ public:
 	void Init();
 private:
 	std::vector<std::vector<Bone*>> Bones;
+	int No = 0;
 	Rig m_rig;
 	attackcombo m_attackcombo = attack123;
 };

@@ -4,6 +4,7 @@
 #include"EnemyStateList.h"
 #include"enemyname/monster.h"
 #include"Carving.h"
+#include "CameraMovement.h"
 class HitObject;
 class Path;
 class VectorDraw;

@@ -237,6 +237,7 @@ const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpee
 	//XZの移動は確定。
 	//m_OffsetVector = nextPosition + ((m_position + addPos)*-1.0f);
 	//m_OffsetVector.y = 0.0f;
+	m_OffsetVector = nextPosition - (m_position + addPos);
 	m_position.x = nextPosition.x;
 	m_position.z = nextPosition.z;
 	//下方向を調べる。
@@ -292,7 +293,7 @@ const CVector3& CharacterController::Execute(float deltaTime, CVector3& moveSpee
 		}
 	}
 	//移動確定。
-	m_OffsetVector = m_position - nextPosition;
+	//m_OffsetVector = m_position - nextPosition;
 
 	m_position = nextPosition;
 	btRigidBody* btBody = m_rigidBody.GetBody();

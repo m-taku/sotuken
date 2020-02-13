@@ -84,6 +84,7 @@ public:
 	{
 		m_anim.Play(No, time);
 		m_modelpos = m_position;
+		m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
 		m_isAnimtaime = 0.0f;
 		if (furag) {
 			InMovemAnim();

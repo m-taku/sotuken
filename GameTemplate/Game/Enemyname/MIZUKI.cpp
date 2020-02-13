@@ -26,10 +26,12 @@ void MIZUKI::attackStart()
 	combo[0] = rand100(mt);
 	combo[1] = rand100(mt);
 	combo[2] = rand100(mt);
-	m_attackcombo = attack12;// (attackcombo)combo[rand100(mt)];
-	m_jikuawase = monster::strat;
+	m_attackcombo = (attackcombo)combo[rand100(mt)];
+	m_jikuawase = monster::strat; 
+	No = 0;
+
+	m_rig.StateRig(m_skinmodel.GetworldMatrix());
 	m_enemy->Playanim(monster::walk);
-	m_rig.StateRig();
 }
 bool MIZUKI::attack()
 {
@@ -40,6 +42,10 @@ bool MIZUKI::attack()
 		//Ž²‡‚í‚¹‚µ‚Ü‚µ‚å‚¤iŒÜ‚Â“›“›‚©j
 
 		if (Alignment(m_player->GetPosition())) {
+			if (m_enemy->IsAnimEvent(1))
+			{
+				m_jikuawase = wait;
+			}
 			m_enemy->Playanim(m_attackcombo + monster::num);
 			//CVector3 tailpos1;
 			tailpos1.Set(Bones[attack123][0]->GetWorldMatrix().v[3]);
@@ -52,6 +58,12 @@ bool MIZUKI::attack()
 		break;
 	case MIZUKI::attack12:
 		if (Alignment(m_player->GetPosition())) {
+			if (No == 0)
+			{
+				m_rig.StateRig(m_skinmodel.GetworldMatrix());
+				m_jikuawase = wait;
+				No++;
+			}
 			m_enemy->Playanim(m_attackcombo + monster::num,true);
 			CVector3 move = CVector3::Zero();
 			move = m_rig.Updete();

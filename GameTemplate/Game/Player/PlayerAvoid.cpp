@@ -6,7 +6,7 @@
 PlayerAvoid::PlayerAvoid(Player* player) :PlayerState(player)
 {
 	m_statenum = m_player->NowState();
-	m_player->GetPlayerParam().stamina -= 25;
+	m_player->GetPlayerParam().stamina -= 0.00001;
 	Movement.SetPlayer(player);
 	m_player->Playanim(Player::avoid, true, 0.01f);
 

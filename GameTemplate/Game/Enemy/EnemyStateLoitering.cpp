@@ -45,6 +45,7 @@ void EnemyStateLoitering::Update()
 				//もしも終点ならば探索しなおす
 				//Culling.detach();
 			}
+			m_enemy->m_monster->Setjiku1(monster::strat);
 			m_oldposition = m_nextpos;
 			speed = m_nextpos - m_enemy->GetPosition();
 		}
@@ -58,9 +59,6 @@ void EnemyStateLoitering::Update()
 		//speed.y = 0.0f;
 		//speed.Normalize();
 		//speed *= 500.0f;
-
-
-	//イッツ探索！！！！（かもねーーーー）
 
 	}
 	else

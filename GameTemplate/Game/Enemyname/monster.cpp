@@ -14,10 +14,7 @@ monster::monster(CVector3 pos)
 
 bool monster::Alignment(CVector3 pos)
 {
-	if (m_enemy->IsAnimEvent(1))
-	{
-		m_jikuawase = wait;
-	}
+
 	static CVector3 jiku;
 	static CVector3 vector;
 	CQuaternion kaku;

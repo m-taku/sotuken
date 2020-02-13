@@ -144,6 +144,11 @@ public:
 		m_modelDxweapon = modeldata;
 		m_weapon = true;
 	}
+
+	CMatrix GetworldMatrix()
+	{
+		return m_worldMatrix;					//!<ワールド行列。
+	}
 private:
 	/*!
 	*@brief	サンプラステートの初期化。

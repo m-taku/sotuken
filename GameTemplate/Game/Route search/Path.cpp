@@ -39,6 +39,12 @@ bool Path::Course(CVector3 sturt, CVector3 end)
 	{
 		if (m_stop)
 		{
+			for (auto ereas : open) {
+				delete ereas;
+			}
+			for (auto ereas : close) {
+				delete ereas;
+			}
 			return false;
 		}
 		//リンクデータを探す
@@ -150,7 +156,7 @@ bool Path::Course(CVector3 sturt, CVector3 end)
 			Smoothing(&m_coursepasu);
 		}
 		//デバックしたければする
-		m_pathdata->DebugVector(m_coursepasu);
+		//m_pathdata->DebugVector(m_coursepasu);
 	}
 	//すべて終わったのでデータを消去する
 	for (auto ereas : open) {
@@ -171,7 +177,7 @@ void Path::Smoothing(std::vector<int>* pasu)
 	int Next;
 	int wait = 0;
 	//1つ飛ばした2番目から検索を開始にする。
-	for (int i = 2; i < pasu->size(); i++) 
+	for (int i = 1; i < pasu->size(); i++) 
 	{
 		Next = (*pasu)[i];
 		if (m_pathdata->CollisionTest(start, Next))

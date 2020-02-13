@@ -8,7 +8,7 @@
 Enemy::Enemy()
 {
 	m_characon.Init(
-		50.0f,
+		80.0f,
 		40.0f,
 		m_position
 	);
@@ -60,12 +60,19 @@ void Enemy::Update()
 	m_anim.Update(GetFrameDeltaTime());
 	m_state->Update();
 	m_movespeed.y -= 9.8f;
+	CVector3 move;
+	move = m_position;
 	m_position = m_characon.Execute(GetFrameDeltaTime(), m_movespeed);
 	UpdateAxis();
 	if (!m_furag)
 	{
 		m_modelpos = m_position;
 	}
+	else
+	{
+		m_modelpos += m_characon.GetOffset();
+	}
+	move = m_position - move;
 	m_monster->GetSkinModel()->UpdateWorldMatrix(m_modelpos, m_rotation, CVector3::One());
 }
 void Enemy::Draw()

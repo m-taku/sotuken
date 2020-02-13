@@ -9,7 +9,7 @@ PlayerTownMove::PlayerTownMove(Player* player) :PlayerState(player)
 	if (m_player->Getcombo()!=nullptr) {
 		m_player->Getcombo()->changeweapon(0);
 	}
-	m_player->Playanim(Player::idel);
+	m_player->Playanim(Player::walk);
 }
 
 
@@ -19,9 +19,6 @@ PlayerTownMove::~PlayerTownMove()
 void PlayerTownMove::Update()
 {
 	Movement.TounMove();
-	auto Length = m_player->GetMoveSpeed();
-	Length.y = 0.0f;
-	Length.Length();
 	//m_player->Playanim(Player::run, false, 1.0f - (Length.Length() / 500.0f));
 	//m_player->Playanim(Player::walk, false, (Length.Length() / 500.0f));
 }

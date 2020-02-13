@@ -79,6 +79,7 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 	}
 	default: break;
 	}
+	deviceContext->RSSetState(g_graphicsEngine->GetRasterizerState());
 
 	deviceContext->PSSetShaderResources(enSkinModelSRVReg_AlbedoTexture, 1, &m_albedoTex);
 	deviceContext->PSSetShaderResources(enSkinModelSRVReg_NomalTexture, 1, &m_normalTex);

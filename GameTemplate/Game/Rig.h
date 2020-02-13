@@ -12,14 +12,21 @@ public:
 	const CVector3 Updete()
 	{
 		CVector3 pos;
-		pos.Set(m_Bone->GetWorldMatrix().v[3]);
+		CMatrix ja;
+		ja.Mul(m_Bone->GetLocalMatrix(), m_orignpos);
+		pos.Set(ja.v[3]);
 		auto len = pos - m_pos;
 		m_pos = pos;
 		return len;
 	}
-	void StateRig() {
-		m_pos.Set(m_Bone->GetWorldMatrix().v[3]);
+	void StateRig(CMatrix pos) {
+		m_orignpos = pos;
+		CMatrix ja;
+		ja.Mul(m_Bone->GetLocalMatrix(), m_orignpos);
+		m_pos.Set(ja.v[3]);
+		m_orignpos = pos;
 	}
+	CMatrix m_orignpos;
 	Bone* m_Bone = nullptr;
 	CVector3 m_pos = CVector3::Zero();
 };

@@ -33,6 +33,11 @@ bool Town::Init()
 		{
 			return true;
 		}
+		result = wcscmp(L"SM_TileGround4m", objData.name);
+		if (result == 0)
+		{
+			return false;
+		}
 		result = wcscmp(L"Cube", objData.name);
 		if (result == 0)
 		{
