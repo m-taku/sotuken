@@ -35,6 +35,13 @@ public:
 	}	
 	void Change(bool furag);
 private:
+	enum ESoundSource {
+		enTownBGM,
+		enStageBGM,
+		enTitleBGM,
+		enBattleBGM,
+		enSoundSourceNum
+	};
 	StageManager m_Stage;
 	UI* m_ui = nullptr;
 	Player* m_player = nullptr;
@@ -42,5 +49,6 @@ private:
 	QuestManager*  m_QuestManager = nullptr;
 	EGameNotify m_gameNotify = NonQuestOrder;
 	bool m_ChangeNotify = false;
+	CSoundSource* m_pSoundSources[enSoundSourceNum];
 };
 

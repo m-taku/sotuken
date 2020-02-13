@@ -16,5 +16,6 @@ private:
 	Sprite m_sprite;
 	ShaderResourceView m_srv;
 	Text_Box* text = nullptr;
+	CSoundSource* m_pSoundSource = nullptr;
 };
 
