@@ -109,7 +109,7 @@ void GameManager::Update()
 			delete m_pSoundSources[enTownBGM];
 			m_pSoundSources[enTownBGM] = NULL;
 			m_pSoundSources[enStageBGM] = new CSoundSource;
-			m_pSoundSources[enStageBGM]->Init(L"Assets/sound/Stage.wav", "StageBGM");
+			m_pSoundSources[enStageBGM]->Init(L"Assets/sound/Sentou.wav", "Sentou");
 			m_pSoundSources[enStageBGM]->Play(true);
 			ChangeNotify(InQuest);
 		}
