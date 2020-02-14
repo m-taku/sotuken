@@ -91,9 +91,8 @@ void EnemyStateLoitering::rans(CVector3 pos)
 	{
 		if (m_path->Course(m_enemy->GetPosition(), pos))
 		{
-			if (m_enemy->GetState() == Enemy::StateLoitering) {
-				m_nextpos = m_path->PathPos();
-			}
+			m_nextpos = m_path->PathPos();
+
 			ispath = true;
 			break;
 

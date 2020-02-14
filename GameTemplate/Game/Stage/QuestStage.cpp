@@ -38,7 +38,6 @@ bool QuestStage::Init() {
 		if (result == 0)
 		{
 			auto pos = objData.position;
-			pos.y = 500.0f;
 			Player*  player = FindGO<Player>("player");
 			player->SetPosition(pos);
 			player->SetReturnPos(pos);
@@ -48,7 +47,7 @@ bool QuestStage::Init() {
 		result = wcscmp(L"Cube1", objData.name);
 		if (result == 0)
 		{
-			if (count < 1) {
+			if (count < 2) {
 				char enemyPath[256];
 				sprintf(enemyPath, "enemy%d", count);
 				auto pos = objData.position;

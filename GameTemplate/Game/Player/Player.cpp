@@ -169,7 +169,6 @@ void Player::HitAction(float damage, CVector3 date)
 		}
 		else
 		{
-			TransitionState(StateHit);
 			CVector3 mougaku = m_position - date;
 			mougaku.y = 0.0f;
 			mougaku.Normalize();
@@ -183,9 +182,11 @@ void Player::HitAction(float damage, CVector3 date)
 				jiku.Cross(la,mougaku);
 				jiku.Normalize();
 				m_rotation.SetRotation(jiku, ja);
+				m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
 				UpdateAxis();
 			}
 
+			TransitionState(StateHit);
 
 			/*if (jiku.y >= 0)
 			{

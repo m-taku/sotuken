@@ -26,24 +26,34 @@ GameManager::~GameManager()
 
 bool GameManager::Start()
 {
-	for (auto& soundSource : m_pSoundSources)
-	{
-		soundSource = nullptr;
-	}
-	//m_NPCManager = NewGO<NPCManager>(0, "NPCManager");
-	m_Stage.changTown();
+	if (count == 0) {
+		for (auto& soundSource : m_pSoundSources)
+		{
+			soundSource = nullptr;
+		}
+		//m_NPCManager = NewGO<NPCManager>(0, "NPCManager");
+		m_Stage.changTown();
 
-	m_QuestManager = NewGO<QuestManager>(0, "QuestManager");
-	m_player = NewGO<Player>(0, "player");
-	m_ui = NewGO<UI>(0, "ui");
-	m_ui->Init(150, 150, 50);
-	m_ui->SetHP(50);
-	m_pSoundSources[enTownBGM] = new CSoundSource;
-	m_pSoundSources[enTownBGM]->Init(L"Assets/sound/Town.wav", "TownBGM");
-	m_pSoundSources[enTownBGM]->Play(true);
-	//m_player->TransitionState(Player::StateTownMove);
-	//cheng(true);
-	return true;
+		m_QuestManager = NewGO<QuestManager>(0, "QuestManager");
+		m_player = NewGO<Player>(0, "player");
+		m_ui = NewGO<UI>(0, "ui");
+		m_ui->Init(150, 150, 50);
+		m_ui->SetHP(50);
+		m_pSoundSources[enTownBGM] = new CSoundSource;
+		m_pSoundSources[enTownBGM]->Init(L"Assets/sound/Town.wav", "TownBGM");
+		m_pSoundSources[enTownBGM]->Play(true);
+	}count++;
+	if (count >= 5) {
+		g_graphicsEngine->GetFade()->FadeInStart();
+		//m_player->TransitionState(Player::StateTownMove);
+		//cheng(true);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
 }
 void GameManager::Update()
 {
@@ -76,17 +86,17 @@ void GameManager::Update()
 		if (m_ChangeNotify)
 		{
 
-			//g_graphicsEngine->GetFade()->FadeOutStart();
+			g_graphicsEngine->GetFade()->FadeOutStart();
 			//}
 			//if (g_pad[0].IsTrigger(enButtonB))
 			//{
 			//	g_graphicsEngine->GetFade()->FadeOutStart();
 			//}
-
+			count = 0;
 			m_ChangeNotify = false;
 
 		}
-		//if (!g_graphicsEngine->GetFade()->IsInFade())
+		if (!g_graphicsEngine->GetFade()->IsInFade())
 		{
 			m_QuestManager->CloseGuest();
 			m_Stage.changQuestStage();
@@ -95,8 +105,9 @@ void GameManager::Update()
 			m_ui->SetIsMap(UI::IsQuest);
 			m_ui->Init(m_player->GetPlayerData().hp, m_player->GetPlayerData().stamina, m_QuestManager->GetQuestDate()->GetMAXTime());
 			m_pSoundSources[enTownBGM]->Stop();
-			m_pSoundSources[enTownBGM]->Release();
+			//m_pSoundSources[enTownBGM]->Release();
 			delete m_pSoundSources[enTownBGM];
+			m_pSoundSources[enTownBGM] = NULL;
 			m_pSoundSources[enStageBGM] = new CSoundSource;
 			m_pSoundSources[enStageBGM]->Init(L"Assets/sound/Stage.wav", "StageBGM");
 			m_pSoundSources[enStageBGM]->Play(true);
@@ -106,9 +117,8 @@ void GameManager::Update()
 	case InQuest:
 		if (m_ChangeNotify)
 		{
-			static int i = 0;
-			i++;
-			if (i >= 1) {
+			count++;
+			if (count >= 3) {
 				g_graphicsEngine->GetFade()->FadeInStart();
 				//g_graphicsEngine->GetFade()->SetFadeInSpeed(3.0f);
 				//}
@@ -128,20 +138,28 @@ void GameManager::Update()
 	case EndQuest:
 		if (m_ChangeNotify)
 		{
-			auto m_target = FindGO<Enemy>("enemy");
+			auto m_target = FindGO<Enemy>("enemy0");
+			DeleteGO(m_target);
+			m_target = FindGO<Enemy>("enemy1");
 			DeleteGO(m_target);
 			m_Stage.changTown();
 			m_QuestManager->ChangeOrderMode(QuestManager::Decision);
 			m_player->TransitionState(StateTownMove);
 			m_ui->SetIsMap(UI::IsTown);
-			m_gameNotify = NonQuestOrder;
 			m_pSoundSources[enStageBGM]->Stop();
-			m_pSoundSources[enStageBGM]->Release();
+			//m_pSoundSources[enStageBGM]->Release();
 			delete m_pSoundSources[enStageBGM];
+			m_pSoundSources[enStageBGM] = NULL;
 			m_pSoundSources[enTownBGM] = new CSoundSource;
 			m_pSoundSources[enTownBGM]->Init(L"Assets/sound/Town.wav", "TownBGM");
 			m_pSoundSources[enTownBGM]->Play(true);
 			m_ChangeNotify = false;
+			count = 0;
+		}
+		count++;
+		if (count>=3) {
+			g_graphicsEngine->GetFade()->FadeInStart();
+			m_gameNotify = NonQuestOrder;
 		}
 		break;
 	default:

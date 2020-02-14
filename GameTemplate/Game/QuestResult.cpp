@@ -46,9 +46,18 @@ bool QuestResult::Start()
 void QuestResult::Update()
 {
 	m_nowtime += GetFrameDeltaTime();
-	if (10.0f <= m_nowtime)
+	if (10.0f >= m_nowtime)
 	{
-		FindGO<GameManager>("GameManager")->ChangeNotify(GameManager::EndQuest);
-		DeleteGO(this);
+		if (m_furag) {
+			g_graphicsEngine->GetFade()->FadeOutStart();
+			m_furag = false;
+		}
+		else {
+			if (!g_graphicsEngine->GetFade()->IsInFade()) {
+
+				FindGO<GameManager>("GameManager")->ChangeNotify(GameManager::EndQuest);
+				DeleteGO(this);
+			}
+		}
 	}
 }

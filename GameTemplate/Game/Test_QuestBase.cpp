@@ -56,30 +56,31 @@ void Test_QuestBase::CreateQuest()
 			na->SetActive(false);
 		}
 	}
-	monster* monnsu;
+	monster* monnsu[2];
 
-	for (int i = 0; i < 1; i++) {
+	int i = 0;
 
-			char moveFilePath[256];
-		switch (MonsterNo)
-		{
-		case Test_QuestBase::monnsu:
-			sprintf(moveFilePath, "enemy%d", i);
-			monnsu = new dorakomesu(moveFilePath);
-			break;
-		case Test_QuestBase::monnsu2:
-			sprintf(moveFilePath, "enemy%d", i);
-			monnsu = new MIZUKI(moveFilePath);
-			break;
-		case Test_QuestBase::monnsu3:
-			sprintf(moveFilePath, "enemy%d", i);
-			monnsu = new MIZUKI(moveFilePath);
-			break;
-		default:
-			break;
-		}
+	char moveFilePath[256];
+	sprintf(moveFilePath, "enemy%d", i);
+	monnsu[0] = new dorakomesu(moveFilePath);
+	sprintf(moveFilePath, "enemy%d", ++i);
+	monnsu[1] = new MIZUKI(moveFilePath);
+	switch (MonsterNo)
+	{
+	case Test_QuestBase::monnsu:
+
+		m_target = monnsu[0]->GetEnemy();
+		break;
+	case Test_QuestBase::monnsu2:
+
+		m_target = monnsu[1]->GetEnemy();
+		break;
+	case Test_QuestBase::monnsu3:
+		m_target = monnsu[0]->GetEnemy();
+		break;
+	default:
+		break;
 	}
-	m_target = monnsu->GetEnemy();
 	//エネミー沸かし
 
 	//ステージに通知すれば2個以上できるよ
@@ -108,11 +109,12 @@ void Test_QuestBase::Update()
 						}
 						else
 						{
+							g_graphicsEngine->GetFade()->SetFadeInSpeed(3.0f);
+							g_graphicsEngine->GetFade()->FadeInStart();
 							auto pla = FindGO<Player>("player");
 							pla->TransitionState(StateQuestMove);
 						}
-						g_graphicsEngine->GetFade()->SetFadeInSpeed(3.0f);
-						g_graphicsEngine->GetFade()->FadeInStart();
+
 						debugtime = 0;
 						m_nowdoun = false;
 					}

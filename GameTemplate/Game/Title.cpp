@@ -1,9 +1,8 @@
 #include "stdafx.h"
 #include "Title.h"
-#include "Test.h"
-#include "TEstNPC.h"
 #include "Player.h"
 #include"Title_Menu.h"
+#include "GameManager.h"
 #include"Text_Box/Text_Box.h"
 
 Title::Title()
@@ -30,14 +29,24 @@ void Title::Update()
 {
 	if (g_pad[0].IsTrigger(enButtonA))
 	{
-		m_pSoundSource->Stop();
-		m_pSoundSource->Release();
-		delete m_pSoundSource;
-		NewGO<Title_Menu>(0, "Title_Menu");
-		DeleteGO(text);
-		DeleteGO(this);
-	}
+		m_furag = true;
 
+		g_graphicsEngine->GetFade()->FadeOutStart();
+	}
+	if (m_furag) {
+		if (!g_graphicsEngine->GetFade()->IsInFade())
+		{
+			m_pSoundSource->Stop();
+			//m_pSoundSource->Release();
+			delete m_pSoundSource;
+			//セーブ関係入れたらいけるよーーー
+			//NewGO<Title_Menu>(0, "Title_Menu");
+
+			NewGO<GameManager>(10, "GameManager");
+			DeleteGO(text);
+			DeleteGO(this);
+		}
+	}
 }
 void Title::TextureDraw()
 {

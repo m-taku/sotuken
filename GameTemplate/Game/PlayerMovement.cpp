@@ -18,16 +18,7 @@ void PlayerMovement::TounMove()
 	m_player->m_movespeed = CVector3::Zero();
 	float padinput_LX = g_pad[0].GetLStickXF()*500.0f;
 	float padinput_LY = g_pad[0].GetLStickYF()*500.0f;
-	m_addGravityTime += 1.0f*GetFrameDeltaTime();
-	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
-	m_player->m_movespeed.y -= m_fallSpeed;
-	if (m_player->m_characon.IsOnGround())
-	{
-		m_addGravityTime = 0.0f;
-		m_fallSpeed = 0.0f;
-		m_player->m_movespeed.y = 0.0f;
 
-	}
 
 
 	//
@@ -61,6 +52,17 @@ void PlayerMovement::TounMove()
 	{
 		m_player->Playanim(Player::walk, false, 0.1f);
 		m_player->AnimSpeed = m_player->m_movespeed.Length() / 150.0f;
+	}
+
+	m_addGravityTime += 1.0f*GetFrameDeltaTime();
+	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
+	m_player->m_movespeed.y -= m_fallSpeed;
+	if (m_player->m_characon.IsOnGround())
+	{
+		m_addGravityTime = 0.0f;
+		m_fallSpeed = 0.0f;
+		m_player->m_movespeed.y = 0.0f;
+
 	}
 	//プレイヤーの回転処理
 	CVector3 vec = camera_XZ;
@@ -136,16 +138,7 @@ void PlayerMovement::QuestMove()
 	m_player->m_movespeed = CVector3::Zero();
 	float padinput_LX = g_pad[0].GetLStickXF()*500.0f;
 	float padinput_LY = g_pad[0].GetLStickYF()*500.0f;
-	m_addGravityTime += 1.0f*GetFrameDeltaTime();
-	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
-	m_player->m_movespeed.y -= m_fallSpeed;
-	if (m_player->m_characon.IsOnGround())
-	{
-		m_addGravityTime = 0.0f;
-		m_fallSpeed = 0.0f;
-		m_player->m_movespeed.y = 0.0f;
 
-	}
 	//m_player->m_movespeed.y *= 0.5f;
 	CVector3 camera_z = smGameCamera().GetCameraFoward();
 	camera_z.y = 0.0f;
@@ -178,6 +171,18 @@ void PlayerMovement::QuestMove()
 	{
 		m_player->Playanim(Player::walk, false, 0.1f);
 		m_player->AnimSpeed = m_player->m_movespeed.Length() / 150.0f;
+	}
+
+
+	m_addGravityTime += 1.0f*GetFrameDeltaTime();
+	m_fallSpeed = (GRAVITY_PARAM*pow(m_addGravityTime, 2.0f)) * 0.5f;
+	m_player->m_movespeed.y -= m_fallSpeed;
+	if (m_player->m_characon.IsOnGround())
+	{
+		m_addGravityTime = 0.0f;
+		m_fallSpeed = 0.0f;
+		m_player->m_movespeed.y = 0.0f;
+
 	}
 	//プレイヤーの回転処理
 	CVector3 vec = camera_XZ;

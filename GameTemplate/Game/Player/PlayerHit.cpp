@@ -4,7 +4,7 @@
 
 PlayerHit::PlayerHit(Player* player) :PlayerState(player)
 {
-	m_player->Playanim(Player::Hit,true);
+	m_player->Playanim(Player::Hit, true);
 	m_statenum = m_player->NowState();
 	Movement.SetPlayer(player);
 }

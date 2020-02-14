@@ -49,6 +49,7 @@ private:
 	QuestManager*  m_QuestManager = nullptr;
 	EGameNotify m_gameNotify = NonQuestOrder;
 	bool m_ChangeNotify = false;
+	int count = 0;
 	CSoundSource* m_pSoundSources[enSoundSourceNum];
 };
 

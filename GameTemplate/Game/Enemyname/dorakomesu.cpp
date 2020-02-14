@@ -46,7 +46,7 @@ bool dorakomesu::attack()
 			m_enemy->Playanim(m_attackcombo + monster::num);
 			//CVector3 tailpos1;
 			tailpos1.Set(Bones[attack123][0]->GetWorldMatrix().v[3]);
-			HitAction(tailpos1, tailpos1, 20.0f);
+			HitAction(tailpos1, tailpos1, 30.0f);
 			if (!m_enemy->IsPlayinganim())
 			{
 				return true;
@@ -68,7 +68,7 @@ bool dorakomesu::attack()
 			if (len <= taillen.Length() && len > 0.0f) {
 				CVector3 pos = tailpos1 + houkou * len;
 				float hitlen = CVector3(m_player->GetPosition() - pos).Length();
-				HitAction(tailpos1, tailpos1 + taillen, 5.0f);
+				HitAction(tailpos1, tailpos1 + taillen, 20.0f);
 				break;
 			}
 		}
@@ -84,7 +84,7 @@ bool dorakomesu::attack()
 			m_enemy->Playanim(m_attackcombo + monster::num);
 			//CVector3 tailpos1;
 			tailpos1.Set(Bones[attack13][0]->GetWorldMatrix().v[3]);
-			HitAction(tailpos1, tailpos1, 50.0f);
+			HitAction(tailpos1, tailpos1, 30.0f);
 			if (!m_enemy->IsPlayinganim())
 			{
 				angle = 360.0f;

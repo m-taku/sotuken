@@ -49,7 +49,7 @@ bool MIZUKI::attack()
 			m_enemy->Playanim(m_attackcombo + monster::num);
 			//CVector3 tailpos1;
 			tailpos1.Set(Bones[attack123][0]->GetWorldMatrix().v[3]);
-			HitAction(tailpos1, tailpos1, 2000.0f);
+			HitAction(tailpos1, tailpos1, 30.0f);
 			if (!m_enemy->IsPlayinganim())
 			{
 				return true;
@@ -58,13 +58,14 @@ bool MIZUKI::attack()
 		break;
 	case MIZUKI::attack12:
 		if (Alignment(m_player->GetPosition())) {
+			m_enemy->Playanim(m_attackcombo + monster::num,true);
 			if (No == 0)
 			{
+				m_skinmodel.UpdateWorldMatrix(m_enemy->GetPosition(),m_enemy->GetRotation(),CVector3::One());
 				m_rig.StateRig(m_skinmodel.GetworldMatrix());
 				m_jikuawase = wait;
 				No++;
 			}
-			m_enemy->Playanim(m_attackcombo + monster::num,true);
 			CVector3 move = CVector3::Zero();
 			move = m_rig.Updete();
 			move /= GetFrameDeltaTime();
@@ -77,12 +78,12 @@ bool MIZUKI::attack()
 			{
 				tailpos1.Set(Bones[attack12][0]->GetWorldMatrix().v[3]);
 			}
-			HitAction(tailpos1, tailpos1, 2000.0f);
+			HitAction(tailpos1, tailpos1, 20.0f);
 			//²‡‚í‚¹‚µ‚Ü‚µ‚å‚¤iŒÜ‚Â“›“›‚©j
 			if (!m_enemy->IsPlayinganim())
 			{
 
-				m_enemy->Playanim(m_attackcombo + monster::num, false);
+				m_enemy->Playanim(monster::idel, false);
 				return true;
 			}
 		}
