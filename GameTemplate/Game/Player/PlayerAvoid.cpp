@@ -6,7 +6,7 @@
 PlayerAvoid::PlayerAvoid(Player* player) :PlayerState(player)
 {
 	m_statenum = m_player->NowState();
-	m_player->GetPlayerParam().stamina -= 0.00001;
+	m_player->GetPlayerParam().stamina -=25.0f;
 	Movement.SetPlayer(player);
 	m_player->Playanim(Player::avoid, true, 0.01f);
 
@@ -20,7 +20,7 @@ PlayerAvoid::~PlayerAvoid()
 }
 void PlayerAvoid::Update()
 {
-	m_player->GetPlayerParam().stamina -= 10.0*GetFrameDeltaTime();
+	//m_player->GetPlayerParam().stamina -= 10.0*GetFrameDeltaTime();
 	Movement.AttackMove();
 	m_invincible = false;
 	if (m_player->IsAnimEvent(1)) {

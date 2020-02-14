@@ -35,7 +35,7 @@ void Player::TransitionState(State m)
 		m_state = new PlayerWait(this);
 		break;
 	case StateAvoid:
-		if (GetPlayerNowParam().stamina >= 25&& m_isAnimtaime>=0.2f) {
+		if (GetPlayerNowParam().stamina >= 25 && m_isAnimtaime >= 0.2f) {
 			delete m_state;
 			m_state = new PlayerAvoid(this);
 		}
@@ -118,7 +118,7 @@ void Player::Update()
 {
 	m_movespeed = CVector3::Zero();
 	m_isAnimtaime += GetFrameDeltaTime();
-	GetPlayerParam().stamina = max(0, min(GetPlayerParam().stamina + 10.0*GetFrameDeltaTime(), m_playerData.stamina));
+
 	//if (Hp <= 0&& m_statenum != Statedeath)
 	//{
 	//	TransitionState(Statedeath);
@@ -134,7 +134,7 @@ void Player::Update()
 	}
 	else
 	{
-		m_modelpos +=  m_characon.GetOffset();
+		m_modelpos += m_characon.GetOffset();
 	}
 	move = m_position - move;
 	cameraMovement.DefaultMove(m_position + m_up * 100.0f, move, m_forward, m_right, m_up);
@@ -179,7 +179,7 @@ void Player::HitAction(float damage, CVector3 date)
 			if (dotresult < 0.9999f)
 			{
 				CVector3 jiku;
-				jiku.Cross(la,mougaku);
+				jiku.Cross(la, mougaku);
 				jiku.Normalize();
 				m_rotation.SetRotation(jiku, ja);
 				m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);

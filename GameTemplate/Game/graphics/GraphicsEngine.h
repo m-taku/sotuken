@@ -126,8 +126,8 @@ private:
 	ToneMap m_tonemap;
 
 	DepthFogParam m_depthFogParam;
-	float m_shadowMapHight = 8000.0f;
-	float m_shadowAvailableLength = 5000.0f;
+	float m_shadowMapHight = 10000.0f;
+	float m_shadowAvailableLength = 6000.0f;
 
 	Fade m_fade;
 };

@@ -46,7 +46,7 @@ bool QuestResult::Start()
 void QuestResult::Update()
 {
 	m_nowtime += GetFrameDeltaTime();
-	if (10.0f >= m_nowtime)
+	if (10.0f <= m_nowtime)
 	{
 		if (m_furag) {
 			g_graphicsEngine->GetFade()->FadeOutStart();

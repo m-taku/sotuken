@@ -152,7 +152,11 @@ void PlayerMovement::QuestMove()
 	{
 		camera_XZ *= 1.3f;
 		AnimMaxSpeed = 1.2f;
-		m_player->m_playerParam.stamina = max(m_player->m_playerParam.stamina - 20.0*GetFrameDeltaTime(), 0.0f);
+		m_player->m_playerParam.stamina = max(m_player->m_playerParam.stamina - 10.0*GetFrameDeltaTime(), 0.0f);
+	}
+	else
+	{
+		m_player->GetPlayerParam().stamina = max(0, min(m_player->GetPlayerParam().stamina + 10.0f*GetFrameDeltaTime(), m_player->m_playerData.stamina));
 	}
 	m_player->m_movespeed.x = camera_XZ.x;
 	m_player->m_movespeed.z = camera_XZ.z;
@@ -206,6 +210,7 @@ void PlayerMovement::QuestMove()
 }
 void PlayerMovement::QuestWeaponMove()
 {
+	m_player->GetPlayerParam().stamina = max(0, min(m_player->GetPlayerParam().stamina + 10.0f*GetFrameDeltaTime(), m_player->m_playerData.stamina));
 	m_player->UpdateAxis();
 	m_player->m_movespeed = CVector3::Zero();
 	float padinput_LX = g_pad[0].GetLStickXF()*500.0f;
