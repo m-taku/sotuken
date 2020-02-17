@@ -32,10 +32,9 @@ cbuffer VSPSCb : register(b0) {
 	float4x4 mProj;
 };
 cbuffer NatureCB : register(b1) {
-	float mShakePower;
-	float nowPower;
-	float minpos;
-	float maxpos;
+	float3 windowdir;
+	float power;
+	float maxhight;
 };
 
 cbuffer ShadowCB:register(b0) {
@@ -137,11 +136,13 @@ PSInput VSMain(VSInputNmTxVcTangent In)
 PSInput VSTree(VSInputNmTxVcTangent In, float4x4 worldMat)
 {
 	PSInput psInput = (PSInput)0;
+	float3 zero = float3(0.0f, 0.0f, 0.0f);
+
+	float3 sub = In.Position.xyz - zero;
+	float hight = max(sub.y, 0.0f);
+	float t = pow((hight / maxhight), 3.0f)*power;
+	In.Position.xyz += windowdir * (t*100.0f);
 	float4 pos = mul(worldMat, In.Position);
-	float3 ka = normalize(mul(worldMat, In.Normal));
-	ka.y = 0.0f;
-	ka = normalize(ka);
-	pos.xyz += ka * (nowPower * mShakePower) * ((max(0.0f,min(In.Position.y - minpos, maxpos - minpos)))/ (maxpos - minpos));
 	psInput.WorldPos = pos.xyz;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
@@ -240,7 +241,7 @@ PSOutput PSMain(PSInput In)
 	//法線をタンジェントスペースから、ワールドスペースに変換する。
 	normal = In.Tangent * normal.x + biNormal * normal.y + In.Normal * normal.z;
 	normal = normalize(normal);
-	psout.normal =float4(normal, 1.0f);
+	psout.normal = float4(normal, 1.0f);
 	psout.world = float4(In.WorldPos.xyz, 1.0f);
 	psout.depth = In.Position.z;
 	psout.silhouette = float4(1.0f, 1.0f, 1.0f, 1.0f);
