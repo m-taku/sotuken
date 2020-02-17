@@ -20,11 +20,15 @@ protected:
 	Shader m_vsShaderInstancingShadow;
 
 
+	Shader m_vsNatureShaderInstancingShadow;
+	Shader m_vsNatureShaderShadow;
+
+
 	Shader m_psShader;
 	Shader m_psSkyShader;
-	Shader m_psTreeShader;
+	Shader m_psNatureShader;
 	Shader m_psShaderShadow;
-	Shader m_psTreeShaderShadow;
+	Shader m_psNatureShaderShadow;
 
 	bool isSkining;
 	ID3D11ShaderResourceView* m_albedoTex = nullptr;
@@ -39,8 +43,8 @@ public:
 		m_psShader.Load("Assets/shader/model.fx", "PSMain", Shader::EnType::PS);
 		m_psSkyShader.Load("Assets/shader/skycube.fx", "PSCubeMain", Shader::EnType::PS);
 		m_psShaderShadow.Load("Assets/shader/shadowmap.fx", "PSMain", Shader::EnType::PS);
-		m_psTreeShader.Load("Assets/shader/model.fx", "PSTreeMain", Shader::EnType::PS);
-		m_psTreeShaderShadow.Load("Assets/shader/shadowmap.fx", "PSTreeMain", Shader::EnType::PS);
+		m_psNatureShader.Load("Assets/shader/model.fx", "PSTreeMain", Shader::EnType::PS);
+		m_psNatureShaderShadow.Load("Assets/shader/shadowmap.fx", "PSTreeMain", Shader::EnType::PS);
 		m_pPSShader = &m_psShader;
 	}
 	virtual ~ModelEffect()
@@ -100,6 +104,8 @@ public:
 		m_vsShaderInstancingNature.Load("Assets/shader/model.fx", "VSTreeMainInstancing", Shader::EnType::VS);
 		m_vsShaderShadow.Load("Assets/shader/shadowmap.fx", "VSMain", Shader::EnType::VS);
 		m_vsShaderInstancingShadow.Load("Assets/shader/shadowmap.fx", "VSMainInstancing", Shader::EnType::VS);
+		m_vsNatureShaderInstancingShadow.Load("Assets/shader/shadowmap.fx", "VSTreeMainInstancing", Shader::EnType::VS);;
+		m_vsNatureShaderShadow.Load("Assets/shader/shadowmap.fx", "VSTreeMain", Shader::EnType::VS);
 		m_pVSShader = &m_vsShader;
 		isSkining = false;
 	}

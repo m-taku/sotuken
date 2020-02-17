@@ -21,6 +21,12 @@ cbuffer VSPSCb : register(b0) {
 	float4x4 mView;
 	float4x4 mProj;
 };
+cbuffer NatureCB : register(b1) {
+	float4 windowdir;
+	float4 playerpos;
+	float power;
+	float maxhight;
+};
 cbuffer BeforeShadowCB : register(b5) {
 	float4x4 beforeLightView[3];
 	float4x4 beforeLightProj[3];
@@ -105,6 +111,42 @@ PSInput VSMain(VSInputNmTxVcTangent In)
 {
 	return VSMaincreate(In, mWorld);
 }
+PSInput VSTree(VSInputNmTxVcTangent In, float4x4 worldMat)
+{
+	PSInput psInput = (PSInput)0;
+	float3 zero = float3(0.0f, 0.0f, 0.0f);
+
+	float3 sub = In.Position.xyz - zero;
+	float hight = max(sub.z, 0.0f);
+	float t = pow((hight / maxhight), 3.0f)*power;
+
+	float4 pos = mul(worldMat, In.Position);
+	float3 toPlayer = pos - playerpos;
+	toPlayer.y = 0.0f;
+	float len = length(toPlayer);
+
+	toPlayer = normalize(toPlayer);
+	float maxlen = 100.0f;
+	float s = abs(min(len, maxlen) - maxlen)*pow((hight / maxhight), 3.0f);
+
+	pos.xyz += (windowdir*10.0f * t) + (toPlayer*s);
+	psInput.WorldPos = pos.xyz;
+	pos = mul(mView, pos);
+	pos = mul(mProj, pos);
+
+	psInput.Position = pos;
+	psInput.TexCoord = In.TexCoord;
+	return psInput;
+}
+PSInput VSTreeMainInstancing(VSInputNmTxVcTangent In, uint instanceID : SV_InstanceID)
+{
+	return VSTree(In, instanceMatrix[instanceID]);
+}
+PSInput VSTreeMain(VSInputNmTxVcTangent In)
+{
+	return VSTree(In, mWorld);
+}
+
 
 /*!--------------------------------------------------------------------------------------
  * @brief	スキンありモデル用の頂点シェーダー。

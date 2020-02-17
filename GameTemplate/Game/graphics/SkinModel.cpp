@@ -338,9 +338,23 @@ void SkinModel::Draw(EnDrawMode drawMode, CMatrix viewMatrix, CMatrix projMatrix
 			}
 			if (m_Mode[delayNo] == enTree || m_Mode[delayNo] == enTreeInstancing)
 			{
+				NatureConstantBuffer m_Nature1;
+				//kakeawase = 1.0f;
+				m_Nature1.nowPower = m_ugoku;
+				m_Nature1.maxpos = Maxpos.y;
+				m_Nature1.mShakePower = CVector3::AxisX();
+				m_Nature1.m_Playerpos = m_PlayerPos;
+				d3dDeviceContext->UpdateSubresource(m_Nature, 0, nullptr, &m_Nature1, 0, 0);
+				d3dDeviceContext->VSSetConstantBuffers(1, 1, &m_Nature);
+				//m_ugoku = max(-1.0f, min(1.0f, m_ugoku + 0.1f * kakeawase));
+				//if (m_ugoku >= 1.0f || m_ugoku <= -1.0f)
+				//{
+				//	kakeawase *= -1.0f;
+				//}
 				if (m_numInstance > 1)
 				{
 					effect->SetDrawMode(enTreeShadowInstancing);
+
 				}
 				else {
 					effect->SetDrawMode(enTreeShadow);
@@ -469,7 +483,7 @@ void SkinModel::Draw(int No)
 				m_Nature1.m_Playerpos = m_PlayerPos;
 				d3dDeviceContext->UpdateSubresource(m_Nature, 0, nullptr, &m_Nature1, 0, 0);
 				d3dDeviceContext->VSSetConstantBuffers(1, 1, &m_Nature);
-				m_ugoku = max(-1.0f, min(1.0f, m_ugoku + 0.1f * kakeawase));
+				m_ugoku = max(-1.0f, min(1.0f, m_ugoku + 0.05f * kakeawase));
 				if (m_ugoku >= 1.0f || m_ugoku <= -1.0f)
 				{
 					kakeawase *= -1.0f;
