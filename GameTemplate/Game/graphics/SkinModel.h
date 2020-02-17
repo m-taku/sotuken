@@ -145,7 +145,10 @@ public:
 		m_modelDxweapon = modeldata;
 		m_weapon = true;
 	}
-
+	void SetPlayerPos(CVector3 pos)
+	{
+		m_PlayerPos = pos;
+	}
 	CMatrix GetworldMatrix()
 	{
 		return m_worldMatrix;					//!<ワールド行列。
@@ -177,10 +180,12 @@ private:
 		CMatrix mProj;
 	};
 	struct NatureConstantBuffer {
-		CVector3 mShakePower;
+		CVector4 mShakePower;
+		CVector4 m_Playerpos;
 		float nowPower;
 		float maxpos;
 	};
+	float kakeawase = 1.0f;
 
 	EnFbxUpAxis			m_enFbxUpAxis = enFbxUpAxisZ;	//!<FBXの上方向。
 	ID3D11Buffer*		m_cb = nullptr;					//!<定数バッファ。
@@ -218,6 +223,7 @@ private:
 	//草の動かすように用
 	ID3D11Buffer*		m_Nature = nullptr;					//!<定数バッファ。
 	float				m_ugoku = 0.0f;
+	CVector3			m_PlayerPos = CVector3::Zero();
 
 
 	std::vector<CMatrix> m_Matrix[MAXTHREAD];						//スキンモデル付きのインスタンシング用配列

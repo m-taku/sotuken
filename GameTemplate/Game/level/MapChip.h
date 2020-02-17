@@ -4,7 +4,7 @@
 
 class Level;
 struct LevelObjectData;
-
+class Player;
 /*!
 * @brief	マップチップ。
 */
@@ -33,5 +33,6 @@ private:
 	wchar_t filePath[256];
 	std::vector<LevelObjectData> m_LevelData;
 	std::vector<PhysicsStaticObject*> m_physicsStaticObject;	//!<静的物理オブジェクト。
-	
+	Player* m_player = nullptr;
+
 };

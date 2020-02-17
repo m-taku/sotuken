@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MapChip.h"
 #include "Level.h"
+#include"Player.h"
 #include "../graphics/SkinModelDataManager.h"
 
 MapChip::MapChip(const LevelObjectData& objData)
@@ -60,6 +61,10 @@ void MapChip::State()
 			m_model.UpdateInstancingData(m_LevelData[i].position, m_LevelData[i].rotation, m_LevelData[i].scale);
 		}
 	}
+	if (m_LevelData[0].m_www)
+	{
+		m_player = FindGO<Player>("player");
+	}
 	m_model.EnableShadowCaster(m_LevelData[0].m_Shadowflag);
 }
 void MapChip::Update()
@@ -73,6 +78,7 @@ void MapChip::Update()
 		for (auto obj : m_LevelData) {
 			if (m_LevelData[0].m_www)
 			{
+
 				auto len = obj.position - g_camera3D.GetPosition();
 				if (len.Length() >= 5000.0f)
 				{
@@ -96,6 +102,9 @@ void MapChip::Update()
 void MapChip::Draw()
 {
 	if (m_LevelData[0].m_Transflag) {
+		if (m_LevelData[0].m_www) {
+			m_model.SetPlayerPos(m_player->GetPosition());
+		}
 		if (count <= 1) {
 			m_model.Draw(enTree, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 		}

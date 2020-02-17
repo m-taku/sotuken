@@ -32,7 +32,8 @@ cbuffer VSPSCb : register(b0) {
 	float4x4 mProj;
 };
 cbuffer NatureCB : register(b1) {
-	float3 windowdir;
+	float4 windowdir;
+	float4 playerpos;
 	float power;
 	float maxhight;
 };
