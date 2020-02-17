@@ -176,7 +176,12 @@ private:
 		CMatrix mView;
 		CMatrix mProj;
 	};
-
+	struct NatureConstantBuffer {
+		float mShakePower;
+		float nowPower;
+		float minpos;
+		float maxpos;
+	};
 
 	EnFbxUpAxis			m_enFbxUpAxis = enFbxUpAxisZ;	//!<FBXの上方向。
 	ID3D11Buffer*		m_cb = nullptr;					//!<定数バッファ。
@@ -209,6 +214,11 @@ private:
 	std::vector<CMatrix> m_instancingData[MAXTHREAD];		//!<インスタンシング描画用のデータ。
 	std::vector<CVector3> m_instancingScale[MAXTHREAD];		//!<インスタンシングの拡大データ。
 	std::vector<CMatrix> m_drawData[2];		//!<インスタンシング描画用のデータ。（表示の数だけ必要）
+
+
+	//草の動かすように用
+	ID3D11Buffer*		m_Nature = nullptr;					//!<定数バッファ。
+	float				m_ugoku = 0.0f;
 
 
 	std::vector<CMatrix> m_Matrix[MAXTHREAD];						//スキンモデル付きのインスタンシング用配列

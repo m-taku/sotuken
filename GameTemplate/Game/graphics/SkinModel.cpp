@@ -150,6 +150,21 @@ void SkinModel::InitConstantBuffer()
 																//CPUアクセスが不要な場合は0。
 	//作成。
 	g_graphicsEngine->GetD3DDevice()->CreateBuffer(&bufferDesc, NULL, &m_cb);
+
+	//作成するバッファのサイズをsizeof演算子で求める。
+	int bufferSize1 = sizeof(NatureConstantBuffer);
+	//どんなバッファを作成するのかをせてbufferDescに設定する。
+	D3D11_BUFFER_DESC bufferDesc1;
+	ZeroMemory(&bufferDesc1, sizeof(bufferDesc1));				//０でクリア。
+	bufferDesc1.Usage = D3D11_USAGE_DEFAULT;						//バッファで想定されている、読み込みおよび書き込み方法。
+	bufferDesc1.ByteWidth = (((bufferSize1 - 1) / 16) + 1) * 16;	//バッファは16バイトアライメントになっている必要がある。
+																//アライメントって→バッファのサイズが16の倍数ということです。
+	bufferDesc1.BindFlags = D3D11_BIND_CONSTANT_BUFFER;			//バッファをどのようなパイプラインにバインドするかを指定する。
+																//定数バッファにバインドするので、D3D11_BIND_CONSTANT_BUFFERを指定する。
+	bufferDesc1.CPUAccessFlags = 0;								//CPU アクセスのフラグです。
+																//CPUアクセスが不要な場合は0。
+	//作成。
+	g_graphicsEngine->GetD3DDevice()->CreateBuffer(&bufferDesc1, NULL, &m_Nature);
 }
 void SkinModel::InitSamplerState(int maxInstance)
 {
@@ -443,7 +458,24 @@ void SkinModel::Draw(int No)
 	FindMesh([&](auto& ef) {
 		ModelEffect* effect = (ModelEffect*)ef->effect.get();
 		effect->SetDrawMode(m_Mode[No]);
+		if (m_Mode[No] == enTree || m_Mode[No] == enTreeInstancing)
+		{
+			NatureConstantBuffer m_Nature1;
+			m_Nature1.mShakePower = 200.0f;
+			static float kakeawase = 1.0f;
+			m_Nature1.nowPower = m_ugoku;
+			m_Nature1.minpos = Minpos.y;
+			m_Nature1.maxpos = Maxpos.y;
+			d3dDeviceContext->UpdateSubresource(m_Nature, 0, nullptr, &m_Nature1, 0, 0);
+			d3dDeviceContext->VSSetConstantBuffers(1, 1, &m_Nature);
+			m_ugoku = max(-1.0f,min(1.0f, m_ugoku  + 0.01f * kakeawase));
+			if (m_ugoku >= 1.0f || m_ugoku <= 0.0f)
+			{
+				kakeawase *= -1.0f;
+			}
+		}
 	});
+
 	auto num = m_drawData[1].size();
 	//描画。
 	m_modelDx->Draw(

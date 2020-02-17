@@ -27,13 +27,13 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 		break;
 	case enTree:
 	{
-		m_pVSShader = &m_vsShader;
+		m_pVSShader = &m_vsShaderNature;
 		m_pPSShader = &m_psTreeShader;
 		deviceContext->RSSetState(g_graphicsEngine->GetRasterizerState());
 		break;
 	}
 	case enTreeInstancing:
-		m_pVSShader = &m_vsShaderInstancing;
+		m_pVSShader = &m_vsShaderInstancingNature;
 		m_pPSShader = &m_psTreeShader;
 		deviceContext->RSSetState(g_graphicsEngine->GetRasterizerState());
 		break;
@@ -73,7 +73,7 @@ void __cdecl ModelEffect::Apply(ID3D11DeviceContext* deviceContext)
 	}
 	case enTreeShadowInstancing:
 	{	
-		m_pVSShader = &m_vsShaderInstancingShadow;
+		m_pVSShader = &m_vsShaderInstancingShadow;;
 		m_pPSShader = &m_psTreeShaderShadow;
 		break;
 	}

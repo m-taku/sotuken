@@ -12,6 +12,8 @@ protected:
 	Shader* m_pVSShader = nullptr;
 	Shader* m_pPSShader = nullptr;
 	Shader m_vsShader;
+	Shader m_vsShaderNature;
+	Shader m_vsShaderInstancingNature;
 	Shader m_vsSkyShader;
 	Shader m_vsShaderInstancing;
 	Shader m_vsShaderShadow;
@@ -94,6 +96,8 @@ public:
 		m_vsShader.Load("Assets/shader/model.fx", "VSMain", Shader::EnType::VS);
 		m_vsSkyShader.Load("Assets/shader/skycube.fx", "VSMain", Shader::EnType::VS);
 		m_vsShaderInstancing.Load("Assets/shader/model.fx", "VSMainInstancing", Shader::EnType::VS);
+		m_vsShaderNature.Load("Assets/shader/model.fx", "VSTreeMain", Shader::EnType::VS);
+		m_vsShaderInstancingNature.Load("Assets/shader/model.fx", "VSTreeMainInstancing", Shader::EnType::VS);
 		m_vsShaderShadow.Load("Assets/shader/shadowmap.fx", "VSMain", Shader::EnType::VS);
 		m_vsShaderInstancingShadow.Load("Assets/shader/shadowmap.fx", "VSMainInstancing", Shader::EnType::VS);
 		m_pVSShader = &m_vsShader;
