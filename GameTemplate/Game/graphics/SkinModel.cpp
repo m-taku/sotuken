@@ -461,11 +461,10 @@ void SkinModel::Draw(int No)
 		if (m_Mode[No] == enTree || m_Mode[No] == enTreeInstancing)
 		{
 			NatureConstantBuffer m_Nature1;
-			m_Nature1.mShakePower = 200.0f;
 			static float kakeawase = 1.0f;
 			m_Nature1.nowPower = m_ugoku;
-			m_Nature1.minpos = Minpos.y;
 			m_Nature1.maxpos = Maxpos.y;
+			m_Nature1.mShakePower = CVector3::AxisX();
 			d3dDeviceContext->UpdateSubresource(m_Nature, 0, nullptr, &m_Nature1, 0, 0);
 			d3dDeviceContext->VSSetConstantBuffers(1, 1, &m_Nature);
 			m_ugoku = max(-1.0f,min(1.0f, m_ugoku  + 0.01f * kakeawase));

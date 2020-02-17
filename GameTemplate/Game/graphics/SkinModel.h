@@ -177,9 +177,8 @@ private:
 		CMatrix mProj;
 	};
 	struct NatureConstantBuffer {
-		float mShakePower;
+		CVector3 mShakePower;
 		float nowPower;
-		float minpos;
 		float maxpos;
 	};
 
