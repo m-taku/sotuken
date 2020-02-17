@@ -141,8 +141,9 @@ PSInput VSTree(VSInputNmTxVcTangent In, float4x4 worldMat)
 	float3 sub = In.Position.xyz - zero;
 	float hight = max(sub.z, 0.0f);
 	float t = pow((hight / maxhight), 3.0f)*power;
-	In.Position.xyz += windowdir * (t*100.0f);
+	
 	float4 pos = mul(worldMat, In.Position);
+	pos.xyz += windowdir * (t*100.0f);
 	psInput.WorldPos = pos.xyz;
 	pos = mul(mView, pos);
 	pos = mul(mProj, pos);
