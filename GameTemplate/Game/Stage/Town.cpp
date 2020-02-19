@@ -43,7 +43,6 @@ bool Town::Init()
 		if (result == 0)
 		{
 			auto pos = objData.position;
-			pos.x = -3000.0f;
 			auto player = FindGO<Player>("player");
 			player->SetPosition(pos);
 			return true;
@@ -79,7 +78,7 @@ bool Town::Init()
 			objData.m_www = true;
 			return false;
 		}
-		return true;
+		return false;
 	});
 	swprintf_s(moveFilePath, L"Assets/modelData/%scori1.cmo", m_Name);
 	//m_testmodel.Init(moveFilePath);
