@@ -85,7 +85,7 @@ public:
 		m_anim.Play(No, time);
 		m_modelpos = m_position;
 		//m_skinmodel.UpdateWorldMatrix(m_modelpos, m_rotation, m_scale);
-		
+		SetAnimSpeed(1.0f);
 		if (furag) {
 			InMovemAnim();
 		}
@@ -117,6 +117,11 @@ public:
 	void Setweapon()
 	{
 		m_weapon->SetAnimation(this);
+	}
+
+	void SetAnimSpeed(float Speed)
+	{
+		AnimSpeed = Speed;
 	}
 	PlayerCombo* Getcombo()
 	{

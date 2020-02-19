@@ -105,6 +105,9 @@ void MapChip::Draw()
 		if (m_LevelData[0].m_www) {
 			m_model.SetPlayerPos(m_player->GetPosition());
 		}
+		else {
+			m_model.SetPlayerPos(CVector3::Zero());
+		}
 		if (count <= 1) {
 			m_model.Draw(enTree, g_camera3D.GetViewMatrix(), g_camera3D.GetProjectionMatrix());
 		}

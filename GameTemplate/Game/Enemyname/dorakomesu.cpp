@@ -43,6 +43,7 @@ bool dorakomesu::attack()
 	case dorakomesu::attack123:
 		//軸合わせしましょう（五つ筒筒か）
 		if (Alignment(m_player->GetPosition())) {
+			m_jikuawase = wait;
 			m_enemy->Playanim(m_attackcombo + monster::num);
 			//CVector3 tailpos1;
 			tailpos1.Set(Bones[attack123][0]->GetWorldMatrix().v[3]);
@@ -81,6 +82,7 @@ bool dorakomesu::attack()
 	case dorakomesu::attack13:
 		//軸合わせしましょう（五つ筒筒か）
 		if (Alignment(m_player->GetPosition())) {
+			m_jikuawase = wait;
 			m_enemy->Playanim(m_attackcombo + monster::num);
 			//CVector3 tailpos1;
 			tailpos1.Set(Bones[attack13][0]->GetWorldMatrix().v[3]);

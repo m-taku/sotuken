@@ -7,11 +7,16 @@ PlayerQuestMove::PlayerQuestMove(Player* player) :PlayerState(player)
 {
 	Movement.SetPlayer(player);
 	m_player->Playanim(Player::walk);
+	m_player->Getcombo()->changeweapon(0);
 }
 
 
 PlayerQuestMove::~PlayerQuestMove()
 {
+	if (m_weapon != move) {
+		m_player->NowState() = StateAttackMode;
+		m_player->Getcombo()->changeweapon(1);
+	}
 }
 void PlayerQuestMove::Update()
 {
