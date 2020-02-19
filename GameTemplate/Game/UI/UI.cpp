@@ -2,12 +2,12 @@
 #include "UI.h"
 
 namespace {
-	const CVector3 HP_POSITION = CVector3{ -600.0f,540.0f,0.0f };
-	const CVector3 STAMINA_POSITION = CVector3{ -600.0f,500.0f,0.0f };
-	const CVector3 TIMER_POSITION = CVector3{ -800.0f,400.0f,0.0f };
+	const CVector3 HP_POSITION = CVector3{ -750.0f,520.0f,0.0f };
+	const CVector3 STAMINA_POSITION = CVector3{ -750.0f,480.0f,0.0f };
+	const CVector3 TIMER_POSITION = CVector3{ -870.0f,450.0f,0.0f };
 	const CVector2 HP_TEX_WH = CVector2{ 1000.0f,30.0f };
 	const CVector2 STAMINA_TEX_WH = HP_TEX_WH;
-	const CVector2 TIMER_TEX_WH = CVector2{ 300.0f,300.0f };;
+	const CVector2 TIMER_TEX_WH = CVector2{ 200.0f,200.0f };
 	const CVector2 TIMERMIN_TEX_WH = TIMER_TEX_WH;
 	const CVector2 HP_PIVOT = CVector2{ -1.0f,1.0f };
 	const CVector2 STAMINA_PIVOT = CVector2{ -1.0f,1.0f };
